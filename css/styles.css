@@ -1,1 +1,170 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+html {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+
+body {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+
+.color-light {
+  color: #f0f0f0;
+}
+
+.accent-color-moss-green {
+  color: #869948;
+}
+
+.accent-color-moss-green button.btn {
+  background-color: #869948;
+  color: #f0f0f0;
+}
+
+.accent-color-flame {
+  color: #DF5916;
+}
+
+.accent-color-flame button.btn {
+  background-color: #DF5916;
+  color: #f0f0f0;
+}
+
+.accent-color-french-bistre {
+  color: #7A6C5D;
+}
+
+.accent-color-french-bistre button.btn {
+  background-color: #7A6C5D;
+  color: #f0f0f0;
+}
+
+.accent-color-venetian-red {
+  color: #BF211E;
+}
+
+.accent-color-venetian-red button.btn {
+  background-color: #BF211E;
+  color: #f0f0f0;
+}
+
+.accent-color-orange-yellow {
+  color: #ECB709;
+}
+
+.accent-color-orange-yellow button.btn {
+  background-color: #ECB709;
+  color: #111111;
+}
+
+.accent-color-liver-chestnut {
+  color: #94684C;
+}
+
+.accent-color-liver-chestnut button.btn {
+  background-color: #94684C;
+  color: #f0f0f0;
+}
+
+.accent-color-apple-green {
+  color: #88AC35;
+}
+
+.accent-color-apple-green button.btn {
+  background-color: #88AC35;
+  color: #111111;
+}
+
+.accent-color-safety-yellow {
+  color: #E9CE2C;
+}
+
+.accent-color-safety-yellow button.btn {
+  background-color: #E9CE2C;
+  color: #111111;
+}
+
+.bg-color-light {
+  background-color: #f0f0f0;
+}
+
+.bg-accent-color-moss-green {
+  background-color: #869948;
+  color: #f0f0f0;
+}
+
+.bg-accent-color-moss-green button.btn {
+  background-color: #f0f0f0;
+  color: #869948;
+}
+
+.bg-accent-color-flame {
+  background-color: #DF5916;
+  color: #f0f0f0;
+}
+
+.bg-accent-color-flame button.btn {
+  background-color: #f0f0f0;
+  color: #DF5916;
+}
+
+.bg-accent-color-french-bistre {
+  background-color: #7A6C5D;
+  color: #f0f0f0;
+}
+
+.bg-accent-color-french-bistre button.btn {
+  background-color: #f0f0f0;
+  color: #7A6C5D;
+}
+
+.bg-accent-color-venetian-red {
+  background-color: #BF211E;
+  color: #f0f0f0;
+}
+
+.bg-accent-color-venetian-red button.btn {
+  background-color: #f0f0f0;
+  color: #BF211E;
+}
+
+.bg-accent-color-orange-yellow {
+  background-color: #ECB709;
+  color: #111111;
+}
+
+.bg-accent-color-orange-yellow button.btn {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+
+.bg-accent-color-liver-chestnut {
+  background-color: #94684C;
+  color: #f0f0f0;
+}
+
+.bg-accent-color-liver-chestnut button.btn {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+
+.bg-accent-color-apple-green {
+  background-color: #88AC35;
+  color: #111111;
+}
+
+.bg-accent-color-apple-green button.btn {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+
+.bg-accent-color-safety-yellow {
+  background-color: #E9CE2C;
+  color: #111111;
+}
+
+.bg-accent-color-safety-yellow button.btn {
+  background-color: #f0f0f0;
+  color: #111111;
+}
+/*# sourceMappingURL=styles.css.map */

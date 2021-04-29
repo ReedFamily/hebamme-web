@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+///////////////////////////////////////////////////////////////
+/////////////////////// Color-Variables ///////////////////////
+///////////////////////////////////////////////////////////////
+
+$background-color:#f0f0f0;
+
+$background-color-btn-light:#f0f0f0;
+
+$accent-color-moss-green:#869948;
+
+$accent-color-flame:#DF5916;
+
+$accent-color-french-bistre:#7A6C5D;
+
+$accent-color-venetian-red:#BF211E;
+
+$accent-color-orange-yellow:#ECB709;
+
+$accent-color-citrine:#DEC73F;
+
+$accent-color-liver-chestnut:#94684C;
+
+$accent-color-apple-green:#88AC35;
+
+$accent-color-safety-yellow:#E9CE2C;
+
+$text-color:#111111;
+
+$text-color-light:#f0f0f0;
+
+
+///////////////////////////////////////////////////////////////
+//////////////////////// Colour-Config ////////////////////////
+///////////////////////////////////////////////////////////////
+
+html {
+    background-color: $background-color;
+    color           : $text-color;
+}
+
+body {
+    background-color: $background-color;
+    color           : $text-color;
+}
+
+.color-light {
+    color: $text-color-light;
+}
+
+.accent-color-moss-green {
+    color: $accent-color-moss-green;
+
+    button.btn {
+        background-color: $accent-color-moss-green;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-flame {
+    color: $accent-color-flame;
+
+    button.btn {
+        background-color: $accent-color-flame;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-french-bistre {
+    color: $accent-color-french-bistre;
+
+    button.btn {
+        background-color: $accent-color-french-bistre;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-venetian-red {
+    color: $accent-color-venetian-red;
+
+    button.btn {
+        background-color: $accent-color-venetian-red;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-orange-yellow {
+    color: $accent-color-orange-yellow;
+
+    button.btn {
+        background-color: $accent-color-orange-yellow;
+        color           : $text-color;
+    }
+}
+
+.accent-color-liver-chestnut {
+    color: $accent-color-liver-chestnut;
+
+    button.btn {
+        background-color: $accent-color-liver-chestnut;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-apple-green {
+    color: $accent-color-apple-green;
+
+    button.btn {
+        background-color: $accent-color-apple-green;
+        color           : $text-color;
+    }
+}
+
+.accent-color-safety-yellow {
+    color: $accent-color-safety-yellow;
+
+    button.btn {
+        background-color: $accent-color-safety-yellow;
+        color           : $text-color;
+    }
+}
+
+
+.bg-color-light {
+    background-color: $background-color;
+}
+
+.bg-accent-color-moss-green {
+    background-color: $accent-color-moss-green;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-moss-green;
+    }
+}
+
+.bg-accent-color-flame {
+    background-color: $accent-color-flame;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-flame;
+    }
+}
+
+.bg-accent-color-french-bistre {
+    background-color: $accent-color-french-bistre;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-french-bistre;
+    }
+}
+
+.bg-accent-color-venetian-red {
+    background-color: $accent-color-venetian-red;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-venetian-red;
+    }
+}
+
+.bg-accent-color-orange-yellow {
+    background-color: $accent-color-orange-yellow;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-liver-chestnut {
+    background-color: $accent-color-liver-chestnut;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-apple-green {
+    background-color: $accent-color-apple-green;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-safety-yellow {
+    background-color: $accent-color-safety-yellow;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////
+/////////////////////////// Styling ///////////////////////////
+///////////////////////////////////////////////////////////////
