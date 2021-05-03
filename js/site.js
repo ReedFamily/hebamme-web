@@ -200,34 +200,19 @@ form.addEventListener("submit", (e) => {
     formData.contactByPhone = contactPhoneString;
     formData.message = messageInput.value;
     
-    console.log("form json")
-    console.log(formData);
-    console.log("Submitted!");
-    console.log(
-      "The following data has been submitted:" +
-        "\nAnrede: " +
-        anredeString +
-        "\nName: " +
-        nameInput.value +
-        "\nSurname: " +
-        surnameInput.value +
-        "\nE-Mail: " +
-        emailInput.value +
-        "\nPhone: " +
-        phoneInput.value +
-        "\nAddress: " +
-        addressInput.value +
-        "\nCity: " +
-        cityInput.value +
-        "\nPostal Code: " +
-        zipInput.value +
-        "\nContact by Email: " +
-        contactEmailString +
-        "\nContact by Phone: " +
-        contactPhoneString +
-        "\nMessage: " +
-        messageInput.value
-    );
+    jQuery.post("backend/rest.php", formData, function( res ){
+      response = JSON.parse(res);
+      if(response.status == 200){
+        // successful response
+        console.log("Yep that worked!");
+        form.remove();
+      }else{
+        // error response
+        console.log("Oops something broke ");
+        console.log(response);
+      }
+    })
+    
   }
 });
 
