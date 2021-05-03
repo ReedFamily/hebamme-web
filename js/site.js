@@ -199,7 +199,8 @@ form.addEventListener("submit", (e) => {
     formData.contactByEmail = contactEmailString;
     formData.contactByPhone = contactPhoneString;
     formData.message = messageInput.value;
-
+    
+    console.log("form json")
     console.log(formData);
     console.log("Submitted!");
     console.log(

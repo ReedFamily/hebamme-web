@@ -7,11 +7,12 @@
     if(!defined("CONST_KEY")){define("CONST_KEY", "035416f4-e65b-4fc6-a8db-301604ff31c5");}
 
     $requestMethod = $_SERVER['REQUEST_METHOD'];
+    require_once("./autoloader.php");
 
     if(in_array($requestMethod, ["GET", "POST"])){
-
+        echo(api_response::getResponse(200));
     }else{
-        
+        echo(api_response::getResponse(405));
     }
 
 
