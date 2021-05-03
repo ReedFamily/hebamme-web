@@ -5,7 +5,10 @@
 	    die;
     }
 
+    class ApiHandler
+    {
+
+    }
 
 
-    
 ?>
