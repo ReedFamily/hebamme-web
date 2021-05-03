@@ -6,9 +6,9 @@
     }
 
     $mapping = [
-        "api_response" => "api_response.php"
-
-
+        "api_response" => "api_response.php",
+        "EmailSender" => "email_processor.php",
+        "ApiHandler" => "api_handler.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
