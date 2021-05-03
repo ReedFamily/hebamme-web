@@ -173,7 +173,7 @@ form.addEventListener("submit", (e) => {
   if (isFormValid) {
     checkKontaktwegInput();
     checkAnredeInput();
-    var formData = new Object(); // "Object" Throws this issue: The object literal notation {} is preferable. (W010)jshint(W010)
+    var formData = {};
     if (anredeString != "") {
       formData.anrede = anredeString;
     }
