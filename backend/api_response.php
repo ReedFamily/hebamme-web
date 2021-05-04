@@ -22,6 +22,11 @@
                     $response["status"] = 400;
                     $response["message"] = "Bad Request, expected fields are missing";
                     break;
+                case 403:
+                    $response["success"] = false;
+                    $response["status"] = 403;
+                    $response["message"] = "Invalid Token Access Not Allowed.";
+                    break;
                 case 405:
                     $response["success"] = false;
                     $response["status"] = 405;
@@ -35,9 +40,7 @@
                     $response["status"] = 000;
                     $response["message"] ="Unknown application operation.";
             }
-
-
-            return json_encode($response);
+            return $response;
         }
 
     }
