@@ -4,11 +4,14 @@
         echo file_get_contents('../404.html');
 	    die;
     }
+    require_once("conf/conf.php");
 
     $mapping = [
         "api_response" => "api_response.php",
         "EmailSender" => "email_processor.php",
-        "ApiHandler" => "api_handler.php"
+        "ApiHandler" => "api_handler.php",
+        "DataAccess" => "db_classes/data_access.php",
+        "DbToken" => "db_classes/db_token.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
