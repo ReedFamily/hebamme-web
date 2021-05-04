@@ -8,6 +8,41 @@
     class ApiHandler
     {
 
+        public function cleanTokens(){
+            $cDbToken = new DbToken();
+            $cDbToken->clearOldTokens();
+        }
+
+        public function getToken(){
+            $token = $this->tokenGen();
+            $dbToken = new DbToken();
+            $response = array();
+            try{
+                $dbToken->persistToken($token);
+            }catch(Exception $e){
+                echo($e->getMessage());
+                return api_response::getResponse(500);
+            }
+            
+            $response["status"] = 200;
+            $response["token"] = $token;
+            
+           return $response;
+        }
+
+        public function validate($apiToken){
+            $cDbToken = new DbToken();
+            return $cDbToken->isTokenValid($apiToken);
+        }
+
+        public function callApiFunction($apiFunction, $apiParams){
+            
+        }
+
+        private function tokenGen(){
+            return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',  mt_rand(0, 0xffff), mt_rand(0,0xffff), mt_rand(0,0xffff),(mt_rand(0,0x0fff) | 0x4000), (mt_rand(0, 0x3fff) | 0x8000), mt_rand(0, 0xffff),mt_rand(0, 0xffff),mt_rand(0, 0xffff));
+        }
+
     }
 
 
