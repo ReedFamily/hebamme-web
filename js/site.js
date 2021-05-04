@@ -200,18 +200,27 @@ form.addEventListener("submit", (e) => {
     formData.contactByPhone = contactPhoneString;
     formData.message = messageInput.value;
     
-    jQuery.post("backend/rest.php", formData, function( res ){
+    jQuery.get("backend/rest.php?apiFunc=getToken", function ( res ){
       response = JSON.parse(res);
       if(response.status == 200){
-        // successful response
-        console.log("Yep that worked!");
-        form.remove();
-      }else{
-        // error response
-        console.log("Oops something broke ");
-        console.log(response);
+        var apiToken = response.token;
+        var url = "backend/rest.php?apiToken=" +  apiToken + "&apiFunc=sendContact";
+        jQuery.post(url, formData, function( res ){
+          response = JSON.parse(res);
+          if(response.status == 200){
+            // successful response
+            console.log("Yep that worked!");
+            form.remove();
+          }else{
+            // error response
+            console.log("Oops something broke ");
+            console.log(response);
+          }
+        })
       }
-    })
+    });
+
+    
     
   }
 });
