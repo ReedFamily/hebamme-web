@@ -12,13 +12,24 @@
     if(in_array($requestMethod, ["GET", "POST"])){
         $requestMethodArray = array();
         $requestMethodArray = $_REQUEST;
+        
+        if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
         if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
         if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
+    
+        $cApiHandler = new ApiHandler();
+        $cApiHandler->cleanTokens();
+        if($functionName === 'getToken'){
+            $response = $cApiHandler->getToken();
+            echo(json_encode($response));
+        }elseif(!isset($token) || !$cApiHandler->validate($token)){
+           echo(json_encode(api_response::getResponse(403)));
+        }else{
+            echo(json_encode(api_response::getResponse(200)));
+        }
 
-
-        echo(api_response::getResponse(200));
     }else{
-        echo(api_response::getResponse(405));
+        echo(json_encode(api_response::getResponse(405)));
     }
 
 
