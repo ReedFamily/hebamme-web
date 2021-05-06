@@ -1,0 +1,428 @@
+@charset "UTF-8";
+
+///////////////////////////////////////////////////////////////
+/////////////////////// Color-Variables ///////////////////////
+///////////////////////////////////////////////////////////////
+
+$background-color:#f0f0f0;
+
+$background-color-btn-light:#f0f0f0;
+
+$accent-color-moss-green:#869948;
+
+$accent-color-flame:#DF5916;
+
+$accent-color-french-bistre:#7A6C5D;
+
+$accent-color-venetian-red:#BF211E;
+
+$accent-color-orange-yellow:#ECB709;
+
+$accent-color-liver-chestnut:#94684C;
+
+$accent-color-apple-green:#88AC35;
+
+$accent-color-safety-yellow:#E9CE2C;
+
+$text-color:#111111;
+
+$text-color-light:#f0f0f0;
+
+
+///////////////////////////////////////////////////////////////
+//////////////////////// Colour-Config ////////////////////////
+///////////////////////////////////////////////////////////////
+
+html {
+    background-color: $background-color;
+    color           : $text-color;
+}
+
+body {
+    background-color: $background-color;
+    color           : $text-color;
+}
+
+.color-light {
+    color: $text-color-light;
+}
+
+.accent-color-moss-green {
+    color: $accent-color-moss-green;
+
+    button.btn {
+        background-color: $accent-color-moss-green;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-flame {
+    color: $accent-color-flame;
+
+    button.btn {
+        background-color: $accent-color-flame;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-french-bistre {
+    color: $accent-color-french-bistre;
+
+    button.btn {
+        background-color: $accent-color-french-bistre;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-venetian-red {
+    color: $accent-color-venetian-red;
+
+    button.btn {
+        background-color: $accent-color-venetian-red;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-orange-yellow {
+    color: $accent-color-orange-yellow;
+
+    button.btn {
+        background-color: $accent-color-orange-yellow;
+        color           : $text-color;
+    }
+}
+
+.accent-color-liver-chestnut {
+    color: $accent-color-liver-chestnut;
+
+    button.btn {
+        background-color: $accent-color-liver-chestnut;
+        color           : $text-color-light;
+    }
+}
+
+.accent-color-apple-green {
+    color: $accent-color-apple-green;
+
+    button.btn {
+        background-color: $accent-color-apple-green;
+        color           : $text-color;
+    }
+}
+
+.accent-color-safety-yellow {
+    color: $accent-color-safety-yellow;
+
+    button.btn {
+        background-color: $accent-color-safety-yellow;
+        color           : $text-color;
+    }
+}
+
+
+.bg-color-light {
+    background-color: $background-color;
+}
+
+.bg-accent-color-moss-green {
+    background-color: $accent-color-moss-green;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-moss-green;
+    }
+}
+
+.bg-accent-color-flame {
+    background-color: $accent-color-flame;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-flame;
+    }
+}
+
+.bg-accent-color-french-bistre {
+    background-color: $accent-color-french-bistre;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-french-bistre;
+    }
+}
+
+.bg-accent-color-venetian-red {
+    background-color: $accent-color-venetian-red;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $accent-color-venetian-red;
+    }
+}
+
+.bg-accent-color-orange-yellow {
+    background-color: $accent-color-orange-yellow;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-liver-chestnut {
+    background-color: $accent-color-liver-chestnut;
+    color           : $text-color-light;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-apple-green {
+    background-color: $accent-color-apple-green;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+.bg-accent-color-safety-yellow {
+    background-color: $accent-color-safety-yellow;
+    color           : $text-color;
+
+    button.btn {
+        background-color: $background-color-btn-light;
+        color           : $text-color;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////
+/////////////////////////// Styling ///////////////////////////
+///////////////////////////////////////////////////////////////
+
+* {
+    overflow          : unset;
+    //scrollbar-color : #ffffffaf #00000000;
+    //scrollbar-gutter: hidden;
+    scrollbar-width   : thin;
+}
+
+body {
+    position  : relative;
+    //overflow: overlay;
+}
+
+.navbar-img {
+    height: 2em;
+}
+
+.navbar-toggler-right {
+    float: right !important;
+}
+
+.navbar {
+    background-color: rgba(240, 240, 240, 0);
+}
+
+/*.z-index-2 {
+    z-index: 2;
+}*/
+
+section {
+    margin-top: 2em;
+}
+
+@media (orientation: landscape) {
+    #home {
+        margin-top: -66px;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    #home {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    @media screen and (max-height: 520px) {
+        #home {
+            margin-top: 0px;
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    div.cn {
+        position: relative;
+        width   : 100%;
+        height  : 50vh;
+    }
+
+    div.inner {
+        position : absolute;
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        padding  : 2rem;
+    }
+}
+
+@media (orientation: portrait) {
+    div.cn {
+        position: relative;
+        width   : 100%;
+        height  : 50vh;
+    }
+
+    div.inner {
+        position : absolute;
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        padding  : 2rem;
+    }
+}
+
+#home {
+
+    overflow-x: hidden;
+
+    background-color: $accent-color-moss-green;
+
+    .percent-100 {
+        width : 100%;
+        height: 100%;
+
+        @media (orientation: landscape) {
+            .container {
+                padding-top: 10em;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .container {
+                padding-top: 4em;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    #home {
+        height: 50vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #home {
+        height: 50vh;
+    }
+}
+
+
+@supports (backdrop-filter: blur()) or (-webkit-backdrop-filter: blur()) {
+
+    @media (orientation: landscape) {
+        #home {
+            height: 100vh;
+        }
+    }
+
+    @media (orientation: portrait) {
+        #home {
+            height: 50vh;
+        }
+    }
+
+    #home {
+        background-color: unset;
+        background-image: url(https://via.placeholder.com/1280x720);
+
+        .blurred {
+            backdrop-filter        : blur(5px) !important;
+            -webkit-backdrop-filter: blur(5px) !important;
+        }
+    }
+
+    @media (orientation: landscape) {
+        div.cn {
+            position: relative;
+            width   : 100%;
+            height  : 100vh;
+        }
+
+        div.inner {
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate(-50%, -50%);
+            padding  : 2rem;
+        }
+    }
+
+    @media (orientation: portrait) {
+        div.cn {
+            position: relative;
+            width   : 100%;
+            height  : 50vh;
+        }
+
+        div.inner {
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate(-50%, -50%);
+            padding  : 2rem;
+        }
+    }
+}
+
+.width-5em {
+    width: 5em !important;
+}
+
+@media screen and (min-width: 768px) {
+    #kontakt-sprechzeiten {
+        .row {
+            .right-text {
+                text-align: right !important;
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    margin-bottom: 2em;
+
+    input.invalid {
+        border: 1px solid red;
+    }
+
+    .error-hint {
+        color: red,
+    }
+
+    button.btn {
+        margin-top     : 1em;
+        //margin-bottom: 1em;
+    }
+}
+
+footer {
+    padding-top   : 2em;
+    padding-bottom: 2em;
+}
