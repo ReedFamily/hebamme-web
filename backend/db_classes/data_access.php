@@ -5,7 +5,7 @@
         die;
     }
 
-    abstract class DataAccess
+    abstract class data_access
     {
         protected $pdo;
         protected function connect(){
