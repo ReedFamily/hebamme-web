@@ -17,16 +17,27 @@
         if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
         if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
     
-        $cApiHandler = new ApiHandler();
-        $cApiHandler->cleanTokens();
+        $postBody = json_decode(file_get_contents("php://input"), true);
+        $functionParams["post_body"] = $postBody;
+
+        $cApiHandler = new api_handler();
+        $res;
         if($functionName === 'getToken'){
-            $response = $cApiHandler->getToken();
-            echo(json_encode($response));
-        }elseif(!isset($token) || !$cApiHandler->validate($token)){
-           echo(json_encode(api_response::getResponse(403)));
+            $res = api_response::getResponse(200);
         }else{
-            echo(json_encode(api_response::getResponse(200)));
+            $res = api_token::validate($token);
         }
+
+        if($res['status'] !== 200){
+            $returnArray = json_encode($res);
+            echo $returnArray;
+        }else{
+            $res = $cApiHandler->callApiFunction($functionName, $functionParams);
+            $returnArray = json_encode($res);
+            echo $returnArray;
+        }
+
+        if(isset($cApiHandler)){unset($cApiHandler);}
 
     }else{
         echo(json_encode(api_response::getResponse(405)));
