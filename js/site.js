@@ -182,7 +182,7 @@ form.addEventListener("submit", (e) => {
     }
     formData.lastname = surnameInput.value;
     if (emailInput.value != "") {
-      formData.email = emailInput.value;
+      formData.emailAddress = emailInput.value;
     }
     if (phoneInput.value != "") {
       formData.phone = phoneInput.value;
@@ -205,11 +205,12 @@ form.addEventListener("submit", (e) => {
       if(response.status == 200){
         var apiToken = response.token;
         var url = "backend/rest.php?apiToken=" +  apiToken + "&apiFunc=sendContact";
-        jQuery.post(url, formData, function( res ){
+        jQuery.post(url, JSON.stringify(formData), function( res ){
+          console.log(res);
           response = JSON.parse(res);
           if(response.status == 200){
             // successful response
-            console.log("Yep that worked!");
+            console.log(response);
             form.remove();
           }else{
             // error response
