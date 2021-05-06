@@ -5,42 +5,43 @@
 	    die;
     }
 
-    class ApiHandler
+    class api_handler
     {
+        private $function_map;
 
-        public function cleanTokens(){
-            $cDbToken = new DbToken();
-            $cDbToken->clearOldTokens();
+        public function __construct(){
+            $this->loadFunctionMap();
         }
-
-        public function getToken(){
-            $token = $this->tokenGen();
-            $dbToken = new DbToken();
-            $response = array();
-            try{
-                $dbToken->persistToken($token);
-            }catch(Exception $e){
-                echo($e->getMessage());
-                return api_response::getResponse(500);
-            }
-            
-            $response["status"] = 200;
-            $response["token"] = $token;
-            
-           return $response;
-        }
-
-        public function validate($apiToken){
-            $cDbToken = new DbToken();
-            return $cDbToken->isTokenValid($apiToken);
-        }
-
+        
         public function callApiFunction($apiFunction, $apiParams){
-            
+            $res = $this->getCommand($apiFunction);
+            if($res['success'] === true){
+                $class = $res["dataArray"]["class"];
+                $func = $res["dataArray"]["function_name"];
+                $cCommand = new $class();
+                $res = $cCommand->$func($apiParams);
+            }
+            return $res;
         }
 
-        private function tokenGen(){
-            return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',  mt_rand(0, 0xffff), mt_rand(0,0xffff), mt_rand(0,0xffff),(mt_rand(0,0x0fff) | 0x4000), (mt_rand(0, 0x3fff) | 0x8000), mt_rand(0, 0xffff),mt_rand(0, 0xffff),mt_rand(0, 0xffff));
+        private function getCommand($apiFunction){
+            if(isset($this->function_map[$apiFunction])){
+                $res = api_response::getResponse(200);
+                $res["dataArray"] = $this->function_map[$apiFunction];
+                return $res;
+            }else{
+                $res = api_response::getResponse(405);
+                return $res;
+            }
+        }
+
+        private function loadFunctionMap(){
+            $this->function_map = [ 
+                'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
+                'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact']
+
+            ];
+
         }
 
     }
