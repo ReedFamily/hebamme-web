@@ -39,6 +39,7 @@
                     $response["success"] = false;
                     $response["status"] = 000;
                     $response["message"] ="Unknown application operation.";
+                    $response["code"] = $statusCode;
             }
             return $response;
         }
