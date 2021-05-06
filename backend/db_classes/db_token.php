@@ -5,7 +5,7 @@
         die;
     }
 
-    class DbToken extends DataAccess
+    class db_token extends data_access
     {
         public function __construct(){
             $this->connect();
@@ -49,7 +49,7 @@
         }
 
         public function isTokenValid($token){
-            $result = false;
+            $result = api_response::getResponse(403);
             $dateTime = new DateTime();
             $query = "SELECT `token`, `valid_to` FROM `api_tokens` WHERE `token` = :token AND `valid_to` >= :validTo";
             $dateValue = $dateTime->format("Y-m-d H:i:s");
@@ -61,7 +61,7 @@
                 if(is_array($row)){
                     $dbToken = $row["token"];
                     if($token === $dbToken){
-                        $result = true;
+                        $result = api_response::getResponse(200);
                     }
                 }
             }catch(Exception $e){
