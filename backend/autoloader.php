@@ -8,10 +8,11 @@
 
     $mapping = [
         "api_response" => "api_response.php",
-        "EmailSender" => "email_processor.php",
-        "ApiHandler" => "api_handler.php",
-        "DataAccess" => "db_classes/data_access.php",
-        "DbToken" => "db_classes/db_token.php"
+        "email_sender" => "email_processor.php",
+        "api_handler" => "api_handler.php",
+        "api_token" => "api_token.php",
+        "data_access" => "db_classes/data_access.php",
+        "db_token" => "db_classes/db_token.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
