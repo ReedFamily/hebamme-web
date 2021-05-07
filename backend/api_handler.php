@@ -38,8 +38,8 @@
         private function loadFunctionMap(){
             $this->function_map = [ 
                 'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
-                'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact']
-
+                'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact'],
+                'testMessage' => ['class'=>'email_sender' , 'function_name' => 'sendTestMessage']
             ];
 
         }
