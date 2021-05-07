@@ -10,13 +10,33 @@
         
         public function send_contact($params){
             if(isset($params["post_body"])){
-                $res = api_response::getResponse(200);
-                $res["received"] = $params["post_body"];
-                $res['body'] = $this->buildMessageBody($params['post_body']);
+                
+                $res = $this->sendMessage($this->buildMessageBody($params["post_body"]));
+
             }else{
                 $res = api_response::getResponse(500);
                 $res["extra"] = "post body wasn't properly set";
                 $res["params"] = $params;
+            }
+            return $res;
+        }
+
+        private function sendMessage($message){
+            $headers = array();
+            $headers[] = 'Content-Type: text/plain; charset=utf-8';
+            $msg = wordwrap($message, 70);
+            $res;
+            try{
+                $sent = mail(CONST_SEND_TO, "von Kontaktformular", $msg, $headers);
+                if($sent == true){
+                    $res = api_response::getResponse(200);
+                }else{
+                    $res = api_response::getResponse(500);
+                    $res["returnValue"] = "Message Not Sent";
+                }
+            }catch(Exception $e){
+                $res = api_response::getResponse(500);
+                $res["exception"] = $e;
             }
             return $res;
         }
