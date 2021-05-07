@@ -21,9 +21,19 @@
             return $res;
         }
 
+        public function sendTestMessage(){
+            $message = "Testing message with äüöß to see what happens";
+            return $this->sendMessage($message);
+        }
+
         private function sendMessage($message){
-            $headers = array();
-            $headers[] = 'Content-Type: text/plain; charset=utf-8';
+            $headers = [
+                'MIME-Version' => 'MIME-Version: 1.0',
+                'Content-type' => 'text/plain; charset=UTF-8',
+                'From' => CONST_SEND_TO,
+                'Reply-To' => CONST_SEND_TO,
+                'X-Mailer' => 'PHP/' . phpversion()
+            ];
             $msg = wordwrap($message, 70);
             $res;
             try{
@@ -47,18 +57,22 @@
             $post = new post_body_handler($postBody);
 
             $message = <<<EOT
-            Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
-            {$post->getAnrede()}
-            {$post->getLastname()}, {$post->getFirstname()} 
-            Email: {$post->getEmail()} 
-            Telefon: {$post->getPhone()} 
-            Address:
-            {$post->getAddress()} 
-            Bitte kontaktieren Sie mich per 
-            {$post->getPreferredContact()} 
+Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
 
-            Nachricht:
-            {$post->getMessage()} 
+    {$post->getAnrede()}
+    {$post->getLastname()}, {$post->getFirstname()} 
+    
+    Email: {$post->getEmail()} 
+    
+    Telefon: {$post->getPhone()} 
+    Address:
+    {$post->getAddress()} 
+
+    Bitte kontaktieren Sie mich per 
+    {$post->getPreferredContact()} 
+
+    Nachricht:
+    {$post->getMessage()} 
 EOT;
 
             return $message;
@@ -120,8 +134,8 @@ EOT;
             $zip = $this->postBody["zip"];
 
             return <<<EOT
-            $street
-            $zip $city
+$street
+    $zip $city
 EOT;
         }
 
