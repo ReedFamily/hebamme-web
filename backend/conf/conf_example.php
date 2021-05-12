@@ -14,5 +14,6 @@
     define("CONST_DB_NAME", ""); // Provide the name of the database
     define("CONST_DB_SERV", ""); // Provide the database server location
     define("CONST_DB_CHAR", ""); // Provide the preferred character set ("utf8" is most preferred)
+    define("CONST_SEND_TO", ""); // Address for delivery of contact form information
 
 ?>

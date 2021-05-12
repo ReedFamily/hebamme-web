@@ -10,13 +10,43 @@
         
         public function send_contact($params){
             if(isset($params["post_body"])){
-                $res = api_response::getResponse(200);
-                $res["received"] = $params["post_body"];
-                $res['body'] = $this->buildMessageBody($params['post_body']);
+                
+                $res = $this->sendMessage($this->buildMessageBody($params["post_body"]));
+
             }else{
                 $res = api_response::getResponse(500);
                 $res["extra"] = "post body wasn't properly set";
                 $res["params"] = $params;
+            }
+            return $res;
+        }
+
+        public function sendTestMessage(){
+            $message = "Testing message with äüöß to see what happens";
+            return $this->sendMessage($message);
+        }
+
+        private function sendMessage($message){
+            $headers = [
+                'MIME-Version' => 'MIME-Version: 1.0',
+                'Content-type' => 'text/plain; charset=UTF-8',
+                'From' => CONST_SEND_TO,
+                'Reply-To' => CONST_SEND_TO,
+                'X-Mailer' => 'PHP/' . phpversion()
+            ];
+            $msg = wordwrap($message, 70);
+            $res;
+            try{
+                $sent = mail(CONST_SEND_TO, "von Kontaktformular", $msg, $headers);
+                if($sent == true){
+                    $res = api_response::getResponse(200);
+                }else{
+                    $res = api_response::getResponse(500);
+                    $res["returnValue"] = "Message Not Sent";
+                }
+            }catch(Exception $e){
+                $res = api_response::getResponse(500);
+                $res["exception"] = $e;
             }
             return $res;
         }
@@ -27,18 +57,22 @@
             $post = new post_body_handler($postBody);
 
             $message = <<<EOT
-            Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
-            {$post->getAnrede()}
-            {$post->getLastname()}, {$post->getFirstname()} 
-            Email: {$post->getEmail()} 
-            Telefon: {$post->getPhone()} 
-            Address:
-            {$post->getAddress()} 
-            Bitte kontaktieren Sie mich per 
-            {$post->getPreferredContact()} 
+Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
 
-            Nachricht:
-            {$post->getMessage()} 
+    {$post->getAnrede()}
+    {$post->getLastname()}, {$post->getFirstname()} 
+    
+    Email: {$post->getEmail()} 
+    
+    Telefon: {$post->getPhone()} 
+    Address:
+    {$post->getAddress()} 
+
+    Bitte kontaktieren Sie mich per 
+    {$post->getPreferredContact()} 
+
+    Nachricht:
+    {$post->getMessage()} 
 EOT;
 
             return $message;
@@ -100,8 +134,8 @@ EOT;
             $zip = $this->postBody["zip"];
 
             return <<<EOT
-            $street
-            $zip $city
+$street
+    $zip $city
 EOT;
         }
 
