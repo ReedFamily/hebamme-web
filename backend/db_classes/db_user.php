@@ -61,7 +61,7 @@
             $result = api_response::getResponse(404);
             try{
                 $stmt->execute();
-                $users = $stmt->fetchAll(PDO::FETCH_CLASS, "user_model");
+                $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["users"] = $users;
             }catch(Exception $e){
