@@ -18,21 +18,43 @@
             $cDbToken->clearOldTokens();
         }
 
-        public function getToken($params){
+        public function getToken(){
             $token = $this->tokenGen();
             $dbToken = new db_token();
             $response = array();
             try{
                 $dbToken->persistToken($token);
             }catch(Exception $e){
-                echo($e->getMessage());
-                return api_response::getResponse(500);
+                $response = api_response::getResponse(500);
+                $response["message"] = "Creation of token failed " . $e->getMessage();
+                return $response;
             }
             
            $response = api_response::getResponse(200);
            $response["token"] = $token;
             
            return $response;
+        }
+
+        public function getLoginToken($userId){
+            $result = api_response::getResponse(500);
+            $token = $this->tokenGen();
+            $dateTime = new DateTime();
+            $dateTime->add(new DateInterval("PT10H"));
+            $dateValue = $dateTime->format("Y-m-d H:i:s");
+            $dbToken = new db_token();
+            try{
+                $dbToken->persistToken($token, $dateValue, $userId);
+            }catch(Exception $e){
+                $response = api_response::getResponse(500);
+                $response["message"] = "Creation of token failed " . $e->getMessage();
+                return $response;
+            }
+
+            $response = api_response::getResponse(200);
+            $response["token"] = $token;
+            $response["validTo"] = $dateValue;
+            return $response;
         }
 
         private function tokenGen(){

@@ -11,13 +11,20 @@
             $this->connect();
         }
 
-        public function persistToken($token){
-            $dateTime = new DateTime();
-            $dateTime->add(new DateInterval("PT10M"));
-            $dateValue = $dateTime->format("Y-m-d H:i:s");
-            $query = "INSERT INTO `api_tokens` (`token`, `valid_to`) VALUES (:token, :validTo);";
+        public function persistToken($token, $dateValue = null, $userId = null){
+            if(!isset($dateValue)){
+                $dateTime = new DateTime();
+                $dateTime->add(new DateInterval("PT2M"));
+                $dateValue = $dateTime->format("Y-m-d H:i:s");
+            }
+            if(!isset($userId)){
+                $query = "INSERT INTO `api_tokens` (`token`, `valid_to`) VALUES (:token, :validTo)";
+                $params = ["token" => $token, "validTo" => $dateValue];
+            }else{
+                $query = "INSERT INTO `api_tokens` (`token`, `valid_to`, `user_id`) VALUES (:token, :validTo, :userId)";
+                $params = ["token" => $token, "validTo" => $dateValue, "userId" => $userId];
+            }
             $stmt = $this->pdo->prepare($query);
-            $params = ["token" => $token, "validTo" => $dateValue];
             try{
                 $this->pdo->beginTransaction();
                 $stmt->execute($params);

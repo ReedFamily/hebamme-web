@@ -61,8 +61,9 @@
                 $result["message"] = "Invalid login.";
                 return $result;
             }
-            // TODO add a token with longer validation time
-            return api_response::getResponse(200);
+            $apiToken = new api_token();
+           
+            return $apiToken->getLoginToken($dbUser["id"]);
         }
 
         private function getUserFromDb($username){
