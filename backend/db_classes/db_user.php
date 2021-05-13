@@ -14,17 +14,18 @@
         public function getUserById($userId){
             $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user` WHERE `id` = :userid";
             $params = ["userid" => $userId];
-            $stmt = $this->pdo->prepare($query);
+            $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
-                $stmt->execute($params);
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $statement->execute($params);
+                $row = $statement->fetch(PDO::FETCH_ASSOC);
                 if(is_array($row)){
                     $result = api_response::getResponse(200);
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
-                throw $e;
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }
@@ -36,18 +37,18 @@
         public function getUserByName($userName){
             $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user` WHERE `username` = :username";
             $params = ["username" => $userName];
-            $stmt = $this->pdo->prepare($query);
+            $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(403);
             try{
-                $stmt->execute($params);
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $statement->execute($params);
+                $row = $statement->fetch(PDO::FETCH_ASSOC);
                 if(is_array($row)){
                     $result = api_response::getResponse(200);
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
                 $result = api_response::getResponse(500);
-                $result["exception"] = $e;
+                $result["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }
@@ -61,16 +62,16 @@
 
         public function listUsers(){
             $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user`";
-            $stmt = $this->pdo->prepare($query);
+            $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
-                $stmt->execute();
-                $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $statement->execute();
+                $users = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["users"] = $users;
             }catch(Exception $e){
                 $result = api_response::getResponse(500);
-                $result["exception"] = $e;
+                $result["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }
@@ -79,17 +80,17 @@
 
         public function createUser($user){
             $query = "INSERT INTO `api_user` (`username`, `password`, `role`) VALUES (:username, :password, :role)";
-            $stmt = $this->pdo->prepare($query);
+            $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
                 $this->pdo->beginTransaction();
-                $stmt->execute($user);
+                $statement->execute($user);
                 $this->pdo->commit();
                 $result = api_response::getResponse(200);
                 $result["message"] = "User " . $user["username"] . " created.";
             }catch(Exception $e){
                 $this->pdo->rollback();
-                $result["exception"] = $e;
+                $result["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }

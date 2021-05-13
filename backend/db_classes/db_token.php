@@ -12,6 +12,7 @@
         }
 
         public function persistToken($token, $dateValue = null, $userId = null){
+            $result = api_response::getResponse(200);
             if(!isset($dateValue)){
                 $dateTime = new DateTime();
                 $dateTime->add(new DateInterval("PT2M"));
@@ -31,13 +32,16 @@
                 $this->pdo->commit();
             }catch(Exception $e){
                 $this->pdo->rollback();
-                throw $e;
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }
+            return $result;
         }
 
         public function clearOldTokens(){
+            $respose = api_response::getResponse(200);
             $dateTime = new DateTime();
             $query = "DELETE FROM `api_tokens` WHERE `valid_to` < :validTo";
             $dateValue = $dateTime->format("Y-m-d H:i:s");
@@ -49,10 +53,12 @@
                 $this->pdo->commit();
             }catch(Exception $e){
                 $this->pdo-rollback();
-                throw $e;
+                $response = api_response::getResponse(500);
+                $response["exception"] = $e->getMessage();
             }finally{
                 $this->disconnect();
             }
+            return $response;
         }
 
         public function isTokenValid($token){
@@ -69,10 +75,13 @@
                     $dbToken = $row["token"];
                     if($token === $dbToken){
                         $result = api_response::getResponse(200);
+                        $result["message"] = "Token OK";
                     }
                 }
             }catch(Exception $e){
-                throw $e;
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+                throw $
             }
             finally{
                 $this->disconnect();

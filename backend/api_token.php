@@ -19,6 +19,7 @@
         }
 
         public function getToken(){
+            api_token::cleanTokens();
             $token = $this->tokenGen();
             $dbToken = new db_token();
             $response = array();
