@@ -276,9 +276,9 @@ function performLogin(username, password){
         if(loginResponse.status == 200){
           document.cookie("apiToken=" + loginResponse.token + "; expires=" + loginResponse.validTo + "; path=/");
         }else{
-          console.log("Error occured: " + res1);
+          window.alert("An error occured during login. Please try again.");
         }
-      })
+      });
     }
   });
 
