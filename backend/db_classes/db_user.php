@@ -37,7 +37,7 @@
             $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user` WHERE `username` = :username";
             $params = ["username" => $userName];
             $stmt = $this->pdo->prepare($query);
-            $result = api_response::getResponse(404);
+            $result = api_response::getResponse(403);
             try{
                 $stmt->execute($params);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -46,11 +46,15 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
-                throw $e;
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e;
             }finally{
                 $this->disconnect();
             }
 
+            if($result["status"] == 403){
+                $result["message"] = "Invalid login.";
+            }
             return $result;
 
         }
@@ -75,11 +79,25 @@
 
         public function createUser($user){
             $query = "INSERT INTO `api_user` (`username`, `password`, `role`) VALUES (:username, :password, :role)";
-
+            $stmt = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $this->pdo->beginTransaction();
+                $stmt->execute($user);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+                $result["message"] = "User " . $user["username"] . " created.";
+            }catch(Exception $e){
+                $this->pdo->rollback();
+                $result["exception"] = $e;
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
         }
 
         public function updateUser($user){
-
+            
         }
 
         public function deleteUserById($userId){

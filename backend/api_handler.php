@@ -40,6 +40,8 @@
                 'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
                 'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact'],
                 'listUsers' =>['class' => 'user_login', 'function_name' =>'listUsers'],
+                'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
+                'login' => ['class' => 'user_login', 'function_name' => 'loginUser' ],
                 'testMessage' => ['class'=>'email_sender' , 'function_name' => 'sendTestMessage']
             ];
 
