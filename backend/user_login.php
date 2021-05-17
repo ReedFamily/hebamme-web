@@ -66,6 +66,31 @@
             return $apiToken->getLoginToken($dbUser["id"]);
         }
 
+        public function requestPasswordRecovery($params){
+            $db = new db_user();
+            if(!isset($params["username"])){
+                return api_response::getResponse(400);
+            }
+            $userResponse = $db->findUserByName($params["username"]);
+            if($userResponse["status"] != 200){
+                return $userResponse;
+            }
+            $api_token = new api_token();
+            $tokenResponse = $api_token->getRecoveryToken($userResponse["id"]);
+            return $tokenResponse;
+
+
+        }
+
+        public function processPasswordRecovery($params){
+            if(!isset($params["recoveryToken"])){
+                return api_response::getResponse(400);
+            }
+            $token = $params["recoveryToken"];
+            
+        
+        }
+
         private function getUserFromDb($username){
             $dbUser = new db_user();
             $result = $dbUser->getUserByName($username);
