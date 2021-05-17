@@ -12,7 +12,7 @@
         }
 
         public function getUserById($userId){
-            $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user` WHERE `id` = :userid";
+            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user` WHERE `id` = :userid";
             $params = ["userid" => $userId];
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -34,8 +34,29 @@
 
         }
 
+        public function getUserByEmail($userEmail){
+            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user` WHERE `email` = :email";
+            $params = ["email" => $userEmail];
+            $statement = $this->pdo->prepare($query);
+            $result = api_response::getResponse(403);
+            try{
+                $statement->execute($params);
+                $row = $statement->fetch(PDO::FETCH_ASSOC);
+                if(is_array($row)){
+                    $result = api_response::getResponse(200);
+                    $result["user"] = $row;
+                }
+            }catch(Exception $e){
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
         public function getUserByName($userName){
-            $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user` WHERE `username` = :username";
+            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user` WHERE `username` = :username";
             $params = ["username" => $userName];
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(403);
@@ -61,7 +82,7 @@
         }
 
         public function listUsers(){
-            $query = "SELECT `id`, `username`, `password`, `role` FROM `api_user`";
+            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user`";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
@@ -79,7 +100,7 @@
         }
 
         public function createUser($user){
-            $query = "INSERT INTO `api_user` (`username`, `password`, `role`) VALUES (:username, :password, :role)";
+            $query = "INSERT INTO `api_user` (`username`, `password`, `email` , `role`) VALUES (:username, :password, :email, :role)";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
