@@ -27,7 +27,7 @@
                 $dbToken->persistToken($token);
             }catch(Exception $e){
                 $response = api_response::getResponse(500);
-                $response["message"] = "Creation of token failed " . $e->getMessage();
+                $response["exception"] =  $e->getMessage();
                 return $response;
             }
             
@@ -35,6 +35,27 @@
            $response["token"] = $token;
             
            return $response;
+        }
+
+        public function getResetToken($userId){
+            $result = api_response::getResponse(500);
+            $token = $this->tokenGen();
+            $dateTime = new DateTime();
+            $dateTime->add(new DateInterval("PT1H"));
+            $dateValue = $dateTime->format("Y-m-d H:i:s");
+            $dbToken = new db_token();
+            try
+            {
+                $dbToken->persistToken($token, $dateValue, $userId);
+            }catch(Exception $e){
+                $response = api_response::getResponse(500);
+                $response["exception"] = $e->getMessage();
+                return $response;
+            }
+            $response = api_response::getResponse(200);
+            $response["token"] = $token;
+            $response["validTo"] = $dateValue;
+            $response["userId"] = $userId;
         }
 
         public function getLoginToken($userId){
@@ -48,13 +69,14 @@
                 $dbToken->persistToken($token, $dateValue, $userId);
             }catch(Exception $e){
                 $response = api_response::getResponse(500);
-                $response["message"] = "Creation of token failed " . $e->getMessage();
+                $response["exception"] = $e->getMessage();
                 return $response;
             }
 
             $response = api_response::getResponse(200);
             $response["token"] = $token;
             $response["validTo"] = $dateValue;
+            $response["userId"] = $userId;
             return $response;
         }
 
