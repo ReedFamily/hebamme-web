@@ -81,7 +81,7 @@
             }catch(Exception $e){
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
-                throw $
+               
             }
             finally{
                 $this->disconnect();
