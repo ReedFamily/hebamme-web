@@ -1,2 +1,4 @@
 backend/conf/conf.php
 phpinfo.php
+sitemap-index.xml
+sitemap.xml
