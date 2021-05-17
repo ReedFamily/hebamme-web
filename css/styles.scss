@@ -155,12 +155,12 @@ body {
 }
 
 .bg-accent-color-venetian-red {
-    background-color: $accent-color-venetian-red;
-    color           : $text-color-light;
+    background-color: $accent-color-venetian-red !important;
+    color           : $text-color-light !important;
 
     button.btn {
-        background-color: $background-color-btn-light;
-        color           : $accent-color-venetian-red;
+        background-color: $background-color-btn-light !important;
+        color           : $accent-color-venetian-red !important;
     }
 }
 
@@ -210,10 +210,11 @@ body {
 ///////////////////////////////////////////////////////////////
 
 * {
-    overflow          : unset;
+    overflow            : unset;
     //scrollbar-color : #ffffffaf #00000000;
     //scrollbar-gutter: hidden;
-    scrollbar-width   : thin;
+    scrollbar-width     : thin;
+    //border            : 1px solid red;
 }
 
 body {
@@ -239,6 +240,26 @@ body {
 
 section {
     margin-top: 2em;
+}
+
+.standard {
+    .container {
+        h1 {
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            margin-bottom: 0.25em;
+        }
+
+        h3 {
+            margin-bottom: 0.25em;
+        }
+    }
+}
+
+.midwife-img-container {
+    margin-bottom: 1em !important;
 }
 
 @media (orientation: landscape) {
@@ -387,6 +408,96 @@ section {
     }
 }
 
+@media (orientation: landscape) {
+    #404-home {
+        margin-top: -66px;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    #404-home {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    @media screen and (max-height: 520px) {
+        #404-home {
+            margin-top: 0px;
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    div.cn {
+        position: relative;
+        width   : 100%;
+        height  : 50vh;
+    }
+
+    div.inner {
+        position : absolute;
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        padding  : 2rem;
+    }
+}
+
+@media (orientation: portrait) {
+    div.cn {
+        position: relative;
+        width   : 100%;
+        height  : 50vh;
+    }
+
+    div.inner {
+        position : absolute;
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+        padding  : 2rem;
+    }
+}
+
+#404-home {
+
+    overflow-x: hidden;
+
+    background-color: $accent-color-venetian-red !important;
+    color           : $text-color-light !important;
+
+    .percent-100 {
+        width : 100%;
+        height: 100%;
+
+        @media (orientation: landscape) {
+            .container {
+                padding-top: 10em;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .container {
+                padding-top: 4em;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    #404-home {
+        height: 50vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #404-home {
+        height: 50vh;
+    }
+}
+
+
 .width-5em {
     width: 5em !important;
 }
@@ -409,7 +520,11 @@ form {
     margin-bottom: 2em;
 
     input.invalid {
-        border: 1px solid red;
+        border: 2px solid red;
+    }
+
+    textarea.invalid {
+        border: 2px solid red;
     }
 
     .error-hint {
