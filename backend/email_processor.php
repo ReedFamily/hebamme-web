@@ -7,7 +7,22 @@
 
     class email_sender
     {
-        
+
+        private $messageLoader = [
+            'contact' => 'messages/contact-email.php',
+            'recover' => 'messages/recover-email.php'
+
+        ];
+
+        private $headers[
+            'MIME-Version' => 'MIME-Version: 1.0',
+            'Content-type' => 'text/html; charset=UTF-8',
+            'From' => CONST_SEND_TO,
+            'Reply-To' = CONST_SEND_TO,
+            'X-Mailer' => 'PHP/' . phpversion()
+        ];
+
+
         public function send_contact($params){
             if(isset($params["post_body"])){
                 
@@ -21,23 +36,24 @@
             return $res;
         }
 
+        public function sendRecoveryMessage($email, $specialToken){
+
+        }
+
         public function sendTestMessage(){
             $message = "Testing message with äüöß to see what happens";
             return $this->sendMessage($message);
         }
 
-        private function sendMessage($message){
-            $headers = [
-                'MIME-Version' => 'MIME-Version: 1.0',
-                'Content-type' => 'text/plain; charset=UTF-8',
-                'From' => CONST_SEND_TO,
-                'Reply-To' => CONST_SEND_TO,
-                'X-Mailer' => 'PHP/' . phpversion()
-            ];
+        private function sendMessage($message, $sendTo = null){
+           
+            if(!isset($sendTo)){
+                $sendTo = CONST_SEND_TO;
+            }
             $msg = wordwrap($message, 70);
             $res;
             try{
-                $sent = mail(CONST_SEND_TO, "von Kontaktformular", $msg, $headers);
+                $sent = mail($sendTo, "von Kontaktformular", $msg, $this->headers);
                 if($sent == true){
                     $res = api_response::getResponse(200);
                 }else{

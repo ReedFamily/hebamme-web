@@ -7,17 +7,19 @@
     require_once("conf/conf.php");
 
     $mapping = [
+//      Business classes
         "api_response" => "api_response.php",
         "email_sender" => "email_processor.php",
         "api_handler" => "api_handler.php",
         "api_token" => "api_token.php",
         "user_login" => "user_login.php",
+//      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
         "db_event" => "db_classes/db_events.php",
         "db_user" => "db_classes/db_user.php",
-        "token_model" => "models/token_model.php",
-        "user_model" => "models/user_model.php"
+//      Exception classes        
+        "UserValidationException" => "exceptions/user_validation_exception.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {

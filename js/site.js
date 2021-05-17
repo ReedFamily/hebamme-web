@@ -199,30 +199,27 @@ form.addEventListener("submit", (e) => {
     formData.contactByEmail = contactEmailString;
     formData.contactByPhone = contactPhoneString;
     formData.message = messageInput.value;
-    
-    jQuery.get("backend/rest.php?apiFunc=getToken", function ( res ){
+
+    jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
       response = JSON.parse(res);
-      if(response.status == 200){
+      if (response.status == 200) {
         var apiToken = response.token;
-        var url = "backend/rest.php?apiToken=" +  apiToken + "&apiFunc=sendContact";
-        jQuery.post(url, JSON.stringify(formData), function( res ){
+        var url =
+          "backend/rest.php?apiToken=" + apiToken + "&apiFunc=sendContact";
+        jQuery.post(url, JSON.stringify(formData), function (res) {
           console.log(res);
           response = JSON.parse(res);
-          if(response.status == 200){
-            // successful response
+          if (response.status == 200) {
             console.log(response);
             form.remove();
-          }else{
+          } else {
             // error response
             console.log("Oops something broke ");
             console.log(response);
           }
-        })
+        });
       }
     });
-
-    
-    
   }
 });
 
@@ -263,3 +260,29 @@ anredeFrau.addEventListener("click", () => {
 anredeHerr.addEventListener("click", () => {
   validateInputs();
 });
+
+function performLogin(username, password) {
+  jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
+    response = JSON.parse(res);
+    var loginFormData = new Object();
+    loginFormData.username = username;
+    loginFormData.password = password;
+    if (response.status == 200) {
+      var url = "backend/rest.php?apiToken=" + apiToken + "&apiFunc=login";
+      jQuery.post(url, JSON.stringify(loginFormData), function (res1) {
+        loginResponse = JSON.parse(res1);
+        if (loginResponse.status == 200) {
+          document.cookie(
+            "apiToken=" +
+              loginResponse.token +
+              "; expires=" +
+              loginResponse.validTo +
+              "; path=/"
+          );
+        } else {
+          window.alert("An error occured during login. Please try again.");
+        }
+      });
+    }
+  });
+}
