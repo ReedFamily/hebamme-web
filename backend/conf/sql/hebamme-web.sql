@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 08:03 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.18
+-- Generation Time: May 17, 2021 at 08:17 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `api_tokens` (
   `token` varchar(50) NOT NULL,
-  `valid_to` datetime NOT NULL
+  `valid_to` datetime NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -42,16 +43,11 @@ CREATE TABLE `api_user` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `username` varchar(75) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `api_user`
---
 
-INSERT INTO `api_user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'Test1', 'asdfasfasfasfasdfasf', NULL),
-(2, 'Test2', 'agdagagasgasgahgsdfhdafh', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,7 +93,7 @@ ALTER TABLE `instructors`
 -- AUTO_INCREMENT for table `api_user`
 --
 ALTER TABLE `api_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `instructors`
@@ -105,6 +101,9 @@ ALTER TABLE `api_user`
 ALTER TABLE `instructors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+
+INSERT INTO `api_user` (`id`, `username`, `password`, `email`, `role`) VALUES (NULL, 'Admin', '$2y$10$rpw5MvHYyeeVv/XswmVzLegcj5N0ha.wmfO8bjPrC/klo5AOQgj0a', 'Admin@localhost.com', '1'); 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
