@@ -1,10 +1,153 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="de" xml:lang="de">
   <head>
-    <title>Ups! 404</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Fehler: 404</title>
+    <meta
+      name="description"
+      content="Als Anlaufpunkt für werdende Eltern und junge Familien bieten wir Geburtsvorbereitung, Yoga in der Schwangerschaft, Betreuung der Schwangerschaft, Babypflegekurs, Rückbildungsgymnastik, Babytreff/offene Sprechstunde, Babymassage, PEKiP, Wochenbettbetreuung, Still- und Ernährungsberatung."
+    />
+    <meta
+      name="keywords"
+      content="Hebammenpraxis, Hebamme, Moosburg, Geburtshaus, Moosburg a. d. Isar, Altenbeck, Reed"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./js/jquery-3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap/bootstrap.min.js"></script>
+    <script src="./fontawesome-free-5.15.3-web/js/all.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <h1>404 Page Not Found</h1>
-    <a href="../index.html">Return to Main Page</a>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">
+        Sie verwenden einen <strong>veralteten</strong> Webbrowser. Bitte
+        <a href="https://bestvpn.org/outdatedbrowser/de"
+          >aktualisieren Sie Ihren Browser</a
+        >
+        um Ihre Nutzererfahrung zu verbessern.
+      </p>
+    <![endif]-->
+    <!--[if gt IE 9]>
+      <p class="browsehappy">
+        Sie verwenden einen <strong>veralteten</strong> Webbrowser. Bitte
+        <a href="https://bestvpn.org/outdatedbrowser/de"
+          >aktualisieren Sie Ihren Browser</a
+        >
+        um Ihre Nutzererfahrung zu verbessern.
+      </p>
+    <![endif]-->
+    <!--<h1>404 Page Not Found</h1>
+    <a href="../index.html">Return to Main Page</a>-->
+
+    <nav
+      id="navbar"
+      class="navbar navbar-expand navbar-light sticky-top z-index-2"
+    >
+      <div>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img class="navbar-img" src="./img/hebammenpraxis.svg" alt="" />
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+          <button
+            class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section id="404-home">
+      <div class="percent-100 blurred container-fluid">
+        <div class="container text-center cn">
+          <div class="inner">
+            <h1>Fehler: 404</h1>
+            <p><strong>Seite wurde nicht gefunden</strong><br /></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // SMOOTH SCROLLING PLUS OFFSET FOR FIXED NAV
+      $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .on("click", function (event) {
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery with animate() method to add smooth page scroll
+            // The optional number (650) specifies the number of milliseconds it takes to scroll to the specified area
+            // - 70 is the offset/top margin
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top - 65,
+              },
+              650,
+              function () {
+                // Add hash (#) to URL when done scrolling (default click behavior), without jumping to hash
+                if (history.pushState) {
+                  history.pushState(null, null, hash);
+                } else {
+                  window.location.hash = hash;
+                }
+              }
+            );
+            return false;
+          } // End if
+        });
+
+      $('a[href*="./index.html#"]')
+        // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .on("click", function (event) {
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery with animate() method to add smooth page scroll
+            // The optional number (650) specifies the number of milliseconds it takes to scroll to the specified area
+            // - 65 is the offset/top margin
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top - 65,
+              },
+              0
+            );
+            return false;
+          } // End if
+        });
+
+      //$(document).on("scroll", function (e) {
+      //  var rgba = $(document).scrollTop() / 250;
+      //  $(".navbar").css("background-color", "rgba(240,240,240," + rgba + ")");
+      //});
+    </script>
   </body>
 </html>
