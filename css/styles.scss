@@ -498,6 +498,33 @@ section {
 }
 
 
+@media screen and (max-width: 600px) {
+    .midwife-img-container {
+        text-align     : center;
+        align-content  : center;
+        align-items    : center;
+        justify-content: center;
+    }
+
+    .midwife-img {
+        width: 98%;
+    }
+}
+
+@media screen and (min-width: 601px) {
+
+    .midwife-img {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 767px) {
+
+        .midwife-img {
+            width: 75%;
+        }
+    }
+}
+
 .width-5em {
     width: 5em !important;
 }
@@ -540,4 +567,8 @@ form {
 footer {
     padding-top   : 2em;
     padding-bottom: 2em;
+
+    a {
+        text-decoration: none;
+    }
 }
