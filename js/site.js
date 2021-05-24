@@ -13,7 +13,8 @@ let contactPhoneString = "n";
 let anredeString = "none";
 
 const isValidEmail = (email) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
@@ -212,8 +213,10 @@ form.addEventListener("submit", (e) => {
           if (response.status == 200) {
             console.log(response);
             form.remove();
+            document.getElementById("thank-you").classList.remove("hidden");
           } else {
             // error response
+            document.getElementById("error-message").classList.remove("hidden");
             console.log("Oops something broke ");
             console.log(response);
           }
