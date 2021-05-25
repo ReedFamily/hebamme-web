@@ -41,7 +41,7 @@
         }
 
         public function clearOldTokens(){
-            $respose = api_response::getResponse(200);
+            $response = api_response::getResponse(200);
             $dateTime = new DateTime();
             $query = "DELETE FROM `api_tokens` WHERE `valid_to` < :validTo";
             $dateValue = $dateTime->format("Y-m-d H:i:s");
