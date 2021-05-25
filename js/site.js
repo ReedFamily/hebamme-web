@@ -78,6 +78,10 @@ const resetInvalidClasses = () => {
   anredeError.classList.add("hidden");
 };
 
+const clearFields = () => {
+  form.reset();
+};
+
 const validateEmailInput = () => {
   if (contactByEmail.checked) {
     if (!isValidEmail(emailInput.value)) {
@@ -212,6 +216,7 @@ form.addEventListener("submit", (e) => {
           response = JSON.parse(res);
           if (response.status == 200) {
             console.log(response);
+            form.reset();
             form.remove();
             document.getElementById("thank-you").classList.remove("hidden");
           } else {
