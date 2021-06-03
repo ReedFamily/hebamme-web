@@ -10,12 +10,30 @@
         public static function validate($apiToken){
             api_token::cleanTokens();
             $cDbToken = new db_token();
-            return $cDbToken->isTokenValid($apiToken);
+            $response = $cDbToken->isTokenValid($apiToken);
+            $response["func"] = "api_token::validate";
+            return $response;
         }
 
         public static function cleanTokens(){
             $cDbToken = new db_token();
             $cDbToken->clearOldTokens();
+        }
+
+        public function tokenValid($params){
+            api_token::cleanTokens();
+            $dbToken = new db_token();
+            $response = array();
+            if(!isset($params["token"]) || $params["token"] == ""){
+                $response = api_response::getResponse(400);
+                $response["message"] = "Token not present to validate";
+                $response["params"] = $params;
+            }else{
+                $response = $dbToken->isTokenValid($params["token"]);
+                $response["token"] = $params["token"];
+            }
+            
+            return $response;
         }
 
         public function getToken(){
@@ -75,7 +93,7 @@
 
             $response = api_response::getResponse(200);
             $response["token"] = $token;
-            $response["validTo"] = $dateValue;
+            $response["validTo"] = $dateTime->format("r");
             $response["userId"] = $userId;
             return $response;
         }
