@@ -432,6 +432,35 @@ section {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .midwife-img-container {
+    text-align: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .midwife-img {
+    width: 98%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .midwife-img {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 767px) {
+  .midwife-img {
+    width: 75%;
+  }
+}
+
 .width-5em {
   width: 5em !important;
 }
@@ -466,8 +495,24 @@ form button.btn {
   margin-top: 1em;
 }
 
+.thank-you {
+  font-size: 2em;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+}
+
+.error-message {
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+}
+
 footer {
   padding-top: 2em;
   padding-bottom: 2em;
+}
+
+footer a {
+  text-decoration: none;
 }
 /*# sourceMappingURL=styles.css.map */

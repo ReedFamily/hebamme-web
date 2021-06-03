@@ -13,7 +13,8 @@ let contactPhoneString = "n";
 let anredeString = "none";
 
 const isValidEmail = (email) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
@@ -75,6 +76,10 @@ const resetInvalidClasses = () => {
   phoneErrorInvalid.classList.add("hidden");
   kontaktwegError.classList.add("hidden");
   anredeError.classList.add("hidden");
+};
+
+const clearFields = () => {
+  form.reset();
 };
 
 const validateEmailInput = () => {
@@ -211,9 +216,12 @@ form.addEventListener("submit", (e) => {
           response = JSON.parse(res);
           if (response.status == 200) {
             console.log(response);
+            form.reset();
             form.remove();
+            document.getElementById("thank-you").classList.remove("hidden");
           } else {
             // error response
+            document.getElementById("error-message").classList.remove("hidden");
             console.log("Oops something broke ");
             console.log(response);
           }
