@@ -268,29 +268,3 @@ anredeFrau.addEventListener("click", () => {
 anredeHerr.addEventListener("click", () => {
   validateInputs();
 });
-
-function performLogin(username, password) {
-  jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
-    response = JSON.parse(res);
-    var loginFormData = new Object();
-    loginFormData.username = username;
-    loginFormData.password = password;
-    if (response.status == 200) {
-      var url = "backend/rest.php?apiToken=" + apiToken + "&apiFunc=login";
-      jQuery.post(url, JSON.stringify(loginFormData), function (res1) {
-        loginResponse = JSON.parse(res1);
-        if (loginResponse.status == 200) {
-          document.cookie(
-            "apiToken=" +
-              loginResponse.token +
-              "; expires=" +
-              loginResponse.validTo +
-              "; path=/"
-          );
-        } else {
-          window.alert("An error occured during login. Please try again.");
-        }
-      });
-    }
-  });
-}

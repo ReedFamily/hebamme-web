@@ -38,6 +38,7 @@
         private function loadFunctionMap(){
             $this->function_map = [ 
                 'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
+                'tokenValid' => ['class'=>'api_token', 'function_name'=> 'tokenValid'],
                 'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact'],
                 'listUsers' =>['class' => 'user_login', 'function_name' =>'listUsers'],
                 'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
