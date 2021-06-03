@@ -12,11 +12,19 @@
     if(in_array($requestMethod, ["GET", "POST"])){
         $requestMethodArray = array();
         $requestMethodArray = $_REQUEST;
-        
+        $token = "";
         if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
         if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
-        if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
-    
+        //if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
+        $functionParams = array();
+        foreach($requestMethodArray as $key => $value){
+            if($key != 'apiToken' && $key != 'apiFunc'){
+                $functionParams[$key] = $value;
+            }
+        }
+        if($token == "" && isset($_COOKIE["apiToken"])){$token = $_COOKIE["apiToken"];}
+
+
         $postBody = json_decode(file_get_contents("php://input"), true);
         $functionParams["post_body"] = $postBody;
 
@@ -25,7 +33,15 @@
         if($functionName === 'getToken'){
             $res = api_response::getResponse(200);
         }else{
-            $res = api_token::validate($token);
+            if($token == ""){
+                $res = api_response::getResponse(400);
+                $res["message"] = "apiToken failure likely in cookies.";
+                $res["cookie"] = $_COOKIE;
+                $res["request"] = $requestMethodArray;
+                $res["params"] = $functionParams;
+            }else{
+                $res = api_token::validate($token);
+            }
         }
 
         if($res['status'] !== 200){
@@ -33,7 +49,9 @@
             echo $returnArray;
         }else{
             $res = $cApiHandler->callApiFunction($functionName, $functionParams);
+            $res["ref"] = $_SERVER["SERVER_NAME"] . $_SERVER["CONTEXT_PREFIX"];
             $returnArray = json_encode($res);
+
             echo $returnArray;
         }
 
