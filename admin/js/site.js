@@ -8,6 +8,9 @@ const loadApp = function () {
       if (response.status != 200) {
         console.log("Token not valid");
         displayLoginForm();
+      } else {
+        buildSidebarNav();
+        buildHome();
       }
     });
   } else {
@@ -15,6 +18,87 @@ const loadApp = function () {
     displayLoginForm();
   }
 };
+
+const buildHome = function () {
+  $("#content-window").empty();
+  var content = $("#welcome-template").html();
+  $("#content-window").append(content);
+};
+
+const displayFailure = function (id) {
+  $("#content-window").empty();
+  var content = $(id).html();
+  $("#content-window").append(content);
+};
+
+const displayUsers = function (response) {
+  $("#content-window").empty();
+
+  console.log(response);
+};
+
+const buildSidebarNav = function () {
+  $("#sidebar-nav-list").empty();
+  $("#sidebar-nav-list").append(
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", { id: "link-home", class: "nav-link" })
+        .append(
+          $("<i />", { class: "fas fa-home" }),
+          $("<span />", { text: " Home" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          buildHome();
+        })
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", { id: "link-user", class: "nav-link" })
+        .append(
+          $("<i />", { class: "fas fa-user" }),
+          $("<span />", { text: " Benutzer" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=listUsers", function (res) {
+            response = JSON.parse(res);
+            if (response.status == 200) {
+              displayUsers(response);
+            } else {
+              displayFailure("#failure-users-template");
+            }
+          });
+        })
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", {
+        id: "link-instructor",
+        class: "nav-link",
+      }).append(
+        $("<i />", { class: "fas fa-chalkboard-teacher" }),
+        $("<span />", { text: " Dozentinnen" })
+      )
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", {
+        id: "link-classes",
+        class: "nav-link",
+      }).append(
+        $("<i />", { class: "far fa-calendar-alt" }),
+        $("<span />", { text: " Kurse" })
+      )
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", {
+        id: "link-announcments",
+        class: "nav-link",
+      }).append(
+        $("<i />", { class: "fas fa-bullhorn" }),
+        $("<span />", { text: " Mitteilungen" })
+      )
+    )
+  );
+};
+
 const displayLoginForm = function () {
   $("#sidebar-nav-list").empty();
   buildLoginForm();
