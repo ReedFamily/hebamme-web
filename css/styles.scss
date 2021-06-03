@@ -224,6 +224,7 @@ body {
 
 .navbar-img {
     height: 2em;
+    width : 2em;
 }
 
 .navbar-toggler-right {
@@ -487,6 +488,19 @@ section {
         transform: translate(-50%, -50%);
         padding  : 2rem;
     }
+}
+
+.navbar-404 {
+    background-color: rgba(243, 89, 86, 0.0);
+
+    .nav-link {
+        color: #f0f0f0 !important;
+    }
+}
+
+.bg-404 {
+    background-color: $accent-color-venetian-red !important;
+    color           : $text-color-light !important;
 }
 
 #404-home {
