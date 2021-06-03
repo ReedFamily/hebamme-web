@@ -14,19 +14,19 @@
 
         ];
 
-        private $headers[
+        private $headers = [
             'MIME-Version' => 'MIME-Version: 1.0',
-            'Content-type' => 'text/html; charset=UTF-8',
+            'Content-type' => 'text/plain; charset=UTF-8',
             'From' => CONST_SEND_TO,
-            'Reply-To' = CONST_SEND_TO,
-            'X-Mailer' => 'PHP/' . phpversion()
+            'Reply-To' => CONST_SEND_TO,
+            'X-Mailer' => "PHP/{phpversion()}"
         ];
 
 
         public function send_contact($params){
             if(isset($params["post_body"])){
                 
-                $res = $this->sendMessage($this->buildMessageBody($params["post_body"]));
+                $res = $this->sendMessage($this->buildContactMessageBody($params["post_body"]));
 
             }else{
                 $res = api_response::getResponse(500);
@@ -68,31 +68,10 @@
         }
 
 
-        private function buildMessageBody($postBody){
-
+        private function buildContactMessageBody($postBody){
             $post = new post_body_handler($postBody);
-
-            $message = <<<EOT
-Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
-
-    {$post->getAnrede()}
-    {$post->getLastname()}, {$post->getFirstname()} 
-    
-    Email: {$post->getEmail()} 
-    
-    Telefon: {$post->getPhone()} 
-    Address:
-    {$post->getAddress()} 
-
-    Bitte kontaktieren Sie mich per 
-    {$post->getPreferredContact()} 
-
-    Nachricht:
-    {$post->getMessage()} 
-EOT;
-
-            return $message;
-
+            include("messages/contact-email.php");
+            return $messageBody;
         }
 
     }
@@ -151,7 +130,7 @@ EOT;
 
             return <<<EOT
 $street
-    $zip $city
+$zip $city
 EOT;
         }
 

@@ -5,12 +5,29 @@
         die;
     }
 
-    $emailMessage = 
+    $messageBody = 
 <<<EOT
 
-Jemand
+Jemand hat Sie über das Kontaktformular auf der Website kontaktiert:
 
+{$post->getAnrede()}
+{$post->getLastname()}, {$post->getFirstname()} 
+
+Email: {$post->getEmail()} 
+
+Telefon: {$post->getPhone()} 
+
+Adress:
+{$post->getAddress()} 
+
+Bitte kontaktieren Sie mich per
+{$post->getPreferredContact()}
+
+Nachricht:
+{$post->getMessage()}
 
 
 EOT
+
+
 ?>
