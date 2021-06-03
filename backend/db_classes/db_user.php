@@ -82,7 +82,7 @@
         }
 
         public function listUsers(){
-            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user`";
+            $query = "SELECT `id`, `username`, `email`, `role` FROM `api_user`";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
