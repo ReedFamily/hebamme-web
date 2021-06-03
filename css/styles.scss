@@ -224,6 +224,7 @@ body {
 
 .navbar-img {
     height: 2em;
+    width : 2em;
 }
 
 .navbar-toggler-right {
@@ -232,17 +233,44 @@ body {
 
 .navbar {
     background-color: rgba(240, 240, 240, 0);
+
+    .navbar-light {
+        .navbar-nav {
+            .nav-link {
+                color: rgba(0, 0, 0, .75) !important;
+
+                .active {
+                    color: rgba(0, 0, 0, .99) !important;
+                }
+            }
+        }
+    }
 }
+
 
 /*.z-index-2 {
     z-index: 2;
 }*/
+
+.footerlink {
+    text-decoration: none;
+    color          : #f0f0f0 !important;
+}
+
+.footerlink:hover {
+    color          : #d3d3d3 !important;
+    text-decoration: underline !important;
+}
 
 section {
     margin-top: 2em;
 }
 
 .standard {
+    margin        : 0em 0em 0em 0em;
+    padding-top   : 1.75em;
+    padding-bottom: 1.75em;
+
     .container {
         h1 {
             margin-bottom: 0.5em;
@@ -319,6 +347,8 @@ section {
     overflow-x: hidden;
 
     background-color: $accent-color-moss-green;
+
+    margin-bottom: 0em;
 
     .percent-100 {
         width : 100%;
@@ -458,6 +488,19 @@ section {
         transform: translate(-50%, -50%);
         padding  : 2rem;
     }
+}
+
+.navbar-404 {
+    background-color: rgba(243, 89, 86, 0.0);
+
+    .nav-link {
+        color: #f0f0f0 !important;
+    }
+}
+
+.bg-404 {
+    background-color: $accent-color-venetian-red !important;
+    color           : $text-color-light !important;
 }
 
 #404-home {
