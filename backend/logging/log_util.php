@@ -11,6 +11,9 @@
             if(!defined("CONST_LOG_ENABLE") || CONST_LOG_ENABLE === false){
                 return;
             }
+            if(!defined("CONST_LOG_FILE")){
+                return;
+            }
             $dateTime = new DateTime();
             $dateValue = $dateTime->format("d.m.Y_H:i:s.u");
             if(!log_level::isValidLevel($level)){
@@ -32,8 +35,9 @@
                     break;
                 
             }
+            
             $logMsg = "{$dateValue}\t{$formatLevel}\t{$message}\n";
-            error_log($logMsg, 3, "F:/xampp/php/logs/php_log.log");
+            error_log($logMsg, 3, CONST_LOG_FILE);
 
         }
 
