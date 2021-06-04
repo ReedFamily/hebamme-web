@@ -19,7 +19,9 @@
         "db_event" => "db_classes/db_events.php",
         "db_user" => "db_classes/db_user.php",
 //      Exception classes        
-        "UserValidationException" => "exceptions/user_validation_exception.php"
+        "UserValidationException" => "exceptions/user_validation_exception.php",
+        "log_util" => "logging/log_util.php",
+        "log_level" => "logging/log_level.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
