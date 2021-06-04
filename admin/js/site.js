@@ -128,7 +128,7 @@ const validateLogin = function (user, password) {
           $("#content-window").empty();
           loadApp();
         } else {
-          window.alert("An error occured during login. Please try again.");
+          $("#login-error-message").removeClass("hidden");
         }
       });
     }
@@ -183,6 +183,12 @@ const buildLoginForm = function () {
             required: "",
             autofocus: "",
           }),
+          $("<div />", {
+            class: "hidden col-12 alert alert-danger",
+            id: "login-error-message",
+          }).append(
+            $("<span />", { text: "Falsche anmeldung, bitte nochmal Prüfen" })
+          ),
           $("<button />", {
             id: "submitLogin",
             class: "btn btn-primary btn-block btn-large",
