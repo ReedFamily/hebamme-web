@@ -41,7 +41,9 @@
                 'tokenValid' => ['class'=>'api_token', 'function_name'=> 'tokenValid'],
                 'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact'],
                 'listUsers' =>['class' => 'user_login', 'function_name' =>'listUsers'],
+                'getUser' => ['class' => 'user_login', 'function_name' => 'getUserById'],
                 'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
+                'updateUser' =>['class'=>'user_login', 'function_name' => 'updateUser'],
                 'login' => ['class' => 'user_login', 'function_name' => 'loginUser' ],
                 'testMessage' => ['class'=>'email_sender' , 'function_name' => 'sendTestMessage']
             ];

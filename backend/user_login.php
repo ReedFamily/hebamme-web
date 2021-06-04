@@ -35,6 +35,23 @@
             return $result;
         }
 
+        public function updateUser($params){
+            if(!isset($params["post_body"])){
+                return api_response::getResponse(400);
+            }
+            $user = $params["post_body"];
+            if(isset($user["password"])){
+                $clearPass = $user["password"];
+                $user["password"] = $this->hashPass($clearPass);
+            }
+            $dbUser = new db_user();
+            $result = $dbUser->updateUser($user);
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
+            return $result;
+        }
+
         public function loginUser($params){
             if(!isset($params["post_body"])){
                 return api_response::getResponse(400);
@@ -93,6 +110,18 @@
             $token = $params["recoveryToken"];
             
         
+        }
+
+        public function getUserById($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            $dbUser = new db_user();
+            $response = $dbUser->getUserById($params["userid"]);
+            if($response["status"] == 200){
+                unset($response["user"]["password"]);
+            }
+            return $response;
         }
 
         private function getUserFromDb($username){

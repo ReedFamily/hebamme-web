@@ -39,3 +39,7 @@
 .sidebar .nav-link:hover {
   font-weight: 600;
 }
+
+.dialog-form-label {
+  display: block;
+}

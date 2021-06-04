@@ -2,11 +2,9 @@ const loadApp = function () {
   var token = getCookieValue("apiToken");
   if (token != "") {
     var url = "../backend/rest.php?apiFunc=tokenValid&token=" + token;
-    console.log(url);
     $.get(url, function (res) {
       response = JSON.parse(res);
       if (response.status != 200) {
-        console.log("Token not valid");
         displayLoginForm();
       } else {
         buildSidebarNav();
@@ -14,7 +12,6 @@ const loadApp = function () {
       }
     });
   } else {
-    console.log("Token not available");
     displayLoginForm();
   }
 };
@@ -33,8 +30,98 @@ const displayFailure = function (id) {
 
 const displayUsers = function (response) {
   $("#content-window").empty();
+  $("#content-window").append(
+    $("<div />", { class: "col-12", id: "users-wrapper" }).append(
+      $("<table />", { class: "table", id: "users-table" }).append(
+        $("<thead />").append(
+          $("<th />", { scope: "col", text: "ID" }),
+          $("<th />", { scope: "col", text: "Benutzer Name" }),
+          $("<th />", { scope: "col", text: "Name" }),
+          $("<th />", { scope: "col", text: "Vorname" }),
+          $("<th />", { scope: "col", text: "Email" }),
+          $("<th />", { scope: "col", text: "Role" }),
+          $("<th />", { scope: "col", text: "Aktionen" })
+        ),
+        $("<tbody />", { id: "users-table-body" })
+      )
+    )
+  );
+  $.each(response.users, function (index, user) {
+    var activeUserId = getCookieValue("userId");
+    var editUserLink = createEditUserLink(user.id);
+    var deleteUserLink = "";
+    if (user.role != 0 && user.id != activeUserId) {
+      deleteUserLink = createDeleteUserLink(user.id);
+    }
+    var row = $("<tr />").append(
+      $("<td />", { text: user.id }),
+      $("<td />", { text: user.username }),
+      $("<td />", { text: user.last_name }),
+      $("<td />", { text: user.first_name }),
+      $("<td />", { text: user.email }),
+      $("<td />", { text: user.role }),
+      $("<td />").append(editUserLink, deleteUserLink)
+    );
 
-  console.log(response);
+    $("#users-table-body").append(row);
+  });
+};
+
+const createEditUserLink = function (userid) {
+  var linkId = "link-edit-user-" + userid;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    editUser(this);
+  });
+  $(link).attr("data-userid", userid);
+  $(link).append($("<i />", { class: "fas fa-user-edit" }));
+  return link;
+};
+
+const editUser = function (ele) {
+  var id = $(ele).data("userid");
+  var url = "../backend/rest.php?apiFunc=getUser&userid=" + id;
+  $.get(url, function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      $("#editInputUserId").val(response.user.id);
+      $("#editInputUsername").val(response.user.username);
+      $("#editInputLastname").val(response.user.last_name);
+      $("#editInputFirstname").val(response.user.first_name);
+      $("#editInputEmail").val(response.user.email);
+      $("#edit-user-dialog").modal("show");
+    } else {
+      console.log(response);
+    }
+  });
+};
+
+const sendEditUser = function (editUserData) {
+  var url = "../backend/rest.php?apiFunc=updateUser";
+  $.post(url, JSON.stringify(editUserData), function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      displayUsers(response);
+    } else {
+      console.log(response);
+    }
+  });
+};
+
+const createDeleteUserLink = function (userid) {
+  var linkId = "link-delete-user-" + userid;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    deleteUser(this);
+  });
+  $(link).attr("data-userid", userid);
+  $(link).append($("<i />", { class: "fas fa-user-slash" }));
+  return link;
+};
+
+const deleteUser = function (ele) {
+  var id = $(ele).data("userid");
+  console.log("Deleting: " + id);
 };
 
 const buildSidebarNav = function () {
