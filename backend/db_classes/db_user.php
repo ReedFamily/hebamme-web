@@ -137,7 +137,6 @@
             try{
                 $this->pdo->beginTransaction();
                 $statement->execute($user);
-                log_util::logEntry("debug", $statement->queryString);
                 $this->pdo->commit();
                 $result = api_response::getResponse(200);
             }catch(Exception $e){
