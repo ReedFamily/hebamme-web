@@ -167,7 +167,7 @@ const editUserEvent = function (event) {
   editUserData.firstname = $("#editInputFirstname").val();
   editUserData.lastname = $("#editInputLastname").val();
   editUserData.email = $("#editInputEmail").val();
-  if ($("editInputPassword").val()) {
+  if ($("#editInputPassword").val()) {
     editUserData.password = $("#editInputPassword").val();
   }
   sendEditUser(editUserData);
