@@ -92,6 +92,26 @@
             return $result;
         }
 
+        public function deleteTokensByUserId($id){
+            $result = api_response::getResponse(500);
+            $query = "DELETE FROM `api_tokens` WHERE `user_id` = :id";
+            $statement = $this->pdo->prepare($query);
+            $params = ["id" => $id];
+            try{
+                $this->pdo->beginTransaction();
+                $statement->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result["exception"] = $e->getMessage();
+                $this->pdo->rollback();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
     }
 
 ?>

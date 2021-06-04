@@ -62,9 +62,15 @@
             $userId = $params["userid"];
             $dbUser = new db_user();
             $result = $dbUser->deleteUserById($userId);
+            if($result["status"]) == 200){
+                $dbToken = new db_token();
+                $result = $dbToken->deleteTokensByUserId($userId);
+            }
             if($result["status"] == 200){
                 $result = $this->listUsers();
             }
+            
+        
             return $result;
         }
 
