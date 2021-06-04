@@ -105,7 +105,9 @@
         }
 
         public function createUser($user){
-            $query = "INSERT INTO `api_user` (`username`,`last_name`, `first_name`, `password`, `email` , `role`) VALUES (:username, :lastName, :firstName, :password, :email, :role)";
+            log_util::logEntry("debug", json_encode($user));
+            $query = "INSERT INTO `api_user` (`username`,`last_name`, `first_name`, `password`, `email` , `role`) VALUES (:username, :lastname, :firstname, :password, :email, :role)";
+            log_util::logEntry("debug", $query);
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -151,7 +153,22 @@
         }
 
         public function deleteUserById($userId){
-
+            $query = "DELETE FROM `api_user` WHERE `id` = :id";
+            $statement = $this->pdo->prepare($query);
+            $params = ["id" => $userId];
+            try{
+                $this->pdo->beginTransaction();
+                $statement->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $this->pdo->rollback();
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
         }
 
     }    

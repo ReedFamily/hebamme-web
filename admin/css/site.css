@@ -43,3 +43,16 @@
 .dialog-form-label {
   display: block;
 }
+
+.subdued {
+  font-size: 0.75em;
+  color: #888;
+}
+
+.see-me {
+  background-color: #fff3cd;
+  color: #856404;
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.75em;
+}

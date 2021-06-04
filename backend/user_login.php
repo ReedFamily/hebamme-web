@@ -27,11 +27,14 @@
                 return $result;
             }
             if(!isset($user["role"])){
-                $user["role"] = 0;
+                $user["role"] = 1;
             }
             $user["password"] = $this->hashPass($user["password"]);
             $dbUser = new db_user();
             $result = $dbUser->createUser($user);
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
             return $result;
         }
 
@@ -46,6 +49,19 @@
             }
             $dbUser = new db_user();
             $result = $dbUser->updateUser($user);
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
+            return $result;
+        }
+
+        public function deleteUser($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            $userId = $params["userid"];
+            $dbUser = new db_user();
+            $result = $dbUser->deleteUserById($userId);
             if($result["status"] == 200){
                 $result = $this->listUsers();
             }

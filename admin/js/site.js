@@ -42,7 +42,16 @@ const displayUsers = function (response) {
           $("<th />", { scope: "col", text: "Role" }),
           $("<th />", { scope: "col", text: "Aktionen" })
         ),
-        $("<tbody />", { id: "users-table-body" })
+        $("<tbody />", { id: "users-table-body" }),
+        $("<tfoot/>", { id: "users-table-footer" }).append(
+          $("<th />", { colspan: "7" }).append(
+            $("<button />", {
+              class: "btn btn-primary",
+              id: "add-new-user-button",
+              text: "Neu Benutzer  ",
+            }).append($("<i />", { class: "fas fa-user-plus" }))
+          )
+        )
       )
     )
   );
@@ -64,6 +73,17 @@ const displayUsers = function (response) {
     );
 
     $("#users-table-body").append(row);
+    $("#add-new-user-button").click(function (event) {
+      $("#user-editor-title").text("Neue Benutzer");
+      $("#editInputPassword")
+        .removeAttr("data-toggle")
+        .removeAttr("data-placement")
+        .attr("title");
+      $("body").off("click", "#edit-user-save-button", editUserEvent);
+      $("body").on("click", "#edit-user-save-button", newUserEvent);
+      $("#edit-user-form").trigger("reset");
+      $("#edit-user-dialog").modal("show");
+    });
   });
 };
 
@@ -84,16 +104,63 @@ const editUser = function (ele) {
   $.get(url, function (res) {
     var response = JSON.parse(res);
     if (response.status == 200) {
+      $("#edit-user-form").trigger("reset");
       $("#editInputUserId").val(response.user.id);
       $("#editInputUsername").val(response.user.username);
       $("#editInputLastname").val(response.user.last_name);
       $("#editInputFirstname").val(response.user.first_name);
       $("#editInputEmail").val(response.user.email);
+      $("#editInputPassword")
+        .attr("data-toggle", "tooltip")
+        .attr("data-placement", "right")
+        .attr("title", "nur wann es geändert soll");
+
+      $("body").off("click", "#edit-user-save-button", newUserEvent);
+      $("body").on("click", "#edit-user-save-button", editUserEvent);
       $("#edit-user-dialog").modal("show");
     } else {
       console.log(response);
     }
   });
+};
+
+const newUserEvent = function (event) {
+  event.stopImmediatePropagation();
+  var newUserData = new Object();
+  newUserData.username = $("#editInputUsername").val();
+  newUserData.firstname = $("#editInputFirstname").val();
+  newUserData.lastname = $("#editInputLastname").val();
+  newUserData.email = $("#editInputEmail").val();
+  newUserData.password = $("#editInputPassword").val();
+  sendNewUser(newUserData);
+  $("body").off("click", "#edit-user-save-button", newUserEvent);
+};
+
+const sendNewUser = function (newUserData) {
+  var url = "../backend/rest.php?apiFunc=createUser";
+  $.post(url, JSON.stringify(newUserData), function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      displayUsers(response);
+    } else {
+      console.log(response);
+    }
+  });
+};
+
+const editUserEvent = function (event) {
+  event.stopImmediatePropagation();
+  var editUserData = new Object();
+  editUserData.id = $("#editInputUserId").val();
+  editUserData.username = $("#editInputUsername").val();
+  editUserData.firstname = $("#editInputFirstname").val();
+  editUserData.lastname = $("#editInputLastname").val();
+  editUserData.email = $("#editInputEmail").val();
+  if ($("editInputPassword").val()) {
+    editUserData.password = $("#editInputPassword").val();
+  }
+  sendEditUser(editUserData);
+  $("body").off("click", "#edit-user-save-button", editUserEvent);
 };
 
 const sendEditUser = function (editUserData) {
@@ -119,9 +186,31 @@ const createDeleteUserLink = function (userid) {
   return link;
 };
 
+const sendDeleteUser = function (id) {
+  var url = "../backend/rest.php?apiFunc=deleteUser&userid=" + id;
+  $.get(url, function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      displayUsers(response);
+    } else {
+      console.log(response);
+    }
+  });
+};
+
 const deleteUser = function (ele) {
   var id = $(ele).data("userid");
-  console.log("Deleting: " + id);
+  var url = "../backend/rest.php?apiFunc=getUser&userid=" + id;
+  $.get(url, function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      $("#delete-user-acknowledge-button").attr("data-id", response.user.id);
+      $("#delete-username").text("'" + response.user.username + "'");
+      $("#delete-user-dialog").modal("show");
+    } else {
+      console.log(response);
+    }
+  });
 };
 
 const buildSidebarNav = function () {
