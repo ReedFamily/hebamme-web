@@ -10,6 +10,7 @@
     require_once("./autoloader.php");
 
     if(in_array($requestMethod, ["GET", "POST"])){
+        
         $requestMethodArray = array();
         $requestMethodArray = $_REQUEST;
         $token = "";
@@ -23,7 +24,6 @@
             }
         }
         if($token == "" && isset($_COOKIE["apiToken"])){$token = $_COOKIE["apiToken"];}
-
 
         $postBody = json_decode(file_get_contents("php://input"), true);
         $functionParams["post_body"] = $postBody;

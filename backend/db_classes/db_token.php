@@ -31,6 +31,7 @@
                 $stmt->execute($params);
                 $this->pdo->commit();
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $this->pdo->rollback();
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
@@ -52,6 +53,7 @@
                 $stmt->execute($params);
                 $this->pdo->commit();
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $this->pdo-rollback();
                 $response = api_response::getResponse(500);
                 $response["exception"] = $e->getMessage();
@@ -79,6 +81,7 @@
                     }
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
                

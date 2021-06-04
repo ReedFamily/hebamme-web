@@ -18,6 +18,7 @@
         public static function cleanTokens(){
             $cDbToken = new db_token();
             $cDbToken->clearOldTokens();
+            log_util::logEntry("debug", "Old Tokens Cleared");
         }
 
         public function tokenValid($params){
@@ -28,6 +29,7 @@
                 $response = api_response::getResponse(400);
                 $response["message"] = "Token not present to validate";
                 $response["params"] = $params;
+                log_util::logEntry("error", "No Token to validate");
             }else{
                 $response = $dbToken->isTokenValid($params["token"]);
                 $response["token"] = $params["token"];
@@ -46,12 +48,12 @@
             }catch(Exception $e){
                 $response = api_response::getResponse(500);
                 $response["exception"] =  $e->getMessage();
+                log_util::logEntry("error", $e->getMessage());
                 return $response;
             }
             
            $response = api_response::getResponse(200);
            $response["token"] = $token;
-            
            return $response;
         }
 
@@ -68,6 +70,7 @@
             }catch(Exception $e){
                 $response = api_response::getResponse(500);
                 $response["exception"] = $e->getMessage();
+                log_util::logEntry("error", $e->getMessage());
                 return $response;
             }
             $response = api_response::getResponse(200);
@@ -88,6 +91,7 @@
             }catch(Exception $e){
                 $response = api_response::getResponse(500);
                 $response["exception"] = $e->getMessage();
+                log_util::logEntry("error", $e->getMessage());
                 return $response;
             }
 

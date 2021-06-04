@@ -23,6 +23,7 @@
             }catch(UserValidationException $e){
                 $result = api_response::getResponse(400);
                 $result["message"] = $e->__toString();
+                log_util::logEntry("error", $e->__toString());
                 return $result;
             }
             if(!isset($user["role"])){
@@ -44,6 +45,7 @@
             }catch(UserValidationException $e){
                 $result = api_response::getResponse(400);
                 $result["message"] = $e->__toString();
+                log_util::logEntry("error", $e->__toString());
                 return $result;
             }
             $dbResponse = $this->getUserFromDb($user["username"]);
@@ -53,12 +55,14 @@
             if(!isset($dbResponse["user"])){
                 $result = api_response::getResponse(403);
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid login attempt {$user['username']}");
                 return $result;
             }
             $dbUser = $dbResponse["user"];
             if(!password_verify($user["password"], $dbUser["password"])){
                 $result = api_response::getResponse(403);
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid password for user {$user['username']}");
                 return $result;
             }
             $apiToken = new api_token();

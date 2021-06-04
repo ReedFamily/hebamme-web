@@ -24,6 +24,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -47,6 +48,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -68,6 +70,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -76,6 +79,7 @@
 
             if($result["status"] == 403){
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid login attempt {$userName}");
             }
             return $result;
 
@@ -91,6 +95,7 @@
                 $result = api_response::getResponse(200);
                 $result["users"] = $users;
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -110,6 +115,7 @@
                 $result = api_response::getResponse(200);
                 $result["message"] = "User " . $user["username"] . " created.";
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $this->pdo->rollback();
                 $result["exception"] = $e->getMessage();
             }finally{
