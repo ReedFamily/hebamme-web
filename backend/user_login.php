@@ -62,7 +62,7 @@
             $userId = $params["userid"];
             $dbUser = new db_user();
             $result = $dbUser->deleteUserById($userId);
-            if($result["status"]) == 200){
+            if($result["status"] == 200){
                 $dbToken = new db_token();
                 $result = $dbToken->deleteTokensByUserId($userId);
             }
@@ -130,8 +130,6 @@
                 return api_response::getResponse(400);
             }
             $token = $params["recoveryToken"];
-            
-        
         }
 
         public function getUserById($params){
@@ -143,6 +141,18 @@
             if($response["status"] == 200){
                 unset($response["user"]["password"]);
             }
+            return $response;
+        }
+
+        public function logoutUser($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            log_util::logEntry("debug","calling logout");
+            $dbToken = new db_token();
+            $userId = $params["userid"];
+            $response = $dbToken->deleteTokensByUserId($userId);
+            $response["message"] = "logged out";
             return $response;
         }
 

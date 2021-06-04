@@ -45,6 +45,7 @@
                 'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
                 'updateUser' =>['class'=>'user_login', 'function_name' => 'updateUser'],
                 'deleteUser' =>['class'=>'user_login', 'function_name' => 'deleteUser'],
+                'logout' =>['class'=>'user_login','function_name' => 'logoutUser'],
                 'login' => ['class' => 'user_login', 'function_name' => 'loginUser' ],
                 'testMessage' => ['class'=>'email_sender' , 'function_name' => 'sendTestMessage']
             ];

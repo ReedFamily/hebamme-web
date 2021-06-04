@@ -10,6 +10,10 @@
   margin: auto;
 }
 
+#logout-link {
+  cursor: default;
+}
+
 .sidebar {
   position: fixed;
   top: 25px;

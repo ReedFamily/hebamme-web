@@ -1,5 +1,6 @@
 const loadApp = function () {
   var token = getCookieValue("apiToken");
+  var userid = getCookieValue("userId");
   if (token != "") {
     var url = "../backend/rest.php?apiFunc=tokenValid&token=" + token;
     $.get(url, function (res) {
@@ -7,6 +8,8 @@ const loadApp = function () {
       if (response.status != 200) {
         displayLoginForm();
       } else {
+        $("#logout-link").removeClass("hidden");
+        $("#logout-link").attr("data-userid", userid);
         buildSidebarNav();
         buildHome();
       }
@@ -14,6 +17,14 @@ const loadApp = function () {
   } else {
     displayLoginForm();
   }
+};
+
+const logoutEvent = function (event) {
+  var userid = $(this).data("userid");
+  var url = "../backend/rest.php?apiFunc=logout&userid=" + userid;
+  $.get(url, function (res) {
+    loadApp();
+  });
 };
 
 const buildHome = function () {
@@ -277,6 +288,8 @@ const buildSidebarNav = function () {
 
 const displayLoginForm = function () {
   $("#sidebar-nav-list").empty();
+  $("#logout-link").addClass("hidden");
+  $("#logout-link").removeAttr("data-userid");
   buildLoginForm();
 };
 
