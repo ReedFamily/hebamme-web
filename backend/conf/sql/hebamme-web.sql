@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2021 at 08:17 PM
+-- Generation Time: Jun 14, 2021 at 09:02 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -42,6 +42,8 @@ CREATE TABLE `api_tokens` (
 CREATE TABLE `api_user` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `username` varchar(75) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `role` int(11) DEFAULT NULL
@@ -52,13 +54,16 @@ CREATE TABLE `api_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructors`
+-- Table structure for table `instructor`
 --
 
-CREATE TABLE `instructors` (
+CREATE TABLE `instructor` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `team` int(11) DEFAULT NULL
+  `position` varchar(128) DEFAULT NULL,
+  `last_name` varchar(128) NOT NULL,
+  `first_name` varchar(128) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -79,11 +84,11 @@ ALTER TABLE `api_user`
   ADD UNIQUE KEY `unique_user` (`username`);
 
 --
--- Indexes for table `instructors`
+-- Indexes for table `instructor`
 --
-ALTER TABLE `instructors`
+ALTER TABLE `instructor`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_name` (`name`);
+  ADD UNIQUE KEY `instructors_name` (`last_name`,`first_name`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -96,14 +101,11 @@ ALTER TABLE `api_user`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `instructors`
+-- AUTO_INCREMENT for table `instructor`
 --
-ALTER TABLE `instructors`
+ALTER TABLE `instructor`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
-
-
-INSERT INTO `api_user` (`id`, `username`, `password`, `email`, `role`) VALUES (NULL, 'Admin', '$2y$10$rpw5MvHYyeeVv/XswmVzLegcj5N0ha.wmfO8bjPrC/klo5AOQgj0a', 'Admin@localhost.com', '1'); 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
