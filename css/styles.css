@@ -549,6 +549,8 @@ form button.btn {
 footer {
   padding-top: 2em;
   padding-bottom: 2em;
+  background-color: #37332f !important;
+  color: #f0f0f0;
 }
 
 footer a {

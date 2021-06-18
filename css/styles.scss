@@ -620,8 +620,10 @@ form {
 }
 
 footer {
-    padding-top   : 2em;
-    padding-bottom: 2em;
+    padding-top     : 2em;
+    padding-bottom  : 2em;
+    background-color: hsl(34, 7%, 20%) !important;
+    color           : #f0f0f0;
 
     a {
         text-decoration: none;
