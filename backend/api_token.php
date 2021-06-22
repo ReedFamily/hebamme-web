@@ -7,11 +7,15 @@
 
     class api_token
     {
-        public static function validate($apiToken){
+        public static function validate($apiToken, $adminToken){
+            log_util::logEntry("debug", "Token $apiToken isAdmin $adminToken");
             api_token::cleanTokens();
             $cDbToken = new db_token();
             $response = $cDbToken->isTokenValid($apiToken);
             $response["func"] = "api_token::validate";
+            if(!$adminToken){
+                api_token::invalidateOneTimeToken($apiToken);
+            }
             return $response;
         }
 
@@ -19,6 +23,16 @@
             $cDbToken = new db_token();
             $cDbToken->clearOldTokens();
             log_util::logEntry("debug", "Old Tokens Cleared");
+        }
+
+        private static function invalidateOneTimeToken($token){
+            $dbToken = new db_token();
+            $response = $dbToken->deleteToken($token);
+            if($response["status"] == 200){
+                log_util::logEntry("debug", "Onetime Token Cleared");
+            }else{
+                log_util::logEntry("warn", "Onetime Token $token was not cleared");
+            }
         }
 
         public function tokenValid($params){
@@ -105,5 +119,6 @@
         private function tokenGen(){
             return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',  mt_rand(0, 0xffff), mt_rand(0,0xffff), mt_rand(0,0xffff),(mt_rand(0,0x0fff) | 0x4000), (mt_rand(0, 0x3fff) | 0x8000), mt_rand(0, 0xffff),mt_rand(0, 0xffff),mt_rand(0, 0xffff));
         }
+
     }
 ?>

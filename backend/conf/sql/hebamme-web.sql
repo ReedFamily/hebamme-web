@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `api_tokens` (
   `token` varchar(50) NOT NULL,
   `valid_to` datetime NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
