@@ -620,10 +620,44 @@ form {
 }
 
 footer {
-    padding-top   : 2em;
-    padding-bottom: 2em;
+    padding-top     : 2em;
+    padding-bottom  : 2em;
+    background-color: hsl(34, 7%, 20%) !important;
+    color           : #f0f0f0;
 
     a {
         text-decoration: none;
     }
 }
+
+.termine-column {
+    padding-left : 0.5em;
+    padding-right: 0.5em;
+}
+
+@media screen and (max-width: 1200px) {
+    .termine-card {
+        margin-left : 0.5em !important;
+        margin-right: 0.5em !important;
+        min-width   : min-content;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .termine-card {
+        margin-top: 1.5em;
+    }
+}
+
+.termine-card {
+    max-width : 100%;
+    min-height: 17rem
+}
+
+.termine-line {
+    margin-top: 0.75em !important;
+}
+
+/* .card-text:last-child {
+    margin-bottom: 0.25em !important;
+} */

@@ -4,3 +4,7 @@ sitemap-index.xml
 sitemap.xml
 .vscode/settings.json
 backend/conf/sql/default-insert.sql
+.htaccess
+en/index.html
+/mydashboard/
+
