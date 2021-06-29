@@ -70,6 +70,54 @@
             }
             return $result;
         }
+
+        public function updateInstructor($instructor){
+            if(!isset($instructor["id"])){
+                $result = api_response::getResponse(400);
+                $result["message"] = "No id number assigned to user. Create user should be used.";
+                return $result;
+            }
+
+            $query = "UPDATE `instructor` SET `last_name` = :lastname, `first_name` = :firstname, `email` = :email, `phone` = :phone, `mobile` = :mobile, `image_url` = :thumbnail, `description` = :descript, `position` = :position WHERE `id` = :id";
+            $stmt = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $this->pdo->beginTransaction();
+                $stmt->execute($instructor);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+                $result["message"] = "Instructor " . $instructor["firstname"] . " " . $instructor["lastname"] . " has been updated.";
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_reponse::getReponse(500);
+                $result["exception"] = $e->getMessage();
+                $this->pdo->rollback();
+            }finally{
+                $this->disconnect();
+            }
+
+            return $result;
+        }
+
+        public function deleteInstructorById($id){
+            $query = "DELETE FROM `instructor` WHERE `id` = :id";
+            $params = ["id" => $id];
+            $stmt = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $this->pdo->beginTransaction();
+                $stmt->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $this->pdo->rollback();
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
     }
 
 ?>
