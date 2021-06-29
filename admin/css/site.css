@@ -10,6 +10,10 @@
   margin: auto;
 }
 
+#logout-link {
+  cursor: default;
+}
+
 .sidebar {
   position: fixed;
   top: 25px;
@@ -38,4 +42,21 @@
 
 .sidebar .nav-link:hover {
   font-weight: 600;
+}
+
+.dialog-form-label {
+  display: block;
+}
+
+.subdued {
+  font-size: 0.75em;
+  color: #888;
+}
+
+.see-me {
+  background-color: #fff3cd;
+  color: #856404;
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.75em;
 }

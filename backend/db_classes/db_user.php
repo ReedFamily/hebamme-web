@@ -12,7 +12,7 @@
         }
 
         public function getUserById($userId){
-            $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user` WHERE `id` = :userid";
+            $query = "SELECT `id`, `username`,`first_name`, `last_name`, `password`, `email`, `role` FROM `api_user` WHERE `id` = :userid";
             $params = ["userid" => $userId];
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -24,6 +24,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -47,6 +48,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -68,6 +70,7 @@
                     $result["user"] = $row;
                 }
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -76,13 +79,14 @@
 
             if($result["status"] == 403){
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid login attempt {$userName}");
             }
             return $result;
 
         }
 
         public function listUsers(){
-            $query = "SELECT `id`, `username`, `email`, `role` FROM `api_user`";
+            $query = "SELECT `id`, `username`, `last_name`, `first_name`, `email`, `role` FROM `api_user`";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
@@ -91,6 +95,7 @@
                 $result = api_response::getResponse(200);
                 $result["users"] = $users;
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -100,7 +105,9 @@
         }
 
         public function createUser($user){
-            $query = "INSERT INTO `api_user` (`username`, `password`, `email` , `role`) VALUES (:username, :password, :email, :role)";
+            log_util::logEntry("debug", json_encode($user));
+            $query = "INSERT INTO `api_user` (`username`,`last_name`, `first_name`, `password`, `email` , `role`) VALUES (:username, :lastname, :firstname, :password, :email, :role)";
+            log_util::logEntry("debug", $query);
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -110,6 +117,7 @@
                 $result = api_response::getResponse(200);
                 $result["message"] = "User " . $user["username"] . " created.";
             }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
                 $this->pdo->rollback();
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -119,11 +127,48 @@
         }
 
         public function updateUser($user){
-            
+            $columns = "`username` = :username, `last_name` = :lastname, `first_name` = :firstname, `email` = :email";
+            if(isset($user['password'])){
+                $columns .= ", `password` = :password";
+            }
+
+            $query = "UPDATE `api_user` SET {$columns} WHERE `id` = :id";
+            log_util::logEntry("debug", $query);
+            $statement = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $this->pdo->beginTransaction();
+                $statement->execute($user);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $this->pdo->rollback();
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+
         }
 
         public function deleteUserById($userId){
-
+            $query = "DELETE FROM `api_user` WHERE `id` = :id";
+            $statement = $this->pdo->prepare($query);
+            $params = ["id" => $userId];
+            try{
+                $this->pdo->beginTransaction();
+                $statement->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $this->pdo->rollback();
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
         }
 
     }    

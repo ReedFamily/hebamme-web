@@ -23,14 +23,54 @@
             }catch(UserValidationException $e){
                 $result = api_response::getResponse(400);
                 $result["message"] = $e->__toString();
+                log_util::logEntry("error", $e->__toString());
                 return $result;
             }
             if(!isset($user["role"])){
-                $user["role"] = 0;
+                $user["role"] = 1;
             }
             $user["password"] = $this->hashPass($user["password"]);
             $dbUser = new db_user();
             $result = $dbUser->createUser($user);
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
+            return $result;
+        }
+
+        public function updateUser($params){
+            if(!isset($params["post_body"])){
+                return api_response::getResponse(400);
+            }
+            $user = $params["post_body"];
+            if(isset($user["password"])){
+                $clearPass = $user["password"];
+                $user["password"] = $this->hashPass($clearPass);
+            }
+            $dbUser = new db_user();
+            $result = $dbUser->updateUser($user);
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
+            return $result;
+        }
+
+        public function deleteUser($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            $userId = $params["userid"];
+            $dbUser = new db_user();
+            $result = $dbUser->deleteUserById($userId);
+            if($result["status"] == 200){
+                $dbToken = new db_token();
+                $result = $dbToken->deleteTokensByUserId($userId);
+            }
+            if($result["status"] == 200){
+                $result = $this->listUsers();
+            }
+            
+        
             return $result;
         }
 
@@ -44,6 +84,7 @@
             }catch(UserValidationException $e){
                 $result = api_response::getResponse(400);
                 $result["message"] = $e->__toString();
+                log_util::logEntry("error", $e->__toString());
                 return $result;
             }
             $dbResponse = $this->getUserFromDb($user["username"]);
@@ -53,12 +94,14 @@
             if(!isset($dbResponse["user"])){
                 $result = api_response::getResponse(403);
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid login attempt {$user['username']}");
                 return $result;
             }
             $dbUser = $dbResponse["user"];
             if(!password_verify($user["password"], $dbUser["password"])){
                 $result = api_response::getResponse(403);
                 $result["message"] = "Invalid login.";
+                log_util::logEntry("info", "Invalid password for user {$user['username']}");
                 return $result;
             }
             $apiToken = new api_token();
@@ -87,8 +130,30 @@
                 return api_response::getResponse(400);
             }
             $token = $params["recoveryToken"];
-            
-        
+        }
+
+        public function getUserById($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            $dbUser = new db_user();
+            $response = $dbUser->getUserById($params["userid"]);
+            if($response["status"] == 200){
+                unset($response["user"]["password"]);
+            }
+            return $response;
+        }
+
+        public function logoutUser($params){
+            if(!isset($params["userid"])){
+                return api_response::getResponse(400);
+            }
+            log_util::logEntry("debug","calling logout");
+            $dbToken = new db_token();
+            $userId = $params["userid"];
+            $response = $dbToken->deleteTokensByUserId($userId);
+            $response["message"] = "logged out";
+            return $response;
         }
 
         private function getUserFromDb($username){

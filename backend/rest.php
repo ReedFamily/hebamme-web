@@ -10,9 +10,11 @@
     require_once("./autoloader.php");
 
     if(in_array($requestMethod, ["GET", "POST"])){
+        
         $requestMethodArray = array();
         $requestMethodArray = $_REQUEST;
         $token = "";
+        $adminToken = false;
         if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
         if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
         //if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
@@ -22,8 +24,10 @@
                 $functionParams[$key] = $value;
             }
         }
-        if($token == "" && isset($_COOKIE["apiToken"])){$token = $_COOKIE["apiToken"];}
-
+        if($token == "" && isset($_COOKIE["apiToken"])){
+            $token = $_COOKIE["apiToken"];
+            $adminToken = true;
+        }
 
         $postBody = json_decode(file_get_contents("php://input"), true);
         $functionParams["post_body"] = $postBody;
@@ -40,7 +44,7 @@
                 $res["request"] = $requestMethodArray;
                 $res["params"] = $functionParams;
             }else{
-                $res = api_token::validate($token);
+                $res = api_token::validate($token, $adminToken);
             }
         }
 
