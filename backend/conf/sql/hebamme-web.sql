@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2021 at 08:17 PM
+-- Generation Time: Jun 14, 2021 at 09:02 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `api_tokens` (
   `token` varchar(50) NOT NULL,
   `valid_to` datetime NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -40,8 +41,10 @@ CREATE TABLE `api_tokens` (
 --
 
 CREATE TABLE `api_user` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(75) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `role` int(11) DEFAULT NULL
@@ -52,18 +55,20 @@ CREATE TABLE `api_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructors`
+-- Table structure for table `instructor`
 --
 
-CREATE TABLE `instructors` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `team` int(11) DEFAULT NULL
+CREATE TABLE `instructor` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `last_name` varchar(128) NOT NULL,
+  `first_name` varchar(128) NOT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `phone` varchar(128) DEFAULT NULL,
+  `mobile` varchar(128) DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `position` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `api_tokens`
@@ -75,35 +80,15 @@ ALTER TABLE `api_tokens`
 -- Indexes for table `api_user`
 --
 ALTER TABLE `api_user`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_user` (`username`);
 
 --
--- Indexes for table `instructors`
+-- Indexes for table `instructor`
 --
-ALTER TABLE `instructors`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_name` (`name`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `api_user`
---
-ALTER TABLE `api_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `instructors`
---
-ALTER TABLE `instructors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
+ALTER TABLE `instructor`
+  ADD UNIQUE KEY `instructors_name` (`last_name`,`first_name`) USING BTREE;
 
 
-INSERT INTO `api_user` (`id`, `username`, `password`, `email`, `role`) VALUES (NULL, 'Admin', '$2y$10$rpw5MvHYyeeVv/XswmVzLegcj5N0ha.wmfO8bjPrC/klo5AOQgj0a', 'Admin@localhost.com', '1'); 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

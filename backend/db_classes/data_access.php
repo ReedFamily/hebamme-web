@@ -14,6 +14,7 @@
                 $this->pdo = new PDO($dns, CONST_DB_USER, CONST_DB_PASS);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e){
+                log_util::logEntry("error", $e->getMessage());
                 echo "ERROR!: " . $e->getMessage() . "<br>";
                 die();
             }
