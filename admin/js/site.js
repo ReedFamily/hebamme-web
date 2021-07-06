@@ -39,6 +39,22 @@ const displayFailure = function (id) {
   $("#content-window").append(content);
 };
 
+const displayInstructors = function (response) {
+  $("#content-window").empty();
+  $("#content-window").append(
+    $("<div />", { class: "col-12", id: "instructors-wrapper" }).append(
+      $("<table />", { class: "table", id: "instructors-table" }).append(
+        $("<thead />").append(
+          $("<th />", { scope: "col", text: "ID" }),
+          $("<")
+        ),
+        $("<tbody />", { id: "instructors-table-body" }),
+        $("<tfoot />", { id: "instructors-table-footer" }).append()
+      )
+    )
+  );
+};
+
 const displayUsers = function (response) {
   $("#content-window").empty();
   $("#content-window").append(
@@ -105,7 +121,7 @@ const createEditUserLink = function (userid) {
     editUser(this);
   });
   $(link).attr("data-userid", userid);
-  $(link).append($("<i />", { class: "fas fa-user-edit" }));
+  $(link).append($("<i />", { class: "fas fa-user-edit linkchar" }));
   return link;
 };
 
@@ -188,10 +204,12 @@ const sendEditUser = function (editUserData) {
 
 const createDeleteUserLink = function (userid) {
   var linkId = "link-delete-user-" + userid;
-  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
-    event.preventDefault();
-    deleteUser(this);
-  });
+  var link = $("<a />", { id: linkId, text: " ", class: "linkchar" }).click(
+    function (event) {
+      event.preventDefault();
+      deleteUser(this);
+    }
+  );
   $(link).attr("data-userid", userid);
   $(link).append($("<i />", { class: "fas fa-user-slash" }));
   return link;
@@ -260,10 +278,22 @@ const buildSidebarNav = function () {
       $("<a />", {
         id: "link-instructor",
         class: "nav-link",
-      }).append(
-        $("<i />", { class: "fas fa-chalkboard-teacher" }),
-        $("<span />", { text: " Dozentinnen" })
-      )
+      })
+        .append(
+          $("<i />", { class: "fas fa-chalkboard-teacher" }),
+          $("<span />", { text: " Dozentinnen" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=listInstructors", function (res) {
+            response = JSON.parse(res);
+            if (response.status == 200) {
+              displayInstructors(response);
+            } else {
+              displayFailure("#failure-instructors-template");
+            }
+          });
+        })
     ),
     $("<li />", { class: "nav-item" }).append(
       $("<a />", {
