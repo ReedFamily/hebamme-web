@@ -22,6 +22,7 @@
         "db_instructors" => "db_classes/db_instructors.php",
 //      Exception classes        
         "UserValidationException" => "exceptions/user_validation_exception.php",
+        "InstuctorException" => "exceptions/instructor_exception.php",
         "log_util" => "logging/log_util.php",
         "log_level" => "logging/log_level.php"
     ];
