@@ -46,13 +46,58 @@ const displayInstructors = function (response) {
       $("<table />", { class: "table", id: "instructors-table" }).append(
         $("<thead />").append(
           $("<th />", { scope: "col", text: "ID" }),
-          $("<")
+          $("<th />", { scope: "col", text: "Bild" }),
+          $("<th />", { scope: "col", text: "Name" }),
+          $("<th />", { scope: "col", text: "Vorname" })
         ),
         $("<tbody />", { id: "instructors-table-body" }),
-        $("<tfoot />", { id: "instructors-table-footer" }).append()
+        $("<tfoot />", { id: "instructors-table-footer" }).append(
+          $("<th />", { colspan: "7" }).append(
+            $("<button />", {
+              class: "btn btn-primary",
+              id: "add-new-instructor-button",
+              text: "Neue Dozentin ",
+            }).append($("<i />", { class: "fas fa-user-plus" }))
+          )
+        )
       )
     )
   );
+  $.each(response.instructors, function (index, instructor) {
+    var row = buildInstructorTableRow(instructor);
+    $("#instructors-table-body").append(row);
+  });
+};
+
+const buildInstructorTableRow = function (instructor) {
+  var thumbnail = buildThumbnail(instructor);
+  var row = $("<tr />").append(
+    $("<td />", { text: instructor.id }),
+    $("<td />").append(thumbnail),
+    $("<td />", { text: instructor.lastname }),
+    $("<td />", { text: instructor.firstname })
+  );
+  return row;
+};
+
+const buildThumbnail = function (instructor) {
+  var img;
+  if (instructor.imageurl) {
+    img = $("<img />", {
+      src: instructor.imageurl,
+      alt: "Profile picture for instructor " + instructor.id,
+      class: "thumbnail-wrapper",
+    });
+  } else {
+    var num = randomInt(5, 1);
+    img = $("<img />", {
+      src: "./img/avatar-" + num + ".svg",
+      alt: "Default profile picture for instructor",
+      class: "thumbnail-wrapper",
+    });
+  }
+  var wrapper = $("<div />", { class: "thumbnail-wrapper" }).append(img);
+  return wrapper;
 };
 
 const displayUsers = function (response) {
@@ -83,22 +128,7 @@ const displayUsers = function (response) {
     )
   );
   $.each(response.users, function (index, user) {
-    var activeUserId = getCookieValue("userId");
-    var editUserLink = createEditUserLink(user.id);
-    var deleteUserLink = "";
-    if (user.role != 0 && user.id != activeUserId) {
-      deleteUserLink = createDeleteUserLink(user.id);
-    }
-    var row = $("<tr />").append(
-      $("<td />", { text: user.id }),
-      $("<td />", { text: user.username }),
-      $("<td />", { text: user.last_name }),
-      $("<td />", { text: user.first_name }),
-      $("<td />", { text: user.email }),
-      $("<td />", { text: user.role }),
-      $("<td />").append(editUserLink, deleteUserLink)
-    );
-
+    var row = buildUserTableRow(user);
     $("#users-table-body").append(row);
     $("#add-new-user-button").click(function (event) {
       $("#user-editor-title").text("Neue Benutzer");
@@ -112,6 +142,25 @@ const displayUsers = function (response) {
       $("#edit-user-dialog").modal("show");
     });
   });
+};
+
+const buildUserTableRow = function (user) {
+  var activeUserId = getCookieValue("userId");
+  var editUserLink = createEditUserLink(user.id);
+  var deleteUserLink = "";
+  if (user.role != 0 && user.id != activeUserId) {
+    deleteUserLink = createDeleteUserLink(user.id);
+  }
+  var row = $("<tr />").append(
+    $("<td />", { text: user.id }),
+    $("<td />", { text: user.username }),
+    $("<td />", { text: user.last_name }),
+    $("<td />", { text: user.first_name }),
+    $("<td />", { text: user.email }),
+    $("<td />", { text: user.role }),
+    $("<td />").append(editUserLink, deleteUserLink)
+  );
+  return row;
 };
 
 const createEditUserLink = function (userid) {
@@ -423,4 +472,8 @@ const buildLoginForm = function () {
         })
     )
   );
+};
+
+const randomInt = function (max, min) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 };

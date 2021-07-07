@@ -70,3 +70,8 @@
   padding: 1px;
   border: 1px solid #888;
 }
+
+.thumbnail-wrapper {
+  width: 50px;
+  height: auto;
+}
