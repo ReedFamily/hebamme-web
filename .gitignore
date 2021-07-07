@@ -8,3 +8,4 @@ backend/conf/sql/default-insert.sql
 en/index.html
 /mydashboard/
 
+*.JPG
