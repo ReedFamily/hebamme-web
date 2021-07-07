@@ -60,3 +60,13 @@
   display: block;
   font-size: 0.75em;
 }
+
+.linkchar {
+  display: inline-block;
+  padding: 1px;
+}
+
+.linkchar:hover {
+  padding: 1px;
+  border: 1px solid #888;
+}

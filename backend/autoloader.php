@@ -13,13 +13,16 @@
         "api_handler" => "api_handler.php",
         "api_token" => "api_token.php",
         "user_login" => "user_login.php",
+        "instructors_processor" => "instructors_processor.php",
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
         "db_event" => "db_classes/db_events.php",
         "db_user" => "db_classes/db_user.php",
+        "db_instructors" => "db_classes/db_instructors.php",
 //      Exception classes        
         "UserValidationException" => "exceptions/user_validation_exception.php",
+        "InstuctorException" => "exceptions/instructor_exception.php",
         "log_util" => "logging/log_util.php",
         "log_level" => "logging/log_level.php"
     ];
