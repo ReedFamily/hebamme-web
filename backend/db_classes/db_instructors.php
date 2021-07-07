@@ -12,12 +12,12 @@
         }
 
         public function listAllInstructors(){
-            $query = "SELECT `id`, `last_name`, `first_name`, `email`, `phone`, `mobile`, `image_url`, `description`, `position` FROM `instructor`";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position` FROM `instructor`";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
                 $stmt->execute();
-                $instructors = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $instructors = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["instructors"] = $instructors;
             }catch(Exception $e){
@@ -50,7 +50,7 @@
         }
 
         public function getInstructorById($id){
-            $query = "SELECT `id`, `last_name`, `first_name`, `email`, `phone`, `mobile`, `image_url`, `description`, `position` FROM `instructor` WHERE `id` = :id";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position` FROM `instructor` WHERE `id` = :id";
             $params = ["id" => $id];
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
