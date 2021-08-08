@@ -48,7 +48,8 @@ const displayInstructors = function (response) {
           $("<th />", { scope: "col", text: "ID" }),
           $("<th />", { scope: "col", text: "Bild" }),
           $("<th />", { scope: "col", text: "Name" }),
-          $("<th />", { scope: "col", text: "Vorname" })
+          $("<th />", { scope: "col", text: "Vorname" }),
+          $("<th />", { scope: "col", text: "AktionenS" })
         ),
         $("<tbody />", { id: "instructors-table-body" }),
         $("<tfoot />", { id: "instructors-table-footer" }).append(
@@ -63,26 +64,101 @@ const displayInstructors = function (response) {
       )
     )
   );
+  // set new instructor action
+  $("#add-new-instructor-button").click(function (event) {
+    $("#instructor-editor-title").text("Neue Dozentin");
+    $("body").off("#save-instructor-button", editInstructorEvent);
+    $("body").on("#save-instructor-button", newInstructorEvent);
+    $("#edit-instructor-form").trigger("reset");
+    $("#edit-instructor-dialog").modal("show");
+  });
+
+  // display instructors
   $.each(response.instructors, function (index, instructor) {
     var row = buildInstructorTableRow(instructor);
     $("#instructors-table-body").append(row);
   });
 };
 
+const editInstructorEvent = function (event) {};
+
+const newInstructorEvent = function (event) {};
+
 const buildInstructorTableRow = function (instructor) {
   var thumbnail = buildThumbnail(instructor);
+  var editLink = createEditInstructorLink(instructor);
+  var deleteLink = createDeleteInstructorLink(instructor);
   var row = $("<tr />").append(
     $("<td />", { text: instructor.id }),
     $("<td />").append(thumbnail),
     $("<td />", { text: instructor.lastname }),
-    $("<td />", { text: instructor.firstname })
+    $("<td />", { text: instructor.firstname }),
+    $("<td />").append(editLink, deleteLink)
   );
   return row;
 };
 
+const createEditInstructorLink = function (instructor) {
+  var linkId = "link-edit-instructor-" + instructor.id;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    editInstructor(this);
+  });
+  $(link).attr("data-instructor", instructor.id);
+  $(link).append($("<i />", { class: "fas fa-user-edit linkchar" }));
+  return link;
+};
+
+const createDeleteInstructorLink = function (instructor) {
+  var linkId = "link-delete-instructor-" + instructor.id;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    deleteInstructor(this);
+  });
+  $(link).attr("data-instructor", instructor.id);
+  $(link).append($("<i />", { class: "fas fa-user-slash linkchar" }));
+  return link;
+};
+
+const editInstructor = function (ele) {
+  var id = $(ele).data("instructor");
+};
+
+const deleteInstructor = function (ele) {
+  var id = $(ele).data("instructor");
+  var url = "../backend/rest.php?apiFunc=getInstructor&id=" + id;
+  $.get(url, function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      $("#delete-instructor-acknowledge-button").attr(
+        "data-id",
+        response.user.id
+      );
+      $("#delete-instructor").text(
+        "'" + response.user.last_name + ", " + response.user.first_name + "'"
+      );
+      $("#delete-instructor-dialog").modal("show");
+    } else {
+      console.log(response);
+    }
+  });
+};
+
+const sendDeleteInstructor = function (id) {
+  var url = "../backend/rest.php?apiFunc=deleteInstructor&id=" + id;
+  $.get(url, function (res) {
+    var response = JSON.parse(res);
+    if (response.status == 200) {
+      displayInstructors(response);
+    } else {
+      console.log(response);
+    }
+  });
+};
+
 const buildThumbnail = function (instructor) {
   var img;
-  if (instructor.imageurl) {
+  if (instructor && instructor.imageurl) {
     img = $("<img />", {
       src: instructor.imageurl,
       alt: "Profile picture for instructor " + instructor.id,
@@ -127,20 +203,22 @@ const displayUsers = function (response) {
       )
     )
   );
+  // set event for new user
+  $("#add-new-user-button").click(function (event) {
+    $("#user-editor-title").text("Neue Benutzer");
+    $("#editInputPassword")
+      .removeAttr("data-toggle")
+      .removeAttr("data-placement")
+      .attr("title");
+    $("body").off("click", "#edit-user-save-button", editUserEvent);
+    $("body").on("click", "#edit-user-save-button", newUserEvent);
+    $("#edit-user-form").trigger("reset");
+    $("#edit-user-dialog").modal("show");
+  });
+  // Display users
   $.each(response.users, function (index, user) {
     var row = buildUserTableRow(user);
     $("#users-table-body").append(row);
-    $("#add-new-user-button").click(function (event) {
-      $("#user-editor-title").text("Neue Benutzer");
-      $("#editInputPassword")
-        .removeAttr("data-toggle")
-        .removeAttr("data-placement")
-        .attr("title");
-      $("body").off("click", "#edit-user-save-button", editUserEvent);
-      $("body").on("click", "#edit-user-save-button", newUserEvent);
-      $("#edit-user-form").trigger("reset");
-      $("#edit-user-dialog").modal("show");
-    });
   });
 };
 
@@ -253,14 +331,12 @@ const sendEditUser = function (editUserData) {
 
 const createDeleteUserLink = function (userid) {
   var linkId = "link-delete-user-" + userid;
-  var link = $("<a />", { id: linkId, text: " ", class: "linkchar" }).click(
-    function (event) {
-      event.preventDefault();
-      deleteUser(this);
-    }
-  );
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    deleteUser(this);
+  });
   $(link).attr("data-userid", userid);
-  $(link).append($("<i />", { class: "fas fa-user-slash" }));
+  $(link).append($("<i />", { class: "fas fa-user-slash linkchar" }));
   return link;
 };
 

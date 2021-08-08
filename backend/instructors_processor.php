@@ -70,6 +70,7 @@
             if($result["status"] == 200){
                 $result = $this->listInstructors();
             }
+            return $result;
         }
 
         private function validateInstructorObject($instructor){
