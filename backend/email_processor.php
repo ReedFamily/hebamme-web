@@ -26,12 +26,12 @@
         public function send_contact($params){
             if(isset($params["post_body"])){
                 
-                $res = $this->sendMessage($this->buildContactMessageBody($params["post_body"]));
-
+                $res = $this->sendMessage($this->buildContactMessageBody($params["post_body"]), "von Kontaktformular");
             }else{
                 $res = api_response::getResponse(500);
                 $res["extra"] = "post body wasn't properly set";
                 $res["params"] = $params;
+                log_util::logEntry("error", "No post body provided");
             }
             return $res;
         }
@@ -45,7 +45,7 @@
             return $this->sendMessage($message);
         }
 
-        private function sendMessage($message, $sendTo = null){
+        private function sendMessage($message, $subject, $sendTo = null){
            
             if(!isset($sendTo)){
                 $sendTo = CONST_SEND_TO;
@@ -53,16 +53,19 @@
             $msg = wordwrap($message, 70);
             $res;
             try{
-                $sent = mail($sendTo, "von Kontaktformular", $msg, $this->headers);
+                $sent = mail($sendTo, $subject, $msg, $this->headers);
                 if($sent == true){
                     $res = api_response::getResponse(200);
+                    log_util::logEntry("debug", "Email message Sent");
                 }else{
                     $res = api_response::getResponse(500);
                     $res["returnValue"] = "Message Not Sent";
+                    log_util::logEntry("error","Email message not sent");
                 }
             }catch(Exception $e){
                 $res = api_response::getResponse(500);
                 $res["exception"] = $e;
+                log_util::logEntry("error", $e->getMessage());
             }
             return $res;
         }
@@ -72,6 +75,15 @@
             $post = new post_body_handler($postBody);
             include("messages/contact-email.php");
             return $messageBody;
+        }
+
+    }
+
+    class link_builder{
+        
+        private $token;
+        public function __construct($token){
+            $this->token = $token;
         }
 
     }
