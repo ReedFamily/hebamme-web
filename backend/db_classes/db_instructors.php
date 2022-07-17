@@ -30,10 +30,39 @@
         }
 
         public function createInstructor($instructor){
-            $query = "INSERT INTO `instructor` (`last_name`, `first_name`, `email`, `phone`, `mobile`, `image_url`, `description`, `position`) VALUES (:lastname, :firstname, :email, :phone, :mobile, :thumbnail, :descript, :position)";
-            $stmt = $this->pdo->prepare($query);
+
+            $colnames = "`last_name`, `first_name`, `email`";
+            $paramNames = ":lastname, :firstname, :email";
+            
+            if(isset($instructor["phone"])){
+                $colnames .= ", `phone`";
+                $paramNames .= ", :phone";
+            }
+            if(isset($instructor["mobile"])){
+                $colnames .= ", `mobile`";
+                $paramNames .= ", :mobile";
+            }
+            if(isset($instructor["imageurl"])){
+                $colnames .= ", `image_url`";
+                $paramNames .= ", :imageurl";
+            }
+            if(isset($instructor["description"])){
+                $colnames .= ", `description`";
+                $paramNames .= ", :description";
+            }
+            if(isset($instructor["position"])){
+                $colnames .= ", `position`";
+                $paramNames .= ", :position";
+            }
+
+            $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";
+            
             $result = api_response::getResponse(500);
+            
+           
+           
             try{
+                $stmt = $this->pdo->prepare($query);
                 $this->pdo->beginTransaction();
                 $stmt->execute($instructor);
                 $this->pdo->commit();
@@ -41,6 +70,7 @@
                 $result["message"] = "Instructor " . $instructor['firstname'] . " " . $instructor["lastname"] . " created.";
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());
+                log_util::logEntry("error", $query);
                 $this->pdo->rollback();
                 $result["exception"] = $e->getMessage();
             }finally{
@@ -59,7 +89,7 @@
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 if(is_array($row)){
                     $result = api_response::getResponse(200);
-                    $result["user"] = $row;
+                    $result["instructor"] = $row;
                 }
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());
@@ -74,7 +104,7 @@
         public function updateInstructor($instructor){
             if(!isset($instructor["id"])){
                 $result = api_response::getResponse(400);
-                $result["message"] = "No id number assigned to user. Create user should be used.";
+                $result["message"] = "No id number assigned to Instructor. Create Instructor should be used.";
                 return $result;
             }
 

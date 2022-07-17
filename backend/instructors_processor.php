@@ -21,6 +21,9 @@
             }
 
             $db = new db_instructors();
+            if(isset($instructor["id"])){
+                unset($instructor["id"]);
+            }
             $result = $db->createInstructor($instructor);
             if($result["status"] == 200){
                 $result = $this->listInstructors();
@@ -74,13 +77,19 @@
         }
 
         private function validateInstructorObject($instructor){
+
             if(!isset($instructor["lastname"]) || empty(trim($instructor["lastname"]))){
                 throw new InstructorException("lastname is empty");
             }
             if(!isset($instructor["firstname"]) || empty(trim($instructor["firstname"]))){
                 throw new InstructorException("firstname is empty");
             }
+            if(!isset($instructor["email"]) || empty(trim($instructor["email"]))){
+                throw new InstructorException("email is empty");
+            }
+            if((!isset($instructor["phone"]) || empty(trim($instructor["phone"]))) && (!isset($instructor["mobile"]) || empty(trim($instructor["mobile"])))){
+                throw new InstructorException("Phone Contact missing. Needs either phone or mobile");
+            }
         }
-
     }
 ?>
