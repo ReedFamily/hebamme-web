@@ -11,6 +11,9 @@
   <title>Hebammenpraxis Moosburg: Admin</title>
   <script type="text/javascript" src="../js/jquery-3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/dto.js"></script>
+  <script type="text/javascript" src="js/users.js"></script>
+  <script type="text/javascript" src="js/instructors.js"></script>
   <script type="text/javascript" src="js/site.js"></script>
   <script src="../fontawesome-free-5.15.3-web/js/all.min.js"></script>
   <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
@@ -29,6 +32,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- user form -->
         <div class="modal-body">
           <form id="edit-user-form" class="form">
             <div class="row">
@@ -71,6 +75,7 @@
     </div>
     </script>
   </div>
+  <!-- Delete user dialog -->
   <div id="delete-user-dialog" tabindex="-1" class="modal" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -91,6 +96,7 @@
       </div>
     </div>
   </div>
+  <!-- Instructor dialog -->
   <div id="edit-instructor-dialog" tabindex="-1" class="modal" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -126,8 +132,11 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12" id="imageDisplay">
+                    <input id="editInstructorThumbnailUrl" type="hidden" />
                     <div class="col-12" id="imagewrapper">
-
+                      <div class="thumbnail-wrapper">
+                        <img src="./img/avatar-1.svg" alt="Default profile picture for Instructor" class="thumbnail-wrapper" />
+                      </div>
                     </div>
                     <div class="col-12" id="upload">
                       <input type="file" name="instructor-image" />
@@ -152,7 +161,7 @@
                 <input id="inputInstructorMobile" type="tel" pattern="0[1-9]{1}[0-9]{3}/[0-9]{3-7}" class="form-control-sm" />
               </div>
               <div class="form-group col-6">
-                <label for="inputInstructorPosition" class="dialog-form-label"></label>
+                <label for="inputInstructorPosition" class="dialog-form-label">Stelle</label>
                 <input id="inputInstructorPosition" type="text" class="form-control-sm" />
               </div>
             </div>
