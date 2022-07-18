@@ -8,7 +8,7 @@
     class instructors_processor{
         public function createInstructor($params){
             if(!isset($params["post_body"])){
-                return api_response::getResposne(400);
+                return api_response::getResponse(400);
             }
             $instructor = $params["post_body"];
             try{
