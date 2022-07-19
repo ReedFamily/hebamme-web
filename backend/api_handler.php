@@ -52,7 +52,8 @@
                 'newInstructor' => ['class' =>'instructors_processor', 'function_name'=>'createInstructor'],
                 'updateInstructor' => ['class' => 'instructors_processor', 'function_name'=>'updateInstructor'],
                 'getInstructor' =>['class' => 'instructors_processor', 'function_name'=>'getInstructor'],
-                'delInstructor' =>['class' => 'instructors_processor', 'function_name' =>'deleteInstructor']
+                'delInstructor' =>['class' => 'instructors_processor', 'function_name' =>'deleteInstructor'],
+                'uploadimg' =>['class' => 'upload_processor', 'function_name' => 'uploadAvatar']
             ];
 
         }
