@@ -39,7 +39,7 @@
             $this->function_map = [ 
                 'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
                 'tokenValid' => ['class'=>'api_token', 'function_name'=> 'tokenValid'],
-                'sendContact' => ['class' => 'email_sender', 'function_name' => 'send_contact'],
+                'sendContact' => ['class' => 'email_processor', 'function_name' => 'send_contact'],
                 'listUsers' =>['class' => 'user_login', 'function_name' =>'listUsers'],
                 'getUser' => ['class' => 'user_login', 'function_name' => 'getUserById'],
                 'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
@@ -47,7 +47,13 @@
                 'deleteUser' =>['class'=>'user_login', 'function_name' => 'deleteUser'],
                 'logout' =>['class'=>'user_login','function_name' => 'logoutUser'],
                 'login' => ['class' => 'user_login', 'function_name' => 'loginUser' ],
-                'testMessage' => ['class'=>'email_sender' , 'function_name' => 'sendTestMessage']
+                'testMessage' => ['class'=>'email_processor' , 'function_name' => 'sendTestMessage'],
+                'listInstructors' => ['class' => 'instructors_processor', 'function_name'=>'listInstructors'],
+                'newInstructor' => ['class' =>'instructors_processor', 'function_name'=>'createInstructor'],
+                'updateInstructor' => ['class' => 'instructors_processor', 'function_name'=>'updateInstructor'],
+                'getInstructor' =>['class' => 'instructors_processor', 'function_name'=>'getInstructor'],
+                'delInstructor' =>['class' => 'instructors_processor', 'function_name' =>'deleteInstructor'],
+                'uploadimg' =>['class' => 'upload_processor', 'function_name' => 'uploadAvatar']
             ];
 
         }

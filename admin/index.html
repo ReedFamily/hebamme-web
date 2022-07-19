@@ -11,6 +11,9 @@
   <title>Hebammenpraxis Moosburg: Admin</title>
   <script type="text/javascript" src="../js/jquery-3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/dto.js"></script>
+  <script type="text/javascript" src="js/users.js"></script>
+  <script type="text/javascript" src="js/instructors.js"></script>
   <script type="text/javascript" src="js/site.js"></script>
   <script src="../fontawesome-free-5.15.3-web/js/all.min.js"></script>
   <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
@@ -29,6 +32,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <!-- user form -->
         <div class="modal-body">
           <form id="edit-user-form" class="form">
             <div class="row">
@@ -71,6 +75,7 @@
     </div>
     </script>
   </div>
+  <!-- Delete user dialog -->
   <div id="delete-user-dialog" tabindex="-1" class="modal" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -90,7 +95,111 @@
         </div>
       </div>
     </div>
+  </div>
+  <!-- Instructor dialog -->
+  <div id="edit-instructor-dialog" tabindex="-1" class="modal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instructor-editor-title">Dozentin bearbeiten</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-instructor-form" class="form">
+            <div class="row" id="instructor-id">
+              <div class="col-6">
+                <div class="row">
+                  <div class="form-group col-12">
+                    <label for="editInstructorId" class="dialog-form-label">Dozentin ID (nur lesen)</label>
+                    <input id="editInstructorId" type="text" readonly="true" class="form-control-sm" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-12">
+                    <label for="editInstructorLastname" class="dialog-form-label">Name</label>
+                    <input id="editInstructorLastname" type="text" class="form-control-sm" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-12">
+                    <label for="editInstructorFirstname" class="dialog-form-label">Vorname</label>
+                    <input id="editInstructorFirstname" type="text" class="form-control-sm" />
+                  </div>
+                </div>
+              </div>
 
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-12" id="imageDisplay">
+                    <input id="editInstructorThumbnailUrl" type="hidden" />
+                    <div class="col-12" id="imagewrapper">
+                      <div id="avatar-wrapper" class="thumbnail-wrapper">
+                        <img src="./img/avatar-1.svg" alt="Default profile picture for Instructor" class="thumbnail-wrapper" />
+                      </div>
+                    </div>
+                    <div class="col-12" id="upload">
+                      <input type="file" id="avatar-upload" name="instructor-image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="inputInstructorEmail" class="dialog-form-label">Email Adresse</label>
+                <input id="inputInstructorEmail" type="email" class="form-control-sm" />
+              </div>
+              <div class="form-group col-6">
+                <label for="inputInstructorPhone" class="dialog-form-label">Telefon</label>
+                <input id="inputInstructorPhone" type="tel" pattern="0[1-9]{1}[0-9]{1-3}(/)[0-9]{3-7}" class="form-control-sm" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="inputInstructorMobile" class="dialog-form-label">Mobilfon</label>
+                <input id="inputInstructorMobile" type="tel" pattern="0[1-9]{1}[0-9]{3}(/)[0-9]{3-7}" class="form-control-sm" />
+              </div>
+              <div class="form-group col-6">
+                <label for="inputInstructorPosition" class="dialog-form-label">Stelle</label>
+                <input id="inputInstructorPosition" type="text" class="form-control-sm" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-12">
+                <label for="inputInstructorDescription" class="dialog-form-label">Beschreibung</label>
+                <textarea id="inputInstructorDescription" class="form-control-sm col-12" rows="8"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" id="edit-instructor-save-button">Bestätigen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="delete-instructor-dialog" tabindex="-1" class="modal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Dozentin löschen</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die Dozentin <span id="delete-instructor">{INSTRUCTOR}</span>?</p>
+          <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-instructor-acknowledge-button">Bestätigen</button>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Rest of the site goes here -->
   <header>
@@ -168,6 +277,11 @@
 
 
   <script type="text/javascript">
+
+    $("#delete-instructor-acknowledge-button").click(function (event) {
+      var id = $(this).data("id");
+      sendDeleteInstructor(id);
+    })
 
     $("#delete-user-acknowledge-button").click(function (event) {
       var id = $(this).data("id");

@@ -1,3 +1,7 @@
+input:invalid {
+  border-color: #ff0000;
+}
+
 .hidden {
   display: none;
 }
@@ -12,6 +16,14 @@
 
 #logout-link {
   cursor: default;
+}
+
+#imagewrapper {
+  width: 190px;
+  height: auto;
+  border: 1px inset black;
+  padding: 2px;
+  margin: 1px;
 }
 
 .sidebar {
@@ -60,3 +72,19 @@
   display: block;
   font-size: 0.75em;
 }
+
+.linkchar {
+  display: inline-block;
+  padding: 1px;
+}
+
+.linkchar:hover {
+  padding: 1px;
+  border: 1px solid #888;
+}
+
+.thumbnail-wrapper {
+  width: 50px;
+  height: auto;
+}
+

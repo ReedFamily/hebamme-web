@@ -5,9 +5,15 @@
         die;
     }
 
-    $emailMessage = 
+    $messageBody = 
 <<<EOT
 
+Es wurde eine Anfrage zum Zurücksetzen Ihres Passworts gestellt. 
+Wenn Sie diese Anfrage gestellt haben, klicken Sie bitte auf den unten stehenden Link. 
+Wenn Sie kein Zurücksetzen des Kennworts angefordert haben, ignorieren Sie diese Meldung. 
+Der Link ist ab dem Zeitpunkt der Anfrage nur eine Stunde lang gültig.
+
+{$linkBuilder->getRecoveryLink()}
 
 
 EOT

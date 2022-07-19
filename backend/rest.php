@@ -31,6 +31,7 @@
 
         $postBody = json_decode(file_get_contents("php://input"), true);
         $functionParams["post_body"] = $postBody;
+        $functionParams["files"] = $_FILES;
 
         $cApiHandler = new api_handler();
         $res;

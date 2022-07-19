@@ -43,6 +43,9 @@
                 return api_response::getResponse(400);
             }
             $user = $params["post_body"];
+            if(!isset($user["id"]) || empty(trim($user["id"]))){
+                return api_response::getResponse(400);
+            }
             if(isset($user["password"])){
                 $clearPass = $user["password"];
                 $user["password"] = $this->hashPass($clearPass);
@@ -65,12 +68,8 @@
             if($result["status"] == 200){
                 $dbToken = new db_token();
                 $result = $dbToken->deleteTokensByUserId($userId);
+                 $result = $this->listUsers();
             }
-            if($result["status"] == 200){
-                $result = $this->listUsers();
-            }
-            
-        
             return $result;
         }
 
