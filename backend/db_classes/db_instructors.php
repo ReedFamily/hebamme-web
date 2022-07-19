@@ -107,11 +107,36 @@
                 $result["message"] = "No id number assigned to Instructor. Create Instructor should be used.";
                 return $result;
             }
+            $setValues = "`last_name` = :lastname, `first_name` = :firstname";
+            if(isset($instructor["email"])){
+                $setValues .= ", `email` = :email";
+            }
+            if(isset($instructor["phone"])){
+                $setValues .= ", `phone` = :phone";
+            }
+            if(isset($instructor["mobile"])){
+                $setValues .= ", `mobile` = :mobile";
+            }
+            if(isset($instructor["imageurl"])){
+                $setValues .=", `image_url` = :imageurl";
+            }
+            if(isset($instructor["description"])){
+                $setValues .= ", `description` = :description";
+            }else{
+                log_util::logEntry("error", "No description found");
+            }
+            if(isset($instructor["position"])){
+                $setValues .= ", `position` = :position";
+            }
 
-            $query = "UPDATE `instructor` SET `last_name` = :lastname, `first_name` = :firstname, `email` = :email, `phone` = :phone, `mobile` = :mobile, `image_url` = :thumbnail, `description` = :descript, `position` = :position WHERE `id` = :id";
-            $stmt = $this->pdo->prepare($query);
-            $result = api_response::getResponse(500);
+
+            $query = "UPDATE `instructor` SET $setValues WHERE `id` = :id";
+            
+
+
             try{
+                $stmt = $this->pdo->prepare($query);
+                $result = api_response::getResponse(500);
                 $this->pdo->beginTransaction();
                 $stmt->execute($instructor);
                 $this->pdo->commit();
