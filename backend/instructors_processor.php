@@ -41,7 +41,7 @@
                 return api_response::getResponse(400);
             }
             $db = new db_instructors();
-            $result = $db->createInstructor($instructor);
+            $result = $db->updateInstructor($instructor);
             if($result["status"] == 200){
                 $result = $this->listInstructors();
             }
