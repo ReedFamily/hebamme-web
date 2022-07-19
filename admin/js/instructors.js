@@ -37,6 +37,51 @@ const displayInstructors = function (response) {
     var row = buildInstructorTableRow(instructor);
     $("#instructors-table-body").append(row);
   });
+
+  $("#avatar-upload").change(function () {
+    var len = $(this).length;
+    var filedat = $(this)[0].files[0];
+    var ext = filedat.name.split(".").pop().toLowerCase();
+    if (jQuery.inArray(ext, ["png", "jpg", "jpeg"]) == -1) {
+      alert("Invalid Image File");
+      return;
+    }
+    var form_data = new FormData();
+
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(filedat);
+    var fsize = filedat.size || filedat.fileSize;
+    if (fsize > 2000000) {
+      alert("Image File Size is very big");
+    } else {
+      form_data.append("file", filedat);
+      $.ajax({
+        url: "../backend/rest.php?apiFunc=uploadimg",
+        method: "POST",
+        data: form_data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function () {
+          $("#avatar-wrapper").empty();
+          $("#avatar-wrapper").append(
+            $("<label />", {
+              class: "text-success",
+              text: "Image Uploading ...",
+            })
+          );
+        },
+        success: function (data) {
+          var payload = JSON.parse(data);
+          var img = buildThumbnailFromUpload(payload);
+          $("#avatar-wrapper").empty();
+          $("#avatar-wrapper").append(img);
+          //$("#avatar").attr("src", data.url);
+          $("#editInstructorThumbnailUrl").val(payload.imageurl);
+        },
+      });
+    }
+  });
 };
 
 const buildInstructorTableRow = function (instructor) {
@@ -85,11 +130,11 @@ const editInstructor = function (ele) {
       $("#editInstructorId").val(response.instructor.id);
       $("#editInstructorLastname").val(response.instructor.lastname);
       $("#editInstructorFirstname").val(response.instructor.firstname);
-      $("#editInstructorEmail").val(response.instructor.email);
-      $("#editInstructorPhone").val(response.instructor.phone);
-      $("#editInstructorMobile").val(response.instructor.mobile);
-      $("#editInstructorPosition").val(response.instructor.position);
-      $("#editInstructorDescription").val(response.instructor.description);
+      $("#inputInstructorEmail").val(response.instructor.email);
+      $("#inputInstructorPhone").val(response.instructor.phone);
+      $("#inputInstructorMobile").val(response.instructor.mobile);
+      $("#inputInstructorPosition").val(response.instructor.position);
+      $("#inputInstructorDescription").val(response.instructor.description);
       $("#editInstructorThumbnailUrl").val(response.instructor.imageurl);
       var thumb = buildThumbnail(response.instructor);
       $("#imagewrapper").empty();
@@ -104,6 +149,7 @@ const editInstructor = function (ele) {
         "#edit-instructor-save-button",
         editInstructorEvent
       );
+      $("#edit-instructor-dialog").modal("show");
     } else {
       console.log(response);
     }
@@ -160,11 +206,11 @@ const editInstructorEvent = function (event) {
   editInstructorData.id = $("#editInstructorId").val();
   editInstructorData.firstname = $("#editInstructorFirstname").val();
   editInstructorData.lastname = $("#editInstructorLastname").val();
-  editInstructorData.email = $("#editInstructorEmail").val();
-  editInstructorData.phone = $("#editInstructorPhone").val();
-  editInstructorData.mobile = $("#editInstructorMobile").val();
-  editInstructorData.position = $("#editInstructorPosition").val();
-  editInstructorData.description = $("#editInstructorDescription").val();
+  editInstructorData.email = $("#inputInstructorEmail").val();
+  editInstructorData.phone = $("#inputInstructorPhone").val();
+  editInstructorData.mobile = $("#inputInstructorMobile").val();
+  editInstructorData.position = $("#inputInstructorPosition").val();
+  editInstructorData.description = $("#inputInstructorDescription").val();
   editInstructorData.imageurl = $("#editInstructorThumbnailUrl").val();
   sendEditInstructor(editInstructorData);
   $("body").off("click", "#edit-instructor-save-button", editInstructorEvent);
@@ -214,13 +260,26 @@ const sendDeleteInstructor = function (id) {
   });
 };
 
+const buildThumbnailFromUpload = function (payload) {
+  console.log(payload);
+  var img = $("<img />", {
+    src: "../" + payload.imageurl,
+    alt: "Profile Picture From Upload",
+    class: "thumbnail-wrapper",
+    id: "avatar",
+  });
+
+  return img;
+};
+
 const buildThumbnail = function (instructor) {
   var img;
   if (instructor && instructor.imageurl) {
     img = $("<img />", {
-      src: instructor.imageurl,
+      src: "../" + instructor.imageurl,
       alt: "Profile picture for instructor " + instructor.id,
       class: "thumbnail-wrapper",
+      id: "avatar",
     });
   } else {
     var num = randomInt(5, 1);
@@ -228,8 +287,12 @@ const buildThumbnail = function (instructor) {
       src: "./img/avatar-" + num + ".svg",
       alt: "Default profile picture for instructor",
       class: "thumbnail-wrapper",
+      id: "avatar",
     });
   }
-  var wrapper = $("<div />", { class: "thumbnail-wrapper" }).append(img);
+  var wrapper = $("<div />", {
+    class: "thumbnail-wrapper",
+    id: "avatar-wrapper",
+  }).append(img);
   return wrapper;
 };
