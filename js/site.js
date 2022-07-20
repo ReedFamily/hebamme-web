@@ -212,17 +212,14 @@ form.addEventListener("submit", (e) => {
         var url =
           "backend/rest.php?apiToken=" + apiToken + "&apiFunc=sendContact";
         jQuery.post(url, JSON.stringify(formData), function (res) {
-          console.log(res);
           response = JSON.parse(res);
           if (response.status == 200) {
-            console.log(response);
             form.reset();
             form.remove();
             document.getElementById("thank-you").classList.remove("hidden");
           } else {
             // error response
             document.getElementById("error-message").classList.remove("hidden");
-            console.log("Oops something broke ");
             console.log(response);
           }
         });
