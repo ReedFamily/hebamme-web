@@ -78,7 +78,7 @@ const buildSidebarNav = function () {
       })
         .append(
           $("<i />", { class: "fas fa-chalkboard-teacher" }),
-          $("<span />", { text: " Dozentinnen" })
+          $("<span />", { text: " Das Team" })
         )
         .click(function (event) {
           event.preventDefault();
@@ -91,15 +91,6 @@ const buildSidebarNav = function () {
             }
           });
         })
-    ),
-    $("<li />", { class: "nav-item" }).append(
-      $("<a />", {
-        id: "link-classes",
-        class: "nav-link",
-      }).append(
-        $("<i />", { class: "far fa-calendar-alt" }),
-        $("<span />", { text: " Kurse" })
-      )
     ),
     $("<li />", { class: "nav-item" }).append(
       $("<a />", {
