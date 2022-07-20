@@ -587,6 +587,13 @@ footer a {
   margin-top: 0.75em !important;
 }
 
+img.avatar{
+  max-width: 10rem;
+}
+
+.card{
+  max-width: 30rem;
+}
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } */
