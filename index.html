@@ -19,6 +19,7 @@
   <script src="./js/jquery-3.6.0/jquery.min.js"></script>
   <script src="./js/bootstrap/bootstrap.min.js"></script>
   <script src="./fontawesome-free-5.15.3-web/js/all.min.js"></script>
+  <script src="./js/dynamic.js"></script>
   <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
@@ -152,6 +153,9 @@
   <section class="standard" id="das-team">
     <div class="container">
       <h1>Das Team</h1>
+      <div id="team-content" class="container">
+
+      </div>
       <!-- <h2>Hebamme Evelin Altenbeck</h2>
       <div class="midwife-img-container">
         <img class="midwife-img" src="https://via.placeholder.com/900x600.png" alt="placeholder" />
@@ -609,7 +613,7 @@
     </div>
   </section>
 
-  <script src="./js/site.js" defer></script>
+
 
   <footer class="">
     <div class="container">
@@ -760,7 +764,8 @@
       </p>
     </div>
   </section>
-
+  <script src="./js/site.js" defer></script>
+  <script>getTeam();</script>
   <script>
     // SMOOTH SCROLLING PLUS OFFSET FOR FIXED NAV
     $('a[href*="#"]')
