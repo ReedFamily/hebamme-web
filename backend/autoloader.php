@@ -18,7 +18,6 @@
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
-        "db_event" => "db_classes/db_events.php",
         "db_user" => "db_classes/db_user.php",
         "db_instructors" => "db_classes/db_instructors.php",
 //      Exception classes        
