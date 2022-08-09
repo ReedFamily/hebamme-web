@@ -12,12 +12,14 @@
         "email_sender" => "email_processor.php",
         "api_handler" => "api_handler.php",
         "api_token" => "api_token.php",
+        "announcements_processor" => "announcements_processor.php",
         "user_login" => "user_login.php",
         "instructors_processor" => "instructors_processor.php",
         "upload_processor" => "upload_processor.php",
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
+        "db_announcements" => "db_classes/db_announcements.php",
         "db_user" => "db_classes/db_user.php",
         "db_instructors" => "db_classes/db_instructors.php",
 //      Exception classes        
