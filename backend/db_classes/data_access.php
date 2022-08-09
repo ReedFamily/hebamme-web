@@ -20,6 +20,10 @@
             }
         }
 
+        protected function prepareStatement($query){
+            return $this->pdo->prepare($query);
+        }
+
         protected function getPdo(){
             return $this->pdo;
         }
