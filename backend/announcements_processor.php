@@ -7,6 +7,8 @@
 
     class announcements_processor
     {
+        private $validLocations = array("main");
+
         public function createAnnouncement($params){
             $db_msg = new db_announcements();
             $result = $db_msg->create($params);
