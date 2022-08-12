@@ -127,10 +127,83 @@
         }
 
         public function update($params){
+            $result = api_response::getResponse(400);
+            if(!isset($params["id"])){
+                $result["exception"] = "Id value not provided.";
+                return $result;
+            }
+            $result = api_response::getResponse(500);
+            $setValues = array();
+            if(isset($params["level"])){
+                $setValues[] = "`level` = :level";
+            }
+            if(isset($params["location"])){
+                $setValues[] = "`location` = :location";
+            }
+            if(isset($params["createdBy"])){
+                $setValues[] = "`created_by` = :createdBy";
+            }
+            if(isset($params["createdDate"])){
+                $setValues[] = "`created_date` = :createdDate";
+            }
+            if(isset($params["permanent"])){
+                $setValues[] = "`permanent` = :permanent";
+            }
+            if(isset($params["startDate"])){
+                $setValues[] = "`start_date` = :startDate";
+            }
+            if(isset($params["endDate"])){
+                $setValues[] = "`end_date` = :endDate";
+            }
+            if(isset($params["message"])){
+                $setValues[] = "`message` = :message";
+            }
+            $query = "UPDATE `announcements` SET " + implode(",", $setValues) + " WHERE id = :id";
 
+            try{
+                $stmt = $this->prepareStatement($query);
+                $this->pdo->beginTransaction();
+                $stmt->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+                $result["message"] = "Announcement " . $params["id"] . " updated";
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+                $this->pdo->rollback();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
         }
 
         public function delete($params){
+            if(!isset($params["id"])){
+                $result = api_response::getResponse(400);
+                $result["exception"] = "The id value is missing";
+                return $result;
+            }
+
+            $query = "DELETE FROM `announcements` WHERE `id` = :id";
+            try{
+                $stmt = $this->prepareStatement($query);
+                $this->pdo->beginTransaction();
+                $stmt->execute($params);
+                $this->pdo->commit();
+                $result = api_response::getResponse(200);
+                $result["message"] = "Announcement with id " . $params["id"] . " deleted.";
+                
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+                $this->pdo->rollback();
+            }finally{
+                $this->disconnect();
+            }
+
+            return $result;
 
         }
 

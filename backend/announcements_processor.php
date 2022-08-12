@@ -8,31 +8,58 @@
     class announcements_processor
     {
         public function createAnnouncement($params){
-
+            $db_msg = new db_announcements();
+            $result = $db_msg->create($params);
+            if($result["status"] == 200){
+                return $this->listAllAnnouncements();
+            }
+           return $result;
         }
 
         public function deleteAnnouncement($params){
-
+            $db_msg = new db_announcements();
+            $result = $db_msg->delete($params);
+             if($result["status"] == 200){
+                return $this->listAllAnnouncements();
+            }
+           return $result;
         }
 
         public function updateAnnouncement($params){
-
+            $db_msg = new db_announcements();
+            $result = $db_msg->update($params);
+            if($result["status"] == 200){
+                return $this->listAllAnnouncements();
+            }
+           return $result;
         }
 
         public function listAnnouncementLocations(){
-
+            // TODO! Implementation
         }
 
         public function listAllAnnouncements(){
-
+            $db_msg = new db_announcements();
+            $result = $db_msg->listAll();
+            return $result;
         }
 
         public function getByAnnouncementById($params){
-            
+            $db_msg = new db_announcements();
+            $result = $db_msg->getById($params);
+            if($result["status"] == 200){
+                return $this->listAllAnnouncements();
+            }
+           return $result;
         }
 
         public function getAnnouncementsByLocation($params){
-
+            $db_msg = new db_announcements();
+            $result = $db_msg->getByLocation($params);
+            if($result["status"] == 200){
+                return $this->listAllAnnouncements();
+            }
+           return $result;
         }
 
     }
