@@ -39,7 +39,7 @@
             $query = "SELECT `id`, `username`, `password`, `email`, `role` FROM `api_user` WHERE `email` = :email";
             $params = ["email" => $userEmail];
             $statement = $this->pdo->prepare($query);
-            $result = api_response::getResponse(403);
+            $result = api_response::getResponse(404);
             try{
                 $statement->execute($params);
                 $row = $statement->fetch(PDO::FETCH_ASSOC);
@@ -86,7 +86,7 @@
         }
 
         public function listUsers(){
-            $query = "SELECT `id`, `username`, `last_name`, `first_name`, `email`, `role` FROM `api_user`";
+            $query = "SELECT `id`, `username`, `last_name`, `first_name`, `email`, `role` FROM `api_user` ORDER BY `id`";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{

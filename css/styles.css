@@ -334,8 +334,10 @@ section {
     }
   }
   #home {
-    background-color: unset;
-    background-image: url(https://via.placeholder.com/1280x720);
+    /*background-color: unset; */
+    background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
   }
   #home .blurred {
     backdrop-filter: blur(5px) !important;
@@ -594,6 +596,26 @@ img.avatar{
 .card{
   max-width: 30rem;
 }
+
+#angebote
+{
+  background-color: #869948;
+}
+
+#angebote div.container{
+  background-color: #F0F0F0;
+
+}
+
+#kontaktformular{
+  background-color: #F0F0F0;
+}
+
+#kontakt-sprechzeiten{
+  background-color: #869948;
+}
+
+/*background-color: #869948; */
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } */

@@ -31,7 +31,7 @@ const buildTeamCards = function (payload) {
       text: instructor.firstname + " " + instructor.lastname,
     });
     var img = jQuery("<img />", {
-      class: "card-img-top avatar",
+      class: "card-img-top midwife-img",
       src: "./" + instructor.imageurl,
     });
     var cardbody = jQuery("<div />", { class: "card-body" });
