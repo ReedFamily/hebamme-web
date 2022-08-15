@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html lang="de" xml:lang="de">
 
 <head>
@@ -112,42 +112,17 @@
       </div>
     </div>
   </section>
+  <section id="home-alerts" class="hidden">
+    <div class="container">
+      <h1>Wichtig!</h1>
+      <div id="home-high-alerts" class="danger-alerts-container site-message">
 
-  <section id="danger-alerts" class="alert-section hidden">
-    <div class="container">
-      <div id="danger-alerts-container" class="danger-alerts-container">
-        <!--<div class="alert alert-danger" role="alert">Basic danger alert</div>
-          <br />
-          <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Alert Heading</h4>
-            <p>
-              This is a more advanced danger alert with prettier formatting
-              involved.<br />Here is a bit more Text to visualize: Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Nihil, fugiat
-              adipisci. Incidunt illum mollitia id nesciunt, optio culpa
-              voluptatem ullam.
-            </p>
-          </div>-->
       </div>
-    </div>
-  </section>
-  <section id="warning-alerts" class="alert-section hidden">
-    <div class="container">
-      <div id="warning-alerts-container" class="warning-alerts-container">
-        <!--<div class="alert alert-warning" role="alert">
-            Basic warning alert
-          </div>
-          <br />
-          <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">Alert Heading</h4>
-            <p>
-              This is a more advanced warning alert with prettier formatting
-              involved.<br />Here is a bit more Text to visualize: Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Nihil, fugiat
-              adipisci. Incidunt illum mollitia id nesciunt, optio culpa
-              voluptatem ullam.
-            </p>
-          </div>-->
+      <div id="home-warn-alerts" class="warning-alerts-container site-message">
+
+      </div>
+      <div id="home-info-alerts" class="info-alerts-container site-message">
+
       </div>
     </div>
   </section>
@@ -155,30 +130,8 @@
     <div class="container">
       <h1>Das Team</h1>
       <div id="team-content" class="container">
-
-      </div>
-      <!-- <h2>Hebamme Evelin Altenbeck</h2>
-      <div class="midwife-img-container">
-        <img class="midwife-img" src="https://via.placeholder.com/900x600.png" alt="placeholder" />
-      </div>
-      <h2>Hebamme Regina Reed</h2>
-      <div class="midwife-img-container">
-        <img class="midwife-img" src="https://via.placeholder.com/900x600.png" alt="placeholder" />
-      </div> -->
-      <div class="row">
-        <div class="col-md-4">
-          <!--<div class="card" style="max-width: 100%; min-height:17rem; padding-left: 0.2em; padding-right: 0.2em;">
-            <img src="https://via.placeholder.com/900x600.png" class="card-img-top" alt="Placeholder">
-            <div class="card-body">
-              <h4 class="card-title"><span class="card-firstname">Vorname</span> <span class="card-lastname">Nachname</span></h5>
-                <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 0.5em !important;">Berufsbezeichnung
-                  </h6>
-                  <p class="card-text" style="margin-top: 1em !important;">
-                  <div class="team-kontakt">Telefon: 01234 / 1234 567</div>
-                  <div class="team-beschreibung">Kurze Beschreibung der Person</div>
-                  </p>
-            </div>
-          </div>-->
+        <div id="team-wrapper" class="row">
+          <!-- where the team cards are placed-->
         </div>
       </div>
     </div>
@@ -186,184 +139,116 @@
 
   <section class="standard" id="angebote">
     <div class="container">
-      <h1>Angebote</h1>
-      <p>
-        Hebammenhilfe beinhaltet die Beratung und Betreuung während
-        Schwangerschaft, Geburt, Wochenbett und Stillzeit. Die Hebamme ist
-        Ansprechpartnerin rund um die Versorgung von Mutter und Kind.
-        Hebammenhilfe kann von jeder schwangeren, gebärenden oder entbundenen
-        Frau in Anspruch genommen werden.
-      </p>
-      <ul>
-        <li>Beratung & Information</li>
-        <li>
-          Betreuung / Hilfe bei Schwangerschaftsbeschwerden und Vorwehen
-        </li>
-        <li>Schwangerenvorsorge</li>
-        <li>Geburtsvorbereitung</li>
-        <li>
-          Geburtshilfe wird von uns
-          <strong>nicht</strong> angeboten
-        </li>
-        <li>
-          Leistungen während des Wochenbetts (Wochenbettbetreuung bzw.
-          Nachsorge)
-        </li>
-        <li>Rückbildungsgymnastik</li>
-        <li>Zusätzliche Angebote</li>
-        <li>Weitere Informationen zur Hebammenhilfe</li>
-      </ul>
-      <p>
-        Sie können sich direkt an uns wenden. Die Kosten übernimmt die
-        Krankenkasse. Privatversicherte müssen sich über ihre
-        Leistungsansprüche bei ihrer privaten Krankenversicherung informieren.
-      </p>
-      <p>
-        <strong>Wir sind hier keine Praxisanleiterinnen für
-          Hebammenstudierende</strong>
-      </p>
-
+      <h1>Leistungen</h1>
+      <div class="sub-container">
+        <p>
+          Hebammenhilfe beinhaltet die Beratung und Betreuung während
+          Schwangerschaft, Geburt, Wochenbett und Stillzeit. Die Hebamme ist
+          Ansprechpartnerin rund um die Versorgung von Mutter und Kind.
+          Hebammenhilfe kann von jeder schwangeren, gebärenden oder entbundenen
+          Frau in Anspruch genommen werden.
+        </p>
+        <ul>
+          <li>Beratung & Information</li>
+          <li>
+            Betreuung / Hilfe bei Schwangerschaftsbeschwerden und Vorwehen
+          </li>
+          <li>Schwangerenvorsorge</li>
+          <li>Geburtsvorbereitung</li>
+          <li>
+            Geburtshilfe wird von uns
+            <strong>nicht</strong> angeboten
+          </li>
+          <li>
+            Leistungen während des Wochenbetts (Wochenbettbetreuung bzw.
+            Nachsorge)
+          </li>
+          <li>Rückbildungsgymnastik</li>
+          <li>Zusätzliche Angebote</li>
+          <li>Weitere Informationen zur Hebammenhilfe</li>
+        </ul>
+        <p>
+          Sie können sich direkt an uns wenden. Die Kosten übernimmt die
+          Krankenkasse. Privatversicherte müssen sich über ihre
+          Leistungsansprüche bei ihrer privaten Krankenversicherung informieren.
+        </p>
+        <p>
+          <strong>Wir sind hier keine Praxisanleiterinnen für
+            Hebammenstudierende</strong>
+        </p>
+      </div>
       <h2>Schwangerschaft</h2>
-      <ul>
-        <li>Geburtsvorbereitung</li>
-        <li>Schwangeren- und Mütter-Babytreff</li>
-        <li>Yoga in der Schwangerschaft</li>
-        <li>Säuglingspflege</li>
-      </ul>
-
+      <div class="sub-container">
+        <ul>
+          <li>Geburtsvorbereitung</li>
+          <li>Schwangeren- und Mütter-Babytreff</li>
+          <li>Yoga in der Schwangerschaft</li>
+          <li>Säuglingspflege</li>
+        </ul>
+      </div>
       <h2>Geburt</h2>
-      <p>
-        Aufgrund der aktuellen Versicherungssituation leider nicht möglich.
-      </p>
-
+      <div class="sub-container">
+        <p>
+          Aufgrund der aktuellen Versicherungssituation leider nicht möglich.
+        </p>
+      </div>
       <h2>Wochenbett</h2>
-      <ul>
-        <li>Hausbesuche durch die Hebamme innerhalb 20 km um Moosburg</li>
-        <li>Babymassage</li>
-        <li>Rückbildungsgymnastik</li>
-        <li>Ernährungskurse</li>
-        <li>Pekip</li>
-        <li>Erste Hilfe Kurse</li>
-        <li>Mütter- Babytreff</li>
-      </ul>
+      <div class="sub-container">
+        <ul>
+          <li>Hausbesuche durch die Hebamme innerhalb 20 km um Moosburg</li>
+          <li>Babymassage</li>
+          <li>Rückbildungsgymnastik</li>
+          <li>Ernährungskurse</li>
+          <li>Pekip</li>
+          <li>Erste Hilfe Kurse</li>
+          <li>Mütter- Babytreff</li>
+        </ul>
+      </div>
     </div>
   </section>
   <section class="standard" id="termine">
     <div class="container">
       <h1>Aktuelle Termine</h1>
-      <!--<div id="termine-placeholder">
-        <div class="row">
-          <div class="col-md-3 termine-column">
-            <div class="card termine-card">
-              <div class="card-body">
-                <h4 class="card-title text-nowrap">Geburtsvorbereitung</h5>
-                  <h5 class="card-subtitle mb-2 text-muted text-nowrap" style="margin-top: 0.5em !important;">Irgendein
-                    Untertitel
-                  </h5>
-                  <p class="card-text" style="margin-top: 1em !important;">
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 termine-column">
-            <div class="card termine-card">
-              <div class="card-body">
-                <h4 class="card-title text-nowrap">Geburtsvorbereitung</h5>
-                  <h5 class="card-subtitle mb-2 text-muted text-nowrap" style="margin-top: 0.5em !important;">Irgendein
-                    Untertitel
-                  </h5>
-                  <p class="card-text" style="margin-top: 1em !important;">
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 termine-column">
-            <div class="card termine-card">
-              <div class="card-body">
-                <h4 class="card-title text-nowrap">Geburtsvorbereitung</h5>
-                  <h5 class="card-subtitle mb-2 text-muted text-nowrap" style="margin-top: 0.5em !important;">Irgendein
-                    Untertitel
-                  </h5>
-                  <p class="card-text" style="margin-top: 1em !important;">
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 termine-column">
-            <div class="card termine-card">
-              <div class="card-body">
-                <h4 class="card-title text-nowrap">Geburtsvorbereitung</h5>
-                  <h5 class="card-subtitle mb-2 text-muted text-nowrap" style="margin-top: 0.5em !important;">Irgendein
-                    Untertitel
-                  </h5>
-                  <p class="card-text" style="margin-top: 1em !important;">
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  <div class="termine-line">Wochentag, DD.MM.YYYY hh:mm</div>
-                  </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
+      <div id="termine-placeholder">
+        <p>
+          Eine Platzhalter für Termine aus Hebamio.
+        </p>
+      </div>
     </div>
   </section>
   <section class="standard" id="kontakt-sprechzeiten">
     <div class="container">
       <h1>Kontakt / Sprechzeiten</h1>
       <h2>Telefonsprechstunde</h2>
-      <p>
-        <strong>Hier erreichen Sie uns persönlich:</strong><br />
-        Evelin&nbsp;Altenbeck: 0&nbsp;87&nbsp;61/&nbsp;7&nbsp;00&nbsp;98<br />
-        Regina&nbsp;Reed: 0&nbsp;87&nbsp;61/&nbsp;72&nbsp;61&nbsp;707
-      </p>
-      <p>
-        <strong>Praxis:</strong><br />Mittwoch 10-12
-        Uhr:&nbsp;0&nbsp;87&nbsp;61/&nbsp;6&nbsp;25&nbsp;70
-      </p>
-      <p>
-        <span class="alert-danger"><strong>Es ist nicht möglich Hausbesuche in einem größeren Umkreis als 20
-            km um Moosburg durchzuführen!</strong></span>
-      </p>
+      <div id="sprechstunde">
+        <p>
+          <strong>Hier erreichen Sie uns persönlich:</strong><br />
+          Evelin&nbsp;Altenbeck: 0&nbsp;87&nbsp;61/&nbsp;7&nbsp;00&nbsp;98<br />
+          Regina&nbsp;Reed: 0&nbsp;87&nbsp;61/&nbsp;72&nbsp;61&nbsp;707
+        </p>
+        <p>
+          <strong>Praxis:</strong><br />Mittwoch 10-12
+          Uhr:&nbsp;0&nbsp;87&nbsp;61/&nbsp;6&nbsp;25&nbsp;70
+        </p>
+        <p>
+          <span class="alert-danger"><strong>Es ist nicht möglich Hausbesuche in einem größeren Umkreis als 20
+              km um Moosburg durchzuführen!</strong></span>
+        </p>
 
-      <p>
-        Wenn Sie ihrem Unmut über die vergebliche Suche nach einer Hebamme
-        Luft machen und uns Hebammen und zukünftige Schwangere unterstützen
-        möchten, finden Sie auf der Website des Bayerischen
-        Hebammenlandesverbandes unter
-        <a href="https://www.bhlv.de">www.bhlv.de</a> einen Vordruck für einen
-        Beschwerdebrief an Ihre Krankenkasse und die sog. „Landkarte der
-        Unterversorgung“, in die Sie sich gerne eintragen dürfen.
-      </p>
+        <p>
+          Wenn Sie ihrem Unmut über die vergebliche Suche nach einer Hebamme
+          Luft machen und uns Hebammen und zukünftige Schwangere unterstützen
+          möchten, finden Sie auf der Website des Bayerischen
+          Hebammenlandesverbandes unter
+          <a href="https://www.bhlv.de">www.bhlv.de</a> einen Vordruck für einen
+          Beschwerdebrief an Ihre Krankenkasse und die sog. „Landkarte der
+          Unterversorgung“, in die Sie sich gerne eintragen dürfen.
+        </p>
+      </div>
       <h2>Kontaktformular</h2>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 formwrapper">
             <form id="kontaktformular">
               <input type="hidden" name="count" value="0" />
               <div class="row">
@@ -388,8 +273,6 @@
                   </div>
                 </div>
               </div>
-
-              <br />
               <div class="row">
                 <div class="col-md-3 right-text">
                   <label for="form-vorname">Vorname(n)</label>
@@ -581,13 +464,16 @@
 
               <div class="row">
                 <div class="col-md-3">
-                  <button class="btn btn-danger btn-block" type="reset">
-                    <i class="fas fa-trash-alt"></i> Eingaben Löschen
-                  </button>
+                  <!-- spacer -->
                 </div>
                 <div class="col-md-3">
                   <button class="btn btn-success btn-block" type="submit">
                     <i class="fas fa-paper-plane"></i> Senden
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-danger btn-block" type="reset">
+                    <i class="fas fa-trash-alt"></i> Eingaben Löschen
                   </button>
                 </div>
               </div>
@@ -613,9 +499,6 @@
       </div>
     </div>
   </section>
-
-
-
   <footer class="">
     <div class="container">
       <div class="row text-center">
@@ -627,9 +510,10 @@
           <p></p>
         </div>
         <div class="col-md-4">
-          <p>&copy; 2021</p>
+          <p>&copy; 2021-2022</p>
           <p></p>
           <p>Hebammenpraxis Altenbeck und Kollegin</p>
+          <p>Kopfbild von <a href='https://www.freepik.com/photos/newborn-background'>Newborn background photo created by v.ivash - www.freepik.com</a></p>
         </div>
         <div class="col-md-4">
           <p></p>
@@ -646,128 +530,80 @@
     <div class="container">
       <h1>Impressum</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, dicta
-        necessitatibus autem facilis voluptatum earum aperiam dolores numquam
-        commodi dolorem eaque, libero quos architecto fuga. Assumenda in ad
-        fuga aspernatur corporis labore suscipit voluptate quod, error amet
-        mollitia explicabo fugiat eveniet itaque est cum non id ratione
-        nostrum doloribus facere consequatur quidem? Obcaecati ducimus tempore
-        iusto perferendis asperiores unde accusantium autem nihil nostrum.
-        Nobis officia eos nihil autem ut consequatur sed repudiandae cum minus
-        at vel dolore, est delectus doloribus assumenda. Facilis quia fugiat
-        commodi minus, illum labore, esse, libero repellat tempora doloremque
-        repudiandae nulla cumque vero voluptatem facere aut vel veritatis
-        temporibus? Officia minus saepe aperiam fugiat excepturi pariatur
-        itaque eveniet earum, deleniti delectus est inventore consequuntur
-        doloremque quibusdam. Impedit illo voluptas debitis perferendis
-        adipisci rerum tempore blanditiis ipsam alias eaque saepe dolore
-        placeat vitae facere ipsum fugiat nemo, porro nam quidem? Impedit
-        autem quod accusantium distinctio inventore repudiandae dolor sunt,
-        libero nobis vitae labore incidunt aut voluptatem modi quasi eius
-        repellendus officiis quibusdam mollitia aperiam optio sint obcaecati
-        nam voluptates? Unde laborum accusantium commodi soluta corrupti.
-        Repudiandae repellendus mollitia fugiat nisi perferendis, illum velit
-        error, totam illo temporibus, pariatur voluptas. Error, facere optio.
-        Eligendi sunt, voluptate illum culpa nam fugiat quidem aliquam minus
-        dolores tempore rerum, quo provident deleniti optio aperiam corrupti
-        doloremque facilis itaque error eos neque vel voluptates inventore.
-        Fugiat facere nulla distinctio. Soluta eaque minima labore vel ducimus
-        ab dolores maiores nemo laboriosam eos animi ipsam neque omnis,
-        eveniet rem est tempore adipisci id perferendis quam voluptate
-        consequatur! Sint, aperiam! Possimus, eius facere dolores, qui amet
-        voluptatum sapiente incidunt totam non, enim commodi nisi! Eligendi
-        eaque non harum neque laborum eius quas minima vero porro tenetur
-        ratione, cupiditate natus incidunt rem obcaecati commodi
-        necessitatibus cum fuga minus soluta sapiente expedita officia quasi?
-        Temporibus nam similique dolor itaque accusamus impedit eum quo quos?
-        Corrupti iure inventore adipisci quos magnam ullam rem quam dolor,
-        tenetur tempore nostrum deleniti ipsa reiciendis quisquam facere
-        provident totam numquam accusamus illo iusto amet! Enim harum
-        consequatur, dicta rerum blanditiis commodi quisquam maxime eaque
-        neque sapiente. Minus ducimus facilis sequi fugit, maxime iste nam
-        quis quas quibusdam quidem commodi, ipsum id blanditiis laudantium
-        distinctio. Soluta, saepe dolorum ea debitis quis rem esse illo optio
-        in tenetur asperiores quo quae? Cumque soluta qui modi rerum voluptas
-        sunt nemo vitae, earum voluptatum tempora atque perspiciatis ex nam
-        esse ab error eligendi debitis natus? Nisi sequi temporibus aliquid
-        sed ut ex, reprehenderit sint ducimus ab praesentium. Explicabo
-        molestiae delectus voluptate quod, amet optio ratione magnam fuga eos
-        voluptates natus quae quisquam qui sed unde adipisci iusto mollitia?
-        Nulla aliquam repellendus iste quas, minima, nam adipisci minus neque
-        dolorum eum ut odit tempore voluptate culpa. Veniam alias fugit a
-        repellat quae cumque commodi beatae vel ullam soluta consequuntur
-        accusamus tempore in dolorem molestias suscipit maxime itaque iste,
-        eum at natus nam non laboriosam possimus. Illum natus nihil a!
-        Provident unde similique harum doloremque! Voluptates quibusdam
-        repellat eum veniam doloribus?
+        Hebammenpraxis Moosburg<br>
+        Kolpingstraße 9<br>
+        85368 Moosburg<br>
+        Telefon: 08761/62570<br>
+        E-Mail: kontakt[at]geburtshaus-moosburg.de
       </p>
-      <p>Kopfbild von <a href='https://www.freepik.com/photos/newborn-background'>Newborn background photo created by v.ivash - www.freepik.com</a></p>
+      <p>
+        Zuständige Behörde ist das Gesundheitsamt in Freising.<br>
+        <br>
+        Das Landgericht Hamburg hat mit Urteil vom 12.05.1998 entschieden, dass man durch die Ausbringung eines Links die Inhalte der gelinkten Seite ggf. mit zu verantworten hat. Dies kann - so das LG - nur dadurch verhindert werden, dass man sich ausdrücklich von diesen Inhalten distanziert. Ich habe auf meiner Page Links zu anderen Seiten im Internet gelegt. Für alle diese Links gilt: "Ich möchte ausdrücklich betonen, dass ich keinerlei Einfluss auf die Gestaltung und die Inhalte der gelinkten Seiten habe. Deshalb distanziere ich mich hiermit ausdrücklich von allen Inhalten aller gelinkten Seiten auf meiner dieser gesamten Website inklusive aller Unterseiten. Diese Erklärung gilt für alle auf meiner Homepage ausgebrachten Links und für alle Inhalte der Seiten, zu denen Links oder Banner führen."
+      </p>
+      <p>
+        Sollte ich durch die Veröffentlichung von Texten oder Bildern gegen geltende Copyrightrechte verstoßen, so bitte ich, mir dies durch eine E-Mail mitzuteilen. Ich werde die entsprechende Datei natürlich sofort entfernen.
+      </p>
+      <p>
+        Es besteht keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität der Homepage. Jegliche Haftung, insbesondere für eventuelle Schäden oder Konsequenzen, die durch die Nutzung angebotener Informationen entstehen, sind ausgeschlossen.
+      </p>
+      <p>
+        Verantwortlich für diese Homepage:<br>
+        Evelin Altenbeck
+      </p>
     </div>
   </section>
 
   <section class="collapse standard" id="datenschutz">
     <div class="container">
       <h1>Datenschutzerklärung</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, dicta
-        necessitatibus autem facilis voluptatum earum aperiam dolores numquam
-        commodi dolorem eaque, libero quos architecto fuga. Assumenda in ad
-        fuga aspernatur corporis labore suscipit voluptate quod, error amet
-        mollitia explicabo fugiat eveniet itaque est cum non id ratione
-        nostrum doloribus facere consequatur quidem? Obcaecati ducimus tempore
-        iusto perferendis asperiores unde accusantium autem nihil nostrum.
-        Nobis officia eos nihil autem ut consequatur sed repudiandae cum minus
-        at vel dolore, est delectus doloribus assumenda. Facilis quia fugiat
-        commodi minus, illum labore, esse, libero repellat tempora doloremque
-        repudiandae nulla cumque vero voluptatem facere aut vel veritatis
-        temporibus? Officia minus saepe aperiam fugiat excepturi pariatur
-        itaque eveniet earum, deleniti delectus est inventore consequuntur
-        doloremque quibusdam. Impedit illo voluptas debitis perferendis
-        adipisci rerum tempore blanditiis ipsam alias eaque saepe dolore
-        placeat vitae facere ipsum fugiat nemo, porro nam quidem? Impedit
-        autem quod accusantium distinctio inventore repudiandae dolor sunt,
-        libero nobis vitae labore incidunt aut voluptatem modi quasi eius
-        repellendus officiis quibusdam mollitia aperiam optio sint obcaecati
-        nam voluptates? Unde laborum accusantium commodi soluta corrupti.
-        Repudiandae repellendus mollitia fugiat nisi perferendis, illum velit
-        error, totam illo temporibus, pariatur voluptas. Error, facere optio.
-        Eligendi sunt, voluptate illum culpa nam fugiat quidem aliquam minus
-        dolores tempore rerum, quo provident deleniti optio aperiam corrupti
-        doloremque facilis itaque error eos neque vel voluptates inventore.
-        Fugiat facere nulla distinctio. Soluta eaque minima labore vel ducimus
-        ab dolores maiores nemo laboriosam eos animi ipsam neque omnis,
-        eveniet rem est tempore adipisci id perferendis quam voluptate
-        consequatur! Sint, aperiam! Possimus, eius facere dolores, qui amet
-        voluptatum sapiente incidunt totam non, enim commodi nisi! Eligendi
-        eaque non harum neque laborum eius quas minima vero porro tenetur
-        ratione, cupiditate natus incidunt rem obcaecati commodi
-        necessitatibus cum fuga minus soluta sapiente expedita officia quasi?
-        Temporibus nam similique dolor itaque accusamus impedit eum quo quos?
-        Corrupti iure inventore adipisci quos magnam ullam rem quam dolor,
-        tenetur tempore nostrum deleniti ipsa reiciendis quisquam facere
-        provident totam numquam accusamus illo iusto amet! Enim harum
-        consequatur, dicta rerum blanditiis commodi quisquam maxime eaque
-        neque sapiente. Minus ducimus facilis sequi fugit, maxime iste nam
-        quis quas quibusdam quidem commodi, ipsum id blanditiis laudantium
-        distinctio. Soluta, saepe dolorum ea debitis quis rem esse illo optio
-        in tenetur asperiores quo quae? Cumque soluta qui modi rerum voluptas
-        sunt nemo vitae, earum voluptatum tempora atque perspiciatis ex nam
-        esse ab error eligendi debitis natus? Nisi sequi temporibus aliquid
-        sed ut ex, reprehenderit sint ducimus ab praesentium. Explicabo
-        molestiae delectus voluptate quod, amet optio ratione magnam fuga eos
-        voluptates natus quae quisquam qui sed unde adipisci iusto mollitia?
-        Nulla aliquam repellendus iste quas, minima, nam adipisci minus neque
-        dolorum eum ut odit tempore voluptate culpa. Veniam alias fugit a
-        repellat quae cumque commodi beatae vel ullam soluta consequuntur
-        accusamus tempore in dolorem molestias suscipit maxime itaque iste,
-        eum at natus nam non laboriosam possimus. Illum natus nihil a!
-        Provident unde similique harum doloremque! Voluptates quibusdam
-        repellat eum veniam doloribus?
+      <p>Verantwortlich im Sinne der Datenschutzgesetzes:</p>
+      <p>Geburtshaus Moosburg<br>Kolpingstraße 9<br>85368 Moosburg</p>
+      <h2>
+        Datenschutz
+      </h2>
+      <p>Als Webseitenbetreiber nehmen wir den Schutz aller persönlichen Daten sehr ernst. Alle personenbezogenen Informationen werden vertraulich und gemäß den gesetzlichen Vorschriften behandelt, wie in dieser Datenschutzerklärung erläutert.</p>
+      <p>Unserer Webseite kann selbstverständlich genutzt werden, ohne dass Sie persönliche Daten angeben. Wenn jedoch zu irgendeinem Zeitpunkt persönliche Daten wie z.B. Name, Adresse oder E-Mail abgefragt werden, wird dies auf freiwilliger Basis geschehen. Niemals werden von uns erhobene Daten ohne Ihre spezielle Genehmigung an Dritte weitergegeben.</p>
+      <p>Datenübertragung im Internet, wie zum Beispiel über E-Mail, kann immer Sicherheitslücken aufweisen. Der komplette Schutz der Daten ist im Internet nicht möglich.</p>
+      <h2>
+        Auskunft, Löschung, Sperrung
+      </h2>
+      <p>Zu jedem Zeitpunkt können Sie sich über die personenbezogenen Daten, deren Herkunft und Empfänger und den Nutzen der Datenverarbeitung informieren und unentgeltlich eine Korrektur, Sperrung oder Löschung dieser Daten verlangen. Bitte nutzen Sie dafür die im Impressum angegebenen Kontaktwege. Für weitere Fragen zum Thema stehen wir Ihnen ebenfalls jederzeit zur Verfügung.</p>
+      <h2> Server-Log-Files </h2>
+      <p>Der Seiten-Provider erhebt und speichert automatisch Daten in Server-Log Files, die von Ihrem Browser an uns übermittelt werden. Diese Daten enthalten:</p>
+      <ul>
+        <li> Browsertyp/ Browserversion</li>
+        <li> Betriebssystem des Rechners</li>
+        <li> Referrer URL</li>
+        <li> Hostname des zugreifenden Rechners</li>
+        <li> Uhrzeit der Serveranfrage</li>
+      </ul>
+      <p>Diese Daten sind nicht personenbezogen. Es erfolgt keine Zusammenführung dieser Daten mit anderen Datenquellen. Wenn uns konkrete Anhaltspunkte für eine rechtswidrige Nutzung bekannt werden behalten wir uns das Recht vor, diese Daten nachträglich zu überprüfen.</p>
+      <h2>
+        Cookies
+      </h2>
+      <p>Viele Internetseiten verwenden Cookies. Cookies sind unschädlich für Ihren Rechner und virenfrei. Sie dienen dazu, Internet-Angebote für die Besucher einer Webseite freundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Computer abgelegt werden und die Ihr Browser verwendet.
       </p>
+      <p>Wir verwenden in der Regel so genannte „Session-Cookies“. Diese werden nach Verlassen unserer Seite automatisch gelöscht. Andere Cookies bleiben auf Ihrem Computer gespeichert, bis Sie diese löschen. Diese Cookies helfen dabei, Ihren Rechner beim nächsten Besuch wiederzuerkennen.</p>
+      <p>Über die Browsereinstellungen können sie festlegen, dass Sie über neue Cookies informiert werden und Cookies jeweils annehmen müssen. Ebenso können Sie die Annahme von Cookies für bestimmte Fälle oder generell ausschließen oder das automatische Löschen der Cookies beim Schließen des Browser aktivieren. Werden Cookies desaktiviert, kann die Funktionalität unserer Website eingeschränkt sein.</p>
+      <h2>
+        Änderung der Datenschutzbestimmungen
+      </h2>
+      <p>Unsere Datenschutzerklärung können in unregelmäßigen Abständen angepasst werden, damit sie den aktuellen rechtlichen Anforderungen entsprechen oder um Änderungen unserer Dienstleistungen umzusetzen, z. B. bei der Einfügung neuer Angebote. Für Ihren nächsten Besuch gilt dann automatisch die neue Datenschutzerklärung.</p>
+      <h2>
+        Kontakt zum Datenschutzmitarbeiter
+      </h2>
+      <p>Verantwortlichen für Datenschutz:<br>
+        Evelin Altenbeck
+      </p>
+      <p>Für Fragen zum Datenschutz schicken Sie uns bitte eine Nachricht an kontakt[at]geburtshaus-moosburg.de mit dem Betreff „Datenschutz“.</p>
     </div>
   </section>
   <script src="./js/site.js" defer></script>
-  <script>getTeam();</script>
+  <script>
+    getHomeAlerts();
+    getTeam();
+  </script>
   <script>
     // SMOOTH SCROLLING PLUS OFFSET FOR FIXED NAV
     $('a[href*="#"]')
@@ -805,6 +641,7 @@
       var rgba = $(document).scrollTop() / 250;
       $(".navbar").css("background-color", "rgba(225,225,225," + rgba + ")");
     });
+
   </script>
 </body>
 <!--
