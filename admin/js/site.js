@@ -96,10 +96,22 @@ const buildSidebarNav = function () {
       $("<a />", {
         id: "link-announcments",
         class: "nav-link",
-      }).append(
-        $("<i />", { class: "fas fa-bullhorn" }),
-        $("<span />", { text: " Mitteilungen" })
-      )
+      })
+        .append(
+          $("<i />", { class: "fas fa-bullhorn" }),
+          $("<span />", { text: " Mitteilungen" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=listMsgs", function (res) {
+            response = JSON.parse(res);
+            if (response.status == 200) {
+              displayAlerts(response);
+            } else {
+              displayFailure("#failure-alerts-template");
+            }
+          });
+        })
     )
   );
 };
