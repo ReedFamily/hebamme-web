@@ -54,12 +54,13 @@
                 'getInstructor' =>['class' => 'instructors_processor', 'function_name'=>'getInstructor'],
                 'delInstructor' =>['class' => 'instructors_processor', 'function_name' =>'deleteInstructor'],
                 'uploadimg' =>['class' => 'upload_processor', 'function_name' => 'uploadAvatar'],
-                'getMsg' =>['class'=>'announcement_processor', 'function_name' => 'getByAnnouncementById'],
-                'listMsgs' =>['class'=>'announcement_processor', 'function_name' => 'listAllAnnouncements'],
-                'msgLoc' =>['class'=>'announcement_processor', 'function_name' => 'listAnnouncementLocations'],
-                'newMsg' =>['class'=>'announcement_processor', 'function_name' => 'createAnnouncement'],
-                'delMsg' =>['class'=>'announcement_processor', 'function_name' => 'deleteAnnouncement'],
-                'modMsg' =>['class'=>'announcement_processor', 'function_name' => 'updateAnnoucnement']
+                'getMsg' =>['class'=>'announcements_processor', 'function_name' => 'getByAnnouncementById'],
+                'listMsgs' =>['class'=>'announcements_processor', 'function_name' => 'listAllAnnouncements'],
+                'msgLoc' =>['class'=>'announcements_processor', 'function_name' => 'listAnnouncementLocations'],
+                'newMsg' =>['class'=>'announcements_processor', 'function_name' => 'createAnnouncement'],
+                'delMsg' =>['class'=>'announcements_processor', 'function_name' => 'deleteAnnouncement'],
+                'modMsg' =>['class'=>'announcements_processor', 'function_name' => 'updateAnnoucnement'],
+                'locMsgs' =>['class' => 'announcements_processor', 'function_name' => 'getAnnouncementsByLocation']
             ];
 
         }

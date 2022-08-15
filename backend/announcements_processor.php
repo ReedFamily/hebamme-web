@@ -7,7 +7,8 @@
 
     class announcements_processor
     {
-        private $validLocations = array("main");
+        private $validLocations = array("home");
+        private $levels = array("blue"=>"info", "yellow"=>"warning", "red"=>"danger");
 
         public function createAnnouncement($params){
             $db_msg = new db_announcements();
@@ -37,7 +38,15 @@
         }
 
         public function listAnnouncementLocations(){
-            // TODO! Implementation
+            $result = api_response::getResponse(200);
+            $result["locations"] = $this->validLocations;
+            return $result;
+        }
+
+        public function listAnnouncementLevels(){
+            $result = api_response::getResponse(200);
+            $result["levels"] = $this->levels;
+            return $result;
         }
 
         public function listAllAnnouncements(){

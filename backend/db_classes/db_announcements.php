@@ -36,12 +36,13 @@
                 $result["exception"] = "No location provided.";
                 return $result;
             }
-
-            $query = "SELECT `id`, `level`, `location`, `created_by` as createdBy, `created_date` as createdDate, `permanent`, `start_date` as startDate, `end_date` as endDate, `message` FROM `announcements` WHERE `location` = :location ORDER BY `level`";
-            $statement = $this->pdo->prepare($query);
+            $qparam['location'] = $params['location'];
+            $query = "SELECT `id`, `level`, `location`, `permanent`, `start_date` as `startDate`, `end_date` as `endDate`, `message` FROM `announcements` WHERE `location` = :location ORDER BY `level`";
+            
             $result = api_response::getResponse(404);
             try{
-                $statement->execute($params);
+                $statement = $this->pdo->prepare($query);
+                $statement->execute($qparam);
                 $announcements = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["messages"] = $announcements;
