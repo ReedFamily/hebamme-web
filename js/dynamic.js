@@ -66,8 +66,8 @@ const getHomeAlerts = function () {
         "backend/rest.php?apiToken=" +
         apiToken +
         "&apiFunc=locMsgs&location=home";
-      jQuery.get(url, function (res1) {
-        response1 = JSON.parse(res1);
+      jQuery.get(url, function (homeMsgRes) {
+        response1 = JSON.parse(homeMsgRes);
         if (response1.status == 200) {
           buildHomeAlerts(response1.messages);
         } else {
