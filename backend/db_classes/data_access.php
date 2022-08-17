@@ -9,7 +9,7 @@
     {
         protected $pdo;
         protected function connect(){
-            $dns = "mysql:host=" . CONST_DB_SERV . ";dbname=" . CONST_DB_NAME;
+            $dns = "mysql:host=" . CONST_DB_SERV . ";dbname=" . CONST_DB_NAME .";charset=" . CONST_DB_CHAR;
             try{
                 $this->pdo = new PDO($dns, CONST_DB_USER, CONST_DB_PASS);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

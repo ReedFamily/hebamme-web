@@ -9,3 +9,4 @@ en/index.html
 /mydashboard/
 
 *.JPG
+backend/conf/conf-live.php

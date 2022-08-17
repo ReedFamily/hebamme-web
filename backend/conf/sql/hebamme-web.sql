@@ -103,6 +103,9 @@ ALTER TABLE `api_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_user` (`username`);
 
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `instructor`
 --
