@@ -396,13 +396,11 @@ section {
     }
 
     #home {
-        background-color: unset;
-        background-image: url(https://via.placeholder.com/1280x720);
-
-        .blurred {
-            backdrop-filter        : blur(5px) !important;
-            -webkit-backdrop-filter: blur(5px) !important;
-        }
+        /*background-color: unset; */
+            background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% auto;
     }
 
     @media (orientation: landscape) {
@@ -439,20 +437,20 @@ section {
 }
 
 @media (orientation: landscape) {
-    #404-home {
+    #error-404 {
         margin-top: -66px;
     }
 }
 
 @media screen and (max-width: 766px) {
-    #404-home {
+    #error-404 {
         margin-top: 0px;
     }
 }
 
 @media screen and (min-width: 767px) {
     @media screen and (max-height: 520px) {
-        #404-home {
+        #error-404 {
             margin-top: 0px;
         }
     }
@@ -503,7 +501,7 @@ section {
     color           : $text-color-light !important;
 }
 
-#404-home {
+#error-404 {
 
     overflow-x: hidden;
 
@@ -529,13 +527,13 @@ section {
 }
 
 @media (orientation: landscape) {
-    #404-home {
+    #error-404 {
         height: 50vh;
     }
 }
 
 @media (orientation: portrait) {
-    #404-home {
+    #error-404 {
         height: 50vh;
     }
 }
