@@ -9,5 +9,5 @@ en/index.html
 /mydashboard/
 *.code-workspace
 
-*.JPG
+/backend/uploads/*.jpg
 backend/conf/conf-live.php
