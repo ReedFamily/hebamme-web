@@ -7,6 +7,7 @@ backend/conf/sql/default-insert.sql
 .htaccess
 en/index.html
 /mydashboard/
+*.code-workspace
 
-*.JPG
+/backend/uploads/*.jpg
 backend/conf/conf-live.php
