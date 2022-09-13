@@ -3,7 +3,7 @@
     header('Access-Control-Allow-Methods: GET, POST');
     header('Access-Control-Max-Age: 1000');
     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization');
-   // header('Content-Type: application/json;charset=utf-8');
+    header('Content-Type: application/json;charset=utf-8');
     // Checks and defines constant to which prevents direct access.
     if(!defined("CONST_KEY")){define("CONST_KEY", "035416f4-e65b-4fc6-a8db-301604ff31c5");}
 
@@ -55,10 +55,12 @@
             echo $returnArray;
         }else{
             $res = $cApiHandler->callApiFunction($functionName, $functionParams);
+            if(is_array($res)){
             $res["ref"] = $_SERVER["SERVER_NAME"];
-            if(isset($_SERVER["CONTEXT_PREFIX"])){
-                $res["ref"] .=  $_SERVER["CONTEXT_PREFIX"];
-            }
+                if(isset($_SERVER["CONTEXT_PREFIX"])){
+                    $res["ref"] .=  $_SERVER["CONTEXT_PREFIX"];
+                }
+            }   
             $returnArray = json_encode($res,JSON_UNESCAPED_UNICODE);
             if($returnArray === null || trim($returnArray) === ''){
                 $returnArray = '{"status":500, "Exception":"Empty Result"}';

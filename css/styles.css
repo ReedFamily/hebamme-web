@@ -15,7 +15,6 @@ body {
 .accent-color-moss-green {
   color: #869948;
 }
-
 .accent-color-moss-green button.btn {
   background-color: #869948;
   color: #f0f0f0;
@@ -24,7 +23,6 @@ body {
 .accent-color-flame {
   color: #DF5916;
 }
-
 .accent-color-flame button.btn {
   background-color: #DF5916;
   color: #f0f0f0;
@@ -33,7 +31,6 @@ body {
 .accent-color-french-bistre {
   color: #7A6C5D;
 }
-
 .accent-color-french-bistre button.btn {
   background-color: #7A6C5D;
   color: #f0f0f0;
@@ -42,7 +39,6 @@ body {
 .accent-color-venetian-red {
   color: #BF211E;
 }
-
 .accent-color-venetian-red button.btn {
   background-color: #BF211E;
   color: #f0f0f0;
@@ -51,7 +47,6 @@ body {
 .accent-color-orange-yellow {
   color: #ECB709;
 }
-
 .accent-color-orange-yellow button.btn {
   background-color: #ECB709;
   color: #111111;
@@ -60,7 +55,6 @@ body {
 .accent-color-liver-chestnut {
   color: #94684C;
 }
-
 .accent-color-liver-chestnut button.btn {
   background-color: #94684C;
   color: #f0f0f0;
@@ -69,7 +63,6 @@ body {
 .accent-color-apple-green {
   color: #88AC35;
 }
-
 .accent-color-apple-green button.btn {
   background-color: #88AC35;
   color: #111111;
@@ -78,7 +71,6 @@ body {
 .accent-color-safety-yellow {
   color: #E9CE2C;
 }
-
 .accent-color-safety-yellow button.btn {
   background-color: #E9CE2C;
   color: #111111;
@@ -92,7 +84,6 @@ body {
   background-color: #869948;
   color: #f0f0f0;
 }
-
 .bg-accent-color-moss-green button.btn {
   background-color: #f0f0f0;
   color: #869948;
@@ -102,7 +93,6 @@ body {
   background-color: #DF5916;
   color: #f0f0f0;
 }
-
 .bg-accent-color-flame button.btn {
   background-color: #f0f0f0;
   color: #DF5916;
@@ -112,7 +102,6 @@ body {
   background-color: #7A6C5D;
   color: #f0f0f0;
 }
-
 .bg-accent-color-french-bistre button.btn {
   background-color: #f0f0f0;
   color: #7A6C5D;
@@ -122,7 +111,6 @@ body {
   background-color: #BF211E !important;
   color: #f0f0f0 !important;
 }
-
 .bg-accent-color-venetian-red button.btn {
   background-color: #f0f0f0 !important;
   color: #BF211E !important;
@@ -132,7 +120,6 @@ body {
   background-color: #ECB709;
   color: #111111;
 }
-
 .bg-accent-color-orange-yellow button.btn {
   background-color: #f0f0f0;
   color: #111111;
@@ -142,7 +129,6 @@ body {
   background-color: #94684C;
   color: #f0f0f0;
 }
-
 .bg-accent-color-liver-chestnut button.btn {
   background-color: #f0f0f0;
   color: #111111;
@@ -152,7 +138,6 @@ body {
   background-color: #88AC35;
   color: #111111;
 }
-
 .bg-accent-color-apple-green button.btn {
   background-color: #f0f0f0;
   color: #111111;
@@ -162,7 +147,6 @@ body {
   background-color: #E9CE2C;
   color: #111111;
 }
-
 .bg-accent-color-safety-yellow button.btn {
   background-color: #f0f0f0;
   color: #111111;
@@ -189,11 +173,9 @@ body {
 .navbar {
   background-color: rgba(240, 240, 240, 0);
 }
-
 .navbar .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.75) !important;
 }
-
 .navbar .navbar-light .navbar-nav .nav-link .active {
   color: rgba(0, 0, 0, 0.99) !important;
 }
@@ -220,15 +202,12 @@ section {
   padding-top: 1.75em;
   padding-bottom: 1.75em;
 }
-
 .standard .container h1 {
   margin-bottom: 0.5em;
 }
-
 .standard .container h2 {
   margin-bottom: 0.25em;
 }
-
 .standard .container h3 {
   margin-bottom: 0.25em;
 }
@@ -242,19 +221,16 @@ section {
     margin-top: -66px;
   }
 }
-
 @media screen and (max-width: 766px) {
   #home {
     margin-top: 0px;
   }
 }
-
 @media screen and (min-width: 767px) and (max-height: 520px) {
   #home {
     margin-top: 0px;
   }
 }
-
 @media (orientation: landscape) {
   div.cn {
     position: relative;
@@ -265,12 +241,10 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 2rem;
   }
 }
-
 @media (orientation: portrait) {
   div.cn {
     position: relative;
@@ -281,29 +255,24 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 2rem;
   }
 }
-
 #home {
   overflow-x: hidden;
   background-color: #869948;
   margin-bottom: 0em;
 }
-
 #home .percent-100 {
   width: 100%;
   height: 100%;
 }
-
 @media (orientation: landscape) {
   #home .percent-100 .container {
     padding-top: 10em;
   }
 }
-
 @media (orientation: portrait) {
   #home .percent-100 .container {
     padding-top: 4em;
@@ -315,13 +284,11 @@ section {
     height: 50vh;
   }
 }
-
 @media (orientation: portrait) {
   #home {
     height: 50vh;
   }
 }
-
 @supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) or (-webkit-backdrop-filter: blur()) {
   @media (orientation: landscape) {
     #home {
@@ -340,10 +307,6 @@ section {
     background-position: center;
     background-size: 100% auto;
   }
-  #home .blurred {
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
-  }
   @media (orientation: landscape) {
     div.cn {
       position: relative;
@@ -354,8 +317,7 @@ section {
       position: absolute;
       top: 50%;
       left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       padding: 2rem;
     }
   }
@@ -369,31 +331,26 @@ section {
       position: absolute;
       top: 50%;
       left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       padding: 2rem;
     }
   }
 }
-
 @media (orientation: landscape) {
-  #404-home {
+  #error-404 {
     margin-top: -66px;
   }
 }
-
 @media screen and (max-width: 766px) {
-  #404-home {
+  #error-404 {
     margin-top: 0px;
   }
 }
-
 @media screen and (min-width: 767px) and (max-height: 520px) {
-  #404-home {
+  #error-404 {
     margin-top: 0px;
   }
 }
-
 @media (orientation: landscape) {
   div.cn {
     position: relative;
@@ -404,12 +361,10 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 2rem;
   }
 }
-
 @media (orientation: portrait) {
   div.cn {
     position: relative;
@@ -420,16 +375,13 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 2rem;
   }
 }
-
 .navbar-404 {
   background-color: rgba(243, 89, 86, 0);
 }
-
 .navbar-404 .nav-link {
   color: #f0f0f0 !important;
 }
@@ -439,70 +391,57 @@ section {
   color: #f0f0f0 !important;
 }
 
-#404-home {
+#error-404 {
   overflow-x: hidden;
   background-color: #BF211E !important;
   color: #f0f0f0 !important;
 }
-
-#404-home .percent-100 {
+#error-404 .percent-100 {
   width: 100%;
   height: 100%;
 }
-
 @media (orientation: landscape) {
-  #404-home .percent-100 .container {
+  #error-404 .percent-100 .container {
     padding-top: 10em;
   }
 }
-
 @media (orientation: portrait) {
-  #404-home .percent-100 .container {
+  #error-404 .percent-100 .container {
     padding-top: 4em;
   }
 }
 
 @media (orientation: landscape) {
-  #404-home {
+  #error-404 {
     height: 50vh;
   }
 }
-
 @media (orientation: portrait) {
-  #404-home {
+  #error-404 {
     height: 50vh;
   }
 }
-
 @media screen and (max-width: 600px) {
   .midwife-img-container {
     text-align: center;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
   }
   .midwife-img {
     width: 98%;
   }
 }
-
 @media screen and (min-width: 601px) {
   .midwife-img {
     width: 50%;
   }
 }
-
 @media screen and (min-width: 601px) and (max-width: 767px) {
   .midwife-img {
     width: 75%;
   }
 }
-
 .width-5em {
   width: 5em !important;
 }
@@ -512,28 +451,22 @@ section {
     text-align: right !important;
   }
 }
-
 .hidden {
   display: none;
 }
 
 form {
   margin-bottom: 2em;
-  padding: 2rem 0;
 }
-
 form input.invalid {
   border: 2px solid red;
 }
-
 form textarea.invalid {
   border: 2px solid red;
 }
-
 form .error-hint {
   color: red;
 }
-
 form button.btn {
   margin-top: 1em;
 }
@@ -553,10 +486,9 @@ form button.btn {
 footer {
   padding-top: 2em;
   padding-bottom: 2em;
-  background-color: #37332f !important;
+  background-color: hsl(34deg, 7%, 20%) !important;
   color: #f0f0f0;
 }
-
 footer a {
   text-decoration: none;
 }
@@ -575,13 +507,11 @@ footer a {
     min-width: min-content;
   }
 }
-
 @media screen and (max-width: 767px) {
   .termine-card {
     margin-top: 1.5em;
   }
 }
-
 .termine-card {
   max-width: 100%;
   min-height: 17rem;
@@ -591,67 +521,6 @@ footer a {
   margin-top: 0.75em !important;
 }
 
-img.avatar{
-  max-width: 10rem;
-}
-
-.card{
-  max-width: 30rem;
-}
-
-#angebote
-{
-  background-color: #869948;
-}
-
-#sprechstunde{
-  background-color: #F0F0F0;
-  padding: 2rem;
-}
-
-#angebote div.container{
-  background-color: #F0F0F0;
-
-}
-
-#kontaktformular{
-  background-color: #F0F0F0;
-}
-
-#kontakt-sprechzeiten{
-  background-color: #869948;
-}
-
-.sub-container{
-  padding-bottom: 2rem;
-}
-
-.card-wrapper{
-  padding-left: 0;
-  margin: 1rem 1rem 1rem 1rem;
-}
-
-#home-alerts
-{
-  background-color: #869948;
-  padding-top:3rem;
-  padding-bottom: 3rem;
-}
-
-#home-alerts div.container{
-  background-color: #F0F0F0;
-}
-
-#home-alerts div.site-message{
-  padding-bottom: 0.5rem;
-}
-
-.formwrapper{
-  padding: 0;
-}
-
-/*background-color: #869948; */
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
-} */
-/*# sourceMappingURL=styles.css.map */
+} *//*# sourceMappingURL=styles.css.map */
