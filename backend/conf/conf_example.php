@@ -20,5 +20,7 @@
     define("CONST_LOG_DEBUG", false); // enables debug logging
     define("CONST_LOG_INFO", false); // enables info logging
     define("CONST_LOG_ERROR", false); // enables error logging
+    define("CONST_HEBAMIO_KEY", "");
+    define("CONST_HEBAMIO_URL", "");
 
 ?>
