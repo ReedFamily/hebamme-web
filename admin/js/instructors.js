@@ -72,7 +72,7 @@ const displayInstructors = function (response) {
           );
         },
         success: function (data) {
-          var payload = JSON.parse(data);
+          var payload = data;
           var img = buildThumbnailFromUpload(payload);
           $("#avatar-wrapper").empty();
           $("#avatar-wrapper").append(img);
@@ -124,7 +124,7 @@ const editInstructor = function (ele) {
   var id = $(ele).data("instructor");
   var url = "../backend/rest.php?apiFunc=getInstructor&id=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       $("#edit-instructor-form").trigger("reset");
       $("#editInstructorId").val(response.instructor.id);
@@ -191,7 +191,7 @@ const sendNewInstructor = function (newInstructorData) {
   console.log(newInstructorData);
   var url = "../backend/rest.php?apiFunc=newInstructor";
   $.post(url, JSON.stringify(newInstructorData), function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayInstructors(response);
     } else {
@@ -219,7 +219,7 @@ const editInstructorEvent = function (event) {
 const sendEditInstructor = function (editInstructorData) {
   var url = "../backend/rest.php?apiFunc=updateInstructor";
   $.post(url, JSON.stringify(editInstructorData), function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayInstructors(response);
     } else {
@@ -232,7 +232,7 @@ const deleteInstructor = function (ele) {
   var id = $(ele).data("instructor");
   var url = "../backend/rest.php?apiFunc=getInstructor&id=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       $("#delete-instructor-acknowledge-button").attr(
         "data-id",
@@ -251,7 +251,7 @@ const deleteInstructor = function (ele) {
 const sendDeleteInstructor = function (id) {
   var url = "../backend/rest.php?apiFunc=deleteInstructor&id=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayInstructors(response);
     } else {

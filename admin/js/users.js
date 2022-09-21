@@ -78,7 +78,7 @@ const editUser = function (ele) {
   var id = $(ele).data("userid");
   var url = "../backend/rest.php?apiFunc=getUser&userid=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       $("#edit-user-form").trigger("reset");
       $("#editInputUserId").val(response.user.id);
@@ -115,7 +115,7 @@ const newUserEvent = function (event) {
 const sendNewUser = function (newUserData) {
   var url = "../backend/rest.php?apiFunc=createUser";
   $.post(url, JSON.stringify(newUserData), function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayUsers(response);
     } else {
@@ -142,7 +142,7 @@ const editUserEvent = function (event) {
 const sendEditUser = function (editUserData) {
   var url = "../backend/rest.php?apiFunc=updateUser";
   $.post(url, JSON.stringify(editUserData), function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayUsers(response);
     } else {
@@ -165,7 +165,7 @@ const createDeleteUserLink = function (userid) {
 const sendDeleteUser = function (id) {
   var url = "../backend/rest.php?apiFunc=deleteUser&userid=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       displayUsers(response);
     } else {
@@ -178,7 +178,7 @@ const deleteUser = function (ele) {
   var id = $(ele).data("userid");
   var url = "../backend/rest.php?apiFunc=getUser&userid=" + id;
   $.get(url, function (res) {
-    var response = JSON.parse(res);
+    var response = res;
     if (response.status == 200) {
       $("#delete-user-acknowledge-button").attr("data-id", response.user.id);
       $("#delete-username").text("'" + response.user.username + "'");
