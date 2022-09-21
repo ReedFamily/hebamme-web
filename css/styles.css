@@ -521,6 +521,21 @@ footer a {
   margin-top: 0.75em !important;
 }
 
+.btn-local {
+  background-color: #869948;
+  border: 1px solid white;
+}
+
+.btn-local:hover {
+  background-color: #88AC35;
+  border: 1px solid #869948;
+}
+
+.courses-list .card-header {
+  background-color: #88AC35;
+  font-size: 1.5em;
+}
+
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } *//*# sourceMappingURL=styles.css.map */
