@@ -1,12 +1,12 @@
 const getTeam = function () {
   jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
-    response = JSON.parse(res);
+    response = res;
     if (response.status == 200) {
       var apiToken = response.token;
       var url =
         "backend/rest.php?apiToken=" + apiToken + "&apiFunc=listInstructors";
       jQuery.get(url, function (res1) {
-        response1 = JSON.parse(res1);
+        response1 = res1;
         if (response1.status == 200) {
           buildTeamCards(response1);
         } else {
@@ -59,7 +59,7 @@ const buildTeamCards = function (payload) {
 
 const getHomeAlerts = function () {
   jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
-    response = JSON.parse(res);
+    response = res;
     if (response.status == 200) {
       var apiToken = response.token;
       var url =
@@ -67,7 +67,7 @@ const getHomeAlerts = function () {
         apiToken +
         "&apiFunc=locMsgs&location=home";
       jQuery.get(url, function (homeMsgRes) {
-        response1 = JSON.parse(homeMsgRes);
+        response1 = homeMsgRes;
         if (response1.status == 200) {
           buildHomeAlerts(response1.messages);
         } else {
@@ -113,4 +113,108 @@ const buildHomeAlerts = function (payload) {
       alert.addClass(clzz);
     });
   }
+};
+
+const getClassInfo = function () {
+  jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
+    if (res.status == 200) {
+      var apiToken = res.token;
+      var url = "backend/rest.php?apiToken=" + apiToken + "&apiFunc=classes";
+      jQuery.get(url, function (classRes) {
+        classes = classRes;
+        if (classes.status == 200) {
+          var classWrapper = $("#termine-wrapper");
+          $(classWrapper).empty();
+          $.each(classes.classes, function (index, classDetail) {
+            var classId = classDetail.id;
+            var className = classDetail.name;
+            var btnUrl = classDetail.detail.hebamio_link;
+            var classStartDate = classDetail.detail.date_start;
+            var classEndDate = classDetail.detail.date_end;
+            var classPartnerPrice = classDetail.detail.price_partner;
+            var classMaxParticipants = classDetail.detail.max_paticipants;
+            var classAvailable = classDetail.detail.available_space;
+            var locationName = classDetail.detail.location.title;
+            var locationAddress = classDetail.detail.location.address;
+            var isFull = false;
+            if (classAvailable <= 0) {
+              isFull = true;
+            }
+
+            var classCard = $("<div />", {
+              class: "card courses-list",
+              id: "course-" + classId,
+            });
+            var classCardHeader = $("<div />", {
+              class: "card-header",
+              text: className + " - " + classStartDate + " bis " + classEndDate,
+            });
+            var classCardFooter = $("<div />", { class: "card-footer" });
+            var footerContent;
+            if (isFull === true) {
+              footerContent = $("<span />", {
+                class: "btn btn-secondary",
+                text: "Ausgebucht",
+                role: "button",
+              });
+            } else {
+              footerContent = $("<a />", {
+                class: "btn btn-local",
+                role: "button",
+                href: btnUrl,
+                text: "Anmeldung",
+              });
+            }
+            $(classCardFooter).append(footerContent);
+
+            var classCardBody = $("<div />", { class: "card-body" });
+            var classBodyWo = $("<p />");
+            $(classBodyWo)
+              .append("WO: ")
+              .append(locationName)
+              .append($("<br />"))
+              .append(locationAddress);
+            var classBodyAvailable = $("<p />");
+            $(classBodyAvailable)
+              .append("Verfügbare Plätze: ")
+              .append(classAvailable)
+              .append(" von ")
+              .append(classMaxParticipants);
+
+            var classBodyTermine = $("<div />");
+            var classBodyTermineTitle = $("<p />").append("Termine: ");
+            var classBodyTermineList = $("<ul />");
+            $.each(classDetail.detail.dates, function (n, dateDetail) {
+              var termineItem = $("<li />");
+              $(termineItem)
+                .append(dateDetail.date)
+                .append(" um ")
+                .append(dateDetail.time_start)
+                .append(" bis ")
+                .append(dateDetail.time_end)
+                .append(" mit ")
+                .append(dateDetail.date_instructor);
+              $(classBodyTermineList).append(termineItem);
+            });
+
+            $(classBodyTermine)
+              .append(classBodyTermineTitle)
+              .append(classBodyTermineList);
+
+            $(classCardBody)
+              .append(classBodyWo)
+              .append(classBodyAvailable)
+              .append(classBodyTermine);
+            $(classCard)
+              .append(classCardHeader)
+              .append(classCardBody)
+              .append(classCardFooter);
+            $(classWrapper).append(classCard);
+          });
+        } else {
+          console.log(classRes);
+        }
+      });
+    }
+  });
 };
