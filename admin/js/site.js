@@ -4,7 +4,7 @@ const loadApp = function () {
   if (token != "") {
     var url = "../backend/rest.php?apiFunc=tokenValid&token=" + token;
     $.get(url, function (res) {
-      response = JSON.parse(res);
+      response = res;
       if (response.status != 200) {
         displayLoginForm();
       } else {
@@ -62,7 +62,7 @@ const buildSidebarNav = function () {
         .click(function (event) {
           event.preventDefault();
           $.get("../backend/rest.php?apiFunc=listUsers", function (res) {
-            response = JSON.parse(res);
+            response = res;
             if (response.status == 200) {
               displayUsers(response);
             } else {
@@ -83,7 +83,7 @@ const buildSidebarNav = function () {
         .click(function (event) {
           event.preventDefault();
           $.get("../backend/rest.php?apiFunc=listInstructors", function (res) {
-            response = JSON.parse(res);
+            response = res;
             if (response.status == 200) {
               displayInstructors(response);
             } else {
@@ -104,7 +104,7 @@ const buildSidebarNav = function () {
         .click(function (event) {
           event.preventDefault();
           $.get("../backend/rest.php?apiFunc=listMsgs", function (res) {
-            response = JSON.parse(res);
+            response = res;
             if (response.status == 200) {
               displayAlerts(response);
             } else {
@@ -135,12 +135,12 @@ const validateLogin = function (user, password) {
   request.password = password;
 
   $.get("../backend/rest.php?apiFunc=getToken", function (res) {
-    response = JSON.parse(res);
+    response = res;
     if (response.status == 200) {
       var url =
         "../backend/rest.php?apiToken=" + response.token + "&apiFunc=login";
       $.post(url, JSON.stringify(request), function (res1) {
-        loginResponse = JSON.parse(res1);
+        loginResponse = res1;
         if (loginResponse.status == 200) {
           writeCookie("apiToken", loginResponse.token, loginResponse.validTo);
           writeCookie("userId", loginResponse.userId, loginResponse.validTo);

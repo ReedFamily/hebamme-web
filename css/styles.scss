@@ -656,6 +656,22 @@ footer {
     margin-top: 0.75em !important;
 }
 
+.btn-local
+{
+    background-color: $accent-color-moss-green;
+    border: 1px solid white;
+}
+.btn-local:hover{
+    background-color: $accent-color-apple-green;
+    border: 1px solid $accent-color-moss-green;
+}
+
+.courses-list .card-header{
+    background-color: $accent-color-apple-green;
+    font-size: 1.5em;
+    
+}
+
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } */

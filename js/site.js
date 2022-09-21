@@ -206,13 +206,13 @@ form.addEventListener("submit", (e) => {
     formData.message = messageInput.value;
 
     jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
-      response = JSON.parse(res);
+      response = res;
       if (response.status == 200) {
         var apiToken = response.token;
         var url =
           "backend/rest.php?apiToken=" + apiToken + "&apiFunc=sendContact";
         jQuery.post(url, JSON.stringify(formData), function (res) {
-          response = JSON.parse(res);
+          response = res;
           if (response.status == 200) {
             form.reset();
             form.remove();

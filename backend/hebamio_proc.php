@@ -67,7 +67,7 @@
             curl_close($curl);
             
             $detail = json_decode($res, true);
-            
+            $clsData["hebamio_link"] = CONST_HEBAMIO_URL . "/anmeldung?reason=course-" . $classId;
             $clsData["date_start"] = $detail["date_start"];
             $clsData["date_end"] = $detail["date_end"];
             $clsData["price_partner"] = $detail["price_partner"];
@@ -75,6 +75,9 @@
             $clsData["instructor"] = $detail["instructor"];
             $clsData["max_paticipants"] = $detail["max_participants"];
             $clsData["available_space"] = $detail["available_space"];
+            $clsData["location"]["address"] = $detail["location"]["adress"];
+            $clsData["location"]["title"] = $detail["location"]["title"];
+            $clsData["dates"] = $detail["dates"];
             return $clsData;
         }
 
