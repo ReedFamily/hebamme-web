@@ -1,10 +1,10 @@
 html {
-  background-color: #f0f0f0;
+  background-color: #e7d6c6;
   color: #111111;
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: #e7d6c6;
   color: #111111;
 }
 
@@ -522,18 +522,35 @@ footer a {
 }
 
 .btn-local {
-  background-color: #869948;
-  border: 1px solid white;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
 }
 
 .btn-local:hover {
-  background-color: #88AC35;
-  border: 1px solid #869948;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  text-decoration: underline;
+}
+
+.courses-list {
+  margin-bottom: 5px;
 }
 
 .courses-list .card-header {
-  background-color: #88AC35;
+  background-color: #869948;
   font-size: 1.5em;
+}
+
+.courses-list .card-body {
+  background-color: #f0f0f0;
+}
+
+.courses-list .card-footer {
+  background-color: #869948;
+}
+
+.team-member .card-body {
+  background-color: #f0f0f0;
 }
 
 /* .card-text:last-child {
