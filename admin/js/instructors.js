@@ -78,9 +78,30 @@ const displayInstructors = function (response) {
           $("#avatar-wrapper").append(img);
           //$("#avatar").attr("src", data.url);
           $("#editInstructorThumbnailUrl").val(payload.imageurl);
+          initCropper();
         },
       });
     }
+  });
+};
+
+const initCropper = function () {
+  $.fn.cropper();
+
+  var $ava = $("#avatar");
+  $ava.cropper({
+    aspectRatio: 2 / 3,
+    cropBoxResizable: false,
+    viewMode: 3,
+    crop: function (event) {
+      console.log(event.detail.x);
+      console.log(event.detail.y);
+      console.log(event.detail.width);
+      console.log(event.detail.height);
+      console.log(event.detail.rotate);
+      console.log(event.detail.scaleX);
+      console.log(event.detail.scaleY);
+    },
   });
 };
 
@@ -265,7 +286,7 @@ const buildThumbnailFromUpload = function (payload) {
   var img = $("<img />", {
     src: "../" + payload.imageurl,
     alt: "Profile Picture From Upload",
-    class: "thumbnail-wrapper",
+    class: "thumbnail-img",
     id: "avatar",
   });
 
@@ -278,7 +299,7 @@ const buildThumbnail = function (instructor) {
     img = $("<img />", {
       src: "../" + instructor.imageurl,
       alt: "Profile picture for instructor " + instructor.id,
-      class: "thumbnail-wrapper",
+      class: "thumbnail-img-list",
       id: "avatar",
     });
   } else {
@@ -286,7 +307,7 @@ const buildThumbnail = function (instructor) {
     img = $("<img />", {
       src: "./img/avatar-" + num + ".svg",
       alt: "Default profile picture for instructor",
-      class: "thumbnail-wrapper",
+      class: "thumbnail-img-list",
       id: "avatar",
     });
   }
