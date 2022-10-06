@@ -658,18 +658,40 @@ footer {
 
 .btn-local
 {
-    background-color: $accent-color-moss-green;
-    border: 1px solid white;
+    background-color: $background-color-btn-light;
+    border: 1px solid $background-color;
 }
 .btn-local:hover{
-    background-color: $accent-color-apple-green;
-    border: 1px solid $accent-color-moss-green;
+    background-color: $background-color-btn-light;
+    border: 1px solid $background-color;
+    text-decoration:underline;
+}
+
+.courses-list{
+    margin-bottom: 5px;
+
 }
 
 .courses-list .card-header{
     background-color: $accent-color-apple-green;
     font-size: 1.5em;
     
+}
+
+.courses-list .card-body{
+    background-color: $background-color;
+}
+
+.courses-list .card-footer{
+    background-color: $accent-color-apple-green;
+}
+
+.team-member{
+    border: 1px solid $accent-color-liver-chestnut;
+}
+
+.team-member .card-body{
+    background-color: $background-color;
 }
 
 /* .card-text:last-child {

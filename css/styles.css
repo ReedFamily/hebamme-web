@@ -522,18 +522,39 @@ footer a {
 }
 
 .btn-local {
-  background-color: #869948;
-  border: 1px solid white;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
 }
 
 .btn-local:hover {
-  background-color: #88AC35;
-  border: 1px solid #869948;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  text-decoration: underline;
+}
+
+.courses-list {
+  margin-bottom: 5px;
 }
 
 .courses-list .card-header {
   background-color: #88AC35;
   font-size: 1.5em;
+}
+
+.courses-list .card-body {
+  background-color: #f0f0f0;
+}
+
+.courses-list .card-footer {
+  background-color: #88AC35;
+}
+
+.team-member {
+  border: 1px solid #94684C;
+}
+
+.team-member .card-body {
+  background-color: #f0f0f0;
 }
 
 /* .card-text:last-child {
