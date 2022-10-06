@@ -24,7 +24,7 @@ const buildTeamCards = function (payload) {
   jQuery.each(payload.instructors, function (index, instructor) {
     var cardWrapper = jQuery("<div />", { class: "col-md-4, card-wrapper" });
     var card = jQuery("<div />", {
-      class: "card",
+      class: "card team-member",
       id: "team-member-" + instructor.id,
     });
     var cardheader = jQuery("<h4 />", {
