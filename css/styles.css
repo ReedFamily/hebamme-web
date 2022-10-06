@@ -1,10 +1,10 @@
 html {
-  background-color: #f0f0f0;
+  background-color: #e7d6c6;
   color: #111111;
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: #e7d6c6;
   color: #111111;
 }
 
@@ -537,7 +537,7 @@ footer a {
 }
 
 .courses-list .card-header {
-  background-color: #88AC35;
+  background-color: #869948;
   font-size: 1.5em;
 }
 
@@ -546,11 +546,7 @@ footer a {
 }
 
 .courses-list .card-footer {
-  background-color: #88AC35;
-}
-
-.team-member {
-  border: 1px solid #94684C;
+  background-color: #869948;
 }
 
 .team-member .card-body {

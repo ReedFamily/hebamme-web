@@ -8,6 +8,8 @@ $background-color:#f0f0f0;
 
 $background-color-btn-light:#f0f0f0;
 
+$background-color-baby-blanket-beige: #e7d6c6;
+
 $accent-color-moss-green:#869948;
 
 $accent-color-flame:#DF5916;
@@ -24,6 +26,8 @@ $accent-color-apple-green:#88AC35;
 
 $accent-color-safety-yellow:#E9CE2C;
 
+$accent-color-jade-green: #C6E7D6;
+
 $text-color:#111111;
 
 $text-color-light:#f0f0f0;
@@ -34,12 +38,12 @@ $text-color-light:#f0f0f0;
 ///////////////////////////////////////////////////////////////
 
 html {
-    background-color: $background-color;
+    background-color: $background-color-baby-blanket-beige;
     color           : $text-color;
 }
 
 body {
-    background-color: $background-color;
+    background-color: $background-color-baby-blanket-beige;
     color           : $text-color;
 }
 
@@ -673,7 +677,7 @@ footer {
 }
 
 .courses-list .card-header{
-    background-color: $accent-color-apple-green;
+    background-color: $accent-color-moss-green;
     font-size: 1.5em;
     
 }
@@ -683,12 +687,9 @@ footer {
 }
 
 .courses-list .card-footer{
-    background-color: $accent-color-apple-green;
+    background-color: $accent-color-moss-green;
 }
 
-.team-member{
-    border: 1px solid $accent-color-liver-chestnut;
-}
 
 .team-member .card-body{
     background-color: $background-color;
