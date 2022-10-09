@@ -557,6 +557,31 @@ footer a {
   margin-left: 0.5rem;
 }
 
+.gbv {
+  background-color: #869948 !important;
+}
+
+.rubi {
+  background-color: #5B4899 !important;
+  color: #f0f0f0;
+}
+
+.eh {
+  background-color: #99485D !important;
+}
+
+.bt {
+  background-color: #489984 !important;
+}
+
+.yoga {
+  background-color: #485099 !important;
+}
+
+.other {
+  background-color: #509948 !important;
+}
+
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } *//*# sourceMappingURL=styles.css.map */
