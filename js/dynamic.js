@@ -115,6 +115,30 @@ const buildHomeAlerts = function (payload) {
   }
 };
 
+const getStyleFromDescription = function (descript) {
+  if (descript.includes("Geburtsvorbereitung")) {
+    return "gbv";
+  }
+
+  if (descript.includes("Rückbildung")) {
+    return "rubi";
+  }
+
+  if (descript.includes("Yoga")) {
+    return "yoga";
+  }
+
+  if (descript.includes("Erste Hilfe")) {
+    return "eh";
+  }
+
+  if (descript.includes("Babytreff")) {
+    return "bt";
+  }
+
+  return "other";
+};
+
 const getClassInfo = function () {
   jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
     if (res.status == 200) {
@@ -125,7 +149,11 @@ const getClassInfo = function () {
         if (classes.status == 200) {
           var classWrapper = $("#termine-wrapper");
           $(classWrapper).empty();
-          $.each(classes.classes, function (index, classDetail) {
+          $.each(classRes.classes, function (index, classDetail) {
+            var styleClass =
+              "card-header " + getStyleFromDescription(classDetail.name);
+            var footerStyle =
+              "card-footer " + getStyleFromDescription(classDetail.name);
             var classId = classDetail.id;
             var className = classDetail.name;
             var btnUrl = classDetail.detail.hebamio_link;
@@ -146,10 +174,10 @@ const getClassInfo = function () {
               id: "course-" + classId,
             });
             var classCardHeader = $("<div />", {
-              class: "card-header",
+              class: styleClass,
               text: className + " - " + classStartDate + " bis " + classEndDate,
             });
-            var classCardFooter = $("<div />", { class: "card-footer" });
+            var classCardFooter = $("<div />", { class: footerStyle });
             var footerContent;
             if (isFull === true) {
               footerContent = $("<span />", {

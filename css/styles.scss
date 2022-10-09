@@ -12,6 +12,18 @@ $background-color-baby-blanket-beige: #e7d6c6;
 
 $accent-color-moss-green:#869948;
 
+$accent-color-class-gbv: #869948;
+
+$accent-color-class-rubi: #5B4899;
+
+$accent-color-class-bt: #489984;
+
+$accent-color-class-eh: #99485D;
+
+$accent-color-class-yoga: #485099;
+
+$accent-color-class-other: #509948;
+
 $accent-color-flame:#DF5916;
 
 $accent-color-french-bistre:#7A6C5D;
@@ -697,6 +709,31 @@ footer {
 
 .termine-descript{
     margin-left: 0.5rem;
+}
+
+.gbv{
+    background-color: $accent-color-class-gbv !important;
+}
+
+.rubi{
+    background-color: $accent-color-class-rubi !important;
+    color: $background-color;
+}
+
+.eh {
+    background-color: $accent-color-class-eh !important;
+}
+
+.bt{
+    background-color: $accent-color-class-bt !important;
+}
+
+.yoga{
+    background-color: $accent-color-class-yoga !important;
+}
+
+.other{
+    background-color: $accent-color-class-other !important;
 }
 
 /* .card-text:last-child {
