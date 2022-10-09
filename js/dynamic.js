@@ -181,6 +181,10 @@ const getClassInfo = function () {
               .append(" von ")
               .append(classMaxParticipants);
 
+            var classBodyPartner = $("<p />");
+            $(classBodyPartner)
+              .append("Partnergebühr: €")
+              .append(classPartnerPrice);
             var classBodyTermine = $("<div />");
             var classBodyTermineTitle = $("<p />").append("Termine: ");
             var classBodyTermineList = $("<ul />");
@@ -193,7 +197,14 @@ const getClassInfo = function () {
                 .append(" bis ")
                 .append(dateDetail.time_end)
                 .append(" mit ")
-                .append(dateDetail.date_instructor);
+                .append(dateDetail.date_instructor)
+                .append($("<br />"))
+                .append(
+                  $("<span />", {
+                    class: "termine-descript",
+                    text: dateDetail.description,
+                  })
+                );
               $(classBodyTermineList).append(termineItem);
             });
 
@@ -201,10 +212,11 @@ const getClassInfo = function () {
               .append(classBodyTermineTitle)
               .append(classBodyTermineList);
 
-            $(classCardBody)
-              .append(classBodyWo)
-              .append(classBodyAvailable)
-              .append(classBodyTermine);
+            $(classCardBody).append(classBodyWo).append(classBodyAvailable);
+            if (classPartnerPrice) {
+              $(classCardBody).append(classBodyPartner);
+            }
+            $(classCardBody).append(classBodyTermine);
             $(classCard)
               .append(classCardHeader)
               .append(classCardBody)
