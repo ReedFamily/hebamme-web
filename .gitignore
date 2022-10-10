@@ -9,5 +9,9 @@ en/index.html
 /mydashboard/
 *.code-workspace
 
-*.JPG
+/backend/uploads/*.jpg
 backend/conf/conf-live.php
+API/API-key altenbeckundkollegin.txt
+API/example.json
+API/example-kurs-details.json
+API/example-kurs-list.json

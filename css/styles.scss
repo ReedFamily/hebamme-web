@@ -1,650 +1,630 @@
-    @charset "UTF-8";
-    ///////////////////////////////////////////////////////////////
-    /////////////////////// Color-Variables ///////////////////////
-    ///////////////////////////////////////////////////////////////
-    $background-color :#f0f0f0;
-    $background-color-btn-light :#f0f0f0;
-    $accent-color-moss-green :#869948;
-    $accent-color-flame :#DF5916;
-    $accent-color-french-bistre :#7A6C5D;
-    $accent-color-venetian-red :#BF211E;
-    $accent-color-orange-yellow :#ECB709;
-    $accent-color-liver-chestnut:#94684C;
-    $accent-color-apple-green :#88AC35;
-    $accent-color-safety-yellow :#E9CE2C;
-    $text-color :#111111;
-    $text-color-light :#f0f0f0;
-    ///////////////////////////////////////////////////////////////
-    //////////////////////// Colour-Config ////////////////////////
-    ///////////////////////////////////////////////////////////////
-    html {
-        background-color: $background-color;
-        color: $text-color;
-    }
-    
-    body {
-        background-color: $background-color;
-        color: $text-color;
-    }
-    
-    .color-light {
-        color: $text-color-light;
-    }
-    
-    .accent-color-moss-green {
-        color: $accent-color-moss-green;
-        button.btn {
-            background-color: $accent-color-moss-green;
-            color: $text-color-light;
-        }
-    }
-    
-    .accent-color-flame {
-        color: $accent-color-flame;
-        button.btn {
-            background-color: $accent-color-flame;
-            color: $text-color-light;
-        }
-    }
-    
-    .accent-color-french-bistre {
-        color: $accent-color-french-bistre;
-        button.btn {
-            background-color: $accent-color-french-bistre;
-            color: $text-color-light;
-        }
-    }
-    
-    .accent-color-venetian-red {
-        color: $accent-color-venetian-red;
-        button.btn {
-            background-color: $accent-color-venetian-red;
-            color: $text-color-light;
-        }
-    }
-    
-    .accent-color-orange-yellow {
-        color: $accent-color-orange-yellow;
-        button.btn {
-            background-color: $accent-color-orange-yellow;
-            color: $text-color;
-        }
-    }
-    
-    .accent-color-liver-chestnut {
-        color: $accent-color-liver-chestnut;
-        button.btn {
-            background-color: $accent-color-liver-chestnut;
-            color: $text-color-light;
-        }
-    }
-    
-    .accent-color-apple-green {
-        color: $accent-color-apple-green;
-        button.btn {
-            background-color: $accent-color-apple-green;
-            color: $text-color;
-        }
-    }
-    
-    .accent-color-safety-yellow {
-        color: $accent-color-safety-yellow;
-        button.btn {
-            background-color: $accent-color-safety-yellow;
-            color: $text-color;
-        }
-    }
-    
-    .bg-color-light {
-        background-color: $background-color;
-    }
-    
-    .bg-accent-color-moss-green {
+@charset "UTF-8";
+///////////////////////////////////////////////////////////////
+/////////////////////// Color-Variables ///////////////////////
+///////////////////////////////////////////////////////////////
+$background-color:#f0f0f0;
+$background-color-btn-light:#f0f0f0;
+$background-color-baby-blanket-beige: #e7d6c6;
+$accent-color-moss-green:#869948;
+$accent-color-class-gbv: #869948;
+$accent-color-class-rubi: #5B4899;
+$accent-color-class-bt: #489984;
+$accent-color-class-eh: #99485D;
+$accent-color-class-yoga: #485099;
+$accent-color-class-other: #509948;
+$accent-color-flame:#DF5916;
+$accent-color-french-bistre:#7A6C5D;
+$accent-color-venetian-red:#BF211E;
+$accent-color-orange-yellow:#ECB709;
+$accent-color-liver-chestnut:#94684C;
+$accent-color-apple-green:#88AC35;
+$accent-color-safety-yellow:#E9CE2C;
+$accent-color-jade-green: #C6E7D6;
+$text-color:#111111;
+$text-color-light:#f0f0f0;
+///////////////////////////////////////////////////////////////
+//////////////////////// Colour-Config ////////////////////////
+///////////////////////////////////////////////////////////////
+html {
+    background-color: $background-color-baby-blanket-beige;
+    color: $text-color;
+}
+
+body {
+    background-color: $background-color-baby-blanket-beige;
+    color: $text-color;
+}
+
+.color-light {
+    color: $text-color-light;
+}
+
+.accent-color-moss-green {
+    color: $accent-color-moss-green;
+    button.btn {
         background-color: $accent-color-moss-green;
         color: $text-color-light;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $accent-color-moss-green;
-        }
     }
-    
-    .bg-accent-color-flame {
+}
+
+.accent-color-flame {
+    color: $accent-color-flame;
+    button.btn {
         background-color: $accent-color-flame;
         color: $text-color-light;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $accent-color-flame;
-        }
     }
-    
-    .bg-accent-color-french-bistre {
+}
+
+.accent-color-french-bistre {
+    color: $accent-color-french-bistre;
+    button.btn {
         background-color: $accent-color-french-bistre;
         color: $text-color-light;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $accent-color-french-bistre;
-        }
     }
-    
-    .bg-accent-color-venetian-red {
-        background-color: $accent-color-venetian-red !important;
-        color: $text-color-light !important;
-        button.btn {
-            background-color: $background-color-btn-light !important;
-            color: $accent-color-venetian-red !important;
-        }
+}
+
+.accent-color-venetian-red {
+    color: $accent-color-venetian-red;
+    button.btn {
+        background-color: $accent-color-venetian-red;
+        color: $text-color-light;
     }
-    
-    .bg-accent-color-orange-yellow {
+}
+
+.accent-color-orange-yellow {
+    color: $accent-color-orange-yellow;
+    button.btn {
         background-color: $accent-color-orange-yellow;
         color: $text-color;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $text-color;
-        }
     }
-    
-    .bg-accent-color-liver-chestnut {
+}
+
+.accent-color-liver-chestnut {
+    color: $accent-color-liver-chestnut;
+    button.btn {
         background-color: $accent-color-liver-chestnut;
         color: $text-color-light;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $text-color;
-        }
     }
-    
-    .bg-accent-color-apple-green {
+}
+
+.accent-color-apple-green {
+    color: $accent-color-apple-green;
+    button.btn {
         background-color: $accent-color-apple-green;
         color: $text-color;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $text-color;
-        }
     }
-    
-    .bg-accent-color-safety-yellow {
+}
+
+.accent-color-safety-yellow {
+    color: $accent-color-safety-yellow;
+    button.btn {
         background-color: $accent-color-safety-yellow;
         color: $text-color;
-        button.btn {
-            background-color: $background-color-btn-light;
-            color: $text-color;
-        }
     }
-    
-    ///////////////////////////////////////////////////////////////
-    /////////////////////////// Styling ///////////////////////////
-    ///////////////////////////////////////////////////////////////
-    * {
-        overflow: unset;
-        //scrollbar-color : #ffffffaf #00000000;
-        //scrollbar-gutter: hidden;
-        scrollbar-width: thin;
-        //border            : 1px solid red;
+}
+
+.bg-color-light {
+    background-color: $background-color;
+}
+
+.bg-accent-color-moss-green {
+    background-color: $accent-color-moss-green;
+    color: $text-color-light;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $accent-color-moss-green;
     }
-    
-    body {
-        position: relative;
-        //overflow: overlay;
+}
+
+.bg-accent-color-flame {
+    background-color: $accent-color-flame;
+    color: $text-color-light;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $accent-color-flame;
     }
-    
-    .navbar-img {
-        height: 2em;
-        width: 2em;
+}
+
+.bg-accent-color-french-bistre {
+    background-color: $accent-color-french-bistre;
+    color: $text-color-light;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $accent-color-french-bistre;
     }
-    
-    .navbar-toggler-right {
-        float: right !important;
+}
+
+.bg-accent-color-venetian-red {
+    background-color: $accent-color-venetian-red !important;
+    color: $text-color-light !important;
+    button.btn {
+        background-color: $background-color-btn-light !important;
+        color: $accent-color-venetian-red !important;
     }
-    
-    .navbar {
-        background-color: rgba(240, 240, 240, 0);
-        .navbar-light {
-            .navbar-nav {
-                .nav-link {
-                    color: rgba(0, 0, 0, .75) !important;
-                    .active {
-                        color: rgba(0, 0, 0, .99) !important;
-                    }
+}
+
+.bg-accent-color-orange-yellow {
+    background-color: $accent-color-orange-yellow;
+    color: $text-color;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $text-color;
+    }
+}
+
+.bg-accent-color-liver-chestnut {
+    background-color: $accent-color-liver-chestnut;
+    color: $text-color-light;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $text-color;
+    }
+}
+
+.bg-accent-color-apple-green {
+    background-color: $accent-color-apple-green;
+    color: $text-color;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $text-color;
+    }
+}
+
+.bg-accent-color-safety-yellow {
+    background-color: $accent-color-safety-yellow;
+    color: $text-color;
+    button.btn {
+        background-color: $background-color-btn-light;
+        color: $text-color;
+    }
+}
+
+///////////////////////////////////////////////////////////////
+/////////////////////////// Styling ///////////////////////////
+///////////////////////////////////////////////////////////////
+* {
+    overflow: unset;
+    //scrollbar-color : #ffffffaf #00000000;
+    //scrollbar-gutter: hidden;
+    scrollbar-width: thin;
+    //border            : 1px solid red;
+}
+
+body {
+    position: relative;
+    //overflow: overlay;
+}
+
+.navbar-img {
+    height: 2em;
+    width: 2em;
+}
+
+.navbar-toggler-right {
+    float: right !important;
+}
+
+.navbar {
+    background-color: rgba(240, 240, 240, 0);
+    .navbar-light {
+        .navbar-nav {
+            .nav-link {
+                color: rgba(0, 0, 0, .75) !important;
+                .active {
+                    color: rgba(0, 0, 0, .99) !important;
                 }
             }
         }
     }
-    /*.z-index-2 {
+}
+
+
+/*.z-index-2 {
     z-index: 2;
 }*/
+
+.footerlink {
+    text-decoration: none;
+    color: #f0f0f0 !important;
+}
+
+.footerlink:hover {
+    color: #d3d3d3 !important;
+    text-decoration: underline !important;
+}
+
+section {
+    margin-top: 2em;
+}
+
+.standard {
+    margin: 0em 0em 0em 0em;
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+    .container {
+        h1 {
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            margin-bottom: 0.25em;
+        }
+        h3 {
+            margin-bottom: 0.25em;
+        }
+    }
+}
+
+.midwife-img-container {
+    margin-bottom: 1em !important;
+}
+
+@media (orientation: landscape) {
+    #home {
+        margin-top: -66px;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    #home {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    @media screen and (max-height: 520px) {
+        #home {
+            margin-top: 0px;
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+
+@media (orientation: portrait) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+
+#home {
+    overflow-x: hidden;
+    background-color: $accent-color-moss-green;
+    margin-bottom: 0em;
+    .percent-100 {
+        width: 100%;
+        height: 100%;
+        @media (orientation: landscape) {
+            .container {
+                padding-top: 10em;
+            }
+        }
+        @media (orientation: portrait) {
+            .container {
+                padding-top: 4em;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    #home {
+        height: 50vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #home {
+        height: 50vh;
+    }
+}
+
+@media (orientation: landscape) {
+    #home {
+        height: 100vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #home {
+        height: 50vh;
+    }
+}
+
+#home {
+    /*background-color: unset; */
+    background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+}
+
+@media (orientation: landscape) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+
+@media (orientation: portrait) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+
+
+}
+@media (orientation: landscape) {
+    #error-404 {
+        margin-top: -66px;
+    }
+}
+@media screen and (max-width: 766px) {
+    #error-404 {
+        margin-top: 0px;
+    }
+}
+@media screen and (min-width: 767px) {
+    @media screen and (max-height: 520px) {
+        #error-404 {
+            margin-top: 0px;
+        }
+    }
+}
+@media (orientation: landscape) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
     
-    .footerlink {
-        text-decoration: none;
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+@media (orientation: portrait) {
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
+}
+.navbar-404 {
+    background-color: rgba(243, 89, 86, 0.0);
+    .nav-link {
         color: #f0f0f0 !important;
     }
-    
-    .footerlink:hover {
-        color: #d3d3d3 !important;
-        text-decoration: underline !important;
-    }
-    
-    section {
-        margin-top: 2em;
-    }
-    
-    .standard {
-        margin: 0em 0em 0em 0em;
-        padding-top: 1.75em;
-        padding-bottom: 1.75em;
-        .container {
-            h1 {
-                margin-bottom: 0.5em;
+}
+.bg-404 {
+    background-color: $accent-color-venetian-red !important;
+    color: $text-color-light !important;
+}
+#error-404 {
+    overflow-x: hidden;
+    background-color: $accent-color-venetian-red !important;
+    color: $text-color-light !important;
+    .percent-100 {
+        width: 100%;
+        height: 100%;
+        @media (orientation: landscape) {
+            .container {
+                padding-top: 10em;
             }
-            h2 {
-                margin-bottom: 0.25em;
-            }
-            h3 {
-                margin-bottom: 0.25em;
+        }
+        @media (orientation: portrait) {
+            .container {
+                padding-top: 4em;
             }
         }
     }
-    
+}
+@media (orientation: landscape) {
+    #error-404 {
+        height: 50vh;
+    }
+}
+@media (orientation: portrait) {
+    #error-404 {
+        height: 50vh;
+    }
+}
+@media screen and (max-width: 600px) {
     .midwife-img-container {
-        margin-bottom: 1em !important;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
     }
     
-    @media (orientation: landscape) {
-        #home {
-            margin-top: -66px;
-        }
+    .midwife-img {
+        width: 98%;
     }
-    
-    @media screen and (max-width: 766px) {
-        #home {
-            margin-top: 0px;
-        }
-    }
-    
-    @media screen and (min-width: 767px) {
-        @media screen and (max-height: 520px) {
-            #home {
-                margin-top: 0px;
-            }
-        }
-    }
-    
-    @media (orientation: landscape) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    #home {
-        overflow-x: hidden;
-        background-color: $accent-color-moss-green;
-        margin-bottom: 0em;
-        .percent-100 {
-            width: 100%;
-            height: 100%;
-            @media (orientation: landscape) {
-                .container {
-                    padding-top: 10em;
-                }
-            }
-            @media (orientation: portrait) {
-                .container {
-                    padding-top: 4em;
-                }
-            }
-        }
-    }
-    
-    @media (orientation: landscape) {
-        #home {
-            height: 50vh;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        #home {
-            height: 50vh;
-        }
-    }
-    
-    @media (orientation: landscape) {
-        #home {
-            height: 100vh;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        #home {
-            height: 50vh;
-        }
-    }
-    
-    #home {
-        /*background-color: unset; */
-        background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 100% auto;
-    }
-    
-    @media (orientation: landscape) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    @media (orientation: landscape) {
-        #error-404-home {
-            margin-top: -66px;
-        }
-    }
-    
-    @media screen and (max-width: 766px) {
-        #error-404-home {
-            margin-top: 0px;
-        }
-    }
-    
-    @media screen and (min-width: 767px) {
-        @media screen and (max-height: 520px) {
-            #error-404-home {
-                margin-top: 0px;
-            }
-        }
-    }
-    
-    @media (orientation: landscape) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        div.cn {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-        }
-        div.inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 2rem;
-        }
-    }
-    
-    .navbar-404 {
-        background-color: rgba(243, 89, 86, 0.0);
-        .nav-link {
-            color: #f0f0f0 !important;
-        }
-    }
-    
-    .bg-404 {
-        background-color: $accent-color-venetian-red !important;
-        color: $text-color-light !important;
-    }
-    
-    #error-404-home {
-        overflow-x: hidden;
-        background-color: $accent-color-venetian-red !important;
-        color: $text-color-light !important;
-        .percent-100 {
-            width: 100%;
-            height: 100%;
-            @media (orientation: landscape) {
-                .container {
-                    padding-top: 10em;
-                }
-            }
-            @media (orientation: portrait) {
-                .container {
-                    padding-top: 4em;
-                }
-            }
-        }
-    }
-    
-    @media (orientation: landscape) {
-        #error-404-home {
-            height: 50vh;
-        }
-    }
-    
-    @media (orientation: portrait) {
-        #error-404-home {
-            height: 50vh;
-        }
-    }
-    
-    @media screen and (max-width: 600px) {
-        .midwife-img-container {
-            text-align: center;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-        }
-        .midwife-img {
-            width: 98%;
-        }
-    }
-    
-    @media screen and (min-width: 601px) {
-        .midwife-img {
-            width: 50%;
-        }
-        @media screen and (max-width: 767px) {
-            .midwife-img {
-                width: 75%;
-            }
-        }
-    }
-    
-    .width-5em {
-        width: 5em !important;
-    }
-    
-    @media screen and (min-width: 768px) {
-        #kontakt-sprechzeiten {
-            .row {
-                .right-text {
-                    text-align: right !important;
-                }
-            }
-        }
-    }
-    
-    .hidden {
-        display: none;
-    }
-    
-    form {
-        margin-bottom: 2em;
-        padding: 2rem 0;
-        input.invalid {
-            border: 2px solid red;
-        }
-        textarea.invalid {
-            border: 2px solid red;
-        }
-        .error-hint {
-            color: red,
-        }
-        button.btn {
-            margin-top: 1em;
-            //margin-bottom: 1em;
-        }
-    }
-    
-    .thank-you {
-        font-size: 2em;
-        margin-top: 2em;
-        margin-bottom: 2.5em;
-    }
-    
-    .error-message {
-        font-size: 1.5em;
-        margin-top: 2em;
-        margin-bottom: 2.5em;
-    }
-    
-    footer {
-        padding-top: 2em;
-        padding-bottom: 2em;
-        background-color: hsl(34, 7%, 20%) !important;
-        color: #f0f0f0;
-        a {
-            text-decoration: none;
-        }
-    }
-    
-    .termine-column {
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-    }
-    
-    @media screen and (max-width: 1200px) {
-        .termine-card {
-            margin-left: 0.5em !important;
-            margin-right: 0.5em !important;
-            min-width: min-content;
-        }
+}
+@media screen and (min-width: 601px) {
+    .midwife-img {
+        width: 50%;
     }
     
     @media screen and (max-width: 767px) {
-        .termine-card {
-            margin-top: 1.5em;
+        .midwife-img {
+            width: 75%;
         }
     }
-    
-    .termine-card {
-        max-width: 100%;
-        min-height: 17rem
-    }
-    
-    .termine-line {
-        margin-top: 0.75em !important;
-    }
-    
-    img.avatar {
-        max-width: 10rem;
-    }
-    
-    .card {
-        max-width: 30rem;
-    }
-    
-    #angebote {
-        background-color: #869948;
-        div.container {
-            background-color: #F0F0F0;
-            border-radius: 0.5em;
-        }
-    }
-    
-    #sprechstunde {
-        background-color: #F0F0F0;
-        padding: 2rem;
-        margin-bottom: 1em;
-        border-radius: 0.5em;
-    }
-    
-    #kontaktformular {
-        background-color: #F0F0F0;
-        border-radius: 0.5em;
-    }
-    
+}
+.width-5em {
+    width: 5em !important;
+}
+@media screen and (min-width: 768px) {
     #kontakt-sprechzeiten {
-        background-color: #869948;
-        h2 {
-            margin-bottom: 0.5em;
+        .row {
+            .right-text {
+                text-align: right !important;
+            }
         }
     }
-    
-    .sub-container {
-        padding-bottom: 2rem;
+}
+.hidden {
+    display: none;
+}
+form {
+    margin-bottom: 2em;
+    input.invalid {
+        border: 2px solid red;
     }
     
-    .card-wrapper {
-        padding-left: 0;
-        margin: 1rem 1rem 1rem 1rem;
+    textarea.invalid {
+        border: 2px solid red;
     }
     
-    #home-alerts {
-        background-color: #869948;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+    .error-hint {
+        color: red,
     }
     
-    #home-alerts div.container {
-        background-color: #F0F0F0;
+    button.btn {
+        margin-top: 1em;
+        //margin-bottom: 1em;
     }
-    
-    #home-alerts div.site-message {
-        padding-bottom: 0.5rem;
+}
+.thank-you {
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+}
+.error-message {
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+}
+footer {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: hsl(34, 7%, 20%) !important;
+    color: #f0f0f0;
+    a {
+        text-decoration: none;
     }
-    
-    .formwrapper {
-        padding: 0;
+}
+.termine-column {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+@media screen and (max-width: 1200px) {
+    .termine-card {
+        margin-left: 0.5em !important;
+        margin-right: 0.5em !important;
+        min-width: min-content;
     }
-    /*background-color: #869948; */
-    /* .card-text:last-child {
+}
+@media screen and (max-width: 767px) {
+    .termine-card {
+        margin-top: 1.5em;
+    }
+}
+.termine-card {
+    max-width: 100%;
+    min-height: 17rem
+}
+.termine-line {
+    margin-top: 0.75em !important;
+}
+.btn-local {
+    background-color: $background-color-btn-light;
+    border: 1px solid $background-color;
+}
+.btn-local:hover {
+    background-color: $background-color-btn-light;
+    border: 1px solid $background-color;
+    text-decoration: underline;
+}
+.courses-list {
+    margin-bottom: 5px;
+}
+.courses-list .card-header {
+    background-color: $accent-color-moss-green;
+    font-size: 1.5em;
+}
+.courses-list .card-body {
+    background-color: $background-color;
+}
+.courses-list .card-footer {
+    background-color: $accent-color-moss-green;
+}
+.team-member .card-body {
+    background-color: $background-color;
+}
+.termine-descript {
+    margin-left: 0.5rem;
+}
+.gbv {
+    background-color: $accent-color-class-gbv !important;
+}
+.rubi {
+    background-color: $accent-color-class-rubi !important;
+    color: $background-color;
+}
+.eh {
+    background-color: $accent-color-class-eh !important;
+}
+.bt {
+    background-color: $accent-color-class-bt !important;
+}
+.yoga {
+    background-color: $accent-color-class-yoga !important;
+}
+.other {
+    background-color: $accent-color-class-other !important;
+}
+
+/* .card-text:last-child {
     margin-bottom: 0.25em !important;
 } */

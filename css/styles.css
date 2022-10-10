@@ -1,589 +1,653 @@
 html {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #e7d6c6;
+    color: #111111;
 }
 
 body {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #e7d6c6;
+    color: #111111;
 }
 
 .color-light {
-  color: #f0f0f0;
+    color: #f0f0f0;
 }
 
 .accent-color-moss-green {
-  color: #869948;
+    color: #869948;
 }
+
 .accent-color-moss-green button.btn {
-  background-color: #869948;
-  color: #f0f0f0;
+    background-color: #869948;
+    color: #f0f0f0;
 }
 
 .accent-color-flame {
-  color: #DF5916;
+    color: #DF5916;
 }
+
 .accent-color-flame button.btn {
-  background-color: #DF5916;
-  color: #f0f0f0;
+    background-color: #DF5916;
+    color: #f0f0f0;
 }
 
 .accent-color-french-bistre {
-  color: #7A6C5D;
+    color: #7A6C5D;
 }
+
 .accent-color-french-bistre button.btn {
-  background-color: #7A6C5D;
-  color: #f0f0f0;
+    background-color: #7A6C5D;
+    color: #f0f0f0;
 }
 
 .accent-color-venetian-red {
-  color: #BF211E;
+    color: #BF211E;
 }
+
 .accent-color-venetian-red button.btn {
-  background-color: #BF211E;
-  color: #f0f0f0;
+    background-color: #BF211E;
+    color: #f0f0f0;
 }
 
 .accent-color-orange-yellow {
-  color: #ECB709;
+    color: #ECB709;
 }
+
 .accent-color-orange-yellow button.btn {
-  background-color: #ECB709;
-  color: #111111;
+    background-color: #ECB709;
+    color: #111111;
 }
 
 .accent-color-liver-chestnut {
-  color: #94684C;
+    color: #94684C;
 }
+
 .accent-color-liver-chestnut button.btn {
-  background-color: #94684C;
-  color: #f0f0f0;
+    background-color: #94684C;
+    color: #f0f0f0;
 }
 
 .accent-color-apple-green {
-  color: #88AC35;
+    color: #88AC35;
 }
+
 .accent-color-apple-green button.btn {
-  background-color: #88AC35;
-  color: #111111;
+    background-color: #88AC35;
+    color: #111111;
 }
 
 .accent-color-safety-yellow {
-  color: #E9CE2C;
+    color: #E9CE2C;
 }
+
 .accent-color-safety-yellow button.btn {
-  background-color: #E9CE2C;
-  color: #111111;
+    background-color: #E9CE2C;
+    color: #111111;
 }
 
 .bg-color-light {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .bg-accent-color-moss-green {
-  background-color: #869948;
-  color: #f0f0f0;
+    background-color: #869948;
+    color: #f0f0f0;
 }
+
 .bg-accent-color-moss-green button.btn {
-  background-color: #f0f0f0;
-  color: #869948;
+    background-color: #f0f0f0;
+    color: #869948;
 }
 
 .bg-accent-color-flame {
-  background-color: #DF5916;
-  color: #f0f0f0;
+    background-color: #DF5916;
+    color: #f0f0f0;
 }
+
 .bg-accent-color-flame button.btn {
-  background-color: #f0f0f0;
-  color: #DF5916;
+    background-color: #f0f0f0;
+    color: #DF5916;
 }
 
 .bg-accent-color-french-bistre {
-  background-color: #7A6C5D;
-  color: #f0f0f0;
+    background-color: #7A6C5D;
+    color: #f0f0f0;
 }
+
 .bg-accent-color-french-bistre button.btn {
-  background-color: #f0f0f0;
-  color: #7A6C5D;
+    background-color: #f0f0f0;
+    color: #7A6C5D;
 }
 
 .bg-accent-color-venetian-red {
-  background-color: #BF211E !important;
-  color: #f0f0f0 !important;
+    background-color: #BF211E !important;
+    color: #f0f0f0 !important;
 }
+
 .bg-accent-color-venetian-red button.btn {
-  background-color: #f0f0f0 !important;
-  color: #BF211E !important;
+    background-color: #f0f0f0 !important;
+    color: #BF211E !important;
 }
 
 .bg-accent-color-orange-yellow {
-  background-color: #ECB709;
-  color: #111111;
+    background-color: #ECB709;
+    color: #111111;
 }
+
 .bg-accent-color-orange-yellow button.btn {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #f0f0f0;
+    color: #111111;
 }
 
 .bg-accent-color-liver-chestnut {
-  background-color: #94684C;
-  color: #f0f0f0;
+    background-color: #94684C;
+    color: #f0f0f0;
 }
+
 .bg-accent-color-liver-chestnut button.btn {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #f0f0f0;
+    color: #111111;
 }
 
 .bg-accent-color-apple-green {
-  background-color: #88AC35;
-  color: #111111;
+    background-color: #88AC35;
+    color: #111111;
 }
+
 .bg-accent-color-apple-green button.btn {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #f0f0f0;
+    color: #111111;
 }
 
 .bg-accent-color-safety-yellow {
-  background-color: #E9CE2C;
-  color: #111111;
+    background-color: #E9CE2C;
+    color: #111111;
 }
+
 .bg-accent-color-safety-yellow button.btn {
-  background-color: #f0f0f0;
-  color: #111111;
+    background-color: #f0f0f0;
+    color: #111111;
 }
 
 * {
-  overflow: unset;
-  scrollbar-width: thin;
+    overflow: unset;
+    scrollbar-width: thin;
 }
 
 body {
-  position: relative;
+    position: relative;
 }
 
 .navbar-img {
-  height: 2em;
-  width: 2em;
+    height: 2em;
+    width: 2em;
 }
 
 .navbar-toggler-right {
-  float: right !important;
+    float: right !important;
 }
 
 .navbar {
-  background-color: rgba(240, 240, 240, 0);
+    background-color: rgba(240, 240, 240, 0);
 }
+
 .navbar .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.75) !important;
+    color: rgba(0, 0, 0, 0.75) !important;
 }
+
 .navbar .navbar-light .navbar-nav .nav-link .active {
-  color: rgba(0, 0, 0, 0.99) !important;
+    color: rgba(0, 0, 0, 0.99) !important;
 }
+
 
 /*.z-index-2 {
     z-index: 2;
 }*/
+
 .footerlink {
-  text-decoration: none;
-  color: #f0f0f0 !important;
+    text-decoration: none;
+    color: #f0f0f0 !important;
 }
 
 .footerlink:hover {
-  color: #d3d3d3 !important;
-  text-decoration: underline !important;
+    color: #d3d3d3 !important;
+    text-decoration: underline !important;
 }
 
 section {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 .standard {
-  margin: 0em 0em 0em 0em;
-  padding-top: 1.75em;
-  padding-bottom: 1.75em;
+    margin: 0em 0em 0em 0em;
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
 }
+
 .standard .container h1 {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
+
 .standard .container h2 {
-  margin-bottom: 0.25em;
+    margin-bottom: 0.25em;
 }
+
 .standard .container h3 {
-  margin-bottom: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 .midwife-img-container {
-  margin-bottom: 1em !important;
+    margin-bottom: 1em !important;
 }
 
 @media (orientation: landscape) {
-  #home {
-    margin-top: -66px;
-  }
+    #home {
+        margin-top: -66px;
+    }
 }
+
 @media screen and (max-width: 766px) {
-  #home {
-    margin-top: 0px;
-  }
+    #home {
+        margin-top: 0px;
+    }
 }
+
 @media screen and (min-width: 767px) and (max-height: 520px) {
-  #home {
-    margin-top: 0px;
-  }
+    #home {
+        margin-top: 0px;
+    }
 }
+
 @media (orientation: landscape) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 @media (orientation: portrait) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 #home {
-  overflow-x: hidden;
-  background-color: #869948;
-  margin-bottom: 0em;
+    overflow-x: hidden;
+    background-color: #869948;
+    margin-bottom: 0em;
 }
+
 #home .percent-100 {
-  width: 100%;
-  height: 100%;
-}
-@media (orientation: landscape) {
-  #home .percent-100 .container {
-    padding-top: 10em;
-  }
-}
-@media (orientation: portrait) {
-  #home .percent-100 .container {
-    padding-top: 4em;
-  }
+    width: 100%;
+    height: 100%;
 }
 
 @media (orientation: landscape) {
-  #home {
-    height: 50vh;
-  }
+    #home .percent-100 .container {
+        padding-top: 10em;
+    }
 }
+
 @media (orientation: portrait) {
-  #home {
-    height: 50vh;
-  }
+    #home .percent-100 .container {
+        padding-top: 4em;
+    }
 }
+
 @media (orientation: landscape) {
-  #home {
-    height: 100vh;
-  }
+    #home {
+        height: 50vh;
+    }
 }
+
 @media (orientation: portrait) {
-  #home {
-    height: 50vh;
-  }
+    #home {
+        height: 50vh;
+    }
 }
+
+@media (orientation: landscape) {
+    #home {
+        height: 100vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #home {
+        height: 50vh;
+    }
+}
+
 #home {
-  /*background-color: unset; */
-  background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% auto;
+    /*background-color: unset; */
+    background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
 }
 
 @media (orientation: landscape) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 @media (orientation: portrait) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 @media (orientation: landscape) {
-  #error-404-home {
-    margin-top: -66px;
-  }
+    #error-404-home {
+        margin-top: -66px;
+    }
 }
+
 @media screen and (max-width: 766px) {
-  #error-404-home {
-    margin-top: 0px;
-  }
+    #error-404-home {
+        margin-top: 0px;
+    }
 }
+
 @media screen and (min-width: 767px) and (max-height: 520px) {
-  #error-404-home {
-    margin-top: 0px;
-  }
+    #error-404-home {
+        margin-top: 0px;
+    }
 }
+
 @media (orientation: landscape) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 @media (orientation: portrait) {
-  div.cn {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  div.inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-  }
+    div.cn {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    div.inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+    }
 }
+
 .navbar-404 {
-  background-color: rgba(243, 89, 86, 0);
+    background-color: rgba(243, 89, 86, 0);
 }
+
 .navbar-404 .nav-link {
-  color: #f0f0f0 !important;
+    color: #f0f0f0 !important;
 }
 
 .bg-404 {
-  background-color: #BF211E !important;
-  color: #f0f0f0 !important;
+    background-color: #BF211E !important;
+    color: #f0f0f0 !important;
 }
 
 #error-404-home {
-  overflow-x: hidden;
-  background-color: #BF211E !important;
-  color: #f0f0f0 !important;
+    overflow-x: hidden;
+    background-color: #BF211E !important;
+    color: #f0f0f0 !important;
 }
+
 #error-404-home .percent-100 {
-  width: 100%;
-  height: 100%;
-}
-@media (orientation: landscape) {
-  #error-404-home .percent-100 .container {
-    padding-top: 10em;
-  }
-}
-@media (orientation: portrait) {
-  #error-404-home .percent-100 .container {
-    padding-top: 4em;
-  }
+    width: 100%;
+    height: 100%;
 }
 
 @media (orientation: landscape) {
-  #error-404-home {
-    height: 50vh;
-  }
+    #error-404-home .percent-100 .container {
+        padding-top: 10em;
+    }
 }
+
 @media (orientation: portrait) {
-  #error-404-home {
-    height: 50vh;
-  }
+    #error-404-home .percent-100 .container {
+        padding-top: 4em;
+    }
 }
+
+@media (orientation: landscape) {
+    #error-404-home {
+        height: 50vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #error-404-home {
+        height: 50vh;
+    }
+}
+
 @media screen and (max-width: 600px) {
-  .midwife-img-container {
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  }
-  .midwife-img {
-    width: 98%;
-  }
+    .midwife-img-container {
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .midwife-img {
+        width: 98%;
+    }
 }
+
 @media screen and (min-width: 601px) {
-  .midwife-img {
-    width: 50%;
-  }
+    .midwife-img {
+        width: 50%;
+    }
 }
+
 @media screen and (min-width: 601px) and (max-width: 767px) {
-  .midwife-img {
-    width: 75%;
-  }
+    .midwife-img {
+        width: 75%;
+    }
 }
+
 .width-5em {
-  width: 5em !important;
+    width: 5em !important;
 }
 
 @media screen and (min-width: 768px) {
-  #kontakt-sprechzeiten .row .right-text {
-    text-align: right !important;
-  }
+    #kontakt-sprechzeiten .row .right-text {
+        text-align: right !important;
+    }
 }
+
 .hidden {
-  display: none;
+    display: none;
 }
 
 form {
-  margin-bottom: 2em;
-  padding: 2rem 0;
+    margin-bottom: 2em;
 }
+
 form input.invalid {
-  border: 2px solid red;
+    border: 2px solid red;
 }
+
 form textarea.invalid {
-  border: 2px solid red;
+    border: 2px solid red;
 }
+
 form .error-hint {
-  color: red;
+    color: red;
 }
+
 form button.btn {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
 .thank-you {
-  font-size: 2em;
-  margin-top: 2em;
-  margin-bottom: 2.5em;
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
 }
 
 .error-message {
-  font-size: 1.5em;
-  margin-top: 2em;
-  margin-bottom: 2.5em;
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
 }
 
 footer {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: hsl(34deg, 7%, 20%) !important;
-  color: #f0f0f0;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: hsl(34deg, 7%, 20%) !important;
+    color: #f0f0f0;
 }
+
 footer a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .termine-column {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 @media screen and (max-width: 1200px) {
-  .termine-card {
-    margin-left: 0.5em !important;
-    margin-right: 0.5em !important;
-    min-width: -webkit-min-content;
-    min-width: -moz-min-content;
-    min-width: min-content;
-  }
+    .termine-card {
+        margin-left: 0.5em !important;
+        margin-right: 0.5em !important;
+        min-width: -webkit-min-content;
+        min-width: -moz-min-content;
+        min-width: min-content;
+    }
 }
+
 @media screen and (max-width: 767px) {
-  .termine-card {
-    margin-top: 1.5em;
-  }
+    .termine-card {
+        margin-top: 1.5em;
+    }
 }
+
 .termine-card {
-  max-width: 100%;
-  min-height: 17rem;
+    max-width: 100%;
+    min-height: 17rem;
 }
 
 .termine-line {
-  margin-top: 0.75em !important;
+    margin-top: 0.75em !important;
 }
 
 img.avatar {
-  max-width: 10rem;
+    max-width: 10rem;
 }
 
 .card {
-  max-width: 30rem;
+    max-width: 30rem;
 }
 
 #angebote {
-  background-color: #869948;
+    background-color: #869948;
+    font-size: 1.5em;
 }
+
 #angebote div.container {
-  background-color: #F0F0F0;
-  border-radius: 0.5em;
+    background-color: #F0F0F0;
+    border-radius: 0.5em;
 }
 
 #sprechstunde {
-  background-color: #F0F0F0;
-  padding: 2rem;
-  margin-bottom: 1em;
-  border-radius: 0.5em;
+    background-color: #F0F0F0;
+    padding: 2rem;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
 }
 
 #kontaktformular {
-  background-color: #F0F0F0;
-  border-radius: 0.5em;
+    background-color: #F0F0F0;
+    border-radius: 0.5em;
 }
 
 #kontakt-sprechzeiten {
-  background-color: #869948;
+    background-color: #869948;
 }
+
 #kontakt-sprechzeiten h2 {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .sub-container {
-  padding-bottom: 2rem;
+    padding-bottom: 2rem;
 }
 
 .card-wrapper {
-  padding-left: 0;
-  margin: 1rem 1rem 1rem 1rem;
+    padding-left: 0;
+    margin: 1rem 1rem 1rem 1rem;
 }
 
 #home-alerts {
-  background-color: #869948;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+    background-color: #869948;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 #home-alerts div.container {
-  background-color: #F0F0F0;
+    background-color: #F0F0F0;
 }
 
 #home-alerts div.site-message {
-  padding-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .formwrapper {
-  padding: 0;
+    padding: 0;
 }
 
-/*background-color: #869948; */
+
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
-} *//*# sourceMappingURL=styles.css.map */
+} */
+
+
+/*# sourceMappingURL=styles.css.map */

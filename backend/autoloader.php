@@ -16,6 +16,7 @@
         "user_login" => "user_login.php",
         "instructors_processor" => "instructors_processor.php",
         "upload_processor" => "upload_processor.php",
+        "hebamio_proc" => "hebamio_proc.php",
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
