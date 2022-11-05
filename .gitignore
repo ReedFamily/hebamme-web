@@ -15,3 +15,6 @@ API/API-key altenbeckundkollegin.txt
 API/example.json
 API/example-kurs-details.json
 API/example-kurs-list.json
+backend/conf/sql/hebamme-web-data.sql
+backend/conf/sql/hebamme-web-dump.sql
+backend/exceptions/conf.php

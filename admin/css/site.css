@@ -88,3 +88,22 @@ input:invalid {
   height: auto;
 }
 
+.checkmark
+{
+  
+  color: green;
+}
+
+.nocheck{
+  color: red;
+}
+
+.levelcellentry
+{
+  padding: 2px;
+  display:block;
+  text-align:center;
+}
+
+
+
