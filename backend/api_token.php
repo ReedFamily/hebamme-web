@@ -93,7 +93,7 @@
             $response["userId"] = $userId;
         }
 
-        public function getLoginToken($userId){
+        public function getLoginToken($userId, $username){
             $result = api_response::getResponse(500);
             $token = $this->tokenGen();
             $dateTime = new DateTime();
@@ -113,6 +113,7 @@
             $response["token"] = $token;
             $response["validTo"] = $dateTime->format("r");
             $response["userId"] = $userId;
+            $response["username"] = $username;
             return $response;
         }
 
