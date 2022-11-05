@@ -358,6 +358,12 @@ section {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
+    h1 {
+        font-weight: 600;
+    }
+    p {
+        font-weight: 600;
+    }
 }
 
 @media (orientation: landscape) {

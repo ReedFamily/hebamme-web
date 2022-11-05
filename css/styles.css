@@ -306,6 +306,12 @@ section {
   background-position: center;
   background-size: 100% auto;
 }
+#home h1 {
+  font-weight: 600;
+}
+#home p {
+  font-weight: 600;
+}
 
 @media (orientation: landscape) {
   div.cn {
