@@ -2,26 +2,26 @@
 ///////////////////////////////////////////////////////////////
 /////////////////////// Color-Variables ///////////////////////
 ///////////////////////////////////////////////////////////////
-$background-color:#f0f0f0;
-$background-color-btn-light:#f0f0f0;
+$background-color :#f0f0f0;
+$background-color-btn-light :#f0f0f0;
 $background-color-baby-blanket-beige: #e7d6c6;
-$accent-color-moss-green:#869948;
+$accent-color-moss-green :#869948;
 $accent-color-class-gbv: #869948;
 $accent-color-class-rubi: #5B4899;
 $accent-color-class-bt: #489984;
 $accent-color-class-eh: #99485D;
 $accent-color-class-yoga: #485099;
 $accent-color-class-other: #509948;
-$accent-color-flame:#DF5916;
-$accent-color-french-bistre:#7A6C5D;
-$accent-color-venetian-red:#BF211E;
-$accent-color-orange-yellow:#ECB709;
-$accent-color-liver-chestnut:#94684C;
-$accent-color-apple-green:#88AC35;
-$accent-color-safety-yellow:#E9CE2C;
+$accent-color-flame :#DF5916;
+$accent-color-french-bistre :#7A6C5D;
+$accent-color-venetian-red :#BF211E;
+$accent-color-orange-yellow :#ECB709;
+$accent-color-liver-chestnut :#94684C;
+$accent-color-apple-green :#88AC35;
+$accent-color-safety-yellow :#E9CE2C;
 $accent-color-jade-green: #C6E7D6;
-$text-color:#111111;
-$text-color-light:#f0f0f0;
+$text-color :#111111;
+$text-color-light :#f0f0f0;
 ///////////////////////////////////////////////////////////////
 //////////////////////// Colour-Config ////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -390,18 +390,18 @@ section {
     }
 }
 
-
-}
 @media (orientation: landscape) {
     #error-404 {
         margin-top: -66px;
     }
 }
+
 @media screen and (max-width: 766px) {
     #error-404 {
         margin-top: 0px;
     }
 }
+
 @media screen and (min-width: 767px) {
     @media screen and (max-height: 520px) {
         #error-404 {
@@ -409,13 +409,13 @@ section {
         }
     }
 }
+
 @media (orientation: landscape) {
     div.cn {
         position: relative;
         width: 100%;
         height: 50vh;
     }
-    
     div.inner {
         position: absolute;
         top: 50%;
@@ -424,13 +424,13 @@ section {
         padding: 2rem;
     }
 }
+
 @media (orientation: portrait) {
     div.cn {
         position: relative;
         width: 100%;
         height: 50vh;
     }
-    
     div.inner {
         position: absolute;
         top: 50%;
@@ -439,17 +439,20 @@ section {
         padding: 2rem;
     }
 }
+
 .navbar-404 {
-    background-color: rgba(243, 89, 86, 0.0);
+    background-color: #bf211e00;
     .nav-link {
         color: #f0f0f0 !important;
     }
 }
+
 .bg-404 {
     background-color: $accent-color-venetian-red !important;
     color: $text-color-light !important;
 }
-#error-404 {
+
+#error-404-home {
     overflow-x: hidden;
     background-color: $accent-color-venetian-red !important;
     color: $text-color-light !important;
@@ -468,16 +471,19 @@ section {
         }
     }
 }
+
 @media (orientation: landscape) {
-    #error-404 {
+    #error-404-home {
         height: 50vh;
     }
 }
+
 @media (orientation: portrait) {
-    #error-404 {
+    #error-404-home {
         height: 50vh;
     }
 }
+
 @media screen and (max-width: 600px) {
     .midwife-img-container {
         text-align: center;
@@ -485,25 +491,26 @@ section {
         align-items: center;
         justify-content: center;
     }
-    
     .midwife-img {
         width: 98%;
     }
 }
+
 @media screen and (min-width: 601px) {
     .midwife-img {
         width: 50%;
     }
-    
     @media screen and (max-width: 767px) {
         .midwife-img {
             width: 75%;
         }
     }
 }
+
 .width-5em {
     width: 5em !important;
 }
+
 @media screen and (min-width: 768px) {
     #kontakt-sprechzeiten {
         .row {
@@ -513,38 +520,40 @@ section {
         }
     }
 }
+
 .hidden {
     display: none;
 }
+
 form {
     margin-bottom: 2em;
     input.invalid {
         border: 2px solid red;
     }
-    
     textarea.invalid {
         border: 2px solid red;
     }
-    
     .error-hint {
         color: red,
     }
-    
     button.btn {
         margin-top: 1em;
         //margin-bottom: 1em;
     }
 }
+
 .thank-you {
     font-size: 2em;
     margin-top: 2em;
     margin-bottom: 2.5em;
 }
+
 .error-message {
     font-size: 1.5em;
     margin-top: 2em;
     margin-bottom: 2.5em;
 }
+
 footer {
     padding-top: 2em;
     padding-bottom: 2em;
@@ -554,10 +563,12 @@ footer {
         text-decoration: none;
     }
 }
+
 .termine-column {
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
+
 @media screen and (max-width: 1200px) {
     .termine-card {
         margin-left: 0.5em !important;
@@ -565,65 +576,83 @@ footer {
         min-width: min-content;
     }
 }
+
 @media screen and (max-width: 767px) {
     .termine-card {
         margin-top: 1.5em;
     }
 }
+
 .termine-card {
     max-width: 100%;
     min-height: 17rem
 }
+
 .termine-line {
     margin-top: 0.75em !important;
 }
+
 .btn-local {
     background-color: $background-color-btn-light;
     border: 1px solid $background-color;
 }
+
 .btn-local:hover {
     background-color: $background-color-btn-light;
     border: 1px solid $background-color;
     text-decoration: underline;
 }
+
 .courses-list {
     margin-bottom: 5px;
 }
+
 .courses-list .card-header {
     background-color: $accent-color-moss-green;
     font-size: 1.5em;
 }
+
 .courses-list .card-body {
     background-color: $background-color;
 }
+
 .courses-list .card-footer {
     background-color: $accent-color-moss-green;
 }
+
 .team-member .card-body {
     background-color: $background-color;
 }
+
 .termine-descript {
     margin-left: 0.5rem;
 }
+
 .gbv {
     background-color: $accent-color-class-gbv !important;
 }
+
 .rubi {
     background-color: $accent-color-class-rubi !important;
     color: $background-color;
 }
+
 .eh {
     background-color: $accent-color-class-eh !important;
 }
+
 .bt {
     background-color: $accent-color-class-bt !important;
 }
+
 .yoga {
     background-color: $accent-color-class-yoga !important;
 }
+
 .other {
     background-color: $accent-color-class-other !important;
 }
+
 
 /* .card-text:last-child {
     margin-bottom: 0.25em !important;
