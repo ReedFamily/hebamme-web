@@ -558,6 +558,11 @@ footer a {
   background-color: #f0f0f0;
 }
 
+.card-wrapper {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .termine-descript {
   margin-left: 0.5rem;
 }
