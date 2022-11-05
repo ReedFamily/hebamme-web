@@ -104,8 +104,8 @@
                 return $result;
             }
             $apiToken = new api_token();
-           
-            return $apiToken->getLoginToken($dbUser["id"]);
+          
+            return $apiToken->getLoginToken($dbUser["id"], $dbUser["username"]);
         }
 
         public function requestPasswordRecovery($params){
