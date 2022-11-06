@@ -635,6 +635,16 @@ footer {
     margin-bottom: 0.5em;
 }
 
+.browsehappy {
+    color: white;
+    background-color: red;
+    font-weight: 900;
+    font-size: xx-large;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .termine-descript {
     margin-left: 0.5rem;
 }
@@ -662,6 +672,14 @@ footer {
 
 .other {
     background-color: $accent-color-class-other !important;
+}
+
+.iebanner {
+    display: none;
+}
+
+.ie .iebanner {
+    display: block;
 }
 
 
