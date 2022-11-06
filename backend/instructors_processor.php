@@ -68,6 +68,7 @@
             if(!isset($params["id"]) || empty(trim($params["id"])) ){
                 return api_response::getResponse(400);
             }
+            
             $db = new db_instructors();
             $result = $db->deleteInstructorById($params["id"]);
             if($result["status"] == 200){

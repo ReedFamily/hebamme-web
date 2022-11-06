@@ -236,10 +236,14 @@ const deleteInstructor = function (ele) {
     if (response.status == 200) {
       $("#delete-instructor-acknowledge-button").attr(
         "data-id",
-        response.user.id
+        response.instructor.id
       );
       $("#delete-instructor").text(
-        "'" + response.user.last_name + ", " + response.user.first_name + "'"
+        "'" +
+          response.instructor.last_name +
+          ", " +
+          response.instructor.first_name +
+          "'"
       );
       $("#delete-instructor-dialog").modal("show");
     } else {
@@ -249,7 +253,7 @@ const deleteInstructor = function (ele) {
 };
 
 const sendDeleteInstructor = function (id) {
-  var url = "../backend/rest.php?apiFunc=deleteInstructor&id=" + id;
+  var url = "../backend/rest.php?apiFunc=delInstructor&id=" + id;
   $.get(url, function (res) {
     var response = res;
     if (response.status == 200) {
