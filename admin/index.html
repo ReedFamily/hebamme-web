@@ -27,14 +27,68 @@
 
 <body>
     <!-- Modal dialogs go here -->
+    <div id="edit-alert-dialog" tabindex="-1" class="modal" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alert-editor-title">Alert bearbeitung</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="alert-edit-form" class="form">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="alertId" class="dialog-form-label">ID</label>
+                                <input id="alertId" name="alertId" type="text" readonly="true" class="form-control-sm" placeholder="new" />
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="alertCreatedBy" class="dialog-form-label">Erstellt von</label>
+                                <input id="alertCreatedBy" name="alertCreatedBy" type="text" readonly="true" class="form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="alertLevel" id="alert-red" value="red" />
+                                    <label for="alert-red" class="form-check-label alert-danger levelSelect">Red</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="alertLevel" id="alert-yellow" value="yellow" />
+                                    <label for="alert-yellow" class="form-check-label alert-warning levelSelect">Yellow</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="alertLevel" id="alert-blue" value="blue" />
+                                    <label for="alert-blue" class="form-check-label alert-info levelSelect">Blue</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 flex-grow-1">
+                                <textarea class="form-control h-100" name="alertContent" id="alertContent"></textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" value="true" name="alertPermanent" />
+                        <input type="hidden" value="home" name="alertLocation" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="alert-editor-save-button">Speicher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="edit-user-dialog" tabindex="-1" class="modal " role="dialog">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="user-editor-title">Benutzer bearbeiten</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <!-- user form -->
                 <div class="modal-body">
@@ -86,8 +140,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Benutzer löschen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen des Benutzers <span id="delete-username">{USERNAME}</span>?
@@ -107,8 +161,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="alert-editor-title">Alert bearbeiten</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
 
@@ -127,8 +181,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="instructor-editor-title">Dozentin bearbeiten</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="edit-instructor-form" class="form">
@@ -210,8 +264,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Dozentin löschen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die Dozentin <span id="delete-instructor">{INSTRUCTOR}</span>?</p>
@@ -311,12 +365,12 @@
     </div>
 
     <script type="text/javascript">
-        $("#delete-instructor-acknowledge-button").click(function(event) {
+        $("#delete-instructor-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteInstructor(id);
         })
 
-        $("#delete-user-acknowledge-button").click(function(event) {
+        $("#delete-user-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteUser(id);
         });

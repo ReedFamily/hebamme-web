@@ -11,8 +11,36 @@
         private $levels = array("blue"=>"info", "yellow"=>"warning", "red"=>"danger");
 
         public function createAnnouncement($params){
-            $db_msg = new db_announcements();
-            $result = $db_msg->create($params);
+            $result = api_response::getResponse(400);
+            if(!isset($params["level"])){
+                $result["exception"] = "No level is provided";
+                return $result;
+            }elseif(!isset($params["location"])){
+                $result["exception"] = "No location is provided";
+                return $result;
+            }elseif(!isset($params["createdBy"])){
+                $result["exception"] = "No created_by is provided";
+                return $result;
+            }elseif(!isset($params["createdDate"])){
+                $result["exception"] = "No created_date is provided";
+                return $result;
+            }elseif(!isset($params["message"])){
+                $result["exception"] = "No message is provided";
+                return $result;
+            }
+            $values["level"] = $params["level"];
+            $values["location"] = $params["location"];
+            $values["createdBy"] = $params["createdBy"];
+            $values["createdDate"] = $params["createdDate"];
+            $values["message"] = $params["message"];
+            if(!isset($params["permanent"])){
+                $values["permanent"] = 0;
+            }else{
+                $values["permanent"] = $params["permanent"];
+            }
+            
+            $db_msg = new db_announcements();   
+            $result = $db_msg->create($values);
             if($result["status"] == 200){
                 return $this->listAllAnnouncements();
             }

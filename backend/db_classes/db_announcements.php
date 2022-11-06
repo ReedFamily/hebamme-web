@@ -82,35 +82,36 @@
         }
 
         public function create($params){
-            $result = api_response::getResponse(400);
-            if(!isset($params["level"])){
-                $result["exception"] = "No level is provided";
-                return $result;
-            }elseif(!isset($params["location"])){
-                $result["exception"] = "No location is provided";
-                return $result;
-            }elseif(!isset($params["created_by"])){
-                $result["exception"] = "No created_by is provided";
-                return $result;
-            }elseif(!isset($params["created_date"])){
-                $result["exception"] = "No created_date is provided";
-                return $result;
-            }elseif(!isset($params["message"])){
-                $result["exception"] = "No message is provided";
-                return $result;
-            }
-            if(!isset($params["permanent"])){
-                $params["permanent"] = 0;
-            }
-            if(!isset($params["start_date"])){
-                $params["start_date"] = null;
-            }
-            if(!isset($params["end_date"])){
-                $params["end_date"] = null;
-            }
-            $query = "INSERT INTO `announcements` (`level`, `location`, `created_by`, `created_date`, `permanent`, `start_date`, `end_date`, `message`) VALUES (:level, :location, :created_by, :created_date, :permanent, :start_date, :end_date, :message)";
-            $statement = $this->prepareStatement($query);
+            // $result = api_response::getResponse(400);
+            // if(!isset($params["level"])){
+            //     $result["exception"] = "No level is provided";
+            //     return $result;
+            // }elseif(!isset($params["location"])){
+            //     $result["exception"] = "No location is provided";
+            //     return $result;
+            // }elseif(!isset($params["createdBy"])){
+            //     $result["exception"] = "No created_by is provided";
+            //     return $result;
+            // }elseif(!isset($params["createdDate"])){
+            //     $result["exception"] = "No created_date is provided";
+            //     return $result;
+            // }elseif(!isset($params["message"])){
+            //     $result["exception"] = "No message is provided";
+            //     return $result;
+            // }
+            // if(!isset($params["permanent"])){
+            //     $params["permanent"] = 0;
+            // }
+            // if(!isset($params["startDate"])){
+            //     $params["startDate"] = null;
+            // }
+            // if(!isset($params["endDate"])){
+            //     $params["endDate"] = null;
+            // }
+            log_util::logEntry("DEBUG", "Params delivers " . count($params));
             try{
+                $query = "INSERT INTO `announcements` (`level`, `location`, `created_by`, `created_date`, `permanent`,  `message`) VALUES (:level,:location,:createdBy,:createdDate,:permanent,:message)";
+                $statement = $this->prepareStatement($query);
                 $this->pdo->beginTransaction();
                 $statement->execute($params);
                 $this->pdo->commit();

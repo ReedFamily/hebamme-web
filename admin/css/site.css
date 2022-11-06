@@ -105,4 +105,8 @@ input:invalid {
   display: inline-block;
   text-align: center;
   border-width: 2px;
+}
+
+.erroredFormControl {
+  border: 2px solid red;
 }/*# sourceMappingURL=site.css.map */

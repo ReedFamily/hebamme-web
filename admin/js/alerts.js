@@ -41,12 +41,86 @@ const displayAlerts = function (response) {
   );
   $("#add-new-alert-button").click(function (event) {
     $("#alert-editor-title").text("Neue Alert");
+    let uname = getCookieByName("uname");
+    $("#alert-edit-form").trigger("reset");
+    $("#alertCreatedBy").val(uname);
+    $("#alert-blue").prop("checked", "true").trigger("change");
+    $("body").off("click", "#alert-editor-save-button", updateAlertEvent);
+    $("body").on("click", "#alert-editor-save-button", newAlertEvent);
+    $("#edit-alert-dialog").modal("show");
   });
 
   $.each(response.messages, function (index, m) {
     var row = buildMessageTableRow(m);
     $("#alerts-table-body").append(row);
   });
+};
+
+const newAlertEvent = function (event) {
+  event.stopImmediatePropagation();
+  try {
+    validateAlertEditorForm(true);
+  } catch (e) {
+    let item = e.err;
+    $(item).addClass("erroredFormControl");
+  }
+  var data = new Object();
+  data.createdBy = $("#alertCreatedBy").val();
+  data.createdDate = new Date();
+  data.level = $("input[name='alertLevel']:checked").val();
+  data.location = "home";
+  data.permanent = 1;
+  data.message = $("#alertContent").val();
+
+  var url = "../backend/rest.php?apiFunc=newMsg";
+
+  $.post(url, data, function (res) {
+    if (res.status == 200) {
+      displayAlerts(res);
+    } else {
+      console.log(res);
+    }
+  });
+};
+
+const removeErrorFormControls = function () {
+  $("#alert-edit-form *")
+    .filter(":input")
+    .each(function (ctrl) {
+      $(ctrl).removeClass("erroredFormControl");
+    });
+};
+
+const validateAlertEditorForm = function (isNew) {
+  removeErrorFormsControls();
+  var id = $("#alertId").val();
+  if (isNew != true) {
+    if (Number(id) > 0 == false) {
+      throw { err: "#alertId" };
+    }
+  }
+  var uname = $("#alertCreatedBy").val();
+  if (isEmpty(uname)) {
+    throw { err: "#alertCreatedBy" };
+  }
+  var content = $("#alertContent").val();
+  if (isEmpty(content)) {
+    throw { err: "#alertContent" };
+  }
+};
+
+const isEmpty = function (value) {
+  return value == null || value.trim().length === 0;
+};
+
+const updateAlertEvent = function (event) {
+  event.stopImmediatePropagation();
+  try {
+    validateAlertEditorForm(true);
+  } catch (e) {
+    let item = e.err;
+    $(item).addClass("erroredFormControl");
+  }
 };
 
 const buildMessageTableRow = function (message) {
