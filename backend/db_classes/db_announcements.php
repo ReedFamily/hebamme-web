@@ -57,58 +57,30 @@
         }
 
         public function getById($params){
-            $result = api_response::getResponse(400);
-            if(!isset($params["id"])){
-                $result["exception"] = "No id provided";
-                return $result;
-            }
-            $query = "SELECT `id`, `level`, `location`, `created_by` as createdBy, `created_date` as createdDate, `permanent`, `start_date` as startDate, `end_date` as endDate, `message` FROM `announcements` WHERE `id` = :id";
-            $statement = $this->pdo->prepare($query);
-            $result = api_response::get(404);
+           
             try{
+                $query = "SELECT `id`, `level`, `location`, `created_by` as createdBy, `created_date` as createdDate, `permanent`, `start_date` as startDate, `end_date` as endDate, `message` FROM `announcements` WHERE `id` = :id";
+                $statement = $this->pdo->prepare($query);
+                $result = api_response::getResponse(404);
                 $statement->execute($params);
                 $row = $statement->fetch(PDO::FETCH_ASSOC);
                 if(is_array($row)){
                     $result = api_response::getResponse(200);
                     $result["message"] = $row;
                 }
+                return $result;
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
+                return $result;
             }finally{
                 $this->disconnect();
             }
         }
 
         public function create($params){
-            // $result = api_response::getResponse(400);
-            // if(!isset($params["level"])){
-            //     $result["exception"] = "No level is provided";
-            //     return $result;
-            // }elseif(!isset($params["location"])){
-            //     $result["exception"] = "No location is provided";
-            //     return $result;
-            // }elseif(!isset($params["createdBy"])){
-            //     $result["exception"] = "No created_by is provided";
-            //     return $result;
-            // }elseif(!isset($params["createdDate"])){
-            //     $result["exception"] = "No created_date is provided";
-            //     return $result;
-            // }elseif(!isset($params["message"])){
-            //     $result["exception"] = "No message is provided";
-            //     return $result;
-            // }
-            // if(!isset($params["permanent"])){
-            //     $params["permanent"] = 0;
-            // }
-            // if(!isset($params["startDate"])){
-            //     $params["startDate"] = null;
-            // }
-            // if(!isset($params["endDate"])){
-            //     $params["endDate"] = null;
-            // }
-            log_util::logEntry("DEBUG", "Params delivers " . count($params));
+    
             try{
                 $query = "INSERT INTO `announcements` (`level`, `location`, `created_by`, `created_date`, `permanent`,  `message`) VALUES (:level,:location,:createdBy,:createdDate,:permanent,:message)";
                 $statement = $this->prepareStatement($query);
@@ -160,7 +132,7 @@
             if(isset($params["message"])){
                 $setValues[] = "`message` = :message";
             }
-            $query = "UPDATE `announcements` SET " + implode(",", $setValues) + " WHERE id = :id";
+            $query = "UPDATE `announcements` SET " . implode(",", $setValues) . " WHERE id = :id";
 
             try{
                 $stmt = $this->prepareStatement($query);

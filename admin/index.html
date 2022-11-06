@@ -71,6 +71,7 @@
                         </div>
                         <input type="hidden" value="true" name="alertPermanent" />
                         <input type="hidden" value="home" name="alertLocation" />
+                        <input type="hidden" value="" name="alertCreatedDate" id="alertCreatedDate" />
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -155,25 +156,7 @@
             </div>
         </div>
     </div>
-    <div id="alert-editor-dialog" tabindex="-1" class="modal" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="alert-editor-title">Alert bearbeiten</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="alert-editor-save-button">Bestätigen</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Instructor dialog -->
     <div id="edit-instructor-dialog" tabindex="-1" class="modal" role="dialog">
         <div class="modal-dialog" role="document">
@@ -373,6 +356,10 @@
         $("#delete-user-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteUser(id);
+        });
+        $("#delete-alert-acknowledge-button").click(function (event) {
+            var id = $(this).data("id");
+            sendDeleteAlert(id);
         });
         $("body").on("click", "#logout-link", logoutEvent);
         loadApp();

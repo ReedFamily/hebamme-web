@@ -59,7 +59,7 @@
                 'msgLoc' =>['class'=>'announcements_processor', 'function_name' => 'listAnnouncementLocations'],
                 'newMsg' =>['class'=>'announcements_processor', 'function_name' => 'createAnnouncement'],
                 'delMsg' =>['class'=>'announcements_processor', 'function_name' => 'deleteAnnouncement'],
-                'modMsg' =>['class'=>'announcements_processor', 'function_name' => 'updateAnnoucnement'],
+                'modMsg' =>['class'=>'announcements_processor', 'function_name' => 'updateAnnouncement'],
                 'locMsgs' =>['class' => 'announcements_processor', 'function_name' => 'getAnnouncementsByLocation'],
                 'classes' => ['class' => 'hebamio_proc', 'function_name' => 'requestHebamio']
             ];

@@ -121,6 +121,21 @@ const updateAlertEvent = function (event) {
     let item = e.err;
     $(item).addClass("erroredFormControl");
   }
+  var data = new Object();
+  data.id = $("#alertId").val();
+  data.createdBy = $("#alertCreatedBy").val();
+  data.createdDate = $("#alertCreatedDate").val();
+  data.level = $("input[name='alertLevel']:checked").val();
+  data.location = "home";
+  data.permanent = 1;
+  data.message = $("#alertContent").val();
+
+  var url = "../backend/rest.php?apiFunc=modMsg";
+  $.post(url, data, function (res) {
+    if (res.status == 200) {
+      displayAlerts(res);
+    }
+  });
 };
 
 const buildMessageTableRow = function (message) {
@@ -152,6 +167,28 @@ const buildEditLink = function (messageId) {
   $(link).attr("data-message", messageId);
   $(link).append($("<i />", { class: "fas fa-edit linkchar" }));
   return link;
+};
+
+const editMessage = function (lnk) {
+  var id = $(lnk).data("message");
+  var url = "../backend/rest.php?apiFunc=getMsg&id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      $("body").off("click", "#alert-editor-save-button", newAlertEvent);
+      $("body").on("click", "#alert-editor-save-button", updateAlertEvent);
+      $("#alert-edit-form").trigger("reset");
+      $("#alertId").val(res.message.id);
+      $("#alertCreatedBy").val(res.message.createdBy);
+      $("#alertContent").val(res.message.message);
+      $("#alertCreatedDate").val(res.message.createdDate);
+      var key = "#alert-" + res.message.level;
+      $(key).prop("checked", true).trigger("change");
+      $("#alert-editor-title").text("Bearbeitung Alert");
+      $("#edit-alert-dialog").modal("show");
+    } else {
+      console.log(res);
+    }
+  });
 };
 
 const buildDeleteLink = function (messageId) {
