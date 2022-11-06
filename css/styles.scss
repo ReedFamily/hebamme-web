@@ -250,10 +250,10 @@ body {
 .nav-link {
     color: rgba(0, 0, 0, .75);
     &:hover {
-        color: rgba(255, 0, 0, .85) !important;
+        color: rgba(0, 0, 0, .85) !important;
     }
     &:focus {
-        color: rgba(255, 0, 0, .85) !important;
+        color: rgba(0, 0, 0, .85) !important;
     }
 }
 

@@ -213,10 +213,10 @@ body {
   color: rgba(0, 0, 0, 0.75);
 }
 .nav-link:hover {
-  color: rgba(255, 0, 0, 0.85) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
 }
 .nav-link:focus {
-  color: rgba(255, 0, 0, 0.85) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
 }
 
 .active {
