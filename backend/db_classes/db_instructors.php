@@ -155,11 +155,13 @@
         }
 
         public function deleteInstructorById($id){
-            $query = "DELETE FROM `instructor` WHERE `id` = :id";
-            $params = ["id" => $id];
-            $stmt = $this->pdo->prepare($query);
-            $result = api_response::getResponse(500);
+           $result = api_response::getResponse(500);
             try{
+                $query = "DELETE FROM `instructor` WHERE `id` = :id";
+                $params["id"] = $id;
+               
+                $stmt = $this->pdo->prepare($query);
+                
                 $this->pdo->beginTransaction();
                 $stmt->execute($params);
                 $this->pdo->commit();

@@ -41,11 +41,125 @@ const displayAlerts = function (response) {
   );
   $("#add-new-alert-button").click(function (event) {
     $("#alert-editor-title").text("Neue Alert");
+    let uname = getCookieByName("uname");
+    $("#alert-edit-form").trigger("reset");
+    $("#alertCreatedBy").val(uname);
+    $("#alert-blue").prop("checked", "true").trigger("change");
+    $("body").off("click", "#alert-editor-save-button", updateAlertEvent);
+    $("body").on("click", "#alert-editor-save-button", newAlertEvent);
+    $("#edit-alert-dialog").modal("show");
   });
 
   $.each(response.messages, function (index, m) {
     var row = buildMessageTableRow(m);
     $("#alerts-table-body").append(row);
+  });
+};
+
+const newAlertEvent = function (event) {
+  event.stopImmediatePropagation();
+  try {
+    validateAlertEditorForm(true);
+  } catch (e) {
+    let item = e.err;
+    $(item).addClass("erroredFormControl");
+  }
+  var data = new Object();
+  data.createdBy = $("#alertCreatedBy").val();
+  data.createdDate = new Date();
+  data.level = $("input[name='alertLevel']:checked").val();
+  data.location = "home";
+  data.permanent = 1;
+  data.message = $("#alertContent").val();
+
+  var url = "../backend/rest.php?apiFunc=newMsg";
+
+  $.post(url, data, function (res) {
+    if (res.status == 200) {
+      displayAlerts(res);
+    } else {
+      console.log(res);
+    }
+  });
+};
+
+const removeErrorFormControls = function () {
+  $("#alert-edit-form *")
+    .filter(":input")
+    .each(function (ctrl) {
+      $(ctrl).removeClass("erroredFormControl");
+    });
+};
+
+const validateAlertEditorForm = function (isNew) {
+  removeErrorFormsControls();
+  var id = $("#alertId").val();
+  if (isNew != true) {
+    if (Number(id) > 0 == false) {
+      throw { err: "#alertId" };
+    }
+  }
+  var uname = $("#alertCreatedBy").val();
+  if (isEmpty(uname)) {
+    throw { err: "#alertCreatedBy" };
+  }
+  var content = $("#alertContent").val();
+  if (isEmpty(content)) {
+    throw { err: "#alertContent" };
+  }
+};
+
+const isEmpty = function (value) {
+  return value == null || value.trim().length === 0;
+};
+
+const updateAlertEvent = function (event) {
+  event.stopImmediatePropagation();
+  try {
+    validateAlertEditorForm(true);
+  } catch (e) {
+    let item = e.err;
+    $(item).addClass("erroredFormControl");
+  }
+  var data = new Object();
+  data.id = $("#alertId").val();
+  data.createdBy = $("#alertCreatedBy").val();
+  data.createdDate = $("#alertCreatedDate").val();
+  data.level = $("input[name='alertLevel']:checked").val();
+  data.location = "home";
+  data.permanent = 1;
+  data.message = $("#alertContent").val();
+
+  var url = "../backend/rest.php?apiFunc=modMsg";
+  $.post(url, data, function (res) {
+    if (res.status == 200) {
+      displayAlerts(res);
+    }
+  });
+};
+
+const deleteMessage = function (ele) {
+  var id = $(ele).data("message");
+  var url = "../backend/rest.php?apiFunc=getMsg&id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      $("#delete-alert-acknowledge-button").attr("data-id", res.message.id);
+      $("#delete-alert").text(res.message.id);
+      $("#delete-alert-dialog").modal("show");
+    } else {
+      console.log(res);
+    }
+  });
+};
+
+const sendDeleteAlert = function (id) {
+  var url = "../backend/rest.php?apiFunc=delMsg&id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      displayAlerts(res);
+    } else {
+      console.log(res);
+    }
   });
 };
 
@@ -78,6 +192,28 @@ const buildEditLink = function (messageId) {
   $(link).attr("data-message", messageId);
   $(link).append($("<i />", { class: "fas fa-edit linkchar" }));
   return link;
+};
+
+const editMessage = function (lnk) {
+  var id = $(lnk).data("message");
+  var url = "../backend/rest.php?apiFunc=getMsg&id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      $("body").off("click", "#alert-editor-save-button", newAlertEvent);
+      $("body").on("click", "#alert-editor-save-button", updateAlertEvent);
+      $("#alert-edit-form").trigger("reset");
+      $("#alertId").val(res.message.id);
+      $("#alertCreatedBy").val(res.message.createdBy);
+      $("#alertContent").val(res.message.message);
+      $("#alertCreatedDate").val(res.message.createdDate);
+      var key = "#alert-" + res.message.level;
+      $(key).prop("checked", true).trigger("change");
+      $("#alert-editor-title").text("Bearbeitung Alert");
+      $("#edit-alert-dialog").modal("show");
+    } else {
+      console.log(res);
+    }
+  });
 };
 
 const buildDeleteLink = function (messageId) {

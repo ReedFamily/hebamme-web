@@ -144,6 +144,7 @@ const validateLogin = function (user, password) {
         if (loginResponse.status == 200) {
           writeCookie("apiToken", loginResponse.token, loginResponse.validTo);
           writeCookie("userId", loginResponse.userId, loginResponse.validTo);
+          writeCookie("uname", loginResponse.username, loginResponse.validTo);
           $("#content-window").empty();
           loadApp();
         } else {
@@ -163,6 +164,22 @@ const writeCookie = function (name, value, exp) {
     "; expires=" +
     expDate.toUTCString() +
     "; path=/;sameSite=strict";
+};
+
+const getCookieByName = function (cname) {
+  let name = cname + "=";
+  let cVal = decodeURIComponent(document.cookie);
+  let ca = cVal.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 };
 
 const buildLoginForm = function () {

@@ -179,6 +179,31 @@ body {
     }
 }
 
+.gbv {
+    background-color: $accent-color-class-gbv !important;
+}
+
+.rubi {
+    background-color: $accent-color-class-rubi !important;
+    color: $background-color;
+}
+
+.eh {
+    background-color: $accent-color-class-eh !important;
+}
+
+.bt {
+    background-color: $accent-color-class-bt !important;
+}
+
+.yoga {
+    background-color: $accent-color-class-yoga !important;
+}
+
+.other {
+    background-color: $accent-color-class-other !important;
+}
+
 ///////////////////////////////////////////////////////////////
 /////////////////////////// Styling ///////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -193,6 +218,10 @@ body {
 body {
     position: relative;
     //overflow: overlay;
+}
+
+.hidden {
+    display: none;
 }
 
 .navbar-img {
@@ -211,11 +240,26 @@ body {
             .nav-link {
                 color: rgba(0, 0, 0, .75) !important;
                 .active {
-                    color: rgba(0, 0, 0, .99) !important;
+                    color: rgba(0, 0, 0, 1) !important;
                 }
             }
         }
     }
+}
+
+.nav-link {
+    color: rgba(0, 0, 0, .75);
+    &:hover {
+        color: rgba(0, 0, 0, .85) !important;
+    }
+    &:focus {
+        color: rgba(0, 0, 0, .85) !important;
+    }
+}
+
+.active {
+    color: rgba(0, 0, 0, 1) !important;
+    font-weight: 600 !important;
 }
 
 
@@ -226,11 +270,10 @@ body {
 .footerlink {
     text-decoration: none;
     color: #f0f0f0 !important;
-}
-
-.footerlink:hover {
-    color: #d3d3d3 !important;
-    text-decoration: underline !important;
+    &:hover {
+        color: #d3d3d3 !important;
+        text-decoration: underline !important;
+    }
 }
 
 section {
@@ -358,6 +401,12 @@ section {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
+    h1 {
+        font-weight: 600;
+    }
+    p {
+        font-weight: 600;
+    }
 }
 
 @media (orientation: landscape) {
@@ -441,9 +490,9 @@ section {
 }
 
 .navbar-404 {
-    background-color: #bf211e00;
+    background-color: rgba(191, 33, 30, 0);
     .nav-link {
-        color: #f0f0f0 !important;
+        color: $text-color-light !important;
     }
 }
 
@@ -459,27 +508,27 @@ section {
     .percent-100 {
         width: 100%;
         height: 100%;
-        @media (orientation: landscape) {
-            .container {
-                padding-top: 10em;
-            }
-        }
-        @media (orientation: portrait) {
-            .container {
-                padding-top: 4em;
-            }
-        }
     }
 }
 
 @media (orientation: landscape) {
     #error-404-home {
+        .percent-100 {
+            .container {
+                padding-top: 10em;
+            }
+        }
         height: 50vh;
     }
 }
 
 @media (orientation: portrait) {
     #error-404-home {
+        .percent-100 {
+            .container {
+                padding-top: 4em;
+            }
+        }
         height: 50vh;
     }
 }
@@ -519,10 +568,6 @@ section {
             }
         }
     }
-}
-
-.hidden {
-    display: none;
 }
 
 form {
@@ -624,33 +669,31 @@ footer {
     background-color: $background-color;
 }
 
+.card-wrapper {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.browsehappy {
+    color: white;
+    background-color: red;
+    font-weight: 900;
+    font-size: xx-large;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .termine-descript {
     margin-left: 0.5rem;
 }
 
-.gbv {
-    background-color: $accent-color-class-gbv !important;
+.iebanner {
+    display: none;
 }
 
-.rubi {
-    background-color: $accent-color-class-rubi !important;
-    color: $background-color;
-}
-
-.eh {
-    background-color: $accent-color-class-eh !important;
-}
-
-.bt {
-    background-color: $accent-color-class-bt !important;
-}
-
-.yoga {
-    background-color: $accent-color-class-yoga !important;
-}
-
-.other {
-    background-color: $accent-color-class-other !important;
+.ie .iebanner {
+    display: block;
 }
 
 

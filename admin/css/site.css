@@ -31,29 +31,27 @@ input:invalid {
   top: 25px;
   bottom: 0;
   left: 0;
-  z-index: 100; /* Behind the navbar */
+  z-index: 100;
   padding: 0;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
-
-.sidebar-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 48px; /* Height of navbar */
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-}
-
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
   cursor: default;
 }
-
 .sidebar .nav-link:hover {
   font-weight: 600;
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .dialog-form-label {
@@ -77,7 +75,6 @@ input:invalid {
   display: inline-block;
   padding: 1px;
 }
-
 .linkchar:hover {
   padding: 1px;
   border: 1px solid #888;
@@ -88,22 +85,28 @@ input:invalid {
   height: auto;
 }
 
-.checkmark
-{
-  
+.checkmark {
   color: green;
 }
 
-.nocheck{
+.nocheck {
   color: red;
 }
 
-.levelcellentry
-{
+.levelcellentry {
   padding: 2px;
-  display:block;
-  text-align:center;
+  display: block;
+  text-align: center;
 }
 
+.levelSelect {
+  min-width: 5rem;
+  padding: 4px;
+  display: inline-block;
+  text-align: center;
+  border-width: 2px;
+}
 
-
+.erroredFormControl {
+  border: 2px solid red;
+}/*# sourceMappingURL=site.css.map */
