@@ -99,5 +99,10 @@ input:invalid {
   text-align: center;
 }
 
-
-/*# sourceMappingURL=site.css.map */
+.levelSelect {
+  min-width: 5rem;
+  padding: 4px;
+  display: inline-block;
+  text-align: center;
+  border-width: 2px;
+}/*# sourceMappingURL=site.css.map */
