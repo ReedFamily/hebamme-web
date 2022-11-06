@@ -11,8 +11,36 @@
         private $levels = array("blue"=>"info", "yellow"=>"warning", "red"=>"danger");
 
         public function createAnnouncement($params){
-            $db_msg = new db_announcements();
-            $result = $db_msg->create($params);
+            $result = api_response::getResponse(400);
+            if(!isset($params["level"])){
+                $result["exception"] = "No level is provided";
+                return $result;
+            }elseif(!isset($params["location"])){
+                $result["exception"] = "No location is provided";
+                return $result;
+            }elseif(!isset($params["createdBy"])){
+                $result["exception"] = "No created_by is provided";
+                return $result;
+            }elseif(!isset($params["createdDate"])){
+                $result["exception"] = "No created_date is provided";
+                return $result;
+            }elseif(!isset($params["message"])){
+                $result["exception"] = "No message is provided";
+                return $result;
+            }
+            $values["level"] = $params["level"];
+            $values["location"] = $params["location"];
+            $values["createdBy"] = $params["createdBy"];
+            $values["createdDate"] = $params["createdDate"];
+            $values["message"] = $params["message"];
+            if(!isset($params["permanent"])){
+                $values["permanent"] = 0;
+            }else{
+                $values["permanent"] = $params["permanent"];
+            }
+            
+            $db_msg = new db_announcements();   
+            $result = $db_msg->create($values);
             if($result["status"] == 200){
                 return $this->listAllAnnouncements();
             }
@@ -29,8 +57,37 @@
         }
 
         public function updateAnnouncement($params){
+           
+             if(isset($params["id"])){
+                $values["id"] = $params["id"];
+            }
+            if(isset($params["level"])){
+                $values["level"] = $params["level"];
+            }
+            if(isset($params["location"])){
+                $values["location"] = $params["location"];
+            }
+            if(isset($params["createdBy"])){
+                $values["createdBy"] = $params["createdBy"];
+            }
+            if(isset($params["createdDate"])){
+                $values["createdDate"] = $params["createdDate"];
+            }
+            if(isset($params["permanent"])){
+                $values["permanent"] = $params["permanent"];
+            }
+            if(isset($params["startDate"])){
+                $values["startDate"] = $params["startDate"];
+            }
+            if(isset($params["endDate"])){
+                $values["endDate"] = $params["endDate"];
+            }
+            if(isset($params["message"])){
+                $values["message"] = $params["message"];
+            }
             $db_msg = new db_announcements();
-            $result = $db_msg->update($params);
+            $result = $db_msg->update($values);
+           
             if($result["status"] == 200){
                 return $this->listAllAnnouncements();
             }
@@ -56,21 +113,23 @@
         }
 
         public function getByAnnouncementById($params){
-            $db_msg = new db_announcements();
-            $result = $db_msg->getById($params);
-            if($result["status"] == 200){
-                return $this->listAllAnnouncements();
+            $result = api_response::getResponse(400);
+            if(!isset($params["id"])){
+                $result["exception"] = "No id provided";
+                return $result;
             }
-           return $result;
+            $values["id"] = $params["id"];
+            $db_msg = new db_announcements();
+            $result = $db_msg->getById($values);
+            
+            return $result;
         }
 
         public function getAnnouncementsByLocation($params){
             $db_msg = new db_announcements();
             $result = $db_msg->getByLocation($params);
-            if($result["status"] == 200){
-                return $this->listAllAnnouncements();
-            }
-           return $result;
+            
+            return $result;
         }
 
     }
