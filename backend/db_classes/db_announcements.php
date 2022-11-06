@@ -158,12 +158,12 @@
                 $result["exception"] = "The id value is missing";
                 return $result;
             }
-
+            $values["id"] = $params["id"];
             $query = "DELETE FROM `announcements` WHERE `id` = :id";
             try{
                 $stmt = $this->prepareStatement($query);
                 $this->pdo->beginTransaction();
-                $stmt->execute($params);
+                $stmt->execute($values);
                 $this->pdo->commit();
                 $result = api_response::getResponse(200);
                 $result["message"] = "Announcement with id " . $params["id"] . " deleted.";
