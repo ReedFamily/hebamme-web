@@ -234,14 +234,12 @@ body {
 }
 
 .navbar {
-    background-color: rgba(240, 240, 240, 0);
-    .navbar-light {
-        .navbar-nav {
-            .nav-link {
-                color: rgba(0, 0, 0, .75) !important;
-                .active {
-                    color: rgba(0, 0, 0, 1) !important;
-                }
+    background-color: rgba(225, 208, 192, 0);
+    .navbar-light .navbar-nav {
+        .nav-link {
+            color: rgba(0, 0, 0, .75) !important;
+            .active {
+                color: rgba(0, 0, 0, 1) !important;
             }
         }
     }
@@ -301,13 +299,18 @@ section {
     margin-bottom: 1em !important;
 }
 
-@media (orientation: landscape) {
-    #home {
-        margin-top: -66px;
-    }
+//@media (orientation: landscape) {
+#home {
+    margin-top: -66px;
+    position: static;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 
-@media screen and (max-width: 766px) {
+//}
+
+/* @media screen and (max-width: 766px) {
     #home {
         margin-top: 0px;
     }
@@ -319,41 +322,31 @@ section {
             margin-top: 0px;
         }
     }
-}
+} */
 
-@media (orientation: landscape) {
+@media screen and (max-height: 555px) {
     div.cn {
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
+        margin-top: 3.25rem;
     }
 }
 
-@media (orientation: portrait) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
+div.cn {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+}
+
+div.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
 }
 
 #home {
     overflow-x: hidden;
-    background-color: $accent-color-moss-green;
+    background-color: $background-color-baby-blanket-beige;
     margin-bottom: 0em;
     .percent-100 {
         width: 100%;
@@ -363,27 +356,16 @@ section {
                 padding-top: 10em;
             }
         }
-        @media (orientation: portrait) {
+        /* @media (orientation: portrait) {
             .container {
                 padding-top: 4em;
             }
-        }
+        } */
     }
 }
 
-@media (orientation: landscape) {
-    #home {
-        height: 50vh;
-    }
-}
 
-@media (orientation: portrait) {
-    #home {
-        height: 50vh;
-    }
-}
-
-@media (orientation: landscape) {
+/* @media (orientation: landscape) {
     #home {
         height: 100vh;
     }
@@ -392,15 +374,13 @@ section {
 @media (orientation: portrait) {
     #home {
         height: 50vh;
+        overflow: hidden;
     }
-}
+} */
 
 #home {
+    height: 100vh;
     /*background-color: unset; */
-    background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% auto;
     h1 {
         font-weight: 600;
     }
@@ -409,7 +389,30 @@ section {
     }
 }
 
-@media (orientation: landscape) {
+.bg-baby-image {
+    background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+}
+
+div.cn {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+div.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+}
+
+
+/* @media (orientation: portrait) {
     div.cn {
         position: relative;
         width: 100%;
@@ -422,22 +425,7 @@ section {
         transform: translate(-50%, -50%);
         padding: 2rem;
     }
-}
-
-@media (orientation: portrait) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
-}
+} */
 
 @media (orientation: landscape) {
     #error-404 {
@@ -459,34 +447,18 @@ section {
     }
 }
 
-@media (orientation: landscape) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
+div.cn {
+    position: relative;
+    width: 100%;
+    height: 50vh;
 }
 
-@media (orientation: portrait) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 50vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
+div.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
 }
 
 .navbar-404 {

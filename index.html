@@ -18,7 +18,7 @@
     <link rel="alternate shortcut" href="./hebamme_favicon128.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="./js/jquery-3.6.0/jquery.min.js"></script>
-    <script src="./js/bootstrap/bootstrap.min.js"></script>
+    <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="./fontawesome-free-5.15.3-web/js/all.min.js"></script>
     <script src="./js/dynamic.js"></script>
     <script src="./js/css_browser_selector.js"></script>
@@ -30,7 +30,7 @@
     <p id="iebanner" class="browsehappy iebanner">
         Sie verwenden einen <strong>veralteten</strong> Webbrowser. Bitte<a href="https://bestvpn.org/outdatedbrowser/de"> aktualisieren Sie Ihren Browser</a> um diese Seite zu nutzen.
     </p>
-    <noscript>
+    <noscript class="browsehappy">
         <p>
             Ihr Browser unterstützt kein JavaScript oder JavaScript ist deaktiviert.
             Bitte
@@ -73,7 +73,7 @@
         </div>
     </nav>
 
-    <section id="home">
+    <section id="home" class="bg-baby-image">
         <div class="percent-100  container-fluid">
             <!--blurred-->
             <div class="container text-center cn">
@@ -87,6 +87,15 @@
     <p id="iebanner" class="browsehappy iebanner">
         Sie verwenden einen <strong>veralteten</strong> Webbrowser. Bitte<a href="https://bestvpn.org/outdatedbrowser/de"> aktualisieren Sie Ihren Browser</a> um diese Seite zu nutzen.
     </p>
+    <noscript class="browsehappy">
+        <p>
+            Ihr Browser unterstützt kein JavaScript oder JavaScript ist deaktiviert.
+            Bitte
+            <a href="https://www.enablejavascript.io/de">aktivieren Sie JavaScript</a>
+            oder wechseln Sie zu einem
+            <a href="https://bestvpn.org/outdatedbrowser/de">Browser, der JavaScript unterstützt</a>!
+        </p>
+    </noscript>
     <section id="home-alerts" class="hidden">
         <div class="container">
             <h1>Wichtig!</h1>
@@ -190,6 +199,15 @@
             <p id="iebanner" class="browsehappy iebanner">
                 Sie verwenden einen <strong>veralteten</strong> Webbrowser! Bitte<a href="https://bestvpn.org/outdatedbrowser/de"> aktualisieren Sie Ihren Browser</a> um die Terminliste zu sehen und zu verwenden!
             </p>
+            <noscript class="browsehappy">
+                <p>
+                    Ihr Browser unterstützt kein JavaScript oder JavaScript ist deaktiviert.
+                    Bitte
+                    <a href="https://www.enablejavascript.io/de">aktivieren Sie JavaScript</a>
+                    oder wechseln Sie zu einem
+                    <a href="https://bestvpn.org/outdatedbrowser/de">Browser, der JavaScript unterstützt</a>!
+                </p>
+            </noscript>
             <div id="termine-wrapper" class="container-fluid">
 
             </div>
@@ -613,7 +631,7 @@
 
         $(document).on("scroll", function(e) {
             var rgba = $(document).scrollTop() / 250;
-            $(".navbar").css("background-color", "rgba(225,225,225," + rgba + ")");
+            $(".navbar").css("background-color", "rgba(225, 208, 192," + rgba + ")");
         });
     </script>
 </body>
