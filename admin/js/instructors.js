@@ -234,8 +234,8 @@ const deleteInstructor = function (ele) {
   $.get(url, function (res) {
     var response = res;
     if (response.status == 200) {
-      $("#delete-instructor-acknowledge-button").attr(
-        "data-id",
+      $("#delete-instructor-acknowledge-button").data(
+        "id",
         response.instructor.id
       );
       $("#delete-instructor").text(
@@ -257,6 +257,7 @@ const sendDeleteInstructor = function (id) {
   $.get(url, function (res) {
     var response = res;
     if (response.status == 200) {
+      $("#delete-instructor-acknowledge-button").removeData("id");
       displayInstructors(response);
     } else {
       console.log(response);

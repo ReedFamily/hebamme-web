@@ -168,6 +168,7 @@ const sendDeleteUser = function (id) {
     var response = res;
     if (response.status == 200) {
       displayUsers(response);
+      $("#delete-user-acknowledge-button").removeData("id");
     } else {
       console.log(response);
     }
@@ -180,7 +181,7 @@ const deleteUser = function (ele) {
   $.get(url, function (res) {
     var response = res;
     if (response.status == 200) {
-      $("#delete-user-acknowledge-button").attr("data-id", response.user.id);
+      $("#delete-user-acknowledge-button").data("id", response.user.id);
       $("#delete-username").text("'" + response.user.username + "'");
       $("#delete-user-dialog").modal("show");
     } else {
