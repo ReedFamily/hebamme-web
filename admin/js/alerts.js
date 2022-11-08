@@ -66,7 +66,7 @@ const newAlertEvent = function (event) {
   }
   var data = new Object();
   data.createdBy = $("#alertCreatedBy").val();
-  data.createdDate = new Date();
+  data.createdDate = new Date().toISOString().slice(0, 19).replace("T", " ");
   data.level = $("input[name='alertLevel']:checked").val();
   data.location = "home";
   data.permanent = 1;

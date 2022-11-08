@@ -83,7 +83,7 @@
     
             try{
                 $query = "INSERT INTO `announcements` (`level`, `location`, `created_by`, `created_date`, `permanent`,  `message`) VALUES (:level,:location,:createdBy,:createdDate,:permanent,:message)";
-                $statement = $this->prepareStatement($query);
+                $statement = $this->pdo->prepare($query);
                 $this->pdo->beginTransaction();
                 $statement->execute($params);
                 $this->pdo->commit();

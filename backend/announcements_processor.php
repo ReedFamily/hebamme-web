@@ -28,9 +28,11 @@
                 $result["exception"] = "No message is provided";
                 return $result;
             }
+            
             $values["level"] = $params["level"];
             $values["location"] = $params["location"];
             $values["createdBy"] = $params["createdBy"];
+            
             $values["createdDate"] = $params["createdDate"];
             $values["message"] = $params["message"];
             if(!isset($params["permanent"])){
