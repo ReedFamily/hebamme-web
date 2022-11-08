@@ -143,7 +143,7 @@ const deleteMessage = function (ele) {
   var url = "../backend/rest.php?apiFunc=getMsg&id=" + id;
   $.get(url, function (res) {
     if (res.status == 200) {
-      $("#delete-alert-acknowledge-button").attr("data-id", res.message.id);
+      $("#delete-alert-acknowledge-button").data("id", res.message.id);
       $("#delete-alert").text(res.message.id);
       $("#delete-alert-dialog").modal("show");
     } else {
@@ -156,6 +156,7 @@ const sendDeleteAlert = function (id) {
   var url = "../backend/rest.php?apiFunc=delMsg&id=" + id;
   $.get(url, function (res) {
     if (res.status == 200) {
+      $("#delete-alert-acknowledge-button").removeData("id");
       displayAlerts(res);
     } else {
       console.log(res);
