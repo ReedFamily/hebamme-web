@@ -14,13 +14,13 @@
 
         ];
 
-        private $headers = [
+        private $headers = array(
             'MIME-Version' => 'MIME-Version: 1.0',
             'Content-type' => 'text/plain; charset=UTF-8',
-            'From' => CONST_SEND_TO,
+            'From' => CONST_SENT_FROM,
             'Reply-To' => CONST_SEND_TO,
             'X-Mailer' => "PHP/{phpversion()}"
-        ];
+        );
 
 
         public function send_contact($params){
@@ -42,7 +42,7 @@
 
         public function sendTestMessage(){
             $message = "Testing message with äüöß to see what happens";
-            return $this->sendMessage($message);
+            return $this->sendMessage($message, "Test Message");
         }
 
         private function sendMessage($message, $subject, $sendTo = null){
