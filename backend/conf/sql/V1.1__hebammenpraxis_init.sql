@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
-CREATE TABLE `announcements` (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE if not exists `announcements` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `level` varchar(20) NOT NULL,
   `location` varchar(20) NOT NULL,
   `created_by` varchar(75) NOT NULL,
@@ -36,7 +36,9 @@ CREATE TABLE `announcements` (
   `permanent` tinyint(4) DEFAULT 0,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `message` text NOT NULL
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,11 +47,12 @@ CREATE TABLE `announcements` (
 -- Table structure for table `api_tokens`
 --
 
-CREATE TABLE `api_tokens` (
+CREATE TABLE if not exists `api_tokens` (
   `token` varchar(50) NOT NULL,
   `valid_to` datetime NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip` varchar(15) NOT NULL
+  `ip` varchar(15) NOT NULL,
+  UNIQUE KEY (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -58,14 +61,16 @@ CREATE TABLE `api_tokens` (
 -- Table structure for table `api_user`
 --
 
-CREATE TABLE `api_user` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE if not exists `api_user` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(75) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` int(11) DEFAULT NULL
+  `role` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,8 +79,8 @@ CREATE TABLE `api_user` (
 -- Table structure for table `instructor`
 --
 
-CREATE TABLE `instructor` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE if not exists `instructor` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `last_name` varchar(128) NOT NULL,
   `first_name` varchar(128) NOT NULL,
   `email` varchar(128) DEFAULT NULL,
@@ -83,55 +88,13 @@ CREATE TABLE `instructor` (
   `mobile` varchar(128) DEFAULT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `position` varchar(128) DEFAULT NULL
+  `position` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `instructors_name` (`last_name`,`first_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `api_tokens`
---
-ALTER TABLE `api_tokens`
-  ADD UNIQUE KEY `token` (`token`);
 
---
--- Indexes for table `api_user`
---
-ALTER TABLE `api_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_user` (`username`);
-
-ALTER TABLE `announcements`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `instructor`
---
-ALTER TABLE `instructor`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `instructors_name` (`last_name`,`first_name`) USING BTREE;
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `api_user`
---
-ALTER TABLE `api_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `announcements`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `instructor`
---
-ALTER TABLE `instructor`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -4,7 +4,7 @@
         echo file_get_contents('../404.html');
 	    die;
     }
-
+    require_once("email_processor.php");
     class api_handler
     {
         private $function_map;
@@ -37,31 +37,31 @@
 
         private function loadFunctionMap(){
             $this->function_map = [ 
-                'getToken' => ['class' => 'api_token', 'function_name' => 'getToken'],
-                'tokenValid' => ['class'=>'api_token', 'function_name'=> 'tokenValid'],
-                'sendContact' => ['class' => 'email_processor', 'function_name' => 'send_contact'],
-                'listUsers' =>['class' => 'user_login', 'function_name' =>'listUsers'],
-                'getUser' => ['class' => 'user_login', 'function_name' => 'getUserById'],
-                'createUser' =>['class' => 'user_login', 'function_name' => 'createUser'],
-                'updateUser' =>['class'=>'user_login', 'function_name' => 'updateUser'],
-                'deleteUser' =>['class'=>'user_login', 'function_name' => 'deleteUser'],
-                'logout' =>['class'=>'user_login','function_name' => 'logoutUser'],
-                'login' => ['class' => 'user_login', 'function_name' => 'loginUser' ],
-                'testMessage' => ['class'=>'email_processor' , 'function_name' => 'sendTestMessage'],
-                'listInstructors' => ['class' => 'instructors_processor', 'function_name'=>'listInstructors'],
-                'newInstructor' => ['class' =>'instructors_processor', 'function_name'=>'createInstructor'],
-                'updateInstructor' => ['class' => 'instructors_processor', 'function_name'=>'updateInstructor'],
-                'getInstructor' =>['class' => 'instructors_processor', 'function_name'=>'getInstructor'],
-                'delInstructor' =>['class' => 'instructors_processor', 'function_name' =>'deleteInstructor'],
-                'uploadimg' =>['class' => 'upload_processor', 'function_name' => 'uploadAvatar'],
-                'getMsg' =>['class'=>'announcements_processor', 'function_name' => 'getByAnnouncementById'],
-                'listMsgs' =>['class'=>'announcements_processor', 'function_name' => 'listAllAnnouncements'],
-                'msgLoc' =>['class'=>'announcements_processor', 'function_name' => 'listAnnouncementLocations'],
-                'newMsg' =>['class'=>'announcements_processor', 'function_name' => 'createAnnouncement'],
-                'delMsg' =>['class'=>'announcements_processor', 'function_name' => 'deleteAnnouncement'],
-                'modMsg' =>['class'=>'announcements_processor', 'function_name' => 'updateAnnouncement'],
-                'locMsgs' =>['class' => 'announcements_processor', 'function_name' => 'getAnnouncementsByLocation'],
-                'classes' => ['class' => 'hebamio_proc', 'function_name' => 'requestHebamio']
+                'getToken'          =>  ['class'    =>  'api_token',                'function_name' => 'getToken'],
+                'tokenValid'        =>  ['class'    =>  'api_token',                'function_name'=> 'tokenValid'],
+                'sendContact'       =>  ['class'    =>  'email_sender',          'function_name' => 'send_contact'],
+                'listUsers'         =>  ['class'    =>  'user_login',               'function_name' =>'listUsers'],
+                'getUser'           =>  ['class'    =>  'user_login',               'function_name' => 'getUserById'],
+                'createUser'        =>  ['class'    =>  'user_login',               'function_name' => 'createUser'],
+                'updateUser'        =>  ['class'    =>  'user_login',               'function_name' => 'updateUser'],
+                'deleteUser'        =>  ['class'    =>  'user_login',               'function_name' => 'deleteUser'],
+                'logout'            =>  ['class'    =>  'user_login',               'function_name' => 'logoutUser'],
+                'login'             =>  ['class'    =>  'user_login',               'function_name' => 'loginUser' ],
+                'testMessage'       =>  ['class'    =>  'email_sender' ,         'function_name' => 'sendTestMessage'],
+                'listInstructors'   =>  ['class'    =>  'instructors_processor',    'function_name'=>'listInstructors'],
+                'newInstructor'     =>  ['class'    =>  'instructors_processor',    'function_name'=>'createInstructor'],
+                'updateInstructor'  =>  ['class'    =>  'instructors_processor',    'function_name'=>'updateInstructor'],
+                'getInstructor'     =>  ['class'    =>  'instructors_processor',    'function_name'=>'getInstructor'],
+                'delInstructor'     =>  ['class'    =>  'instructors_processor',    'function_name' =>'deleteInstructor'],
+                'uploadimg'         =>  ['class'    =>  'upload_processor',         'function_name' => 'uploadAvatar'],
+                'getMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'getByAnnouncementById'],
+                'listMsgs'          =>  ['class'    =>  'announcements_processor',  'function_name' => 'listAllAnnouncements'],
+                'msgLoc'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'listAnnouncementLocations'],
+                'newMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'createAnnouncement'],
+                'delMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'deleteAnnouncement'],
+                'modMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'updateAnnouncement'],
+                'locMsgs'           =>  ['class'    =>  'announcements_processor',  'function_name' => 'getAnnouncementsByLocation'],
+                'classes'           =>  ['class'    =>  'hebamio_proc',             'function_name' => 'requestHebamio']
             ];
 
         }
