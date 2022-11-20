@@ -35,38 +35,20 @@
         $functionParams["files"] = $_FILES;
 
         $cApiHandler = new api_handler();
-        $res;
-        if($functionName === 'getToken'){
-            $res = api_response::getResponse(200);
-        }else{
-            if($token == ""){
-                $res = api_response::getResponse(400);
-                $res["message"] = "apiToken failure likely in cookies.";
-                $res["cookie"] = $_COOKIE;
-                $res["request"] = $requestMethodArray;
-                $res["params"] = $functionParams;
-            }else{
-                $res = api_token::validate($token, $adminToken);
-            }
-        }
         
-        if($res['status'] !== 200){
-            $returnArray = json_encode($res);
-            echo $returnArray;
-        }else{
-            $res = $cApiHandler->callApiFunction($functionName, $functionParams);
-            if(is_array($res)){
-            $res["ref"] = $_SERVER["SERVER_NAME"];
-                if(isset($_SERVER["CONTEXT_PREFIX"])){
-                    $res["ref"] .=  $_SERVER["CONTEXT_PREFIX"];
-                }
-            }   
-            $returnArray = json_encode($res,JSON_UNESCAPED_UNICODE);
-            if($returnArray === null || trim($returnArray) === ''){
-                $returnArray = '{"status":500, "Exception":"Empty Result"}';
+        $res = $cApiHandler->callApiFunction($functionName, $functionParams, $token, $adminToken);
+        if(is_array($res)){
+        $res["ref"] = $_SERVER["SERVER_NAME"];
+            if(isset($_SERVER["CONTEXT_PREFIX"])){
+                $res["ref"] .=  $_SERVER["CONTEXT_PREFIX"];
             }
-            echo $returnArray;
+        }   
+        $returnArray = json_encode($res,JSON_UNESCAPED_UNICODE);
+        if($returnArray === null || trim($returnArray) === ''){
+            $returnArray = '{"status":500, "Exception":"Empty Result"}';
         }
+        echo $returnArray;
+       
 
         if(isset($cApiHandler)){unset($cApiHandler);}
 
