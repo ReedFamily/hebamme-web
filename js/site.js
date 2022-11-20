@@ -205,24 +205,17 @@ form.addEventListener("submit", (e) => {
     formData.contactByPhone = contactPhoneString;
     formData.message = messageInput.value;
 
-    jQuery.get("backend/rest.php?apiFunc=getToken", function (res) {
+    var url = "backend/rest.php?apiFunc=sendContact";
+    jQuery.post(url, JSON.stringify(formData), function (res) {
       response = res;
       if (response.status == 200) {
-        var apiToken = response.token;
-        var url =
-          "backend/rest.php?apiToken=" + apiToken + "&apiFunc=sendContact";
-        jQuery.post(url, JSON.stringify(formData), function (res) {
-          response = res;
-          if (response.status == 200) {
-            form.reset();
-            form.remove();
-            document.getElementById("thank-you").classList.remove("hidden");
-          } else {
-            // error response
-            document.getElementById("error-message").classList.remove("hidden");
-            console.log(response);
-          }
-        });
+        form.reset();
+        form.remove();
+        document.getElementById("thank-you").classList.remove("hidden");
+      } else {
+        // error response
+        document.getElementById("error-message").classList.remove("hidden");
+        console.log(response);
       }
     });
   }
