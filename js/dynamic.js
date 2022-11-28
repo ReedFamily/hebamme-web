@@ -167,9 +167,8 @@ const getClassInfo = function () {
         var footerContent;
         if (isFull === true) {
           footerContent = $("<span />", {
-            class: "btn btn-secondary",
+            class: "btn btn-secondary full-course",
             text: "Ausgebucht",
-            role: "button",
           });
         } else {
           footerContent = $("<a />", {
