@@ -135,6 +135,7 @@ const editInstructor = function (ele) {
       $("#inputInstructorMobile").val(response.instructor.mobile);
       $("#inputInstructorPosition").val(response.instructor.position);
       $("#inputInstructorDescription").val(response.instructor.description);
+      $("#inputHebamioUrl").val(response.instructor.hebamiolink);
       $("#editInstructorThumbnailUrl").val(response.instructor.imageurl);
       var thumb = buildThumbnail(response.instructor);
       $("#imagewrapper").empty();
@@ -181,7 +182,10 @@ const newInstructorEvent = function (event) {
 
   var imageurl = $("#editInstructorThumbnailUrl").val();
 
+  var hebamioLink = $("#inputHebamioUrl").val();
+
   newInstructorData.imageurl = imageurl;
+  newInstructorData.hebamiolink = hebamioLink;
 
   sendNewInstructor(newInstructorData);
   $("body").off("click", "#edit-instructor-save-button", newInstructorEvent);
@@ -212,6 +216,7 @@ const editInstructorEvent = function (event) {
   editInstructorData.position = $("#inputInstructorPosition").val();
   editInstructorData.description = $("#inputInstructorDescription").val();
   editInstructorData.imageurl = $("#editInstructorThumbnailUrl").val();
+  editInstructorData.hebamiolink = $("#inputHebamioUrl").val();
   sendEditInstructor(editInstructorData);
   $("body").off("click", "#edit-instructor-save-button", editInstructorEvent);
 };

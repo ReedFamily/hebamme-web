@@ -36,10 +36,19 @@ const buildTeamCards = function (payload) {
       class: "card-text",
       text: instructor.description,
     });
+    var nachsorge = jQuery("<p />", { class: "card-text" });
+    var reglink = jQuery("<a />", {
+      href: instructor.hebamiolink,
+      text: "Anfrage für Wochenbettbetreuung",
+    });
+    nachsorge.append(reglink);
 
     cardbody.append(cardheader);
     cardbody.append(position);
     cardbody.append(descript);
+    if (instructor.hebamiolink) {
+      cardbody.append(nachsorge);
+    }
 
     card.append(img);
     card.append(cardbody);
@@ -158,9 +167,8 @@ const getClassInfo = function () {
         var footerContent;
         if (isFull === true) {
           footerContent = $("<span />", {
-            class: "btn btn-secondary",
+            class: "btn btn-secondary full-course",
             text: "Ausgebucht",
-            role: "button",
           });
         } else {
           footerContent = $("<a />", {
