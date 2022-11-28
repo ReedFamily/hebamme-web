@@ -12,7 +12,7 @@
         }
 
         public function listAllInstructors(){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position` FROM `instructor`";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink FROM `instructor`";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -54,6 +54,10 @@
                 $colnames .= ", `position`";
                 $paramNames .= ", :position";
             }
+            if(isset($instructor["hebamiolink"])){
+                $colnames .= ", `registration_link`";
+                $paramNames .= ", :hebamiolink";
+            }
 
             $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";
             
@@ -80,7 +84,7 @@
         }
 
         public function getInstructorById($id){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position` FROM `instructor` WHERE `id` = :id";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink FROM `instructor` WHERE `id` = :id";
             $params = ["id" => $id];
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -127,6 +131,9 @@
             }
             if(isset($instructor["position"])){
                 $setValues .= ", `position` = :position";
+            }
+            if(isset($instructor["hebamiolink"])){
+                $setValues .= ", `registration_link` = :hebamiolink";
             }
 
 
