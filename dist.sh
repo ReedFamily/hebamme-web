@@ -1,11 +1,17 @@
 #!/bin/bash
+echo "*** BEGIN PACKAGE PROCESS ***"
 [ ! -d "dist/upload" ] && mkdir -p "dist/upload"
 
 GIT_COMMIT=$1
 BUILD_NO=$2
 COMMIT=${GIT_COMMIT:0:7}
+DEPLOYNAME="../hebamme-web-deploy_${COMMIT}_${BUILD_NO}.tar.gz"
+FLYWAYNAME="../hebamme-web-flyway_${COMMIT}_${BUILD_NO}.tar.gz"
+
 echo $GIT_COMMIT
 echo $COMMIT
+echo $DEPLOYNAME
+echo $FLYWAYNAME
 
 cp ./index.html ./dist/upload/index.html
 cp ./LICENSE ./dist/upload/LICENSE
@@ -23,6 +29,7 @@ cp -R ./admin ./dist/upload/admin
 cp -R ./flyway ./dist
 
 cd dist
-tar -czvf ../hebamme-web-deploy_$COMMIT_$BUILD_NO.tar.gz upload 
-tar -czvf ../hebamme-web-flyway_$COMMIT_$BUILD_NO.tar.gz flyway
+tar -czvf DEPLOYNAME upload 
+tar -czvf FLYWAYNAME flyway
 cd ..
+echo "*** END PACKAGE PROCESS ***"
