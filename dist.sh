@@ -1,5 +1,4 @@
 #!/bin/sh
-[ ! -d "dist/flyway" ] && mkdir -p "dist/flyway"
 [ ! -d "dist/upload" ] && mkdir -p "dist/upload"
 
 cp ./index.html ./dist/upload/index.html
@@ -15,8 +14,9 @@ cp -R ./css ./dist/upload/css
 cp -R ./backend ./dist/upload/backend 
 cp -R ./admin ./dist/upload/admin
 
-cp -R ./flyway ./dist/flyway
+cp -R ./flyway ./dist
 
-tar -czvf hebamme-web-deploy.tar.gz ./dist/upload 
-tar -czvf hebamme-web-flyway.tar.gz ./dist/flyway 
-
+cd dist
+tar -czvf ../hebamme-web-deploy.tar.gz upload 
+tar -czvf ../hebamme-web-flyway.tar.gz flyway
+cd ..
