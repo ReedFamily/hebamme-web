@@ -17,3 +17,6 @@ cp -R ./admin ./dist/upload/admin
 
 cp -R ./flyway ./dist/flyway
 
+tar -czvf hebamme-web-deploy.tar.gz ./dist/upload 
+tar -czvf hebamme-web-flyway.tar.gz ./dist/flyway 
+
