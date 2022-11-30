@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 [ ! -d "dist/upload" ] && mkdir -p "dist/upload"
 
-full = $1;
-commit = ${full:0:7}
+GIT_COMMIT=$1
+COMMIT=${GIT_COMMIT:0:7}
 
 cp ./index.html ./dist/upload/index.html
 cp ./LICENSE ./dist/upload/LICENSE
@@ -20,6 +20,6 @@ cp -R ./admin ./dist/upload/admin
 cp -R ./flyway ./dist
 
 cd dist
-tar -czvf ../hebamme-web-deploy_$commit_$2.tar.gz upload 
-tar -czvf ../hebamme-web-flyway_$commit_$2.tar.gz flyway
+tar -czvf ../hebamme-web-deploy_$COMMIT_$2.tar.gz upload 
+tar -czvf ../hebamme-web-flyway_$COMMIT_$2.tar.gz flyway
 cd ..
