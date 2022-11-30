@@ -29,7 +29,7 @@ cp -R ./admin ./dist/upload/admin
 cp -R ./flyway ./dist
 
 cd dist
-tar -czvf DEPLOYNAME upload 
-tar -czvf FLYWAYNAME flyway
+tar -czvf $DEPLOYNAME upload 
+tar -czvf $FLYWAYNAME flyway
 cd ..
 echo "*** END PACKAGE PROCESS ***"
