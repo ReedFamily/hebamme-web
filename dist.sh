@@ -1,6 +1,9 @@
 #!/bin/sh
 [ ! -d "dist/upload" ] && mkdir -p "dist/upload"
 
+full = $1;
+commit = ${full:0:7}
+
 cp ./index.html ./dist/upload/index.html
 cp ./LICENSE ./dist/upload/LICENSE
 cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
@@ -17,6 +20,6 @@ cp -R ./admin ./dist/upload/admin
 cp -R ./flyway ./dist
 
 cd dist
-tar -czvf ../hebamme-web-deploy_$1.tar.gz upload 
-tar -czvf ../hebamme-web-flyway_$1.tar.gz flyway
+tar -czvf ../hebamme-web-deploy_$commit_$2.tar.gz upload 
+tar -czvf ../hebamme-web-flyway_$commit_$2.tar.gz flyway
 cd ..
