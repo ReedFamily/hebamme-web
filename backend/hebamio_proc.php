@@ -46,6 +46,15 @@
             return "other";
         }
 
+        private function sortClassList($list){
+            $sortArray = array();
+            foreach($list as $course){
+                $sortArray[$course->id] = $course;
+            }
+            ksort($sortArray);
+            return $sortArray;
+        }
+
         private function getClassList(){
             
             $jsonOut = array();
@@ -56,7 +65,8 @@
             $res = curl_exec($curl);
             curl_close($curl);
             $list = json_decode($res);
-            foreach($list as $ndx=>$course){
+            $sorted = $this->sortClassList($list);
+            foreach($sorted as $ndx=>$course){
                 $cls["id"] = $course->id;
                 $cls["name"] = $course->title;
                 $cls["type"] = $this->getClassTypeFromTitle($course->title);
@@ -104,6 +114,7 @@
                 $clsTerm["time_start"] = mb_substr($termin["time_start"], 0, 5);
                 $clsTerm["time_end"] = mb_substr($termin["time_end"], 0, 5);
                 $clsTerm["date_instructor"] = $termin["date_instructor"];
+                $clsTerm["description"] = $termin["description"];
                 $clsData["dates"][] = $clsTerm;
             }
 
