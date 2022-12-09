@@ -136,10 +136,8 @@ const getClassInfo = function () {
       var classWrapper = $("#termine-wrapper");
       $(classWrapper).empty();
       $.each(classRes.classes, function (index, classDetail) {
-        var styleClass =
-          "card-header " + getStyleFromDescription(classDetail.name);
-        var footerStyle =
-          "card-footer " + getStyleFromDescription(classDetail.name);
+        var styleClass = "card-header " + classDetail.type;
+        var footerStyle = "card-footer " + classDetail.type;
         var classId = classDetail.id;
         var className = classDetail.name;
         var btnUrl = classDetail.detail.hebamio_link;
