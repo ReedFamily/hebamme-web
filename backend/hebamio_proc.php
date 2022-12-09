@@ -24,7 +24,27 @@
             return $response;
         }
 
-       
+        private function getClassTypeFromTitle($title){
+            if(str_contains($title, "Geburtsvorbereitung")){
+                return "gbv";
+            }
+            if(str_contains($title, "Rückbildung")){
+                return "rubi";
+            }
+            if(str_contains($title, "Yoga")){
+                return "yoga";
+            }
+            if(str_contains($title, "Erste Hilfe")){
+                return "eh";
+            }
+            if(str_contains($title, "Babytreff")){
+                return "bt";
+            }
+            if(str_contains($title, "Babypflege")){
+                return "bp";
+            }
+            return "other";
+        }
 
         private function getClassList(){
             
@@ -39,6 +59,7 @@
             foreach($list as $ndx=>$course){
                 $cls["id"] = $course->id;
                 $cls["name"] = $course->title;
+                $cls["type"] = $this->getClassTypeFromTitle($course->title);
                 $detail = $this->getClassDetail($cls["id"]);
 
                 if(isset($detail["status"])){
@@ -68,8 +89,8 @@
             
             $detail = json_decode($res, true);
             $clsData["hebamio_link"] = CONST_HEBAMIO_URL . "/anmeldung?reason=course-" . $classId;
-            $clsData["date_start"] = $detail["date_start"];
-            $clsData["date_end"] = $detail["date_end"];
+            $clsData["date_start"] =  date("d.m.Y", strtotime($detail["date_start"]));
+            $clsData["date_end"] = date("d.m.Y", strtotime( $detail["date_end"]));
             $clsData["price_partner"] = $detail["price_partner"];
             $clsData["price"] = $detail["price"];
             $clsData["instructor"] = $detail["instructor"];
@@ -77,7 +98,9 @@
             $clsData["available_space"] = $detail["available_space"];
             $clsData["location"]["address"] = $detail["location"]["adress"];
             $clsData["location"]["title"] = $detail["location"]["title"];
+            
             $clsData["dates"] = $detail["dates"];
+            
             return $clsData;
         }
 
