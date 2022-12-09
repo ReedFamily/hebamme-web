@@ -170,7 +170,12 @@ body {
 }
 
 .yoga {
+  background-color: #ff00ff !important;
+}
+
+.bp {
   background-color: #485099 !important;
+  color: #f0f0f0;
 }
 
 .other {
