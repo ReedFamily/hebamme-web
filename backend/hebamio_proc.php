@@ -99,8 +99,19 @@
             $clsData["location"]["address"] = $detail["location"]["adress"];
             $clsData["location"]["title"] = $detail["location"]["title"];
             
-            $clsData["dates"] = $detail["dates"];
+            foreach($detail["dates"] as $ndx=>$termin){
+                $clsTerm["date"] = date("d.m.Y", strtotime($termin["date"]));
+                $clsTerm["time_start"] = mb_substr($termin["time_start"], 0, 5);
+                $clsTerm["time_end"] = mb_substr($termin["time_end"], 0, 5);
+                $clsTerm["date_instructor"] = $termin["date_instructor"];
+                $clsData["dates"][] = $clsTerm;
+            }
+
+
+            //$clsData["dates"] = $detail["dates"];
             
+
+
             return $clsData;
         }
 
