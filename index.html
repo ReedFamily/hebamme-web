@@ -9,8 +9,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Hebammenpraxis Moosburg</title>
-    <meta name="description" content="Als Anlaufpunkt für werdende Eltern und junge Familien bieten wir Geburtsvorbereitung, Yoga in der Schwangerschaft, Betreuung der Schwangerschaft, Babypflegekurs, Rückbildungsgymnastik, Babytreff/offene Sprechstunde, Babymassage, PEKiP, Wochenbettbetreuung, Still- und Ernährungsberatung."
-    />
+    <meta name="description" content="Als Anlaufpunkt für werdende Eltern und junge Familien bieten wir Geburtsvorbereitung, Yoga in der Schwangerschaft, Betreuung der Schwangerschaft, Babypflegekurs, Rückbildungsgymnastik, Babytreff/offene Sprechstunde, Babymassage, PEKiP, Wochenbettbetreuung, Still- und Ernährungsberatung." />
     <meta name="keywords" content="Hebammenpraxis, Hebamme, Moosburg, Geburtshaus, Moosburg a. d. Isar, Altenbeck, Reed" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="shortcut" type="image/svg+xml" href="./favicon.svg" />
@@ -208,8 +207,47 @@
                     <a href="https://bestvpn.org/outdatedbrowser/de">Browser, der JavaScript unterstützt</a>!
                 </p>
             </noscript>
-            <div id="termine-wrapper" class="container-fluid">
+            <div id="gbv-classes">
+                <h2>Geburtsvorbereitung</h2>
+                <div id="gbv-wrapper" class="container-fluid">
 
+                </div>
+            </div>
+            <div id="bp-classes">
+                <h2>Babypflege</h2>
+                <div id="bp-wrapper" class="container-fluid">
+
+                </div>
+            </div>
+            <div id="rubi-classes">
+                <h2>Rückbildungsgymnastik</h2>
+                <div id="rubi-wrapper" class="container-fluid">
+
+                </div>
+            </div>
+            <div id="bt-classes">
+                <h2>Babytreff</h2>
+                <div id="bt-wrapper" class="container-fluid">
+
+                </div>
+            </div>
+            <div id="eh-classes">
+                <h2>Erste Hilfe</h2>
+                <div id="eh-wrapper" class="container-fluid">
+
+                </div>
+            </div>
+            <div id="yoga-classes">
+                <h2>Yoga</h2>
+                <div id="yoga-wrapper" class="container-fluid">
+
+                </div>
+            </div>
+            <div id="other-classes">
+                <h2>Sonstige</h2>
+                <div id="other-wrapper" class="container-fluid">
+
+                </div>
             </div>
     </section>
     <p id="iebanner" class="browsehappy iebanner">
@@ -603,7 +641,7 @@
             // Remove links that don't actually link to anything
             .not('[href="#"]')
             .not('[href="#0"]')
-            .on("click", function(event) {
+            .on("click", function (event) {
                 // Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
                     // Store hash
@@ -613,10 +651,10 @@
                     // The optional number (650) specifies the number of milliseconds it takes to scroll to the specified area
                     // - 70 is the offset/top margin
                     $("html, body").animate({
-                            scrollTop: $(hash).offset().top - 65,
-                        },
+                        scrollTop: $(hash).offset().top - 65,
+                    },
                         650,
-                        function() {
+                        function () {
                             // Add hash (#) to URL when done scrolling (default click behavior), without jumping to hash
                             if (history.pushState) {
                                 history.pushState(null, null, hash);
@@ -629,7 +667,7 @@
                 } // End if
             });
 
-        $(document).on("scroll", function(e) {
+        $(document).on("scroll", function (e) {
             var rgba = $(document).scrollTop() / 250;
             $(".navbar").css("background-color", "rgba(225, 208, 192," + rgba + ")");
         });

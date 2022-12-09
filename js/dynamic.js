@@ -125,21 +125,29 @@ const getStyleFromDescription = function (descript) {
     return "bt";
   }
 
+  if (descript.includes("Babypflege")) {
+    return "bp";
+  }
+
   return "other";
 };
 
 const getClassInfo = function () {
   var url = "backend/rest.php?apiFunc=classes";
   jQuery.get(url, function (classRes) {
-    classes = classRes;
-    if (classes.status == 200) {
-      var classWrapper = $("#termine-wrapper");
-      $(classWrapper).empty();
+    if (classRes.status == 200) {
+      var gbv = 0;
+      var rubi = 0;
+      var bt = 0;
+      var eh = 0;
+      var bp = 0;
+      var yoga = 0;
+      var other = 0;
       $.each(classRes.classes, function (index, classDetail) {
-        var styleClass =
-          "card-header " + getStyleFromDescription(classDetail.name);
-        var footerStyle =
-          "card-footer " + getStyleFromDescription(classDetail.name);
+        var classWrapper = $("#" + classDetail.type + "-wrapper");
+        var styleClass = "card-header " + classDetail.type;
+        var footerStyle = "card-footer " + classDetail.type;
+        var cardbodyStyle = "card-body collapse.show";
         var classId = classDetail.id;
         var className = classDetail.name;
         var btnUrl = classDetail.detail.hebamio_link;
@@ -153,16 +161,34 @@ const getClassInfo = function () {
         var isFull = false;
         if (classAvailable <= 0) {
           isFull = true;
+          cardbodyStype = "card-body collapse";
         }
-
+        var collapseButton = $("<button />", {
+          class: "close",
+          type: "button",
+          role: "button",
+        })
+          .attr("data-toggle", "collapse")
+          .attr("data-target", "#course-body-" + classId)
+          .attr("data-classId", classId)
+          .append(
+            $("<i />", { class: "fas fa-chevron-up", id: "toggle-" + classId })
+          );
         var classCard = $("<div />", {
           class: "card courses-list",
           id: "course-" + classId,
         });
         var classCardHeader = $("<div />", {
           class: styleClass,
-          text: className + " - " + classStartDate + " bis " + classEndDate,
-        });
+        })
+          .append(
+            $("<span />", {
+              class: "card-title",
+              text: className + " - " + classStartDate + " bis " + classEndDate,
+            })
+          )
+          .append(collapseButton);
+
         var classCardFooter = $("<div />", { class: footerStyle });
         var footerContent;
         if (isFull === true) {
@@ -180,7 +206,21 @@ const getClassInfo = function () {
         }
         $(classCardFooter).append(footerContent);
 
-        var classCardBody = $("<div />", { class: "card-body" });
+        var classCardBody = $("<div />", {
+          class: cardbodyStyle,
+          id: "course-body-" + classId,
+        })
+          .attr("aria-expanded", true)
+          .on("shown.bs.collapse", function () {
+            $("#toggle-" + classId)
+              .removeClass("fa-chevron-down")
+              .addClass("fa-chevron-up");
+          })
+          .on("hidden.bs.collapse", function () {
+            $("#toggle-" + classId)
+              .removeClass("fa-chevron-up")
+              .addClass("fa-chevron-down");
+          });
         var classBodyWo = $("<p />");
         $(classBodyWo)
           .append("WO: ")
@@ -210,14 +250,17 @@ const getClassInfo = function () {
             .append(" bis ")
             .append(dateDetail.time_end)
             .append(" mit ")
-            .append(dateDetail.date_instructor)
-            .append($("<br />"))
-            .append(
-              $("<span />", {
-                class: "termine-descript",
-                text: dateDetail.description,
-              })
-            );
+            .append(dateDetail.date_instructor);
+          if (dateDetail.description) {
+            $(termineItem)
+              .append("<br />")
+              .append(
+                $("<span />", {
+                  class: "termine-descript",
+                  text: dateDetail.description,
+                })
+              );
+          }
           $(classBodyTermineList).append(termineItem);
         });
 
@@ -235,7 +278,51 @@ const getClassInfo = function () {
           .append(classCardBody)
           .append(classCardFooter);
         $(classWrapper).append(classCard);
+        switch (classDetail.type) {
+          case "gbv":
+            gbv++;
+            break;
+          case "rubi":
+            rubi++;
+            break;
+          case "bt":
+            bt++;
+            break;
+          case "eh":
+            eh++;
+            break;
+          case "bp":
+            bp++;
+            break;
+          case "yoga":
+            yoga++;
+            break;
+          default:
+            other++;
+            break;
+        }
       });
+      if (gbv == 0) {
+        $("#gbv-classes").remove();
+      }
+      if (rubi == 0) {
+        $("#rubi-classes").remove();
+      }
+      if (bt == 0) {
+        $("#bt-classes").remove();
+      }
+      if (eh == 0) {
+        $("#eh-classes").remove();
+      }
+      if (bp == 0) {
+        $("#bp-classes").remove();
+      }
+      if (yoga == 0) {
+        $("#yoga-classes").remove();
+      }
+      if (other == 0) {
+        $("#other-classes").remove();
+      }
     } else {
       console.log(classRes);
     }

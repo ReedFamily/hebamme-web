@@ -6,12 +6,15 @@ $background-color :#f0f0f0;
 $background-color-btn-light :#f0f0f0;
 $background-color-baby-blanket-beige: #e7d6c6;
 $accent-color-moss-green :#869948;
+
 $accent-color-class-gbv: #869948;
 $accent-color-class-rubi: #5B4899;
 $accent-color-class-bt: #489984;
 $accent-color-class-eh: #99485D;
-$accent-color-class-yoga: #485099;
+$accent-color-class-yoga: #ff00ff;
+$accent-color-class-bg: #485099;
 $accent-color-class-other: #509948;
+
 $accent-color-flame :#DF5916;
 $accent-color-french-bistre :#7A6C5D;
 $accent-color-venetian-red :#BF211E;
@@ -198,6 +201,11 @@ body {
 
 .yoga {
     background-color: $accent-color-class-yoga !important;
+}
+
+.bp {
+    background-color: $accent-color-class-bg !important;
+    color: $background-color;
 }
 
 .other {
