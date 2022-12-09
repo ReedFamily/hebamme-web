@@ -151,6 +151,7 @@ const getClassInfo = function () {
         var isFull = false;
         if (classAvailable <= 0) {
           isFull = true;
+          styleClass += " collapse";
         }
 
         var classCard = $("<div />", {
@@ -208,14 +209,17 @@ const getClassInfo = function () {
             .append(" bis ")
             .append(dateDetail.time_end)
             .append(" mit ")
-            .append(dateDetail.date_instructor)
-            .append($("<br />"))
-            .append(
-              $("<span />", {
-                class: "termine-descript",
-                text: dateDetail.description,
-              })
-            );
+            .append(dateDetail.date_instructor);
+          if (dateDetail.description) {
+            $(termineItem)
+              .append("<br />")
+              .append(
+                $("<span />", {
+                  class: "termine-descript",
+                  text: dateDetail.description,
+                })
+              );
+          }
           $(classBodyTermineList).append(termineItem);
         });
 
