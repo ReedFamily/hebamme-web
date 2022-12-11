@@ -161,7 +161,7 @@ const getClassInfo = function () {
         var isFull = false;
         if (classAvailable <= 0) {
           isFull = true;
-          cardbodyStype = "card-body collapse";
+          cardbodyStyle = "card-body collapse";
         }
         var collapseButton = $("<button />", {
           class: "close",
