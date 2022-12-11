@@ -223,7 +223,7 @@ const getClassInfo = function () {
           });
         var classBodyWo = $("<p />");
         $(classBodyWo)
-          .append("WO: ")
+          .append("Wo: ")
           .append(locationName)
           .append($("<br />"))
           .append(locationAddress);
