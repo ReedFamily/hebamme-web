@@ -72,9 +72,8 @@ const getHomeAlerts = function () {
 const buildHomeAlerts = function (payload) {
   var msgSect = $("#home-alerts");
   if (payload.length === 0) {
-    msgSect.toggleClass("hidden");
+    msgSect.remove();
   } else {
-    msgSect.toggleClass("hidden");
     var highAlertsCont = $("#home-high-alerts");
     var warnAlertsCont = $("#home-warn-alerts");
     var infoAlertsCont = $("#home-info-alerts");
