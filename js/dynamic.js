@@ -213,18 +213,6 @@ const getClassInfo = function () {
           class: cardbodyStyle,
           id: "course-body-" + classId,
         });
-
-        // .attr("aria-expanded", true)
-        // .on("shown.bs.collapse", function () {
-        //   $("#toggle-" + classId)
-        //     .removeClass("fa-chevron-down")
-        //     .addClass("fa-chevron-up");
-        // })
-        // .on("hidden.bs.collapse", function () {
-        //   $("#toggle-" + classId)
-        //     .removeClass("fa-chevron-up")
-        //     .addClass("fa-chevron-down");
-        // });
         var classBodyWo = $("<p />");
         $(classBodyWo)
           .append("Wo: ")
