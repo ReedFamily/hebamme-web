@@ -146,7 +146,7 @@ const getClassInfo = function () {
         var classWrapper = $("#" + classDetail.type + "-wrapper");
         var styleClass = "card-header " + classDetail.type;
         var footerStyle = "card-footer " + classDetail.type;
-        var cardbodyStyle = "card-body collapse.show";
+        var cardbodyStyle = "card-body collapse show";
         var classId = classDetail.id;
         var className = classDetail.name;
         var btnUrl = classDetail.detail.hebamio_link;
@@ -158,8 +158,10 @@ const getClassInfo = function () {
         var locationName = classDetail.detail.location.title;
         var locationAddress = classDetail.detail.location.address;
         var isFull = false;
+        var isExpanded = true;
         if (classAvailable <= 0) {
           isFull = true;
+          isExpanded = false;
           cardbodyStyle = "card-body collapse";
         }
         var collapseButton = $("<button />", {
@@ -170,6 +172,8 @@ const getClassInfo = function () {
           .attr("data-toggle", "collapse")
           .attr("data-target", "#course-body-" + classId)
           .attr("data-classId", classId)
+          .attr("aria-expanded", isExpanded)
+          .attr("aria-controls", "course-body-" + classId)
           .append(
             $("<i />", { class: "fas fa-chevron-up", id: "toggle-" + classId })
           );
@@ -208,18 +212,19 @@ const getClassInfo = function () {
         var classCardBody = $("<div />", {
           class: cardbodyStyle,
           id: "course-body-" + classId,
-        })
-          .attr("aria-expanded", true)
-          .on("shown.bs.collapse", function () {
-            $("#toggle-" + classId)
-              .removeClass("fa-chevron-down")
-              .addClass("fa-chevron-up");
-          })
-          .on("hidden.bs.collapse", function () {
-            $("#toggle-" + classId)
-              .removeClass("fa-chevron-up")
-              .addClass("fa-chevron-down");
-          });
+        });
+
+        // .attr("aria-expanded", true)
+        // .on("shown.bs.collapse", function () {
+        //   $("#toggle-" + classId)
+        //     .removeClass("fa-chevron-down")
+        //     .addClass("fa-chevron-up");
+        // })
+        // .on("hidden.bs.collapse", function () {
+        //   $("#toggle-" + classId)
+        //     .removeClass("fa-chevron-up")
+        //     .addClass("fa-chevron-down");
+        // });
         var classBodyWo = $("<p />");
         $(classBodyWo)
           .append("Wo: ")
