@@ -8,10 +8,7 @@ COMMIT=${GIT_COMMIT:0:7}
 DEPLOYNAME="../hebamme-web-deploy_${COMMIT}_${BUILD_NO}.tar.gz"
 FLYWAYNAME="../hebamme-web-flyway_${COMMIT}_${BUILD_NO}.tar.gz"
 
-echo $GIT_COMMIT
-echo $COMMIT
-echo $DEPLOYNAME
-echo $FLYWAYNAME
+echo "*** COPY FILES ***"
 
 cp ./index.html ./dist/upload/index.html
 cp ./LICENSE ./dist/upload/LICENSE
@@ -27,6 +24,12 @@ cp -R ./backend ./dist/upload/backend
 cp -R ./admin ./dist/upload/admin
 
 cp -R ./flyway ./dist
+
+echo "*** PERFORM REPLACE ***"
+
+sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/index.html
+
+echo "*** BUILD PACKAGE ***"
 
 cd dist
 tar -czvf $DEPLOYNAME upload 
