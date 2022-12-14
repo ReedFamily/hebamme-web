@@ -146,7 +146,7 @@ const getClassInfo = function () {
         var classWrapper = $("#" + classDetail.type + "-wrapper");
         var styleClass = "card-header " + classDetail.type;
         var footerStyle = "card-footer " + classDetail.type;
-        var cardbodyStyle = "card-body collapse show";
+        var cardbodyStyle = "card-body collapse";
         var classId = classDetail.id;
         var className = classDetail.name;
         var btnUrl = classDetail.detail.hebamio_link;
@@ -158,11 +158,9 @@ const getClassInfo = function () {
         var locationName = classDetail.detail.location.title;
         var locationAddress = classDetail.detail.location.address;
         var isFull = false;
-        var isExpanded = true;
+        var isExpanded = false;
         if (classAvailable <= 0) {
           isFull = true;
-          isExpanded = false;
-          cardbodyStyle = "card-body collapse";
         }
         var collapseButton = $("<button />", {
           class: "close",
@@ -175,7 +173,10 @@ const getClassInfo = function () {
           .attr("aria-expanded", isExpanded)
           .attr("aria-controls", "course-body-" + classId)
           .append(
-            $("<i />", { class: "fas fa-chevron-up", id: "toggle-" + classId })
+            $("<i />", {
+              class: "fas fa-chevron-down",
+              id: "toggle-" + classId,
+            })
           );
         var classCard = $("<div />", {
           class: "card courses-list",
