@@ -18,3 +18,4 @@ API/example-kurs-list.json
 backend/conf/sql/hebamme-web-data.sql
 backend/conf/sql/hebamme-web-dump.sql
 backend/exceptions/conf.php
+dist/
