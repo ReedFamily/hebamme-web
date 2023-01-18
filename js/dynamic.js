@@ -153,6 +153,7 @@ const getClassInfo = function () {
         var classStartDate = classDetail.detail.date_start;
         var classEndDate = classDetail.detail.date_end;
         var classPartnerPrice = classDetail.detail.price_partner;
+        var classPrice = classDetail.detail.price;
         var classMaxParticipants = classDetail.detail.max_paticipants;
         var classAvailable = classDetail.detail.available_space;
         var locationName = classDetail.detail.location.title;
@@ -231,6 +232,8 @@ const getClassInfo = function () {
         $(classBodyPartner)
           .append("Partnergebühr: €")
           .append(classPartnerPrice);
+        var classBodyPrice = $("<p />");
+        $(classBodyPrice).append("Gebühr: €").append(classPrice);
         var classBodyTermine = $("<div />");
         var classBodyTermineTitle = $("<p />").append("Termine: ");
         var classBodyTermineList = $("<ul />");
@@ -262,6 +265,9 @@ const getClassInfo = function () {
           .append(classBodyTermineList);
 
         $(classCardBody).append(classBodyWo).append(classBodyAvailable);
+        if (classPrice) {
+          $(classCardBody).append(classBodyPrice);
+        }
         if (classPartnerPrice) {
           $(classCardBody).append(classBodyPartner);
         }
