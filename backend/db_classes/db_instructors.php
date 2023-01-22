@@ -12,7 +12,7 @@
         }
 
         public function listAllInstructors(){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink FROM `instructor`";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team` FROM `instructor`";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -58,6 +58,13 @@
                 $colnames .= ", `registration_link`";
                 $paramNames .= ", :hebamiolink";
             }
+            if(isset($instructor["team"])){
+                $colnames .= ", `team_member`";
+                $paramNames .= ", :team";
+            }else{
+                $colnames .= ", `team_member`";
+                $paramNames .= ", false";
+            }
 
             $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";
             
@@ -84,7 +91,7 @@
         }
 
         public function getInstructorById($id){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink FROM `instructor` WHERE `id` = :id";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as team FROM `instructor` WHERE `id` = :id";
             $params = ["id" => $id];
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -134,6 +141,11 @@
             }
             if(isset($instructor["hebamiolink"])){
                 $setValues .= ", `registration_link` = :hebamiolink";
+            }
+            if(isset($instructor["team"])){
+                $setValues .= ", `team_member` = :team";
+            }else{
+                $setValues .= ", `team_member` = false";
             }
 
 
