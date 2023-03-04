@@ -17,12 +17,14 @@
         "instructors_processor" => "instructors_processor.php",
         "upload_processor" => "upload_processor.php",
         "hebamio_proc" => "hebamio_proc.php",
+        "api_faq" => "api_faq.php",
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
         "db_announcements" => "db_classes/db_announcements.php",
         "db_user" => "db_classes/db_user.php",
         "db_instructors" => "db_classes/db_instructors.php",
+        "db_faq" => "db_classes/db_faq.php",
 //      Exception classes        
         "UserValidationException" => "exceptions/user_validation_exception.php",
         "InstructorException" => "exceptions/instructor_exception.php", 

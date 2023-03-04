@@ -97,7 +97,7 @@
             $result = api_response::getResponse(500);
             $token = $this->tokenGen();
             $dateTime = new DateTime();
-            $dateTime->add(new DateInterval("PT10H"));
+            $dateTime->add(new DateInterval("PT24H"));
             $dateValue = $dateTime->format("Y-m-d H:i:s");
             $dbToken = new db_token();
             try{

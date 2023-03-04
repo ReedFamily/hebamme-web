@@ -327,3 +327,52 @@ const getClassInfo = function () {
     }
   });
 };
+
+const buildFaqList = function () {
+  let url = "backend/rest.php?apiFunc=faqs";
+  let wrapper = $("#faq-wrapper");
+  wrapper.empty();
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      $.each(res.faqs, function (index, faq) {
+        let faqCard = $("<div />", { id: "faq-id-" + faq.id, class: "card" });
+        let faqCollapse = $("<button />", {
+          class: "close",
+          type: "button",
+          role: "button",
+          id: "toggle-faq-" + faq.id,
+        })
+          .attr("data-toggle", "collapse")
+          .attr("data-target", "#faq-body-" + faq.id)
+          .attr("data-faqId", faq.id)
+          .attr("aria-expanded", false)
+          .attr("aria-controls", "faq-body-" + faq.id)
+          .append(
+            $("<i />", {
+              class: "fas fa-chevron-down",
+              id: "toggle-" + faq.id,
+            })
+          );
+        let faqHeader = $("<div />", {
+          class: "card-header faq-card-header",
+          id: "faq-header-" + faq.id,
+        }).append(
+          $("<span />", {
+            class: "card-title",
+            id: "faq-title-" + faq.id,
+            text: faq.question + " ",
+          }).append(faqCollapse)
+        );
+        let faqBody = $("<div />", {
+          class: "card-body collapse faq-card-body",
+          id: "faq-body-" + faq.id,
+        }).append($("<p />").append(faq.message));
+
+        faqCard.append(faqHeader, faqBody);
+        wrapper.append(faqCard);
+      });
+    } else {
+      $("#faq").remove();
+    }
+  });
+};
