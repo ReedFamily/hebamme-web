@@ -160,6 +160,12 @@ body {
   background-color: #5B4899 !important;
   color: #f0f0f0;
 }
+.rubi button.close {
+  color: #f0f0f0;
+}
+.rubi button.close:hover {
+  color: #f0f0f0;
+}
 
 .eh {
   background-color: #99485D !important;
@@ -175,6 +181,12 @@ body {
 
 .bp {
   background-color: #485099 !important;
+  color: #f0f0f0;
+}
+.bp button.close {
+  color: #f0f0f0;
+}
+.bp button.close:hover {
   color: #f0f0f0;
 }
 
@@ -272,19 +284,6 @@ section {
   right: 0px;
 }
 
-/* @media screen and (max-width: 766px) {
-    #home {
-        margin-top: 0px;
-    }
-}
-
-@media screen and (min-width: 767px) {
-    @media screen and (max-height: 520px) {
-        #home {
-            margin-top: 0px;
-        }
-    }
-} */
 @media screen and (max-height: 555px) {
   div.cn {
     margin-top: 3.25rem;
@@ -312,11 +311,6 @@ div.inner {
 #home .percent-100 {
   width: 100%;
   height: 100%;
-  /* @media (orientation: portrait) {
-      .container {
-          padding-top: 4em;
-      }
-  } */
 }
 @media (orientation: landscape) {
   #home .percent-100 .container {
@@ -324,21 +318,8 @@ div.inner {
   }
 }
 
-/* @media (orientation: landscape) {
-    #home {
-        height: 100vh;
-    }
-}
-
-@media (orientation: portrait) {
-    #home {
-        height: 50vh;
-        overflow: hidden;
-    }
-} */
 #home {
   height: 100vh;
-  /*background-color: unset; */
 }
 #home h1 {
   font-weight: 600;
@@ -369,20 +350,6 @@ div.inner {
   padding: 2rem;
 }
 
-/* @media (orientation: portrait) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
-} */
 @media (orientation: landscape) {
   #error-404 {
     margin-top: -66px;
@@ -511,7 +478,7 @@ form button.btn {
 footer {
   padding-top: 2em;
   padding-bottom: 2em;
-  background-color: hsl(34deg, 7%, 20%) !important;
+  background-color: hsl(34, 7%, 20%) !important;
   color: #f0f0f0;
 }
 footer a {
@@ -527,7 +494,6 @@ footer a {
   .termine-card {
     margin-left: 0.5em !important;
     margin-right: 0.5em !important;
-    min-width: -webkit-min-content;
     min-width: -moz-min-content;
     min-width: min-content;
   }
@@ -609,6 +575,14 @@ footer a {
   display: block;
 }
 
-/* .card-text:last-child {
-    margin-bottom: 0.25em !important;
-} *//*# sourceMappingURL=styles.css.map */
+.faq-card-header {
+  background-color: #88AC35;
+  font-size: 1.5em;
+}
+
+.faq-card-body {
+  background-color: #e7d6c6;
+}
+.faq-card-body p {
+  margin-bottom: 0;
+}/*# sourceMappingURL=styles.css.map */

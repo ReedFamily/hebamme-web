@@ -189,6 +189,12 @@ body {
 .rubi {
     background-color: $accent-color-class-rubi !important;
     color: $background-color;
+    button.close{
+        color: $background-color;
+    }
+    button.close:hover{
+        color: $background-color;
+    }
 }
 
 .eh {
@@ -206,6 +212,13 @@ body {
 .bp {
     background-color: $accent-color-class-bg !important;
     color: $background-color;
+    button.close {
+            color: $background-color;
+        }
+    
+    button.close:hover {
+        color: $background-color;
+    }
 }
 
 .other {
@@ -316,21 +329,6 @@ section {
     right: 0px;
 }
 
-//}
-
-/* @media screen and (max-width: 766px) {
-    #home {
-        margin-top: 0px;
-    }
-}
-
-@media screen and (min-width: 767px) {
-    @media screen and (max-height: 520px) {
-        #home {
-            margin-top: 0px;
-        }
-    }
-} */
 
 @media screen and (max-height: 555px) {
     div.cn {
@@ -364,31 +362,15 @@ div.inner {
                 padding-top: 10em;
             }
         }
-        /* @media (orientation: portrait) {
-            .container {
-                padding-top: 4em;
-            }
-        } */
+      
     }
 }
 
 
-/* @media (orientation: landscape) {
-    #home {
-        height: 100vh;
-    }
-}
-
-@media (orientation: portrait) {
-    #home {
-        height: 50vh;
-        overflow: hidden;
-    }
-} */
 
 #home {
     height: 100vh;
-    /*background-color: unset; */
+    
     h1 {
         font-weight: 600;
     }
@@ -420,20 +402,7 @@ div.inner {
 }
 
 
-/* @media (orientation: portrait) {
-    div.cn {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-    }
-    div.inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 2rem;
-    }
-} */
+
 
 @media (orientation: landscape) {
     #error-404 {
@@ -563,7 +532,7 @@ form {
     }
     button.btn {
         margin-top: 1em;
-        //margin-bottom: 1em;
+       
     }
 }
 
@@ -680,7 +649,17 @@ footer {
     display: block;
 }
 
+.faq-card-header
+{
+    background-color: $accent-color-apple-green;
+    font-size: 1.5em;
+}
 
-/* .card-text:last-child {
-    margin-bottom: 0.25em !important;
-} */
+.faq-card-body
+{
+    background-color: $background-color-baby-blanket-beige;
+    p{
+        margin-bottom: 0;
+    }
+}
+
