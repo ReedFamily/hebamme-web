@@ -81,7 +81,12 @@
                 'delMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'deleteAnnouncement', 'needToken' => true],
                 'modMsg'            =>  ['class'    =>  'announcements_processor',  'function_name' => 'updateAnnouncement', 'needToken' => true],
                 'locMsgs'           =>  ['class'    =>  'announcements_processor',  'function_name' => 'getAnnouncementsByLocation', 'needToken' => false],
-                'classes'           =>  ['class'    =>  'hebamio_proc',             'function_name' => 'requestHebamio', 'needToken' => false]
+                'classes'           =>  ['class'    =>  'hebamio_proc',             'function_name' => 'requestHebamio', 'needToken' => false],
+                'faqs'              =>  ['class'    =>  'api_faq',                  'function_name' => 'listFaqs', 'needToken' => false],
+                'newFaq'            =>  ['class'    =>  'api_faq',                  'function_name' => 'createFaq', 'needToken' => true],
+                'getFaq'            =>  ['class'    =>  'api_faq',                  'function_name' => 'getFaqById', 'needToken' => true],
+                'editFaq'           =>  ['class'    =>  'api_faq',                  'function_name' => 'changeFaq', 'needToken' => true],
+                'delFaq'            =>  ['class'    =>  'api_faq',                  'function_name' => 'deleteFaqById', 'needToken' => true]
             ];
 
         }
