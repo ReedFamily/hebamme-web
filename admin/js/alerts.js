@@ -120,6 +120,7 @@ const updateAlertEvent = function (event) {
   } catch (e) {
     let item = e.err;
     $(item).addClass("erroredFormControl");
+    return;
   }
   var data = new Object();
   data.id = $("#alertId").val();

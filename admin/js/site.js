@@ -112,6 +112,23 @@ const buildSidebarNav = function () {
             }
           });
         })
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", { id: "link-faq", class: "nav-link" })
+        .append(
+          $("<i />", { class: "fas fa-question" }),
+          $("<span />", { text: " FAQs" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=faqs", function (res) {
+            if (res.status == 200) {
+              displayFaqs(res);
+            } else {
+              displayFailure("#failure-faqs-template");
+            }
+          });
+        })
     )
   );
 };

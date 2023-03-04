@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/users.js"></script>
     <script type="text/javascript" src="js/instructors.js"></script>
     <script type="text/javascript" src="js/alerts.js"></script>
+    <script type="text/javascript" src="js/faqs.js"></script>
     <script type="text/javascript" src="js/site.js"></script>
     <script src="../fontawesome-free-5.15.3-web/js/all.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
@@ -101,7 +102,66 @@
             </div>
         </div>
     </div>
+    <!-- FAQ Dialog -->
+    <div id="edit-faq-dialog" tabindex="-1" class="modal" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="faq-editor-title">FAQ bearbeitung</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-faq-form" class="form">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="faqId" class="dialog-form-label">ID</label>
+                                <input id="faqId" name="id" type="text" readonly="true" class="form-control-sm" placeholder="new" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="faqQuestion" class="dialog-form-label">Frage:</label>
+                                <input id="faqQuestion" name="question" type="text" class="form-control-sm" placeholder="FAQ Frage" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 flex-grow-1">
+                                <textarea class="form-control h-100" name="message" id="faqMessage"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="edit-faq-save-button">Speicher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="delete-faq-dialog" tabindex="-1" class="modal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">FAQ löschen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die FAQ mit Frage <span id="delete-faq">{FAQ}</span>?</p>
+                    <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-faq-acknowledge-button">Bestätigen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- USER DIALOG -->
     <div id="edit-user-dialog" tabindex="-1" class="modal " role="dialog">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -371,6 +431,11 @@
     </div>
 
     <script type="text/javascript">
+        $("#delete-faq-acknowledge-button").click(function (event) {
+            var id = $(this).data("id");
+            sendDeleteFaq(id);
+        });
+
         $("#delete-instructor-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteInstructor(id);
