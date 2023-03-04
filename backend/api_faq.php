@@ -14,7 +14,9 @@
 
         public function createFaq($params){
             if(!isset($params["post_body"])){
-                return api_response::getResponse(400);
+                $result = api_response::getResponse(400);
+                $result["message"] = "No POST Body";
+                return $result;
             }
             $faq = $params["post_body"];
             $db = new db_faq();
@@ -47,6 +49,10 @@
             }
             $db = new db_faq();
             $result = $db->updateFaq($faq);
+            if($result["status"] == 200){
+                $result = $this->listFaqs();
+            }
+            return $result;
         }
 
         public function deleteFaqById($params){
@@ -55,7 +61,7 @@
             }
 
             $db = new db_faq();
-            $result = $db->deleteInstructorById($params["id"]);
+            $result = $db->deleteFaq($params["id"]);
             if($result["status"] == 200){
                 $result = $this->listFaqs();
             }

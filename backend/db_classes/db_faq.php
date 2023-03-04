@@ -54,7 +54,7 @@
                 return $this->createFaq($faq);
             }
 
-            $query = "UPDATE `faq` SET (`question` = :question, `message` = :message) WHERE id = :id";
+            $query = "UPDATE `faq` SET `question` = :question, `message` = :message WHERE id = :id";
             $result = api_response::getResponse(500);
             try{
                 $stmt = $this->pdo->prepare($query);
