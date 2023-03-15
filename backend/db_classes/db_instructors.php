@@ -63,7 +63,7 @@
                 $paramNames .= ", :team";
             }else{
                 $colnames .= ", `team_member`";
-                $paramNames .= ", false";
+                $paramNames .= ", 0";
             }
 
             $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";

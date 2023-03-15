@@ -29,6 +29,10 @@ const displayInstructors = function (response) {
     $("body").off("click", "#edit-instructor-save-button", editInstructorEvent);
     $("body").on("click", "#edit-instructor-save-button", newInstructorEvent);
     $("#edit-instructor-form").trigger("reset");
+    $("#team").removeAttr("checked");
+    var thumb = buildThumbnail();
+    $("#imagewrapper").empty();
+    $("#imagewrapper").append(thumb);
     $("#edit-instructor-dialog").modal("show");
   });
 
@@ -137,6 +141,12 @@ const editInstructor = function (ele) {
       $("#inputInstructorDescription").val(response.instructor.description);
       $("#inputHebamioUrl").val(response.instructor.hebamiolink);
       $("#editInstructorThumbnailUrl").val(response.instructor.imageurl);
+      if (response.instructor.team == "1") {
+        $("#team").attr("checked", true);
+      } else {
+        $("#team").removeAttr("checked");
+      }
+
       var thumb = buildThumbnail(response.instructor);
       $("#imagewrapper").empty();
       $("#imagewrapper").append(thumb);
@@ -160,6 +170,11 @@ const editInstructor = function (ele) {
 const newInstructorEvent = function (event) {
   event.stopImmediatePropagation();
   var newInstructorData = Object.create(Instructor);
+  if ($("#team").attr("checked")) {
+    newInstructorData.team = 1;
+  } else {
+    newInstructorData.team = 0;
+  }
   newInstructorData.firstname = $("#editInstructorFirstname").val();
   newInstructorData.lastname = $("#editInstructorLastname").val();
   var email = $("#inputInstructorEmail").val();
@@ -207,6 +222,11 @@ const sendNewInstructor = function (newInstructorData) {
 const editInstructorEvent = function (event) {
   event.stopImmediatePropagation();
   var editInstructorData = new Object();
+  if ($("#team").attr("checked")) {
+    editInstructorData.team = 1;
+  } else {
+    editInstructorData.team = 0;
+  }
   editInstructorData.id = $("#editInstructorId").val();
   editInstructorData.firstname = $("#editInstructorFirstname").val();
   editInstructorData.lastname = $("#editInstructorLastname").val();
