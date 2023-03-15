@@ -12,6 +12,7 @@ const getTeam = function () {
 
 const buildTeamCards = function (payload) {
   var contentDiv = $("#team-wrapper");
+  var dozentinDiv = $("#dozentin-wrapper");
   jQuery.each(payload.instructors, function (index, instructor) {
     var cardWrapper = jQuery("<div />", { class: "col-md-4 card-wrapper" });
     var card = jQuery("<div />", {
@@ -53,7 +54,11 @@ const buildTeamCards = function (payload) {
     card.append(img);
     card.append(cardbody);
     cardWrapper.append(card);
-    contentDiv.append(cardWrapper);
+    if (instructor.team == 1) {
+      contentDiv.append(cardWrapper);
+    } else {
+      dozentinDiv.append(cardWrapper);
+    }
   });
 };
 
