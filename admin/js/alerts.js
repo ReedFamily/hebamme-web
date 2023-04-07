@@ -92,7 +92,7 @@ const removeErrorFormControls = function () {
 };
 
 const validateAlertEditorForm = function (isNew) {
-  removeErrorFormsControls();
+  removeErrorFormControls();
   var id = $("#alertId").val();
   if (isNew != true) {
     if (Number(id) > 0 == false) {
@@ -116,7 +116,7 @@ const isEmpty = function (value) {
 const updateAlertEvent = function (event) {
   event.stopImmediatePropagation();
   try {
-    validateAlertEditorForm(true);
+    validateAlertEditorForm(false);
   } catch (e) {
     let item = e.err;
     $(item).addClass("erroredFormControl");
