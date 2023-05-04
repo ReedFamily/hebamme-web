@@ -10,6 +10,7 @@ en/index.html
 *.code-workspace
 
 /backend/uploads/*.jpg
+/backend/uploads/*.png
 backend/conf/conf-live.php
 API/API-key altenbeckundkollegin.txt
 API/example.json
