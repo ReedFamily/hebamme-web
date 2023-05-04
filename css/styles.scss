@@ -6,7 +6,6 @@ $background-color :#f0f0f0;
 $background-color-btn-light :#f0f0f0;
 $background-color-baby-blanket-beige: #e7d6c6;
 $accent-color-moss-green :#869948;
-
 $accent-color-class-gbv: #869948;
 $accent-color-class-rubi: #5B4899;
 $accent-color-class-bt: #489984;
@@ -14,7 +13,6 @@ $accent-color-class-eh: #99485D;
 $accent-color-class-yoga: #ff00ff;
 $accent-color-class-bg: #485099;
 $accent-color-class-other: #509948;
-
 $accent-color-flame :#DF5916;
 $accent-color-french-bistre :#7A6C5D;
 $accent-color-venetian-red :#BF211E;
@@ -28,11 +26,7 @@ $text-color-light :#f0f0f0;
 ///////////////////////////////////////////////////////////////
 //////////////////////// Colour-Config ////////////////////////
 ///////////////////////////////////////////////////////////////
-html {
-    background-color: $background-color-baby-blanket-beige;
-    color: $text-color;
-}
-
+html,
 body {
     background-color: $background-color-baby-blanket-beige;
     color: $text-color;
@@ -189,10 +183,10 @@ body {
 .rubi {
     background-color: $accent-color-class-rubi !important;
     color: $background-color;
-    button.close{
+    button.close {
         color: $background-color;
     }
-    button.close:hover{
+    button.close:hover {
         color: $background-color;
     }
 }
@@ -213,9 +207,8 @@ body {
     background-color: $accent-color-class-bg !important;
     color: $background-color;
     button.close {
-            color: $background-color;
-        }
-    
+        color: $background-color;
+    }
     button.close:hover {
         color: $background-color;
     }
@@ -318,6 +311,23 @@ section {
 
 .midwife-img-container {
     margin-bottom: 1em !important;
+    @media screen and (max-width: 600px) {
+        text-align: center;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .midwife-img {
+        @media screen and (max-width: 600px) {
+            width: 98%;
+        }
+        @media screen and (min-width: 601px) {
+            width: 50%;
+            @media screen and (max-width: 767px) {
+                width: 75%;
+            }
+        }
+    }
 }
 
 //@media (orientation: landscape) {
@@ -329,17 +339,13 @@ section {
     right: 0px;
 }
 
-
-@media screen and (max-height: 555px) {
-    div.cn {
-        margin-top: 3.25rem;
-    }
-}
-
 div.cn {
     position: relative;
     width: 100%;
     height: 50vh;
+    @media screen and (max-height: 555px) {
+        margin-top: 3.25rem;
+    }
 }
 
 div.inner {
@@ -362,15 +368,11 @@ div.inner {
                 padding-top: 10em;
             }
         }
-      
     }
 }
 
-
-
 #home {
     height: 100vh;
-    
     h1 {
         font-weight: 600;
     }
@@ -381,6 +383,9 @@ div.inner {
 
 .bg-baby-image {
     background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
+    @supports (background-image: url('../img/feet-dreamy-child-enveloped-woolen-scarf.webp')) {
+        background-image: url('../img/feet-dreamy-child-enveloped-woolen-scarf.webp');
+    }
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -401,24 +406,15 @@ div.inner {
     padding: 2rem;
 }
 
-
-
-
-@media (orientation: landscape) {
-    #error-404 {
+#error-404 {
+    @media (orientation: landscape) {
         margin-top: -66px;
     }
-}
-
-@media screen and (max-width: 766px) {
-    #error-404 {
+    @media screen and (max-width: 766px) {
         margin-top: 0px;
     }
-}
-
-@media screen and (min-width: 767px) {
-    @media screen and (max-height: 520px) {
-        #error-404 {
+    @media screen and (min-width: 767px) {
+        @media screen and (max-height: 520px) {
             margin-top: 0px;
         }
     }
@@ -454,53 +450,17 @@ div.inner {
     overflow-x: hidden;
     background-color: $accent-color-venetian-red !important;
     color: $text-color-light !important;
+    height: 50vh; //removed media queries for orientation because same value was used
     .percent-100 {
         width: 100%;
         height: 100%;
-    }
-}
-
-@media (orientation: landscape) {
-    #error-404-home {
-        .percent-100 {
-            .container {
+        .container {
+            @media (orientation: landscape) {
                 padding-top: 10em;
             }
-        }
-        height: 50vh;
-    }
-}
-
-@media (orientation: portrait) {
-    #error-404-home {
-        .percent-100 {
-            .container {
+            @media (orientation: portrait) {
                 padding-top: 4em;
             }
-        }
-        height: 50vh;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .midwife-img-container {
-        text-align: center;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
-    .midwife-img {
-        width: 98%;
-    }
-}
-
-@media screen and (min-width: 601px) {
-    .midwife-img {
-        width: 50%;
-    }
-    @media screen and (max-width: 767px) {
-        .midwife-img {
-            width: 75%;
         }
     }
 }
@@ -509,10 +469,10 @@ div.inner {
     width: 5em !important;
 }
 
-@media screen and (min-width: 768px) {
-    #kontakt-sprechzeiten {
-        .row {
-            .right-text {
+#kontakt-sprechzeiten {
+    .row {
+        .right-text {
+            @media screen and (min-width: 768px) {
                 text-align: right !important;
             }
         }
@@ -521,9 +481,7 @@ div.inner {
 
 form {
     margin-bottom: 2em;
-    input.invalid {
-        border: 2px solid red;
-    }
+    input.invalid,
     textarea.invalid {
         border: 2px solid red;
     }
@@ -532,7 +490,6 @@ form {
     }
     button.btn {
         margin-top: 1em;
-       
     }
 }
 
@@ -563,23 +520,17 @@ footer {
     padding-right: 0.5em;
 }
 
-@media screen and (max-width: 1200px) {
-    .termine-card {
+.termine-card {
+    max-width: 100%;
+    min-height: 17rem;
+    @media screen and (max-width: 767px) {
+        margin-top: 1.5em;
+    }
+    @media screen and (max-width: 1200px) {
         margin-left: 0.5em !important;
         margin-right: 0.5em !important;
         min-width: min-content;
     }
-}
-
-@media screen and (max-width: 767px) {
-    .termine-card {
-        margin-top: 1.5em;
-    }
-}
-
-.termine-card {
-    max-width: 100%;
-    min-height: 17rem
 }
 
 .termine-line {
@@ -589,37 +540,37 @@ footer {
 .btn-local {
     background-color: $background-color-btn-light;
     border: 1px solid $background-color;
-}
-
-.btn-local:hover {
-    background-color: $background-color-btn-light;
-    border: 1px solid $background-color;
-    text-decoration: underline;
+    &:hover {
+        background-color: $background-color-btn-light;
+        border: 1px solid $background-color;
+        text-decoration: underline;
+    }
 }
 
 .courses-list {
     margin-bottom: 5px;
+    .card-header {
+        background-color: $accent-color-moss-green;
+        font-size: 1.5em;
+    }
+    .card-body {
+        background-color: $background-color;
+    }
+    .card-footer {
+        background-color: $accent-color-moss-green;
+    }
 }
 
-.courses-list .card-header {
-    background-color: $accent-color-moss-green;
-    font-size: 1.5em;
+.team-member {
+    .card-body {
+        background-color: $background-color;
+    }
 }
 
-.courses-list .card-body {
-    background-color: $background-color;
-}
-
-.courses-list .card-footer {
-    background-color: $accent-color-moss-green;
-}
-
-.team-member .card-body {
-    background-color: $background-color;
-}
-
-.full-course:hover{
-    cursor: not-allowed !important;
+.full-course {
+    &:hover {
+        cursor: not-allowed !important;
+    }
 }
 
 .card-wrapper {
@@ -649,17 +600,14 @@ footer {
     display: block;
 }
 
-.faq-card-header
-{
+.faq-card-header {
     background-color: $accent-color-apple-green;
     font-size: 1.5em;
 }
 
-.faq-card-body
-{
+.faq-card-body {
     background-color: $background-color-baby-blanket-beige;
-    p{
+    p {
         margin-bottom: 0;
     }
 }
-
