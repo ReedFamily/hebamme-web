@@ -193,6 +193,7 @@ body {
 * {
   overflow: unset;
   scrollbar-width: thin;
+  font-family: "Open Sans", sans-serif !important;
 }
 
 body {
