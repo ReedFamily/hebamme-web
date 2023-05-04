@@ -21,3 +21,4 @@ backend/exceptions/conf.php
 dist/
 *.tar.gz
 
+fiveserver.config.js
