@@ -292,6 +292,12 @@ body {
   font-family: "Open Sans", sans-serif !important;
 }
 
+img,
+video,
+canvas {
+  overflow: auto !important;
+}
+
 body {
   position: relative;
 }
