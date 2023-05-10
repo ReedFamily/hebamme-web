@@ -307,25 +307,32 @@ const getClassInfo = function() {
                 }
             });
             if (gbv == 0) {
-                $("#gbv-classes").remove();
+                //$("#gbv-classes").remove();
+                $("#gbv-wrapper").append("<p>Aktuell sind leider keine Geburtsvorbereitungskurse geplant.</p>");
             }
             if (rubi == 0) {
-                $("#rubi-classes").remove();
+                //$("#rubi-classes").remove();
+                $("#rubi-wrapper").append("<p>Aktuell sind leider keine Rückbildungskurse geplant.</p>");
             }
             if (bt == 0) {
-                $("#bt-classes").remove();
+                //$("#bt-classes").remove();
+                $("#bt-wrapper").append("<p>Aktuell sind leider keine Babytreffs geplant.</p>");
             }
             if (eh == 0) {
-                $("#eh-classes").remove();
+                //$("#eh-classes").remove();
+                $("#eh-wrapper").append("<p>Aktuell sind leider keine Erste-Hilfe-Kurse geplant.</p>");
             }
             if (bp == 0) {
-                $("#bp-classes").remove();
+                //$("#bp-classes").remove();
+                $("#bp-wrapper").append("<p>Aktuell sind leider keine Babypflegekurse geplant.</p>");
             }
             if (yoga == 0) {
-                $("#yoga-classes").remove();
+                //$("#yoga-classes").remove();
+                $("#yoga-wrapper").append("<p>Aktuell sind leider keine Yogakurse geplant.</p>");
             }
             if (other == 0) {
-                $("#other-classes").remove();
+                //$("#other-classes").remove();
+                $("#other-wrapper").append("<p>Aktuell sind leider keine sonstigen Kurse geplant.</p>");
             }
         } else {
             console.log(classRes);
