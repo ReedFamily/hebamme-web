@@ -168,20 +168,13 @@ const getClassInfo = function() {
                 if (classAvailable <= 0) {
                     isFull = true;
                 }
-                var collapseButton = $("<button />", {
+                var collapseButton = $("<div />", {
                         class: "close",
-                        type: "button",
-                        role: "button",
                     })
-                    .attr("data-toggle", "collapse")
-                    .attr("data-target", "#course-body-" + classId)
-                    .attr("data-classId", classId)
-                    .attr("aria-expanded", isExpanded)
-                    .attr("aria-controls", "course-body-" + classId)
                     .append(
                         $("<i />", {
-                            class: "fi-xwsdxl-chevron-wide",
-                            id: "toggle-" + classId,
+                            class: "fi-xwsdxl-chevron-wide close",
+                            id: "class-toggler-icon" + classId,
                         })
                     );
                 var classCard = $("<div />", {
@@ -190,7 +183,14 @@ const getClassInfo = function() {
                 });
                 var classCardHeader = $("<div />", {
                         class: styleClass,
+                        type: "button",
+                        role: "button",
                     })
+                    .attr("data-toggle", "collapse")
+                    .attr("data-target", "#course-body-" + classId)
+                    .attr("data-classId", classId)
+                    .attr("aria-expanded", isExpanded)
+                    .attr("aria-controls", "course-body-" + classId)
                     .append(
                         $("<span />", {
                             class: "card-title",
@@ -351,9 +351,17 @@ const buildFaqList = function() {
                 let faqCard = $("<div />", { id: "faq-id-" + faq.id, class: "card" });
                 let faqCollapse = $("<button />", {
                         class: "close",
-                        type: "button",
-                        role: "button",
-                        id: "toggle-faq-" + faq.id,
+                        id: "faq-toggler-icon-container-" + faq.id,
+                    })
+                    .append(
+                        $("<i />", {
+                            class: "fi-xwsdxl-chevron-wide close",
+                            id: "faq-toggler-icon-" + faq.id,
+                        })
+                    );
+                let faqHeader = $("<div />", {
+                        class: "card-header faq-card-header",
+                        id: "faq-header-" + faq.id,
                     })
                     .attr("data-toggle", "collapse")
                     .attr("data-target", "#faq-body-" + faq.id)
@@ -362,21 +370,14 @@ const buildFaqList = function() {
                     .attr("aria-controls", "faq-body-" + faq.id)
                     .attr("aria-label", "open or close question")
                     .append(
-                        $("<i />", {
-                            class: "fi-xwsdxl-chevron-wide",
-                            id: "toggle-" + faq.id,
-                        })
+                        $("<span />", {
+                            class: "card-title",
+                            type: "button",
+                            role: "button",
+                            id: "faq-title-" + faq.id,
+                            text: faq.question + " ",
+                        }).append(faqCollapse)
                     );
-                let faqHeader = $("<div />", {
-                    class: "card-header faq-card-header",
-                    id: "faq-header-" + faq.id,
-                }).append(
-                    $("<span />", {
-                        class: "card-title",
-                        id: "faq-title-" + faq.id,
-                        text: faq.question + " ",
-                    }).append(faqCollapse)
-                );
                 let faqBody = $("<div />", {
                     class: "card-body collapse faq-card-body",
                     id: "faq-body-" + faq.id,
