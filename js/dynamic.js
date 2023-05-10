@@ -281,6 +281,7 @@ const getClassInfo = function() {
                     .append(classCardHeader)
                     .append(classCardBody)
                     .append(classCardFooter);
+                friconix_update();
                 $(classWrapper).append(classCard);
                 switch (classDetail.type) {
                     case "gbv":
@@ -382,6 +383,7 @@ const buildFaqList = function() {
                 }).append($("<p />").append(faq.message));
 
                 faqCard.append(faqHeader, faqBody);
+                friconix_update();
                 wrapper.append(faqCard);
             });
         } else {
