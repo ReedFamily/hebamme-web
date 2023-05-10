@@ -285,6 +285,20 @@ body {
     font-weight: 600 !important;
 }
 
+#nav-dropdown-kurse {
+    .dropdown-item {
+        &:hover,
+        &:focus {
+            background-color: $background-color-baby-blanket-beige;
+            font-weight: 600;
+        }
+    }
+    .active {
+        background-color: $background-color-baby-blanket-beige;
+        font-weight: 600;
+    }
+}
+
 
 /*.z-index-2 {
     z-index: 2;

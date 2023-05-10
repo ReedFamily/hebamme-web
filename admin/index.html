@@ -21,7 +21,7 @@
     <script type="text/javascript" src="js/alerts.js"></script>
     <script type="text/javascript" src="js/faqs.js"></script>
     <script type="text/javascript" src="js/site.js"></script>
-    <script src="../fontawesome-free-5.15.3-web/js/all.min.js"></script>
+    <script src="../js/friconix/friconix.js"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die Alert mit Id <span id="delete-alert">{INSTRUCTOR}</span>?</p>
-                    <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                    <p class="see-me p-3"><i class="fi-ensuxl-warning-solid"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die FAQ mit Frage <span id="delete-faq">{FAQ}</span>?</p>
-                    <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                    <p class="see-me p-3"><i class="fi-ensuxl-warning-solid"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -227,7 +227,7 @@
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen des Benutzers <span id="delete-username">{USERNAME}</span>?
                     </p>
-                    <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                    <p class="see-me p-3"><i class="fi-ensuxl-warning-solid"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -343,7 +343,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Bitte bestätigen Sie, dass Sie mit dem Löschen die Dozentin <span id="delete-instructor">{INSTRUCTOR}</span>?</p>
-                    <p class="see-me p-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+                    <p class="see-me p-3"><i class="fi-ensuxl-warning-solid"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -370,22 +370,22 @@
                     <ul id="sidebar-nav-list" class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active">
-                                <i class="fas fa-home"></i> Home
+                                <i class="fi-xnsuxl-house-solid"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fas fa-user"></i> Benutzer
+                                <i class="fi-xnsuxl-user-solid"></i> Benutzer
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="far fa-calendar-alt"></i> Kurse
+                                <i class="fi-xnsuxl-calendar-solid"></i> Kurse
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="fas fa-bullhorn"></i> Mitteilung
+                                <i class="fi-cnsuxl-exclamation-mark-rounded"></i> Mitteilung
                             </a>
                         </li>
                     </ul>
@@ -435,21 +435,21 @@
     </div>
 
     <script type="text/javascript">
-        $("#delete-faq-acknowledge-button").click(function (event) {
+        $("#delete-faq-acknowledge-button").click(function(event) {
             var id = $(this).data("id");
             sendDeleteFaq(id);
         });
 
-        $("#delete-instructor-acknowledge-button").click(function (event) {
+        $("#delete-instructor-acknowledge-button").click(function(event) {
             var id = $(this).data("id");
             sendDeleteInstructor(id);
         })
 
-        $("#delete-user-acknowledge-button").click(function (event) {
+        $("#delete-user-acknowledge-button").click(function(event) {
             var id = $(this).data("id");
             sendDeleteUser(id);
         });
-        $("#delete-alert-acknowledge-button").click(function (event) {
+        $("#delete-alert-acknowledge-button").click(function(event) {
             var id = $(this).data("id");
             sendDeleteAlert(id);
         });
