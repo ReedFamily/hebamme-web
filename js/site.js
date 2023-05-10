@@ -20,9 +20,6 @@ const isValidEmail = (email) => {
 
 //Define where to find the different Inputs
 
-const anredeFrau = document.getElementById("anrede-frau");
-const anredeHerr = document.getElementById("anrede-herr");
-
 const nameInput = document.getElementById("form-vorname");
 
 const surnameInput = document.getElementById("form-nachname");
@@ -43,8 +40,6 @@ const contactByEmail = document.getElementById("kontaktweg-email");
 const messageInput = document.getElementById("form-nachricht");
 
 //Define where to find the different Error-Message divs
-
-const anredeError = document.getElementById("error-anrede");
 
 const nameError = document.getElementById("error-vorname");
 
@@ -75,7 +70,6 @@ const resetInvalidClasses = () => {
   phoneInput.classList.remove("invalid");
   phoneErrorInvalid.classList.add("hidden");
   kontaktwegError.classList.add("hidden");
-  anredeError.classList.add("hidden");
 };
 
 const clearFields = () => {
@@ -89,23 +83,6 @@ const validateEmailInput = () => {
       emailErrorInvalid.classList.remove("hidden");
       isFormValid = false;
     }
-  }
-};
-
-const validateAnredeInput = () => {
-  if (!nameInput.value) {
-    if (!anredeFrau.checked && !anredeHerr.checked) {
-      anredeError.classList.remove("hidden");
-    }
-  }
-};
-
-const checkAnredeInput = () => {
-  if (anredeFrau.checked) {
-    anredeString = "Frau";
-  }
-  if (anredeHerr.checked) {
-    anredeString = "Herr";
   }
 };
 
@@ -162,7 +139,6 @@ const validateMessageInput = () => {
 const validateInputs = () => {
   resetInvalidClasses();
   isFormValid = true;
-  validateAnredeInput();
   validateSurnameInput();
   validateMessageInput();
   validateKontaktwegInput();
@@ -177,7 +153,6 @@ form.addEventListener("submit", (e) => {
   validateInputs();
   if (isFormValid) {
     checkKontaktwegInput();
-    checkAnredeInput();
     var formData = {};
     if (anredeString != "") {
       formData.anrede = anredeString;
@@ -248,13 +223,5 @@ contactByEmail.addEventListener("click", () => {
 });
 
 contactByPhone.addEventListener("click", () => {
-  validateInputs();
-});
-
-anredeFrau.addEventListener("click", () => {
-  validateInputs();
-});
-
-anredeHerr.addEventListener("click", () => {
   validateInputs();
 });
