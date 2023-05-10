@@ -180,7 +180,7 @@ const getClassInfo = function() {
                     .attr("aria-controls", "course-body-" + classId)
                     .append(
                         $("<i />", {
-                            class: "fas fa-chevron-down",
+                            class: "fi-xwsdxl-chevron-wide",
                             id: "toggle-" + classId,
                         })
                     );
@@ -355,7 +355,7 @@ const buildFaqList = function() {
                     .attr("aria-label", "open or close question")
                     .append(
                         $("<i />", {
-                            class: "fas fa-chevron-down",
+                            class: "fi-xwsdxl-chevron-wide",
                             id: "toggle-" + faq.id,
                         })
                     );
