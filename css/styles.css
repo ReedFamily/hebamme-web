@@ -562,21 +562,6 @@ form .error-hint {
 }
 form button.btn {
   margin-top: 1em;
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  i,
-  span {
-      display: block;
-      flex-grow: 0;
-      flex-shrink: 1;
-      flex-basis: auto;
-      align-self: center;
-      order: 0;
-  } */
 }
 
 .thank-you {
