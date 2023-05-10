@@ -1,6 +1,6 @@
-const getTeam = function() {
+const getTeam = function () {
     var url = "backend/rest.php?apiFunc=listInstructors";
-    jQuery.get(url, function(res1) {
+    jQuery.get(url, function (res1) {
         response1 = res1;
         if (response1.status == 200) {
             buildTeamCards(response1);
@@ -10,10 +10,10 @@ const getTeam = function() {
     });
 };
 
-const buildTeamCards = function(payload) {
+const buildTeamCards = function (payload) {
     var contentDiv = $("#team-wrapper");
     var dozentinDiv = $("#dozentin-wrapper");
-    jQuery.each(payload.instructors, function(index, instructor) {
+    jQuery.each(payload.instructors, function (index, instructor) {
         var cardWrapper = jQuery("<div />", { class: "col-md-4 card-wrapper" });
         var card = jQuery("<div />", {
             class: "card team-member",
@@ -62,9 +62,9 @@ const buildTeamCards = function(payload) {
     });
 };
 
-const getHomeAlerts = function() {
+const getHomeAlerts = function () {
     var url = "backend/rest.php?apiFunc=locMsgs&location=home";
-    jQuery.get(url, function(homeMsgRes) {
+    jQuery.get(url, function (homeMsgRes) {
         response1 = homeMsgRes;
         if (response1.status == 200) {
             buildHomeAlerts(response1.messages);
@@ -74,7 +74,7 @@ const getHomeAlerts = function() {
     });
 };
 
-const buildHomeAlerts = function(payload) {
+const buildHomeAlerts = function (payload) {
     var msgSect = $("#home-alerts");
     if (payload.length === 0) {
         msgSect.remove();
@@ -82,7 +82,7 @@ const buildHomeAlerts = function(payload) {
         var highAlertsCont = $("#home-high-alerts");
         var warnAlertsCont = $("#home-warn-alerts");
         var infoAlertsCont = $("#home-info-alerts");
-        $.each(payload, function(index, msg) {
+        $.each(payload, function (index, msg) {
             var alert = $("<div />", {
                 class: "alert",
                 role: "alert",
@@ -108,7 +108,7 @@ const buildHomeAlerts = function(payload) {
     }
 };
 
-const getStyleFromDescription = function(descript) {
+const getStyleFromDescription = function (descript) {
     if (descript.includes("Geburtsvorbereitung")) {
         return "gbv";
     }
@@ -136,9 +136,9 @@ const getStyleFromDescription = function(descript) {
     return "other";
 };
 
-const getClassInfo = function() {
+const getClassInfo = function () {
     var url = "backend/rest.php?apiFunc=classes";
-    jQuery.get(url, function(classRes) {
+    jQuery.get(url, function (classRes) {
         if (classRes.status == 200) {
             var gbv = 0;
             var rubi = 0;
@@ -147,7 +147,7 @@ const getClassInfo = function() {
             var bp = 0;
             var yoga = 0;
             var other = 0;
-            $.each(classRes.classes, function(index, classDetail) {
+            $.each(classRes.classes, function (index, classDetail) {
                 var classWrapper = $("#" + classDetail.type + "-wrapper");
                 var styleClass = "card-header " + classDetail.type;
                 var footerStyle = "card-footer " + classDetail.type;
@@ -168,20 +168,13 @@ const getClassInfo = function() {
                 if (classAvailable <= 0) {
                     isFull = true;
                 }
-                var collapseButton = $("<button />", {
-                        class: "close",
-                        type: "button",
-                        role: "button",
-                    })
-                    .attr("data-toggle", "collapse")
-                    .attr("data-target", "#course-body-" + classId)
-                    .attr("data-classId", classId)
-                    .attr("aria-expanded", isExpanded)
-                    .attr("aria-controls", "course-body-" + classId)
+                var collapseButton = $("<div />", {
+                    class: "close",
+                })
                     .append(
                         $("<i />", {
-                            class: "fi-xwsdxl-chevron-wide",
-                            id: "toggle-" + classId,
+                            class: "fi-xwsdxl-chevron-wide close",
+                            id: "class-toggler-icon" + classId,
                         })
                     );
                 var classCard = $("<div />", {
@@ -189,8 +182,15 @@ const getClassInfo = function() {
                     id: "course-" + classId,
                 });
                 var classCardHeader = $("<div />", {
-                        class: styleClass,
-                    })
+                    class: styleClass,
+                    type: "button",
+                    role: "button",
+                })
+                    .attr("data-toggle", "collapse")
+                    .attr("data-target", "#course-body-" + classId)
+                    .attr("data-classId", classId)
+                    .attr("aria-expanded", isExpanded)
+                    .attr("aria-controls", "course-body-" + classId)
                     .append(
                         $("<span />", {
                             class: "card-title",
@@ -242,7 +242,7 @@ const getClassInfo = function() {
                 var classBodyTermine = $("<div />");
                 var classBodyTermineTitle = $("<p />").append("Termine: ");
                 var classBodyTermineList = $("<ul />");
-                $.each(classDetail.detail.dates, function(n, dateDetail) {
+                $.each(classDetail.detail.dates, function (n, dateDetail) {
                     var termineItem = $("<li />");
                     $(termineItem)
                         .append(dateDetail.date)
@@ -341,20 +341,28 @@ const getClassInfo = function() {
     });
 };
 
-const buildFaqList = function() {
+const buildFaqList = function () {
     let url = "backend/rest.php?apiFunc=faqs";
     let wrapper = $("#faq-wrapper");
     wrapper.empty();
-    $.get(url, function(res) {
+    $.get(url, function (res) {
         if (res.status == 200) {
-            $.each(res.faqs, function(index, faq) {
+            $.each(res.faqs, function (index, faq) {
                 let faqCard = $("<div />", { id: "faq-id-" + faq.id, class: "card" });
-                let faqCollapse = $("<button />", {
-                        class: "close",
-                        type: "button",
-                        role: "button",
-                        id: "toggle-faq-" + faq.id,
-                    })
+                let faqCollapse = $("<div />", {
+                    class: "close",
+                    id: "faq-toggler-icon-container-" + faq.id,
+                })
+                    .append(
+                        $("<i />", {
+                            class: "fi-xwsdxl-chevron-wide close",
+                            id: "faq-toggler-icon-" + faq.id,
+                        })
+                    );
+                let faqHeader = $("<div />", {
+                    class: "card-header faq-card-header",
+                    id: "faq-header-" + faq.id,
+                })
                     .attr("data-toggle", "collapse")
                     .attr("data-target", "#faq-body-" + faq.id)
                     .attr("data-faqId", faq.id)
@@ -362,21 +370,14 @@ const buildFaqList = function() {
                     .attr("aria-controls", "faq-body-" + faq.id)
                     .attr("aria-label", "open or close question")
                     .append(
-                        $("<i />", {
-                            class: "fi-xwsdxl-chevron-wide",
-                            id: "toggle-" + faq.id,
-                        })
+                        $("<span />", {
+                            class: "card-title",
+                            type: "button",
+                            role: "button",
+                            id: "faq-title-" + faq.id,
+                            text: faq.question + " ",
+                        }).append(faqCollapse)
                     );
-                let faqHeader = $("<div />", {
-                    class: "card-header faq-card-header",
-                    id: "faq-header-" + faq.id,
-                }).append(
-                    $("<span />", {
-                        class: "card-title",
-                        id: "faq-title-" + faq.id,
-                        text: faq.question + " ",
-                    }).append(faqCollapse)
-                );
                 let faqBody = $("<div />", {
                     class: "card-body collapse faq-card-body",
                     id: "faq-body-" + faq.id,

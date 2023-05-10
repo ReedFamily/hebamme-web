@@ -113,58 +113,58 @@ body {
 }
 
 .accent-color-flame {
-  color: #DF5916;
+  color: #df5916;
 }
 .accent-color-flame button.btn {
-  background-color: #DF5916;
+  background-color: #df5916;
   color: #f0f0f0;
 }
 
 .accent-color-french-bistre {
-  color: #7A6C5D;
+  color: #7a6c5d;
 }
 .accent-color-french-bistre button.btn {
-  background-color: #7A6C5D;
+  background-color: #7a6c5d;
   color: #f0f0f0;
 }
 
 .accent-color-venetian-red {
-  color: #BF211E;
+  color: #bf211e;
 }
 .accent-color-venetian-red button.btn {
-  background-color: #BF211E;
+  background-color: #bf211e;
   color: #f0f0f0;
 }
 
 .accent-color-orange-yellow {
-  color: #ECB709;
+  color: #ecb709;
 }
 .accent-color-orange-yellow button.btn {
-  background-color: #ECB709;
+  background-color: #ecb709;
   color: #111111;
 }
 
 .accent-color-liver-chestnut {
-  color: #94684C;
+  color: #94684c;
 }
 .accent-color-liver-chestnut button.btn {
-  background-color: #94684C;
+  background-color: #94684c;
   color: #f0f0f0;
 }
 
 .accent-color-apple-green {
-  color: #88AC35;
+  color: #88ac35;
 }
 .accent-color-apple-green button.btn {
-  background-color: #88AC35;
+  background-color: #88ac35;
   color: #111111;
 }
 
 .accent-color-safety-yellow {
-  color: #E9CE2C;
+  color: #e9ce2c;
 }
 .accent-color-safety-yellow button.btn {
-  background-color: #E9CE2C;
+  background-color: #e9ce2c;
   color: #111111;
 }
 
@@ -182,34 +182,34 @@ body {
 }
 
 .bg-accent-color-flame {
-  background-color: #DF5916;
+  background-color: #df5916;
   color: #f0f0f0;
 }
 .bg-accent-color-flame button.btn {
   background-color: #f0f0f0;
-  color: #DF5916;
+  color: #df5916;
 }
 
 .bg-accent-color-french-bistre {
-  background-color: #7A6C5D;
+  background-color: #7a6c5d;
   color: #f0f0f0;
 }
 .bg-accent-color-french-bistre button.btn {
   background-color: #f0f0f0;
-  color: #7A6C5D;
+  color: #7a6c5d;
 }
 
 .bg-accent-color-venetian-red {
-  background-color: #BF211E !important;
+  background-color: #bf211e !important;
   color: #f0f0f0 !important;
 }
 .bg-accent-color-venetian-red button.btn {
   background-color: #f0f0f0 !important;
-  color: #BF211E !important;
+  color: #bf211e !important;
 }
 
 .bg-accent-color-orange-yellow {
-  background-color: #ECB709;
+  background-color: #ecb709;
   color: #111111;
 }
 .bg-accent-color-orange-yellow button.btn {
@@ -218,7 +218,7 @@ body {
 }
 
 .bg-accent-color-liver-chestnut {
-  background-color: #94684C;
+  background-color: #94684c;
   color: #f0f0f0;
 }
 .bg-accent-color-liver-chestnut button.btn {
@@ -227,7 +227,7 @@ body {
 }
 
 .bg-accent-color-apple-green {
-  background-color: #88AC35;
+  background-color: #88ac35;
   color: #111111;
 }
 .bg-accent-color-apple-green button.btn {
@@ -236,7 +236,7 @@ body {
 }
 
 .bg-accent-color-safety-yellow {
-  background-color: #E9CE2C;
+  background-color: #e9ce2c;
   color: #111111;
 }
 .bg-accent-color-safety-yellow button.btn {
@@ -249,7 +249,7 @@ body {
 }
 
 .rubi {
-  background-color: #5B4899 !important;
+  background-color: #5b4899 !important;
   color: #f0f0f0;
 }
 .rubi button.close {
@@ -260,7 +260,7 @@ body {
 }
 
 .eh {
-  background-color: #99485D !important;
+  background-color: #99485d !important;
 }
 
 .bt {
@@ -524,13 +524,13 @@ div.inner {
 }
 
 .bg-404 {
-  background-color: #BF211E !important;
+  background-color: #bf211e !important;
   color: #f0f0f0 !important;
 }
 
 #error-404-home {
   overflow-x: hidden;
-  background-color: #BF211E !important;
+  background-color: #bf211e !important;
   color: #f0f0f0 !important;
   height: 50vh;
 }
@@ -639,8 +639,13 @@ footer a {
   background-color: #869948;
   font-size: 1.5em;
 }
+.courses-list .card-header:hover {
+  cursor: pointer;
+}
 .courses-list .card-body {
   background-color: #f0f0f0;
+  overflow: hidden !important;
+  height: auto !important;
 }
 .courses-list .card-footer {
   background-color: #869948;
@@ -682,12 +687,17 @@ footer a {
 }
 
 .faq-card-header {
-  background-color: #88AC35;
+  background-color: #88ac35;
   font-size: 1.5em;
+}
+.faq-card-header:hover {
+  cursor: pointer;
 }
 
 .faq-card-body {
-  background-color: #e7d6c6;
+  background-color: #f0f0f0;
+  overflow: hidden !important;
+  height: auto !important;
 }
 .faq-card-body p {
   margin-bottom: 0;
