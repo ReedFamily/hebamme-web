@@ -6,27 +6,27 @@
 ///////////////////////////////////////////////////////////////
 /////////////////////// Color-Variables ///////////////////////
 ///////////////////////////////////////////////////////////////
-$background-color :#f0f0f0;
-$background-color-btn-light :#f0f0f0;
+$background-color: #f0f0f0;
+$background-color-btn-light: #f0f0f0;
 $background-color-baby-blanket-beige: #e7d6c6;
-$accent-color-moss-green :#869948;
+$accent-color-moss-green: #869948;
 $accent-color-class-gbv: #869948;
-$accent-color-class-rubi: #5B4899;
+$accent-color-class-rubi: #5b4899;
 $accent-color-class-bt: #489984;
-$accent-color-class-eh: #99485D;
+$accent-color-class-eh: #99485d;
 $accent-color-class-yoga: #ff00ff;
 $accent-color-class-bg: #485099;
 $accent-color-class-other: #509948;
-$accent-color-flame :#DF5916;
-$accent-color-french-bistre :#7A6C5D;
-$accent-color-venetian-red :#BF211E;
-$accent-color-orange-yellow :#ECB709;
-$accent-color-liver-chestnut :#94684C;
-$accent-color-apple-green :#88AC35;
-$accent-color-safety-yellow :#E9CE2C;
-$accent-color-jade-green: #C6E7D6;
-$text-color :#111111;
-$text-color-light :#f0f0f0;
+$accent-color-flame: #df5916;
+$accent-color-french-bistre: #7a6c5d;
+$accent-color-venetian-red: #bf211e;
+$accent-color-orange-yellow: #ecb709;
+$accent-color-liver-chestnut: #94684c;
+$accent-color-apple-green: #88ac35;
+$accent-color-safety-yellow: #e9ce2c;
+$accent-color-jade-green: #c6e7d6;
+$text-color: #111111;
+$text-color-light: #f0f0f0;
 ///////////////////////////////////////////////////////////////
 //////////////////////// Colour-Config ////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -231,7 +231,7 @@ body {
     //scrollbar-gutter: hidden;
     scrollbar-width: thin;
     //border            : 1px solid red;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
 }
 
 img,
@@ -262,7 +262,7 @@ body {
     background-color: rgba(225, 208, 192, 0);
     .navbar-light .navbar-nav {
         .nav-link {
-            color: rgba(0, 0, 0, .75) !important;
+            color: rgba(0, 0, 0, 0.75) !important;
             .active {
                 color: rgba(0, 0, 0, 1) !important;
             }
@@ -271,12 +271,12 @@ body {
 }
 
 .nav-link {
-    color: rgba(0, 0, 0, .75);
+    color: rgba(0, 0, 0, 0.75);
     &:hover {
-        color: rgba(0, 0, 0, .85) !important;
+        color: rgba(0, 0, 0, 0.85) !important;
     }
     &:focus {
-        color: rgba(0, 0, 0, .85) !important;
+        color: rgba(0, 0, 0, 0.85) !important;
     }
 }
 
@@ -298,7 +298,6 @@ body {
         font-weight: 600;
     }
 }
-
 
 /*.z-index-2 {
     z-index: 2;
@@ -408,8 +407,8 @@ div.inner {
 
 .bg-baby-image {
     background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
-    @supports (background-image: url('../img/feet-dreamy-child-enveloped-woolen-scarf.webp')) {
-        background-image: url('../img/feet-dreamy-child-enveloped-woolen-scarf.webp');
+    @supports (background-image: url("../img/feet-dreamy-child-enveloped-woolen-scarf.webp")) {
+        background-image: url("../img/feet-dreamy-child-enveloped-woolen-scarf.webp");
     }
     background-repeat: no-repeat;
     background-position: center;
@@ -511,7 +510,7 @@ form {
         border: 2px solid red;
     }
     .error-hint {
-        color: red,
+        color: red;
     }
     button.btn {
         margin-top: 1em;
@@ -577,9 +576,14 @@ footer {
     .card-header {
         background-color: $accent-color-moss-green;
         font-size: 1.5em;
+        &:hover {
+            cursor: pointer;
+        }
     }
     .card-body {
         background-color: $background-color;
+        overflow: hidden !important;
+        height: auto !important;
     }
     .card-footer {
         background-color: $accent-color-moss-green;
@@ -628,10 +632,15 @@ footer {
 .faq-card-header {
     background-color: $accent-color-apple-green;
     font-size: 1.5em;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .faq-card-body {
-    background-color: $background-color-baby-blanket-beige;
+    background-color: $background-color;
+    overflow: hidden !important;
+    height: auto !important;
     p {
         margin-bottom: 0;
     }
