@@ -340,6 +340,15 @@ body {
   font-weight: 600 !important;
 }
 
+#nav-dropdown-kurse .dropdown-item:hover, #nav-dropdown-kurse .dropdown-item:focus {
+  background-color: #e7d6c6;
+  font-weight: 600;
+}
+#nav-dropdown-kurse .active {
+  background-color: #e7d6c6;
+  font-weight: 600;
+}
+
 /*.z-index-2 {
     z-index: 2;
 }*/
