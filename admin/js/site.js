@@ -31,12 +31,14 @@ const buildHome = function() {
     $("#content-window").empty();
     var content = $("#welcome-template").html();
     $("#content-window").append(content);
+    friconix_update();
 };
 
 const displayFailure = function(id) {
     $("#content-window").empty();
     var content = $(id).html();
     $("#content-window").append(content);
+    friconix_update();
 };
 
 const buildSidebarNav = function() {
@@ -51,6 +53,7 @@ const buildSidebarNav = function() {
             .click(function(event) {
                 event.preventDefault();
                 buildHome();
+                friconix_update();
             })
         ),
         $("<li />", { class: "nav-item" }).append(
@@ -65,6 +68,7 @@ const buildSidebarNav = function() {
                     response = res;
                     if (response.status == 200) {
                         displayUsers(response);
+                        friconix_update();
                     } else {
                         displayFailure("#failure-users-template");
                     }
@@ -86,6 +90,7 @@ const buildSidebarNav = function() {
                     response = res;
                     if (response.status == 200) {
                         displayInstructors(response);
+                        friconix_update();
                     } else {
                         displayFailure("#failure-instructors-template");
                     }
@@ -107,6 +112,7 @@ const buildSidebarNav = function() {
                     response = res;
                     if (response.status == 200) {
                         displayAlerts(response);
+                        friconix_update();
                     } else {
                         displayFailure("#failure-alerts-template");
                     }
@@ -131,6 +137,7 @@ const buildSidebarNav = function() {
             })
         )
     );
+    friconix_update();
 };
 
 const displayLoginForm = function() {
@@ -138,6 +145,7 @@ const displayLoginForm = function() {
     $("#logout-link").addClass("hidden");
     $("#logout-link").removeAttr("data-userid");
     buildLoginForm();
+    friconix_update();
 };
 
 const getCookieValue = function(name) {
@@ -257,6 +265,7 @@ const buildLoginForm = function() {
             })
         )
     );
+    friconix_update();
 };
 
 const randomInt = function(max, min) {

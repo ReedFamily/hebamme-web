@@ -42,6 +42,7 @@ const displayUsers = function(response) {
         var row = buildUserTableRow(user);
         $("#users-table-body").append(row);
     });
+    friconix_update();
 };
 
 const buildUserTableRow = function(user) {

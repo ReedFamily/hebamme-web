@@ -23,6 +23,7 @@ const displayInstructors = function(response) {
             )
         )
     );
+    friconix_update();
     // set new instructor action
     $("#add-new-instructor-button").click(function(event) {
         $("#instructor-editor-title").text("Neue Dozentin");
@@ -41,6 +42,7 @@ const displayInstructors = function(response) {
         var row = buildInstructorTableRow(instructor);
         $("#instructors-table-body").append(row);
     });
+    friconix_update();
 
     $("#avatar-upload").change(function() {
         var len = $(this).length;

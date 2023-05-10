@@ -34,6 +34,7 @@ const displayFaqs = function(response) {
         var row = buildFaqTableRow(faq);
         $("#faqs-table-body").append(row);
     });
+    friconix_update();
 };
 
 const buildFaqTableRow = function(faqItem) {

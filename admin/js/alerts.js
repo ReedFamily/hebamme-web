@@ -39,6 +39,7 @@ const displayAlerts = function(response) {
             )
         )
     );
+    friconix_update();
     $("#add-new-alert-button").click(function(event) {
         $("#alert-editor-title").text("Neue Alert");
         let uname = getCookieByName("uname");
