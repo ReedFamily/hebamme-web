@@ -142,7 +142,7 @@ const displayLoginForm = function() {
 
 const getCookieValue = function(name) {
     return (
-        document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)") ? .pop() || ""
+        document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || ""
     );
 };
 
