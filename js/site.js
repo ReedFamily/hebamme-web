@@ -20,62 +20,56 @@ const isValidEmail = (email) => {
 
 //Define where to find the different Inputs
 
-const anredeFrau = document.getElementById("anrede-frau");
-const anredeHerr = document.getElementById("anrede-herr");
+const nameInput = $("#form-vorname");
 
-const nameInput = document.getElementById("form-vorname");
+const surnameInput = $("#form-nachname");
 
-const surnameInput = document.getElementById("form-nachname");
+const emailInput = $("#form-emailadresse");
 
-const emailInput = document.getElementById("form-emailadresse");
+const phoneInput = $("#form-telefon");
 
-const phoneInput = document.getElementById("form-telefon");
+const addressInput = $("#form-strasseundhausnummer");
 
-const addressInput = document.getElementById("form-strasseundhausnummer");
+const cityInput = $("#form-stadt");
 
-const cityInput = document.getElementById("form-stadt");
+const zipInput = $("#form-plz");
 
-const zipInput = document.getElementById("form-plz");
+const contactByPhone = $("#kontaktweg-telefon");
+const contactByEmail = $("#kontaktweg-email");
 
-const contactByPhone = document.getElementById("kontaktweg-telefon");
-const contactByEmail = document.getElementById("kontaktweg-email");
-
-const messageInput = document.getElementById("form-nachricht");
+const messageInput = $("#form-nachricht");
 
 //Define where to find the different Error-Message divs
 
-const anredeError = document.getElementById("error-anrede");
+const nameError = $("#error-vorname");
 
-const nameError = document.getElementById("error-vorname");
+const surnameErrorEmpty = $("#error-nachname-emtpy");
+const nachnameErrorInvalid = $("#error-nachname-invalid");
 
-const surnameErrorEmpty = document.getElementById("error-nachname-emtpy");
-const nachnameErrorInvalid = document.getElementById("error-nachname-invalid");
+const emailErrorEmpty = $("#error-email-empty");
+const emailErrorInvalid = $("#error-email-invalid");
 
-const emailErrorEmpty = document.getElementById("error-email-empty");
-const emailErrorInvalid = document.getElementById("error-email-invalid");
+const phoneErrorInvalid = $("#error-telefon-invalid");
 
-const phoneErrorInvalid = document.getElementById("error-telefon-invalid");
+const zipError = $("#error-plz");
 
-const zipError = document.getElementById("error-plz");
+const kontaktwegError = $("#error-kontaktweg");
 
-const kontaktwegError = document.getElementById("error-kontaktweg");
-
-const messageError = document.getElementById("error-nachricht");
+const messageError = $("#error-nachricht");
 
 //More defining... This time when the from data is valid and when not...
 
 const resetInvalidClasses = () => {
-  surnameInput.classList.remove("invalid");
-  surnameErrorEmpty.classList.add("hidden");
-  messageInput.classList.remove("invalid");
-  messageError.classList.add("hidden");
-  emailInput.classList.remove("invalid");
-  emailErrorEmpty.classList.add("hidden");
-  emailErrorInvalid.classList.add("hidden");
-  phoneInput.classList.remove("invalid");
-  phoneErrorInvalid.classList.add("hidden");
-  kontaktwegError.classList.add("hidden");
-  anredeError.classList.add("hidden");
+  $(surnameInput).removeClass("invalid");
+  $(surnameErrorEmpty).addClass("hidden");
+  $(messageInput).removeClass("invalid");
+  $(messageError).addClass("hidden");
+  $(emailInput).removeClass("invalid");
+  $(emailErrorEmpty).addClass("hidden");
+  $(emailErrorInvalid).addClass("hidden");
+  $(phoneInput).removeClass("invalid");
+  $(phoneErrorInvalid).addClass("hidden");
+  $(kontaktwegError).addClass("hidden");
 };
 
 const clearFields = () => {
@@ -83,42 +77,25 @@ const clearFields = () => {
 };
 
 const validateEmailInput = () => {
-  if (contactByEmail.checked) {
-    if (!isValidEmail(emailInput.value)) {
-      emailInput.classList.add("invalid");
-      emailErrorInvalid.classList.remove("hidden");
+  if ($(contactByEmail).is(":checked")) {
+    if (isValidEmail($(emailInput).val()) == false) {
+      $(emailInput).addClass("invalid");
+      $(emailErrorInvalid).removeClass("hidden");
       isFormValid = false;
     }
-  }
-};
-
-const validateAnredeInput = () => {
-  if (!nameInput.value) {
-    if (!anredeFrau.checked && !anredeHerr.checked) {
-      anredeError.classList.remove("hidden");
-    }
-  }
-};
-
-const checkAnredeInput = () => {
-  if (anredeFrau.checked) {
-    anredeString = "Frau";
-  }
-  if (anredeHerr.checked) {
-    anredeString = "Herr";
   }
 };
 
 const validatePhoneInput = () => {
-  if (contactByPhone.checked) {
-    if (!phoneInput.value) {
-      phoneInput.classList.add("invalid");
-      phoneErrorInvalid.classList.remove("hidden");
+  if ($(contactByPhone).is(":checked")) {
+    if ($(phoneInput).val() == "") {
+      $(phoneInput).addClass("invalid");
+      $(phoneErrorInvalid).removeClass("hidden");
       isFormValid = false;
     } else {
-      if (isNaN(phoneInput.value)) {
-        phoneInput.classList.add("invalid");
-        phoneErrorInvalid.classList.remove("hidden");
+      if (isNaN($(phoneInput).val())) {
+        $(phoneInput).addClass("invalid");
+        $(phoneErrorInvalid).removeClass("hidden");
         isFormValid = false;
       }
     }
@@ -126,35 +103,35 @@ const validatePhoneInput = () => {
 };
 
 const validateSurnameInput = () => {
-  if (!surnameInput.value) {
-    surnameInput.classList.add("invalid");
-    surnameErrorEmpty.classList.remove("hidden");
+  if (!$(surnameInput).val()) {
+    $(surnameInput).addClass("invalid");
+    $(surnameErrorEmpty).removeClass("hidden");
     isFormValid = false;
   }
 };
 
 const validateKontaktwegInput = () => {
-  if (!contactByEmail.checked & !contactByPhone.checked) {
-    kontaktwegError.classList.remove("hidden");
+  if (!$(contactByEmail).is(":checked") & !$(contactByPhone).is(":checked")) {
+    $(kontaktwegError).removeClass("hidden");
     isFormValid = false;
   }
 };
 
 const checkKontaktwegInput = () => {
-  if (contactByEmail.checked) {
+  if ($(contactByEmail).is(":checked")) {
     contactEmail = true;
     contactEmailString = "y";
   }
-  if (contactByPhone.checked) {
+  if ($(contactByPhone).is(":checked")) {
     contactPhone = true;
     contactPhoneString = "y";
   }
 };
 
 const validateMessageInput = () => {
-  if (!messageInput.value) {
-    messageInput.classList.add("invalid");
-    messageError.classList.remove("hidden");
+  if (!$(messageInput).val()) {
+    messageInput.addClass("invalid");
+    messageError.removeClass("hidden");
     isFormValid = false;
   }
 };
@@ -162,7 +139,6 @@ const validateMessageInput = () => {
 const validateInputs = () => {
   resetInvalidClasses();
   isFormValid = true;
-  validateAnredeInput();
   validateSurnameInput();
   validateMessageInput();
   validateKontaktwegInput();
@@ -177,33 +153,32 @@ form.addEventListener("submit", (e) => {
   validateInputs();
   if (isFormValid) {
     checkKontaktwegInput();
-    checkAnredeInput();
     var formData = {};
     if (anredeString != "") {
       formData.anrede = anredeString;
     }
-    if (nameInput.value != "") {
-      formData.firstname = nameInput.value;
+    if ($(nameInput).val() != "") {
+      formData.firstname = $(nameInput).val();
     }
-    formData.lastname = surnameInput.value;
-    if (emailInput.value != "") {
-      formData.emailAddress = emailInput.value;
+    formData.lastname = $(surnameInput).val();
+    if ($(emailInput).val() != "") {
+      formData.emailAddress = $(emailInput).val();
     }
-    if (phoneInput.value != "") {
-      formData.phone = phoneInput.value;
+    if ($(phoneInput).val() != "") {
+      formData.phone = $(phoneInput).val();
     }
-    if (addressInput.value != "") {
-      formData.address = addressInput.value;
+    if ($(addressInput).val() != "") {
+      formData.address = $(addressInput).val();
     }
-    if (cityInput.value != "") {
-      formData.city = cityInput.value;
+    if ($(cityInput).val() != "") {
+      formData.city = $(cityInput).val();
     }
-    if (zipInput.value != "") {
-      formData.zip = zipInput.value;
+    if ($(zipInput).val() != "") {
+      formData.zip = $(zipInput).val();
     }
     formData.contactByEmail = contactEmailString;
     formData.contactByPhone = contactPhoneString;
-    formData.message = messageInput.value;
+    formData.message = $(messageInput).val();
 
     var url = "backend/rest.php?apiFunc=sendContact";
     jQuery.post(url, JSON.stringify(formData), function (res) {
@@ -211,10 +186,10 @@ form.addEventListener("submit", (e) => {
       if (response.status == 200) {
         form.reset();
         form.remove();
-        document.getElementById("thank-you").classList.remove("hidden");
+        $("#thank-you").removeClass("hidden");
       } else {
         // error response
-        document.getElementById("error-message").classList.remove("hidden");
+        $("#error-message").removeClass("hidden");
         console.log(response);
       }
     });
@@ -223,38 +198,30 @@ form.addEventListener("submit", (e) => {
 
 //Making it so we don't have to press submit every time to see if the data is valid
 
-nameInput.addEventListener("input", () => {
+$(nameInput).on("input", () => {
   validateInputs();
 });
 
-surnameInput.addEventListener("input", () => {
+$(surnameInput).on("input", () => {
   validateInputs();
 });
 
-messageInput.addEventListener("input", () => {
+$(messageInput).on("input", () => {
   validateInputs();
 });
 
-emailInput.addEventListener("input", () => {
+$(emailInput).on("input", () => {
   validateInputs();
 });
 
-phoneInput.addEventListener("input", () => {
+$(phoneInput).on("input", () => {
   validateInputs();
 });
 
-contactByEmail.addEventListener("click", () => {
+$(contactByEmail).on("click", () => {
   validateInputs();
 });
 
-contactByPhone.addEventListener("click", () => {
-  validateInputs();
-});
-
-anredeFrau.addEventListener("click", () => {
-  validateInputs();
-});
-
-anredeHerr.addEventListener("click", () => {
+$(contactByPhone).on("click", () => {
   validateInputs();
 });
