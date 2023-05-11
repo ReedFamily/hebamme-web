@@ -17,7 +17,7 @@ cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
 cp ./favicon32.ico ./dist/upload/favicon32.ico
 cp ./favicon.svg ./dist/upload/favicon.svg
 cp ./404.html ./dist/upload/404.html
-cp ./fonts ./dist/upload/fonts
+cp -R ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
 cp -R ./img ./dist/upload/img
 cp -R ./fontawesome-free-5.15.3-web ./dist/upload/fontawesome-free-5.15.3-web
