@@ -5,8 +5,9 @@ echo "*** BEGIN PACKAGE PROCESS ***"
 GIT_COMMIT=$1
 BUILD_NO=$2
 COMMIT=${GIT_COMMIT:0:7}
-DEPLOYNAME="../hebamme-web-deploy_${COMMIT}_${BUILD_NO}.tar.gz"
-FLYWAYNAME="../hebamme-web-flyway_${COMMIT}_${BUILD_NO}.tar.gz"
+VER=2.0.1
+DEPLOYNAME="../hebamme-web-deploy_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
+FLYWAYNAME="../hebamme-web-flyway_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 
 echo "*** COPY FILES ***"
 
@@ -16,6 +17,7 @@ cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
 cp ./favicon32.ico ./dist/upload/favicon32.ico
 cp ./favicon.svg ./dist/upload/favicon.svg
 cp ./404.html ./dist/upload/404.html
+cp ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
 cp -R ./img ./dist/upload/img
 cp -R ./fontawesome-free-5.15.3-web ./dist/upload/fontawesome-free-5.15.3-web
