@@ -272,10 +272,10 @@ body {
 
 .nav-link {
     color: rgba(0, 0, 0, 0.75);
-    &:hover {
-        color: rgba(0, 0, 0, 0.85) !important;
-    }
-    &:focus {
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus-visible {
         color: rgba(0, 0, 0, 0.85) !important;
     }
 }
@@ -288,9 +288,14 @@ body {
 #nav-dropdown-kurse {
     .dropdown-item {
         &:hover,
-        &:focus {
+        &:focus,
+        &:active,
+        &:focus-visible {
             background-color: $background-color-baby-blanket-beige;
             font-weight: 600;
+        }
+        &:active {
+            color: $text-color;
         }
     }
     .active {
@@ -298,6 +303,7 @@ body {
         font-weight: 600;
     }
 }
+
 
 /*.z-index-2 {
     z-index: 2;

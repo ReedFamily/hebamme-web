@@ -328,10 +328,7 @@ body {
 .nav-link {
   color: rgba(0, 0, 0, 0.75);
 }
-.nav-link:hover {
-  color: rgba(0, 0, 0, 0.85) !important;
-}
-.nav-link:focus {
+.nav-link:hover, .nav-link:focus, .nav-link:active, .nav-link:focus-visible {
   color: rgba(0, 0, 0, 0.85) !important;
 }
 
@@ -340,9 +337,12 @@ body {
   font-weight: 600 !important;
 }
 
-#nav-dropdown-kurse .dropdown-item:hover, #nav-dropdown-kurse .dropdown-item:focus {
+#nav-dropdown-kurse .dropdown-item:hover, #nav-dropdown-kurse .dropdown-item:focus, #nav-dropdown-kurse .dropdown-item:active, #nav-dropdown-kurse .dropdown-item:focus-visible {
   background-color: #e7d6c6;
   font-weight: 600;
+}
+#nav-dropdown-kurse .dropdown-item:active {
+  color: #111111;
 }
 #nav-dropdown-kurse .active {
   background-color: #e7d6c6;
