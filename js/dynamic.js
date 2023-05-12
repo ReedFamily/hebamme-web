@@ -316,8 +316,8 @@ const getClassInfo = function () {
                 $("#rubi-wrapper").append("<p>Aktuell sind leider keine Rückbildungskurse geplant.</p>");
             }
             if (bt == 0) {
-                //$("#bt-classes").remove();
-                $("#bt-wrapper").append("<p>Aktuell sind leider keine Babytreffs geplant.</p>");
+                $("#bt-classes").remove();
+                //$("#bt-wrapper").append("<p>Aktuell sind leider keine Babytreffs geplant.</p>");
             }
             if (eh == 0) {
                 //$("#eh-classes").remove();
