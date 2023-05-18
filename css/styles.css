@@ -655,6 +655,10 @@ footer a {
   background-color: #f0f0f0;
 }
 
+.card-img-top {
+  max-height: 500px;
+}
+
 .full-course:hover {
   cursor: not-allowed !important;
 }
