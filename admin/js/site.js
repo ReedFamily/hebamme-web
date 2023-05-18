@@ -103,7 +103,7 @@ const buildSidebarNav = function () {
         class: "nav-link",
       })
         .append(
-          $("<i />", { class: "fi-cnsuxl-exclamation-mark-rounded" }),
+          $("<i />", { class: "fi-xnluxl-megaphone-solid" }),
           $("<span />", { text: " Mitteilungen" })
         )
         .click(function (event) {
