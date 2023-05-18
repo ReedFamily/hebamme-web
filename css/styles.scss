@@ -602,6 +602,10 @@ footer {
     }
 }
 
+.card-img-top{
+    max-height: 500px;
+}
+
 .full-course {
     &:hover {
         cursor: not-allowed !important;
