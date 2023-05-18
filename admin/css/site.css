@@ -108,4 +108,8 @@ input:invalid {
 
 .erroredFormControl {
   border: 2px solid red;
+}
+
+table {
+  width: 100%;
 }/*# sourceMappingURL=site.css.map */
