@@ -373,6 +373,7 @@ const buildFaqList = function () {
         let faqHeader = $("<div />", {
           class: "card-header faq-card-header",
           id: "faq-header-" + faq.id,
+          role: "button",
         })
           .attr("data-toggle", "collapse")
           .attr("data-target", "#faq-body-" + faq.id)
