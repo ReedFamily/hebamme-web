@@ -15,13 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="text/javascript" src="../js/jquery-3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/dto.js"></script>
-    <script type="text/javascript" src="js/users.js"></script>
-    <script type="text/javascript" src="js/instructors.js"></script>
-    <script type="text/javascript" src="js/alerts.js"></script>
-    <script type="text/javascript" src="js/faqs.js"></script>
-    <script type="text/javascript" src="js/site.js"></script>
-    <script src="../js/friconix/friconix.js"></script>
+    <script type="text/javascript" src="js/dto.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/users.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/instructors.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/alerts.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/faqs.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/site.js?v=GIT_HASH"></script>
+    <script src="../js/friconix/friconix.js?v=GIT_HASH"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/site.css" />
 </head>
@@ -435,21 +435,21 @@
     </div>
 
     <script type="text/javascript">
-        $("#delete-faq-acknowledge-button").click(function(event) {
+        $("#delete-faq-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteFaq(id);
         });
 
-        $("#delete-instructor-acknowledge-button").click(function(event) {
+        $("#delete-instructor-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteInstructor(id);
         })
 
-        $("#delete-user-acknowledge-button").click(function(event) {
+        $("#delete-user-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteUser(id);
         });
-        $("#delete-alert-acknowledge-button").click(function(event) {
+        $("#delete-alert-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteAlert(id);
         });

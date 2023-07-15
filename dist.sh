@@ -5,7 +5,7 @@ echo "*** BEGIN PACKAGE PROCESS ***"
 GIT_COMMIT=$1
 BUILD_NO=$2
 COMMIT=${GIT_COMMIT:0:7}
-VER=2.0.3
+VER=2.0.4
 DEPLOYNAME="../hebamme-web-deploy_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 FLYWAYNAME="../hebamme-web-flyway_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 
@@ -30,6 +30,7 @@ cp -R ./flyway ./dist
 echo "*** PERFORM REPLACE ***"
 
 sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/index.html
+sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/admin/index.html
 
 echo "*** BUILD PACKAGE ***"
 
