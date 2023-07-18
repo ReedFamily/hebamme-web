@@ -30,6 +30,7 @@ cp -R ./flyway ./dist
 echo "*** PERFORM REPLACE ***"
 
 sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/index.html
+sed -i 's/REL_VER/'${VER}'/' ./dist/upload/index.html
 sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/admin/index.html
 
 echo "*** BUILD PACKAGE ***"
