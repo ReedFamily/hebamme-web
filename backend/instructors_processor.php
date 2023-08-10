@@ -48,9 +48,15 @@
             return $result;
         }
 
-        public function listInstructors(){
+        public function listInstructors($params){
             $db = new db_instructors();
-            $result = $db->listAllInstructors();
+            if(isset($params["visible"])){
+                $result = $db->listAllVisibleInstructors();
+            }else{
+                $result = $db->listAllInstructors();
+            }
+
+            
             return $result;
         }
 

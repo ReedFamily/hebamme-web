@@ -11,8 +11,28 @@
              $this->connect();
         }
 
+        public function listAllVisibleInstructors(){
+
+            //  WHERE `viewable` = 1
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor` WHERE `viewable` = 1";
+            $stmt = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $stmt->execute();
+                $instructors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $result = api_response::getResponse(200);
+                $result["instructors"] = $instructors;
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
         public function listAllInstructors(){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team` FROM `instructor`";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor`";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -65,6 +85,13 @@
                 $colnames .= ", `team_member`";
                 $paramNames .= ", 0";
             }
+            if(isset($instructor["visible"])){
+                $colnames .= ", `viewable`";
+                $paramNames .= ", :visible";
+            }else{
+                $colnames .= ", `viewable`";
+                $paramNames .= ", 1";
+            }
 
             $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";
             
@@ -91,7 +118,7 @@
         }
 
         public function getInstructorById($id){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as team FROM `instructor` WHERE `id` = :id";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as team, `viewable` as visible FROM `instructor` WHERE `id` = :id";
             $params = ["id" => $id];
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -147,6 +174,11 @@
             }else{
                 $setValues .= ", `team_member` = false";
             }
+            if(isset($instructor["visible"])){
+                $setValues .= ", `viewable` = :visible";
+            }else{
+                $setValues .= ", `viewable` = true";
+            }
 
 
             $query = "UPDATE `instructor` SET $setValues WHERE `id` = :id";
@@ -163,6 +195,7 @@
                 $result["message"] = "Instructor " . $instructor["firstname"] . " " . $instructor["lastname"] . " has been updated.";
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());
+                log_util::logEntry("info", $query);
                 $result = api_reponse::getReponse(500);
                 $result["exception"] = $e->getMessage();
                 $this->pdo->rollback();
