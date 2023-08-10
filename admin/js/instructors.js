@@ -8,6 +8,7 @@ const displayInstructors = function (response) {
           $("<th />", { scope: "col", text: "Bild" }),
           $("<th />", { scope: "col", text: "Name" }),
           $("<th />", { scope: "col", text: "Vorname" }),
+          $("<th />", { scope: "col", text: "Sichtbar" }),
           $("<th />", { scope: "col", text: "Aktionen" })
         ),
         $("<tbody />", { id: "instructors-table-body" }),
@@ -29,7 +30,8 @@ const displayInstructors = function (response) {
     $("body").off("click", "#edit-instructor-save-button", editInstructorEvent);
     $("body").on("click", "#edit-instructor-save-button", newInstructorEvent);
     $("#edit-instructor-form").trigger("reset");
-    $("#team").removeAttr("checked");
+    $("#team").prop("checked", false);
+    $("#visible").prop("checked", true);
     var thumb = buildThumbnail();
     $("#imagewrapper").empty();
     $("#imagewrapper").append(thumb);
@@ -93,14 +95,26 @@ const buildInstructorTableRow = function (instructor) {
   var thumbnail = buildThumbnail(instructor);
   var editLink = createEditInstructorLink(instructor);
   var deleteLink = createDeleteInstructorLink(instructor);
+  var visibility = showVisiblity(instructor);
   var row = $("<tr />").append(
     $("<td />", { text: instructor.id }),
     $("<td />").append(thumbnail),
     $("<td />", { text: instructor.lastname }),
     $("<td />", { text: instructor.firstname }),
+    $("<td />").append(visibility),
     $("<td />").append(editLink, deleteLink)
   );
   return row;
+};
+
+const showVisiblity = function (instructor) {
+  var result;
+  if (instructor.visible === "1") {
+    result = $("<i />", { class: "fi-xnluxl-eye linkchar" });
+  } else {
+    result = $("<i />", { class: "fi-xnpuxl-eye linkchar" });
+  }
+  return result;
 };
 
 const createEditInstructorLink = function (instructor) {
@@ -142,11 +156,9 @@ const editInstructor = function (ele) {
       $("#inputInstructorDescription").val(response.instructor.description);
       $("#inputHebamioUrl").val(response.instructor.hebamiolink);
       $("#editInstructorThumbnailUrl").val(response.instructor.imageurl);
-      if (response.instructor.team == "1") {
-        $("#team").attr("checked", true);
-      } else {
-        $("#team").removeAttr("checked");
-      }
+
+      $("#team").prop("checked", response.instructor.team === "1");
+      $("#visible").prop("checked", response.instructor.visible === "1");
 
       var thumb = buildThumbnail(response.instructor);
       $("#imagewrapper").empty();
@@ -171,10 +183,15 @@ const editInstructor = function (ele) {
 const newInstructorEvent = function (event) {
   event.stopImmediatePropagation();
   var newInstructorData = Object.create(Instructor);
-  if ($("#team").attr("checked")) {
+  if ($("#team").is(":checked")) {
     newInstructorData.team = 1;
   } else {
     newInstructorData.team = 0;
+  }
+  if ($("#visible").is(":checked")) {
+    newInstructorData.visible = 1;
+  } else {
+    newInstructorData.visible = 0;
   }
   newInstructorData.firstname = $("#editInstructorFirstname").val();
   newInstructorData.lastname = $("#editInstructorLastname").val();
@@ -223,10 +240,15 @@ const sendNewInstructor = function (newInstructorData) {
 const editInstructorEvent = function (event) {
   event.stopImmediatePropagation();
   var editInstructorData = new Object();
-  if ($("#team").attr("checked")) {
+  if ($("#team").is(":checked")) {
     editInstructorData.team = 1;
   } else {
     editInstructorData.team = 0;
+  }
+  if ($("#visible").is(":checked")) {
+    editInstructorData.visible = 1;
+  } else {
+    editInstructorData.visible = 0;
   }
   editInstructorData.id = $("#editInstructorId").val();
   editInstructorData.firstname = $("#editInstructorFirstname").val();

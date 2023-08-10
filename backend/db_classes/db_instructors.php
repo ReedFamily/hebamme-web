@@ -195,6 +195,7 @@
                 $result["message"] = "Instructor " . $instructor["firstname"] . " " . $instructor["lastname"] . " has been updated.";
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());
+                log_util::logEntry("info", $query);
                 $result = api_reponse::getReponse(500);
                 $result["exception"] = $e->getMessage();
                 $this->pdo->rollback();
