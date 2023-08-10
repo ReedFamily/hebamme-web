@@ -11,8 +11,28 @@
              $this->connect();
         }
 
-        public function listAllInstructors(){
+        public function listAllVisibleInstructors(){
+
+            //  WHERE `viewable` = 1
             $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor` WHERE `viewable` = 1";
+            $stmt = $this->pdo->prepare($query);
+            $result = api_response::getResponse(500);
+            try{
+                $stmt->execute();
+                $instructors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $result = api_response::getResponse(200);
+                $result["instructors"] = $instructors;
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
+        public function listAllInstructors(){
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor`";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{

@@ -1,5 +1,5 @@
 const getTeam = function () {
-  var url = "backend/rest.php?apiFunc=listInstructors";
+  var url = "backend/rest.php?apiFunc=listInstructors&visible=true";
   jQuery.get(url, function (res1) {
     response1 = res1;
     if (response1.status == 200) {
@@ -61,6 +61,12 @@ const buildTeamCards = function (payload) {
       dozentinDiv.append(cardWrapper);
     }
   });
+
+  if (dozentinDiv.children().length == 0) {
+    $("#dozentin-header").addClass("hidden");
+  } else {
+    $("#dozentin-header").removeClass("hidden");
+  }
 };
 
 const getHomeAlerts = function () {
