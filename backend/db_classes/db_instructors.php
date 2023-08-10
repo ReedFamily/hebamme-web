@@ -12,7 +12,7 @@
         }
 
         public function listAllInstructors(){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team` FROM `instructor`";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor` WHERE `viewable` = 1";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{
@@ -65,6 +65,13 @@
                 $colnames .= ", `team_member`";
                 $paramNames .= ", 0";
             }
+            if(isset($instructor["visible"])){
+                $colnames .= ", `viewable`";
+                $paramNames .= ", :visible";
+            }else{
+                $colnames .= ", `viewable`";
+                $paramNames .= ", 1";
+            }
 
             $query = "INSERT INTO `instructor` ($colnames) VALUES ($paramNames)";
             
@@ -91,7 +98,7 @@
         }
 
         public function getInstructorById($id){
-            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as team FROM `instructor` WHERE `id` = :id";
+            $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as team, `viewable` as visible FROM `instructor` WHERE `id` = :id";
             $params = ["id" => $id];
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
@@ -146,6 +153,11 @@
                 $setValues .= ", `team_member` = :team";
             }else{
                 $setValues .= ", `team_member` = false";
+            }
+            if(isset($instructor["visible"])){
+                $setValues .= ", `viewable` = :visible";
+            }else{
+                $setValues .= ", `viewable` = true";
             }
 
 
