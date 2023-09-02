@@ -10,6 +10,7 @@ const loadApp = function () {
       } else {
         $("#logout-link").removeClass("hidden");
         $("#logout-link").attr("data-userid", userid);
+        fillAlertLocs();
         buildSidebarNav();
         buildHome();
       }
@@ -32,6 +33,20 @@ const buildHome = function () {
   var content = $("#welcome-template").html();
   $("#content-window").append(content);
   friconix_update();
+};
+
+const fillAlertLocs = function () {
+  var url = "../backend/rest.php?apiFunc=msgLoc";
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      var locationsSelect = $("#alertLoc");
+      $.each(res.locations, function (index, val) {
+        locationsSelect.append(
+          $("<option />", { value: val, text: val, id: "opt-" + val })
+        );
+      });
+    }
+  });
 };
 
 const displayFailure = function (id) {

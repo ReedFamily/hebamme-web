@@ -72,7 +72,7 @@ const newAlertEvent = function (event) {
   data.createdBy = $("#alertCreatedBy").val();
   data.createdDate = new Date().toISOString().slice(0, 19).replace("T", " ");
   data.level = $("input[name='alertLevel']:checked").val();
-  data.location = "home";
+  data.location = $("#alertLoc").val();
   data.permanent = 1;
   data.message = $("#alertContent").val();
 
@@ -131,7 +131,7 @@ const updateAlertEvent = function (event) {
   data.createdBy = $("#alertCreatedBy").val();
   data.createdDate = $("#alertCreatedDate").val();
   data.level = $("input[name='alertLevel']:checked").val();
-  data.location = "home";
+  data.location = $("#alertLoc").val();
   data.permanent = 1;
   data.message = $("#alertContent").val();
 
@@ -216,6 +216,7 @@ const editMessage = function (lnk) {
       $(key).prop("checked", true).trigger("change");
       $("#alert-editor-title").text("Bearbeitung Alert");
       $("#edit-alert-dialog").modal("show");
+      $("#alertLoc").val(res.message.location).change();
     } else {
       console.log(res);
     }

@@ -7,7 +7,7 @@
 
     class announcements_processor
     {
-        private $validLocations = array("home");
+        private $validLocations = array("home","kurse");
         private $levels = array("blue"=>"info", "yellow"=>"warning", "red"=>"danger");
 
         public function createAnnouncement($params){
