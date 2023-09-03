@@ -104,6 +104,12 @@ body {
     }
 }
 
+.alert{
+    p{
+        margin-bottom: 0;
+    }
+}
+
 .bg-color-light {
     background-color: $background-color;
 }
