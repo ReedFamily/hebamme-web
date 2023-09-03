@@ -10,6 +10,11 @@ const getTeam = function () {
   });
 };
 
+const convertMDtoHtml = function (mdData) {
+  var converter = new showdown.Converter();
+  return converter.makeHtml(mdData);
+};
+
 const buildTeamCards = function (payload) {
   var contentDiv = $("#team-wrapper");
   var dozentinDiv = $("#dozentin-wrapper");
@@ -93,7 +98,7 @@ const buildHomeAlerts = function (payload) {
       var alert = $("<div />", {
         class: "alert",
         role: "alert",
-        text: msg.message,
+        html: convertMDtoHtml(msg.message),
       });
       var clzz = "";
       switch (msg.level) {
@@ -143,7 +148,54 @@ const getStyleFromDescription = function (descript) {
   return "other";
 };
 
+const getKursAlerts = function () {
+  var url = "backend/rest.php?apiFunc=locMsgs&location=kurse";
+  jQuery.get(url, function (homeMsgRes) {
+    response1 = homeMsgRes;
+    if (response1.status == 200) {
+      buildKursAlerts(response1.messages);
+    } else {
+      console.log(response1);
+    }
+  });
+};
+
+const buildKursAlerts = function (payload) {
+  var msgSect = $("#kurse-alerts");
+  if (payload.length === 0) {
+    msgSect.remove();
+  } else {
+    var highAlertsCont = $("#kurse-high-alerts");
+    var warnAlertsCont = $("#kurse-warn-alerts");
+    var infoAlertsCont = $("#kurse-info-alerts");
+    $.each(payload, function (index, msg) {
+      var alert = $("<div />", {
+        class: "alert",
+        role: "alert",
+        html: convertMDtoHtml(msg.message),
+      });
+      var clzz = "";
+      switch (msg.level) {
+        case "red":
+          clzz = "alert-danger";
+          highAlertsCont.append(alert);
+          break;
+        case "yellow":
+          clzz = "alert-warning";
+          warnAlertsCont.append(alert);
+          break;
+        default:
+          clzz = "alert-info";
+          infoAlertsCont.append(alert);
+          break;
+      }
+      alert.addClass(clzz);
+    });
+  }
+};
+
 const getClassInfo = function () {
+  getKursAlerts();
   var url = "backend/rest.php?apiFunc=classes";
   jQuery.get(url, function (classRes) {
     if (classRes.status == 200) {
@@ -399,7 +451,8 @@ const buildFaqList = function () {
         let faqBody = $("<div />", {
           class: "card-body collapse faq-card-body",
           id: "faq-body-" + faq.id,
-        }).append($("<p />").append(faq.message));
+          html: convertMDtoHtml(faq.message),
+        });
 
         faqCard.append(faqHeader, faqBody);
         wrapper.append(faqCard);

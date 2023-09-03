@@ -43,6 +43,7 @@ const displayAlerts = function (response) {
   );
 
   $("#add-new-alert-button").click(function (event) {
+    //alertEditor.value("");
     $("#alert-editor-title").text("Neue Alert");
     let uname = getCookieByName("uname");
     $("#alert-edit-form").trigger("reset");
@@ -65,16 +66,18 @@ const newAlertEvent = function (event) {
   try {
     validateAlertEditorForm(true);
   } catch (e) {
+    console.log(e);
     let item = e.err;
     $(item).addClass("erroredFormControl");
+    return;
   }
   var data = new Object();
   data.createdBy = $("#alertCreatedBy").val();
   data.createdDate = new Date().toISOString().slice(0, 19).replace("T", " ");
   data.level = $("input[name='alertLevel']:checked").val();
-  data.location = "home";
+  data.location = $("#alertLoc").val();
   data.permanent = 1;
-  data.message = $("#alertContent").val();
+  data.message = alertEditor.value(); // $("#alertContent").val();
 
   var url = "../backend/rest.php?apiFunc=newMsg";
 
@@ -107,7 +110,7 @@ const validateAlertEditorForm = function (isNew) {
   if (isEmpty(uname)) {
     throw { err: "#alertCreatedBy" };
   }
-  var content = $("#alertContent").val();
+  var content = alertEditor.value();
   if (isEmpty(content)) {
     throw { err: "#alertContent" };
   }
@@ -131,9 +134,9 @@ const updateAlertEvent = function (event) {
   data.createdBy = $("#alertCreatedBy").val();
   data.createdDate = $("#alertCreatedDate").val();
   data.level = $("input[name='alertLevel']:checked").val();
-  data.location = "home";
+  data.location = $("#alertLoc").val();
   data.permanent = 1;
-  data.message = $("#alertContent").val();
+  data.message = alertEditor.value();
 
   var url = "../backend/rest.php?apiFunc=modMsg";
   $.post(url, data, function (res) {
@@ -210,12 +213,14 @@ const editMessage = function (lnk) {
       $("#alert-edit-form").trigger("reset");
       $("#alertId").val(res.message.id);
       $("#alertCreatedBy").val(res.message.createdBy);
-      $("#alertContent").val(res.message.message);
+      alertEditor.value(res.message.message);
+      //$("#alertContent").val(res.message.message);
       $("#alertCreatedDate").val(res.message.createdDate);
       var key = "#alert-" + res.message.level;
       $(key).prop("checked", true).trigger("change");
       $("#alert-editor-title").text("Bearbeitung Alert");
       $("#edit-alert-dialog").modal("show");
+      $("#alertLoc").val(res.message.location).change();
     } else {
       console.log(res);
     }
