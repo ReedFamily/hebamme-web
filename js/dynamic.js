@@ -10,6 +10,11 @@ const getTeam = function () {
   });
 };
 
+const convertMDtoHtml = function (mdData) {
+  var converter = new showdown.Converter();
+  return converter.makeHtml(mdData);
+};
+
 const buildTeamCards = function (payload) {
   var contentDiv = $("#team-wrapper");
   var dozentinDiv = $("#dozentin-wrapper");
@@ -93,7 +98,7 @@ const buildHomeAlerts = function (payload) {
       var alert = $("<div />", {
         class: "alert",
         role: "alert",
-        html: msg.message,
+        html: convertMDtoHtml(msg.message),
       });
       var clzz = "";
       switch (msg.level) {
@@ -167,7 +172,7 @@ const buildKursAlerts = function (payload) {
       var alert = $("<div />", {
         class: "alert",
         role: "alert",
-        html: msg.message,
+        html: convertMDtoHtml(msg.message),
       });
       var clzz = "";
       switch (msg.level) {
@@ -446,7 +451,8 @@ const buildFaqList = function () {
         let faqBody = $("<div />", {
           class: "card-body collapse faq-card-body",
           id: "faq-body-" + faq.id,
-        }).append($("<p />").append(faq.message));
+          html: convertMDtoHtml(faq.message),
+        });
 
         faqCard.append(faqHeader, faqBody);
         wrapper.append(faqCard);
