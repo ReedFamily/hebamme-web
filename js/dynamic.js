@@ -451,7 +451,8 @@ const buildFaqList = function () {
         let faqBody = $("<div />", {
           class: "card-body collapse faq-card-body",
           id: "faq-body-" + faq.id,
-        }).append($("<p />").append(faq.message));
+          html: convertMDtoHtml(faq.message),
+        });
 
         faqCard.append(faqHeader, faqBody);
         wrapper.append(faqCard);

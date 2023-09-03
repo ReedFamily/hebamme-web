@@ -477,7 +477,11 @@
         var alertEditor = new SimpleMDE({ element: $("#alertContent")[0], autofocus: true, spellChecker: false, forceSync: true, autoDownloadFontAwesome: false, toolbar: false });
         $("#edit-alert-dialog").on("shown.bs.modal", function () {
             alertEditor.codemirror.refresh();
-        })
+        });
+        var faqEditor = new SimpleMDE({ element: $("#faqMessage")[0], autofocus: true, spellChecker: false, forceSync: true, autoDownloadFontAwesome: false, toolbar: false });
+        $("#edit-faq-dialog").on("shown.bs.modal", function () {
+            faqEditor.codemirror.refresh();
+        });
         loadApp();
     </script>
 
