@@ -12,6 +12,9 @@ const getTeam = function () {
 
 const convertMDtoHtml = function (mdData) {
   var converter = new showdown.Converter();
+  converter.setFlavor("original");
+  converter.setOption("simpleLineBreaks", "true");
+  converter.setOption("openLinksInNewWindow", "true");
   return converter.makeHtml(mdData);
 };
 
