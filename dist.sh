@@ -5,7 +5,8 @@ echo "*** BEGIN PACKAGE PROCESS ***"
 GIT_COMMIT=$1
 BUILD_NO=$2
 COMMIT=${GIT_COMMIT:0:7}
-VER=2.0.6
+VER=2.0.7
+COPYRIGHT_YEAR=2024
 DEPLOYNAME="../hebamme-web-deploy_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 FLYWAYNAME="../hebamme-web-flyway_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 
@@ -20,7 +21,6 @@ cp ./404.html ./dist/upload/404.html
 cp -R ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
 cp -R ./img ./dist/upload/img
-cp -R ./fontawesome-free-5.15.3-web ./dist/upload/fontawesome-free-5.15.3-web
 cp -R ./css ./dist/upload/css 
 cp -R ./backend ./dist/upload/backend 
 cp -R ./admin ./dist/upload/admin
@@ -29,9 +29,9 @@ cp -R ./flyway ./dist
 
 echo "*** PERFORM REPLACE ***"
 
-sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/index.html
-sed -i 's/REL_VER/'${VER}'/' ./dist/upload/index.html
-sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/admin/index.html
+grep -rl GIT_HASH ./dist | xargs sed -i 's/GIT_HASH/'${BUILD_NO}'/'
+grep -rl REL_VER ./dist | xargs sed -i 's/REL_VER/'${VER}'/'
+grep -rl COPYRIGHT_YEAR | xargs sed -i 's/COPYRIGHT_YEAR/'${COPYRIGHT_YEAR}'/'
 
 echo "*** BUILD PACKAGE ***"
 
