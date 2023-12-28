@@ -11,6 +11,11 @@ const getTeam = function () {
 };
 
 const convertMDtoHtml = function (mdData) {
+  // replaces a double newline with a whitespace character so that it will actually break the line correctly.
+  var dblNewLine = "\n\n";
+  var rplNewLine = "\n \n";
+  mdData = mdData.replaceAll(dblNewLine, rplNewLine);
+
   var converter = new showdown.Converter();
   converter.setFlavor("original");
   converter.setOption("simpleLineBreaks", "true");
