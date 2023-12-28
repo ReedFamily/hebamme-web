@@ -29,11 +29,9 @@ cp -R ./flyway ./dist
 
 echo "*** PERFORM REPLACE ***"
 
-sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/index.html
-sed -i 's/REL_VER/'${VER}'/' ./dist/upload/index.html
-sed -i 's/GIT_HASH/'${BUILD_NO}'/' ./dist/upload/admin/index.html
-sed -i 's/COPYRIGHT_YEAR/'${COPYRIGHT_YEAR}'/' ./dist/upload/index.html
-sed -i 's/COPYRIGHT_YEAR/'${COPYRIGHT_YEAR}'/' ./dist/upload/admin/index.html
+grep -rl GIT_HASH ./dist | xargs sed -i 's/GIT_HASH/'${BUILD_NO}'/'
+grep -rl REL_VER ./dist | xargs sed -i 's/REL_VER/'${VER}'/'
+grep -rl COPYRIGHT_YEAR | xargs sed -i 's/COPYRIGHT_YEAR/'${COPYRIGHT_YEAR}'/'
 
 echo "*** BUILD PACKAGE ***"
 
