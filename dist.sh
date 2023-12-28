@@ -20,7 +20,6 @@ cp ./404.html ./dist/upload/404.html
 cp -R ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
 cp -R ./img ./dist/upload/img
-cp -R ./fontawesome-free-5.15.3-web ./dist/upload/fontawesome-free-5.15.3-web
 cp -R ./css ./dist/upload/css 
 cp -R ./backend ./dist/upload/backend 
 cp -R ./admin ./dist/upload/admin
