@@ -1,7 +1,7 @@
 <?php
      /*
         This this class is used to consume the Hebamio API and provide a result of all classes and information in a single JSON structure.
-        Copyright (c) 2021 - 2023 Jason Reed
+        Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
         
         Licensed under MIT License
 
