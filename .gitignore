@@ -11,6 +11,7 @@ en/index.html
 
 /backend/uploads/*.jpg
 /backend/uploads/*.png
+/backend/resources/praxis/*.*
 backend/conf/conf-live.php
 API/API-key altenbeckundkollegin.txt
 API/example.json
