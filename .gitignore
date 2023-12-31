@@ -1,7 +1,6 @@
 backend/conf/conf.php
 phpinfo.php
 sitemap-index.xml
-sitemap.xml
 .vscode/settings.json
 backend/conf/sql/default-insert.sql
 .htaccess
