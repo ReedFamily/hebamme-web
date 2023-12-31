@@ -1,6 +1,6 @@
 <?php
      /*
-        This this class is used to consume the Hebamio API and provide a result of all classes and information in a single JSON structure.
+        Image upload manager
         Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
         
         Licensed under MIT License
@@ -73,6 +73,42 @@
                 return true;
             }
             return false;
+        }
+
+        public function uploadGalleryPhoto($params){
+            if(!isset($params["files"]["file"])){ 
+                $res = api_response::getResponse(400);
+                $res["message"] = "Can't find image in structure";
+                return $res;
+            }
+            $targetDir = CONST_GALLERY_PATH;
+            $targetFile = $targetDir . basename($params["files"]["file"]["name"]);
+            $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+            $check = getimagesize($params["files"]["file"]["tmp_name"]);
+            if($check !== false){
+                if(!$this->alreadyExists($targetFile)){
+                    $ok = move_uploaded_file($params["files"]["file"]["tmp_name"], "./" . $targetFile);
+                    $res = api_response::getResponse(200);
+                    $res["imageurl"] = "backend/" . $targetFile;
+                    $res["message"] = "Upload Complete: " . $ok;
+                    $res["size"] = $check;
+                    return $res;
+                }else{
+                    $res = api_response::getResponse(200);
+                    $res["imageurl"] = "backend/" . $targetFile;
+                    $res["message"] = "Already Created";
+                    return $res;
+                }
+
+
+                // $res = api_response::getResponse(200);
+                // $res["message"] = "It's an image";
+                // return $res;
+            }else{
+                $res = api_response::getResponse(400);
+                $res["message"] = "Invalid image";
+                return $res;
+            }
         }
 
     }
