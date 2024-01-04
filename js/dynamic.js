@@ -446,7 +446,7 @@ const buildFaqList = function () {
           .attr("data-faqId", faq.id)
           .attr("aria-expanded", false)
           .attr("aria-controls", "faq-body-" + faq.id)
-          .attr("aria-label", "open or close question")
+          .attr("aria-label", faq.question)
           .append(
             $("<span />", {
               class: "card-title",
