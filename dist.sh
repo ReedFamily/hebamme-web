@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "*** BEGIN PACKAGE PROCESS ***"
-[ ! -d "dist/upload" ] && mkdir -p "dist/upload"
+[ ! -d "dist/upload" ] && mkdir -p "dist/upload/css/bootstrap"
 
 GIT_COMMIT=$1
 BUILD_NO=$2
@@ -23,8 +23,12 @@ cp ./404.html ./dist/upload/404.html
 cp -R ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
 cp -R ./img ./dist/upload/img
-cp -R ./css/*.css ./dist/upload/css 
-cp -R ./css/*.map ./dist/upload/css
+# More acurately handles the css files for distribution instead of delivering the scss files.
+cp ./css/*.css ./dist/upload/css
+cp ./css/*.map ./dist/upload/css
+cp ./css/bootstrap/*.map ./dist/upload/css/bootstrap
+cp ./css/bootstrap/*.css ./dist/upload/css/bootstrap
+
 cp -R ./backend ./dist/upload/backend 
 cp -R ./admin ./dist/upload/admin
 
