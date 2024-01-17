@@ -88,10 +88,13 @@
             if($check !== false){
                 if(!$this->alreadyExists($targetFile)){
                     $ok = move_uploaded_file($params["files"]["file"]["tmp_name"], "./" . $targetFile);
-                    $res = api_response::getResponse(200);
-                    $res["imageurl"] = "backend/" . $targetFile;
-                    $res["message"] = "Upload Complete: " . $ok;
-                    $res["size"] = $check;
+                    $res = $this->convertToWebP($targetFile);
+                    unlink($targetFile);
+                    // $res = api_response::getResponse(200);
+                    // $res["imageurl"] = "backend/" . $targetFile;
+                    // $res["message"] = "Upload Complete: " . $ok;
+                    // $res["size"] = $check[3];
+                    // $res["mime"] = $check["mime"];
                     return $res;
                 }else{
                     $res = api_response::getResponse(200);
@@ -109,6 +112,93 @@
                 $res["message"] = "Invalid image";
                 return $res;
             }
+        }
+
+
+        private function convertToWebP($filepath){
+            if(!file_exists($filepath)){
+                $res = api_response::getResponse(400);
+                $res["message"] = "{$fillepath} Not Found.";
+                return $res;
+            }
+            $file_type = exif_imagetype($filepath);
+            $newfilename = $filepath . ".webp";
+            if(file_exists($newfilename)){
+                $res = api_response::getResponse(200);
+                $res["file"] = $newfilename;
+                return $res;
+            }
+            if (function_exists('imagewebp')) {
+                switch ($file_type) {
+                    case '1': //IMAGETYPE_GIF
+                        $image = imagecreatefromgif($filepath);
+                        break;
+                    case '2': //IMAGETYPE_JPEG
+                        $image = imagecreatefromjpeg($filepath);
+                        break;
+                    case '3': //IMAGETYPE_PNG
+                        $image = imagecreatefrompng($filepath);
+                        imagepalettetotruecolor($image);
+                        imagealphablending($image, true);
+                        imagesavealpha($image, true);
+                        break;
+                    case '6': // IMAGETYPE_BMP
+                        $image = imagecreatefrombmp($filepath);
+                        break;
+                    case '15': //IMAGETYPE_Webp
+                        $res = api_response::getResponse(200);
+                        $res["file"]=$filepath;
+                        return $res;
+                        break;
+                    case '16': //IMAGETYPE_XBM
+                        $image = imagecreatefromxbm($filepath);
+                        break;
+                    default:
+                        $res = api_response::getResponse(400);
+                        $res["message"] = "Unsupported File Type";
+                        return $res;
+                }
+                $image = $this->resizeImage($image);
+                $result = imagewebp($image, $newfilename, 90);
+                if($result === false){
+
+                    $res = api_response::getResponse(500);
+                    $res["error"] = "Failed to convert image";
+                    return $res;
+                }
+                $res = api_response::getResponse(200);
+                $res["file"] = $newfilename;
+                $res["size"] = imagesx($image) . "x" . imagesy($image);
+                $res["mime"] = "image/webp";
+
+                
+                return $res;
+            }else{
+                $res = api_response::getResponse(500);
+                $res["error"] = "No webp image support found";
+                return $res;
+            }
+        }
+
+        /** 
+         * Simple resize function for image using the GDImage library of PHP. 
+         * Original source image is destroyed and the resized image returned.
+         */
+        private function resizeImage($image){
+            $maxsize = 1920;
+            $oWidth = imagesx($image);
+            $oHeight = imagesy($image);
+            $ratio = $oWidth / $oHeight;
+            $nWidth = 1920;
+            $nHeight = 1920;
+            if($ratio > 1){
+                $nHeight = $maxsize / $ratio;
+            }else{
+                $nWidth = $maxsize * $ratio;
+            }
+            $resized = imagecreatetruecolor($nWidth, $nHeight);
+            imagecopyresized($resized, $image, 0,0,0,0, $nWidth, $nHeight, $oWidth, $oHeight);
+            return $resized;
         }
 
     }
