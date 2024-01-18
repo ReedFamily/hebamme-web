@@ -150,6 +150,24 @@ const buildSidebarNav = function () {
             }
           });
         })
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", { id: "link-gallery", class: "nav-link" })
+        .append(
+          $("<i />", { class: "fi-xnsuxl-image-solid" }),
+          $("<span />", { text: " Fotos" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=listGal", function (res) {
+            if (res.status == 200) {
+              // display galleries
+              displayGalleries(res);
+            } else {
+              displayFailure("#failure-gallery-template");
+            }
+          });
+        })
     )
   );
   friconix_update();
