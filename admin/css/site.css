@@ -106,8 +106,20 @@ input:invalid {
   border-width: 2px;
 }
 
+.highlight {
+  color: #fff;
+}
+
 .erroredFormControl {
   border: 2px solid red;
+}
+
+.mr3 {
+  margin-right: 3px;
+}
+
+.ml3 {
+  margin-left: 3px;
 }
 
 table {
