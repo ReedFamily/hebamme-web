@@ -50,18 +50,45 @@ const displayGalleries = function (res) {
 
 const buildGalleryTableRow = function (gallery) {
   var rowId = "gallery-item-" + gallery.id;
-  var activeImg;
-  if (gallery.active == 1) {
-    activeImg = $("<i />", { class: "fi-cwsuxl-check checkmark" });
-  } else {
-    activeImg = $("<i />", { class: "fi-cnsuxl-times-solid nocheck" });
-  }
+  var editGalleryLink = createEditLink(gallery);
+  var activeLink = createSetActiveLink(gallery);
+
   var row = $("<tr />", { id: rowId }).append(
     $("<td />", { class: "text-center", text: gallery.id }),
     $("<td />", { class: "text-center", text: gallery.name }),
     $("<td />", { text: gallery.description }),
-    $("<td />", { class: "text-center" }).append(activeImg),
-    $("<td/>", { class: "text-center" })
+    $("<td />", { class: "text-center" }).append(activeLink),
+    $("<td/>", { class: "text-center" }).append(editGalleryLink)
   );
   return row;
 };
+
+function createEditLink(gallery) {
+  var galId = "edit-gallery-" + gallery.id;
+  var link = $("<a />", { id: galId, text: " " }).click(function (event) {
+    event.preventDefault();
+    editGallery(this);
+  });
+  $(link).attr("data-id", galId);
+  $(link).append($("<i />", { class: "fi-xnsuxl-edit-solid linkchar" }));
+  return link;
+}
+
+function createSetActiveLink(gallery) {
+  var actLink = "activate-gallery-" + gallery.id;
+  var link = $("<a />", { id: actLink, text: " " }).click(function (event) {
+    event.preventDefault();
+  });
+  $(link).attr("data-id", actLink);
+  if (gallery.active == 1) {
+    $(link).append($("<i />", { class: "fi-swluxl-thumbtack-alt" }));
+  } else {
+    $(link).append($("<i />", { class: "fi-swpuxl-thumbtack-alt" }));
+  }
+
+  return link;
+}
+
+function createManagePhotosLink(gallery) {}
+
+function createDeleteLink(gallery) {}
