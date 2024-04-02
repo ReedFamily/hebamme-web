@@ -41,6 +41,10 @@
                     $response["status"] = 200;
                     $response["message"] = "Operation successful";
                     break;
+                case 302:
+                    $response["success"] = true;
+                    $resposne["status"] = 302;
+                    $response["message"] = "Already Exists";
                 case 400:
                     $response["success"] = false;
                     $response["status"] = 400;
