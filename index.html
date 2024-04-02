@@ -1253,7 +1253,9 @@
             $(".navbar").css("background-color", "rgba(225, 208, 192," + rgba + ")");
         });
 
-
+        // Automatically scroll down a bit when clicking on the Datenschutz or Impressum link
+        document.getElementById("openDatenschutz").addEventListener("click", ()=>window.setTimeout(()=>location.assign("#openImpressum"),50));
+        document.getElementById("openImpressum").addEventListener("click", ()=>window.setTimeout(()=>location.assign("#openDatenschutz"),50));
 
     </script>
 </body>
