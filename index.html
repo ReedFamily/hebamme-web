@@ -253,12 +253,11 @@
         <div class="container">
             <h1>Unsere Praxis</h1>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <ol id="indicatorsList" class="carousel-indicators">
+                    <!--Place holder where the list goes-->
                 </ol>
                 <div class="carousel-inner" id="carouselcontent">
+                    <!-- 
                     <div class="carousel-item active">
                         <img src="backend/resources/praxis/001.JPG" class="d-block w-100" alt="1">
                     </div>
@@ -268,6 +267,7 @@
                     <div class="carousel-item">
                         <img src="backend/resources/praxis/003.JPG" class="d-block w-100" alt="3">
                     </div>
+                    -->
                 </div>
                 <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1214,7 +1214,7 @@
         getTeam();
         getClassInfo();
         buildFaqList();
-
+        initializeGallery();
     </script>
     <script defer>
         // SMOOTH SCROLLING PLUS OFFSET FOR FIXED NAV
@@ -1254,8 +1254,8 @@
         });
 
         // Automatically scroll down a bit when clicking on the Datenschutz or Impressum link
-        document.getElementById("openDatenschutz").addEventListener("click", ()=>window.setTimeout(()=>location.assign("#openImpressum"),50));
-        document.getElementById("openImpressum").addEventListener("click", ()=>window.setTimeout(()=>location.assign("#openDatenschutz"),50));
+        document.getElementById("openDatenschutz").addEventListener("click", () => window.setTimeout(() => location.assign("#openImpressum"), 50));
+        document.getElementById("openImpressum").addEventListener("click", () => window.setTimeout(() => location.assign("#openDatenschutz"), 50));
 
     </script>
 </body>
