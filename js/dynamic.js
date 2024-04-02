@@ -419,6 +419,41 @@ const getClassInfo = function () {
   });
 };
 
+const initializeGallery = function () {
+  let url = "backend/rest.php?apiFunc=getGal";
+  let listItemWrapper = $("#indicatorsList");
+  let itemContentWrapper = $("#carouselcontent");
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      let iter = 0;
+      listItemWrapper.empty();
+      itemContentWrapper.empty();
+      $.each(res.gallery.images, function (index, img) {
+        let listItem = $("<li />", {})
+          .attr("data-target", "#carouselExampleIndicators")
+          .attr("data-slide-to", iter);
+
+        let carItem = $("<div />", { class: "carousel-item" }).append(
+          $("<img />", {
+            src: img.image_url,
+            class: "d-block w-100",
+            alt: img.alt,
+          })
+        );
+        if (iter == 0) {
+          $(listItem).addClass("active");
+          $(carItem).addClass("active");
+        }
+        listItemWrapper.append(listItem);
+        itemContentWrapper.append(carItem);
+        iter++;
+      });
+    } else {
+      console.error(res);
+    }
+  });
+};
+
 const buildFaqList = function () {
   let url = "backend/rest.php?apiFunc=faqs";
   let wrapper = $("#faq-wrapper");

@@ -10,7 +10,11 @@ const displayGalleries = function (res) {
             scope: "col",
             text: "Beschreibung",
           }),
-          $("<th />", { class: "text-center", scope: "col", text: "Aktiv?" }),
+          $("<th />", {
+            class: "text-center",
+            scope: "col",
+            text: "Aktive Galerie umschalten",
+          }),
           $("<th />", { class: "text-center", scope: "col", text: "Aktionen" })
         ),
         $("<tbody />", { id: "galleries-table-body" }),
@@ -78,15 +82,36 @@ function createSetActiveLink(gallery) {
   var actLink = "activate-gallery-" + gallery.id;
   var link = $("<a />", { id: actLink, text: " " }).click(function (event) {
     event.preventDefault();
+    var active = $(this).attr("data-active");
+    var id = $(this).attr("data-id");
+    if (active == 0) {
+      selectActive(id);
+    }
   });
-  $(link).attr("data-id", actLink);
+  $(link).attr("data-id", gallery.id);
+  $(link).attr("data-active", gallery.active);
   if (gallery.active == 1) {
+    $(link).addClass("isActive");
+    $(link).attr("title", "bereits aktiv!");
     $(link).append($("<i />", { class: "fi-swluxl-thumbtack-alt" }));
   } else {
+    $(link).addClass("notActive");
     $(link).append($("<i />", { class: "fi-swpuxl-thumbtack-alt" }));
   }
 
   return link;
+}
+
+function selectActive(id) {
+  //gallery_id
+  var url = "../backend/rest.php?apiFunc=setGal&gallery_id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      displayGalleries(res);
+    } else {
+      console.error(res);
+    }
+  });
 }
 
 function createManagePhotosLink(gallery) {}
