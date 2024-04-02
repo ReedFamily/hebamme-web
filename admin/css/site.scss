@@ -17,6 +17,20 @@ input {
   }
 }
 
+a.isActive {
+  color: $color_4;
+  cursor: default;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+a.notActive {
+  color: $color_2;
+  &:hover {
+    color: $color_4;
+  }
+}
+
 .hidden {
   display: none;
 }

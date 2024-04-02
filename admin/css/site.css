@@ -2,6 +2,21 @@ input:invalid {
   border-color: #ff0000;
 }
 
+a.isActive {
+  color: green;
+  cursor: default;
+}
+a.isActive:hover {
+  cursor: not-allowed;
+}
+
+a.notActive {
+  color: #888;
+}
+a.notActive:hover {
+  color: green;
+}
+
 .hidden {
   display: none;
 }
