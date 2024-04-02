@@ -97,9 +97,9 @@
                     // $res["mime"] = $check["mime"];
                     return $res;
                 }else{
-                    $res = api_response::getResponse(200);
+                    $res = api_response::getResponse(302);
                     $res["imageurl"] = "backend/" . $targetFile;
-                    $res["message"] = "Already Created";
+                    $res["message"] = "Already Exists";
                     return $res;
                 }
 
