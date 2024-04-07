@@ -90,6 +90,8 @@ function uploadComplete(res) {
 const buildGalleryTableRow = function (gallery) {
   var rowId = "gallery-item-" + gallery.id;
   var editGalleryLink = createEditLink(gallery);
+  var deleteGalleryLink = createDeleteLink(gallery);
+  var managePhotosLink = createManagePhotosLink(gallery);
   var activeLink = createSetActiveLink(gallery);
 
   var row = $("<tr />", { id: rowId }).append(
@@ -97,7 +99,11 @@ const buildGalleryTableRow = function (gallery) {
     $("<td />", { class: "text-center", text: gallery.name }),
     $("<td />", { text: gallery.description }),
     $("<td />", { class: "text-center" }).append(activeLink),
-    $("<td/>", { class: "text-center" }).append(editGalleryLink)
+    $("<td/>", { class: "text-center" }).append(
+      managePhotosLink,
+      editGalleryLink,
+      deleteGalleryLink
+    )
   );
   return row;
 };
@@ -106,7 +112,8 @@ function createEditLink(gallery) {
   var galId = "edit-gallery-" + gallery.id;
   var link = $("<a />", { id: galId, text: " " }).click(function (event) {
     event.preventDefault();
-    editGallery(this);
+    var id = $(this).attr("data-id");
+    editGallery(id);
   });
   $(link).attr("data-id", galId);
   $(link).append($("<i />", { class: "fi-xnsuxl-edit-solid linkchar" }));
@@ -128,10 +135,10 @@ function createSetActiveLink(gallery) {
   if (gallery.active == 1) {
     $(link).addClass("isActive");
     $(link).attr("title", "bereits aktiv!");
-    $(link).append($("<i />", { class: "fi-swluxl-thumbtack-alt" }));
+    $(link).append($("<i />", { class: "fi-swluxl-thumbtack-alt linkchar" }));
   } else {
     $(link).addClass("notActive");
-    $(link).append($("<i />", { class: "fi-swpuxl-thumbtack-alt" }));
+    $(link).append($("<i />", { class: "fi-swpuxl-thumbtack-alt linkchar" }));
   }
 
   return link;
@@ -149,6 +156,34 @@ function selectActive(id) {
   });
 }
 
-function createManagePhotosLink(gallery) {}
+function createManagePhotosLink(gallery) {
+  var linkId = "manage-gallery-" + gallery.id;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    var galId = $(this).attr("data-id");
+    loadAssignedGalleryImages(galId);
+  });
+  $(link).attr("data-id", gallery.id);
+  $(link).append($("<i />", { class: "fi-xnsuxl-image-solid linkchar" }));
+  return link;
+}
 
-function createDeleteLink(gallery) {}
+function createDeleteLink(gallery) {
+  var linkId = "del-gallery-" + gallery.id;
+  var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
+    event.preventDefault();
+    var galId = $(this).attr("data-id");
+    // request gallery information and display modal
+  });
+  $(link).attr("data-id", gallery.id);
+  $(link).append($("<i />", { class: "fi-xwsuxl-bin linkchar" }));
+  return link;
+}
+
+function editGallery(galleryId) {}
+
+function loadAssignedGalleryImages(galleryId) {
+  // get all assigned images
+  // get all active images;
+  // display in listing
+}
