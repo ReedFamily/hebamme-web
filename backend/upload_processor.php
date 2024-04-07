@@ -84,23 +84,34 @@
             
             $targetDir = CONST_GALLERY_PATH;
            
-            
-            $targetFile = $targetDir . basename($params["files"]["file"]["name"]);
+            $basename =  basename($params["files"]["file"]["name"]);
+            $targetFile = $targetDir . $basename;
             $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
             $check = getimagesize($params["files"]["file"]["tmp_name"]);
             if($check !== false){
                 if(!$this->alreadyExists($targetFile)){
                     $ok = move_uploaded_file($params["files"]["file"]["tmp_name"], "./" . $targetFile);
                     $res = $this->convertToWebP($targetFile);
+                    $res["name"] = $basename;
                     if(isset($params["alt"])){
                         $res["alt"] = $params["alt"];
+                    }else{
+                        $res["alt"] = "gallery upload";
                     }
                     unlink($targetFile);
-                    // $res = api_response::getResponse(200);
-                    // $res["imageurl"] = "backend/" . $targetFile;
-                    // $res["message"] = "Upload Complete: " . $ok;
-                    // $res["size"] = $check[3];
-                    // $res["mime"] = $check["mime"];
+                    // store the file information in the database
+                    
+                    $db = new db_gallery();
+                    $dbSet["name"] = $res["name"];
+                    $dbSet["image_url"] = $res["file"];
+                    $dbSet["height"] = $res["y"];
+                    $dbSet["width"] = $res["x"];
+                    $dbSet["alt"] = $res["alt"];
+
+                    $result = $db->registerUploadedImage($dbSet);
+                    if(!$result["status"] == 200){
+                        $res = $result;
+                    }
                     return $res;
                 }else{
                     $res = api_response::getResponse(302);
@@ -108,11 +119,6 @@
                     $res["message"] = "Already Exists";
                     return $res;
                 }
-
-
-                // $res = api_response::getResponse(200);
-                // $res["message"] = "It's an image";
-                // return $res;
             }else{
                 $res = api_response::getResponse(400);
                 $res["message"] = "Invalid image";
@@ -120,7 +126,10 @@
             }
         }
 
-
+        /**
+         * Resizes the image and converts it to WebP format. This should make images in the gallery load better and reduces
+         * amount of data stored in the directory.
+         */
         private function convertToWebP($filepath){
             if(!file_exists($filepath)){
                 $res = api_response::getResponse(400);
@@ -138,26 +147,9 @@
                 switch ($file_type) {
                     case '1': //IMAGETYPE_GIF
                         $image = imagecreatefromgif($filepath);
-                        log_util::logEntry("INFO", "Create from GIF");
                         break;
                     case '2': //IMAGETYPE_JPEG
-                        $image = imagecreatefromjpeg($filepath);
-                        log_util::logEntry("INFO", "Create from JPEG");
-                        $exif = exif_read_data($filepath);
-                        if ($image && $exif && isset($exif['Orientation']))
-                        {
-                            $ort = $exif['Orientation'];
-
-                            if ($ort == 6 || $ort == 5)
-                                $image = imagerotate($image, 270, null);
-                            if ($ort == 3 || $ort == 4)
-                                $image = imagerotate($image, 180, null);
-                            if ($ort == 8 || $ort == 7)
-                                $image = imagerotate($image, 90, null);
-
-                            if ($ort == 5 || $ort == 4 || $ort == 7)
-                                imageflip($image, IMG_FLIP_HORIZONTAL);
-                        }
+                        $image = $this->createJpegFromFile($filepath);
                         break;
                     case '3': //IMAGETYPE_PNG
                         $image = imagecreatefrompng($filepath);
@@ -167,17 +159,14 @@
                         break;
                     case '6': // IMAGETYPE_BMP
                         $image = imagecreatefrombmp($filepath);
-                        log_util::logEntry("INFO", "Create from BMP");
                         break;
                     case '15': //IMAGETYPE_Webp
-                        log_util::logEntry("INFO", "Create from WEBP");
                         $res = api_response::getResponse(200);
                         $res["file"]=$filepath;
                         return $res;
                         break;
                     case '16': //IMAGETYPE_XBM
                         $image = imagecreatefromxbm($filepath);
-                        log_util::logEntry("INFO", "Create from XBM");
                         break;
                     default:
                         log_util::logEntry("ERROR", "UNSUPPORTED");
@@ -187,7 +176,6 @@
                 }
                 $xval = imagesx($image);
                 $yval = imagesy($image);
-                log_util::logEntry("INFO", "Original image size: $xval x $yval");
                 $image = $this->resizeImage($image);
                 $result = imagewebp($image, $newfilename, 90);
                 if($result === false){
@@ -212,6 +200,28 @@
             }
         }
 
+        /**
+         * Creates the image from the file and then ensures that it has the correct orientation 
+         * (php image handling is stupid and doesn't read EXIF correctly)
+         */
+        private function createJpegFromFile($filepath){
+            $image = imagecreatefromjpeg($filepath);
+            $exif = exif_read_data($filepath);
+            if ($image && $exif && isset($exif['Orientation']))
+            {
+                $ort = $exif['Orientation'];
+                if ($ort == 6 || $ort == 5)
+                    $image = imagerotate($image, 270, null);
+                if ($ort == 3 || $ort == 4)
+                    $image = imagerotate($image, 180, null);
+                if ($ort == 8 || $ort == 7)
+                    $image = imagerotate($image, 90, null);
+                if ($ort == 5 || $ort == 4 || $ort == 7)
+                    imageflip($image, IMG_FLIP_HORIZONTAL);
+            }
+            return $image;
+        }
+
         /** 
          * Simple resize function for image using the GDImage library of PHP. 
          * Original source image is destroyed and the resized image returned.
@@ -220,16 +230,13 @@
             $maxsize = 1920;
             $oWidth = imagesx($image);
             $oHeight = imagesy($image);
-            log_util::logEntry("INFO" , "IMAGE SIZE -- W: $oWidth H: $oHeight");
             $ratio = $oWidth / $oHeight;
-            $nWidth = 1920;
-            $nHeight = 1920;
+            $nWidth = $maxsize;
+            $nHeight = $maxsize;
             if($ratio >= 1){
                 $nHeight = $maxsize / $ratio;
-                log_util::logEntry("INFO", "Landscape " . $ratio);
             }else{
                 $nWidth = $maxsize * $ratio;
-                log_util::logEntry("INFO", "Portrait " . $ratio);
             }
             $resized = imagecreatetruecolor($nWidth, $nHeight);
             imagecopyresized($resized, $image, 0,0,0,0, $nWidth, $nHeight, $oWidth, $oHeight);

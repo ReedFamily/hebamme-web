@@ -105,16 +105,6 @@
             return $result;
         }
 
-        public function registerUploadedImage($params){
-            $result = api_response::getResponse(400);
-            if(!isset($params["file"])){
-                $result["execption"] = "`file` is not provided or is invalid";
-                return $result;
-            }
-
-            
-        }
-
         public function addImageToGallery($params){
             $result = api_response::getResponse(400);
             if(!isset($params["gallery_id"]) || !is_numeric($params["gallery_id"])){
