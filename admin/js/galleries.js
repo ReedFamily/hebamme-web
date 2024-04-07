@@ -42,7 +42,7 @@ const displayGalleries = function (res) {
   });
 
   $("#upload-photo-button").click(function (event) {
-    // load photo uploader
+    $("#upload-gallery-image-dialog").modal("show");
   });
 
   $.each(res.galleries, function (index, gallery) {
@@ -50,7 +50,42 @@ const displayGalleries = function (res) {
     $("#galleries-table-body").append(row);
   });
   friconix_update();
+
+  $("#gallery-image-upload-button").click(function () {
+    let formInput = $("#gallery-image");
+    var filedat = $(formInput)[0].files[0];
+    var ext = filedat.name.split(".").pop().toLowerCase();
+    if (jQuery.inArray(ext, ["png", "jpg", "jpeg", "webp"]) == -1) {
+      alert("Invalid image file");
+      return;
+    }
+    var altText = $("#gallery-image-text").val();
+    if (!altText || altText == "") {
+      altText = filedat.name;
+    }
+    var form_data = new FormData();
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(filedat);
+    form_data.append("file", filedat);
+    form_data.append("alt", altText);
+    $.ajax({
+      url: "../backend/rest.php?apiFunc=uploadgal",
+      method: "POST",
+      data: form_data,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        uploadComplete(data);
+      },
+    });
+  });
 };
+
+function uploadComplete(res) {
+  $("#image-name").empty();
+  $("#image-name").text(res.name);
+  $("#upload-gallery-success").modal("show");
+}
 
 const buildGalleryTableRow = function (gallery) {
   var rowId = "gallery-item-" + gallery.id;
