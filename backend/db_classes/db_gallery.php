@@ -56,7 +56,7 @@
         }
 
         public function getActiveGallery(){
-            $query = "SELECT g.id as gallery_id, g.name as gallery_name, g.description as gallery_description, img.id as image_id, img.image_url as image_url, img.description as image_alt FROM gallery g JOIN gallery_images gi ON g.id = gi.gallery_id RIGHT JOIN images img ON gi.images_id = img.id WHERE g.active = 1";
+            $query = "SELECT g.id as gallery_id, g.name as gallery_name, g.description as gallery_description, img.id as image_id, img.image_url as image_url, img.description as image_alt, img.height as height, img.width as width FROM gallery g JOIN gallery_images gi ON g.id = gi.gallery_id RIGHT JOIN images img ON gi.images_id = img.id WHERE g.active = 1";
             $statement = $this->pdo->prepare($query);
             $result = api_response::getResponse(404);
             try{
@@ -75,13 +75,33 @@
         }
 
         public function setActiveGallery($params){
+            $localParams["gallery_id"] = $params["gallery_id"];
             $clearQuery = "UPDATE gallery SET active = 0";
             $clearStmt = $this->pdo->prepare($clearQuery);
             $setQuery = "UPDATE gallery SET active = 1 WHERE id = :gallery_id";
             $setStmt = $this->pdo->prepare($setQuery);
             try{
                 $clearStmt->execute();
-                $setStmt->execute($params);
+                $setStmt->execute($localParams);
+                $result = api_response::getResponse(200);
+                $result["params"] = $params;
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+                $result["params"] = $params;
+            }
+            finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
+        public function registerUploadedImage($params){
+            $query = "INSERT INTO images (`filename`, `image_url`, `height`, `width`, `description`) VALUES (:name, :image_url, :height, :width, :alt)";
+            $statement = $this->pdo->prepare($query);
+            try{
+                $statement->execute($params);
                 $result = api_response::getResponse(200);
             }catch(Exception $e){
                 log_util::logEntry("error", $e->getMessage());

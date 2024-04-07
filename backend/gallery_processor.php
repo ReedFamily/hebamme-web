@@ -53,6 +53,8 @@
                     $image["id"] = $galleryImage["image_id"];
                     $image["image_url"] = $galleryImage["image_url"];
                     $image["alt"] = $galleryImage["image_alt"];
+                    $image["height"] = $galleryImage["height"];
+                    $image["width"] = $galleryImage["width"];
                     array_push($gallery["images"], $image);
                 }
                 $result = api_response::getResponse(200);
@@ -69,6 +71,7 @@
             $result = $db->setActiveGallery($params);
             if($result["status"] == 200){
                 $result = $this->listAllGalleries();
+                $result["params"]=$params;
             }
             return $result;
         }
@@ -100,6 +103,16 @@
                 $result = $this->listAllGalleries();
             }
             return $result;
+        }
+
+        public function registerUploadedImage($params){
+            $result = api_response::getResponse(400);
+            if(!isset($params["file"])){
+                $result["execption"] = "`file` is not provided or is invalid";
+                return $result;
+            }
+
+            
         }
 
         public function addImageToGallery($params){
