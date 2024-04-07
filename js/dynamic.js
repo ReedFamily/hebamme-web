@@ -432,14 +432,9 @@ const initializeGallery = function () {
         let listItem = $("<li />", {})
           .attr("data-target", "#carouselExampleIndicators")
           .attr("data-slide-to", iter);
+        let imgTag = createImageTag(img);
+        let carItem = $("<div />", { class: "carousel-item" }).append(imgTag);
 
-        let carItem = $("<div />", { class: "carousel-item" }).append(
-          $("<img />", {
-            src: img.image_url,
-            class: "d-block w-100",
-            alt: img.alt,
-          })
-        );
         if (iter == 0) {
           $(listItem).addClass("active");
           $(carItem).addClass("active");
@@ -453,6 +448,21 @@ const initializeGallery = function () {
     }
   });
 };
+
+function createImageTag(img) {
+  var tImg = $("<img />", {
+    src: img.image_url,
+    class: "d-block w-100",
+    alt: img.alt,
+  });
+  if (img.height > img.width) {
+    // portrait
+    $(tImg).addClass("portrait");
+  } else {
+    $(tImg).addClass("landscape");
+  }
+  return tImg;
+}
 
 const buildFaqList = function () {
   let url = "backend/rest.php?apiFunc=faqs";

@@ -141,6 +141,16 @@ body {
   }
 }
 
+.portrait {
+  max-height: 800px;
+  max-width: 533px;
+}
+
+.landscape {
+  max-height: 533px;
+  max-width: 800px;
+}
+
 .bg-accent-color-venetian-red {
   background-color: $accent-color-venetian-red !important;
   color: $text-color-light !important;
