@@ -120,7 +120,8 @@
                 'delGal'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'deleteGallery',                 'needToken' => true     ],
                 'addImg'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'addImageToGallery',             'needToken' => true     ],
                 'remImg'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'removeImageFromGallery',        'needToken' => true     ],
-                'listImg'           =>  ['class'    =>  'gallery_processor',        'function_name' =>  'listImagesInGallery',           'needToken' => true     ]
+                'listGalImg'        =>  ['class'    =>  'gallery_processor',        'function_name' =>  'listImagesInGallery',           'needToken' => true     ],
+                'listImg'           =>  ['class'    =>  'gallery_processor',        'function_name' =>  'listAllImages',                 'needToken' => true     ]
             ];
 
         }

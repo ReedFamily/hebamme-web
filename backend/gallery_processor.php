@@ -120,6 +120,12 @@
             return $result;
         }
 
+        public function listAllImages($params){
+            $db = new db_gallery();
+            $result = $db->listAllImages($params);
+            return $result;
+        }
+
         public function listImagesInGallery($params){
              $result = api_response::getResponse(400);
             if(!isset($params["gallery_id"]) || !is_numeric($params["gallery_id"])){
@@ -148,12 +154,13 @@
 
         public function deleteGallery($params){
             $result = api_response::getResponse(400);
-            if(!isset($params["id"]) || !is_numeric($params["id"])){
-                $result["exception"] = "`id` parameter not provided.";
+            if(!isset($params["gallery_id"]) || !is_numeric($params["gallery_id"])){
+                $result["exception"] = "`gallery_id` parameter not provided.";
                 return $result;
             }
             $db = new db_gallery();
-            $result = $db->removeImageFromGallery($params);
+            $dbset["gallery_id"] = $params["gallery_id"];
+            $result = $db->removeImageFromGallery($dbset);
             if($result["status"] == 200){
                 $result = $this->listAllGalleries();
             }

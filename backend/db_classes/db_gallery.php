@@ -97,6 +97,24 @@
             return $result;
         }
 
+        public function listAllImages($params){
+            $query = "SELECT id, filename, image_url, description,height, width FROM images";
+            $statement = $this->pdo->prepare($query);
+            try{
+                $values = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $result = api_response::getResponse(200);
+                $result["images"] = $values;
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+            }
+            finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
         public function registerUploadedImage($params){
             $query = "INSERT INTO images (`filename`, `image_url`, `height`, `width`, `description`) VALUES (:name, :image_url, :height, :width, :alt)";
             $statement = $this->pdo->prepare($query);
