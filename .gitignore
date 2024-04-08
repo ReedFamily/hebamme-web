@@ -25,3 +25,4 @@ dist/
 fiveserver.config.js
 img/hebammenpraxis-hallow.svg
 backend/gallery-images/*.webp
+backend/gallery-images/*.jpg
