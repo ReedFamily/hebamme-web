@@ -126,6 +126,19 @@
             return $result;
         }
 
+        public function getGalleryById($params){
+            $result = api_response::getResponse(400);
+            if(!isset($params["gallery_id"]) || !is_numeric($params["gallery_id"])){
+                $result["exception"] = "`gallery_id` is not provided or is invalid";
+                return $result;
+            }
+
+            $db = new db_gallery();
+            $dbSet["gallery_id"] = $params["gallery_id"];
+            $result = $db->getGalleryById($dbSet);
+            return $result;
+        }
+
         public function listImagesInGallery($params){
              $result = api_response::getResponse(400);
             if(!isset($params["gallery_id"]) || !is_numeric($params["gallery_id"])){

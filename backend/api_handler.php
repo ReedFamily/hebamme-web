@@ -114,6 +114,7 @@
                 'delFaq'            =>  ['class'    =>  'api_faq',                  'function_name' =>  'deleteFaqById',                 'needToken' => true     ],
                 'listGal'           =>  ['class'    =>  'gallery_processor',        'function_name' =>  'listAllGalleries',              'needToken' => true     ],
                 'getGal'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'getActiveGallery',              'needToken' => false    ],
+                'findGal'           =>  ['class'    =>  'gallery_processor',        'function_name' =>  'getGalleryById',                'needToken' => true     ],
                 'setGal'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'setActiveGallery',              'needToken' => true     ],
                 'newGal'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'createGallery',                 'needToken' => true     ],
                 'modGal'            =>  ['class'    =>  'gallery_processor',        'function_name' =>  'modifyGallery',                 'needToken' => true     ],

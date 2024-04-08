@@ -55,6 +55,24 @@
             return $result;
         }
 
+        public function getGalleryById($params){
+            $query = "SELECT id as gallery_id, name as gallery_name, description, active FROM gallery WHERE id = :gallery_id";
+            $statement = $this->pdo->prepare($query);
+            try{
+                $statement->execute($params);
+                $gallery = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $result = api_response::getResponse(200);
+                $result["gallery"] = $gallery;
+            }catch(Exception $e){
+                log_util::logEntry("error", $e->getMessage());
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+        }
+
         public function getActiveGallery(){
             $query = "SELECT g.id as gallery_id, g.name as gallery_name, g.description as gallery_description, img.id as image_id, img.image_url as image_url, img.description as image_alt, img.height as height, img.width as width FROM gallery g JOIN gallery_images gi ON g.id = gi.gallery_id RIGHT JOIN images img ON gi.images_id = img.id WHERE g.active = 1";
             $statement = $this->pdo->prepare($query);
@@ -101,6 +119,7 @@
             $query = "SELECT id, filename, image_url, description,height, width FROM images";
             $statement = $this->pdo->prepare($query);
             try{
+                $statement->execute();
                 $values = $statement->fetchAll(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["images"] = $values;
