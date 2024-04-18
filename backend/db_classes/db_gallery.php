@@ -250,23 +250,44 @@
         }
 
         public function deleteGallery($params){
-            $removeImagesQuery = "DELETE FROM gallery_images WHERE gallery_id = :gallery_id";
-            $removeGallery = "DELETE FROM gallery WHERE id = :gallery_id";
-            $riStmt = $this->pdo->prepare($removeImagesQuery);
-            $rgStmt = $this->pdo->prepare($removeGallery);
+            
+            
             try{
-                $riStmt->execute($params);
+                $this->clearGalleryForDeletion($params);
+                $removeGallery = "DELETE FROM gallery WHERE id = :gallery_id";
+                $rgStmt = $this->pdo->prepare($removeGallery);
+               
                 $rgStmt->execute($params);
                 $result = api_response::getResponse(200);
             }catch(Exception $e){
-                log_util::logEntry("error", $e->getMessage());
+                log_util::logEntry("error",$e->getMessage() . " " . $e->getLine() . " " . $e->getTraceAsString());
                 $result = api_response::getResponse(500);
                 $result["exception"] = $e->getMessage();
+                $result["params"] = $params;
             }
             finally{
                 $this->disconnect();
             }
             return $result;
+        }
+
+        private function clearGalleryForDeletion($params){
+            if($this->doesGalleryHaveImages($params)){
+                $removeImagesQuery = "DELETE FROM gallery_images WHERE gallery_id = :gallery_id";
+                $riStmt = $this->pdo->prepare($removeImagesQuery);
+                $riStmt->execute($params);
+            }
+        }
+
+        private function doesGalleryHaveImages($params){
+
+            $query = "SELECT COUNT(*) as cnt FROM gallery_images WHERE gallery_id = :gallery_id";
+            $stmt = $this->pdo->prepare($query);
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            if(isset($res["cnt"]) && $res["cnt"] > 0){
+                return true;
+            }
+            return false;
         }
 
         public function removeOrphanedImages($params){

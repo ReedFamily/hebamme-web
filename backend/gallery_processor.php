@@ -173,7 +173,7 @@
             }
             $db = new db_gallery();
             $dbset["gallery_id"] = $params["gallery_id"];
-            $result = $db->removeImageFromGallery($dbset);
+            $result = $db->deleteGallery($dbset);
             if($result["status"] == 200){
                 $result = $this->listAllGalleries();
             }

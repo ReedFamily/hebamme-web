@@ -172,8 +172,21 @@ function createDeleteLink(gallery) {
   var linkId = "del-gallery-" + gallery.id;
   var link = $("<a />", { id: linkId, text: " " }).click(function (event) {
     event.preventDefault();
-    var galId = $(this).attr("data-id");
-    // request gallery information and display modal
+    var galId = $(this).data("id");
+    var url = "../backend/rest.php?apiFunc=findGal&gallery_id=" + galId;
+    $.get(url, function (res) {
+      if (res.status == 200) {
+        console.log(res);
+        $("#delete-gallery-acknowledge-button").data(
+          "id",
+          res.gallery.gallery_id
+        );
+        $("#delete-gallery-name").text("'" + res.gallery.gallery_name + "'");
+        $("#delete-gallery-dialog").modal("show");
+      } else {
+        console.log(res);
+      }
+    });
   });
   $(link).attr("data-id", gallery.id);
   $(link).append($("<i />", { class: "fi-xwsuxl-bin linkchar" }));
@@ -186,4 +199,15 @@ function loadAssignedGalleryImages(galleryId) {
   // get all assigned images
   // get all active images;
   // display in listing
+}
+
+function sendDeleteGallery(id) {
+  var url = "../backend/rest.php?apiFunc=delGal&gallery_id=" + id;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      displayGalleries(res);
+    } else {
+      console.error(res);
+    }
+  });
 }

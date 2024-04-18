@@ -373,6 +373,25 @@
             </div>
         </div>
     </div>
+    <div id="delete-gallery-dialog" tabindex="-1" class="modal" role="dialog">
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h5 class="modal-title">Gallerie löschen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bitte bestätigen Sie, dass Sie mit dem Löschen das Gallerie <span id="delete-gallery-name">{GALLERY}</span></p>
+                <p class="see-me p-3"><i class="fi-ensuzl-warning-solid"></i>&nbsp;&nbsp; Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-gallery-acknowledge-button">Bestätigen</button>
+            </div>
+        </div>
+    </div>
+
     <div id="upload-gallery-image-dialog" tabindex="-1" class="modal" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -521,6 +540,11 @@
             var id = $(this).data("id");
             sendDeleteUser(id);
         });
+        $("#delete-gallery-acknowledge-button").click(function (event) {
+            var id = $(this).data("id");
+            sendDeleteGallery(id);
+        });
+
         $("#delete-alert-acknowledge-button").click(function (event) {
             var id = $(this).data("id");
             sendDeleteAlert(id);
