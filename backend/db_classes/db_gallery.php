@@ -60,7 +60,7 @@
             $statement = $this->pdo->prepare($query);
             try{
                 $statement->execute($params);
-                $gallery = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $gallery = $statement->fetch(PDO::FETCH_ASSOC);
                 $result = api_response::getResponse(200);
                 $result["gallery"] = $gallery;
             }catch(Exception $e){
