@@ -182,9 +182,12 @@ const displayLoginForm = function () {
 };
 
 const getCookieValue = function (name) {
-  return (
+
+  let cookieValue = (
     document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || ""
-  );
+  ); 
+
+  return cookieValue;
 };
 
 const validateLogin = function (user, password) {
@@ -209,6 +212,8 @@ const validateLogin = function (user, password) {
           $("#login-error-message").removeClass("hidden");
         }
       });
+    }else{
+      console.log(res);
     }
   });
 };
