@@ -1,222 +1,139 @@
 $(document).ready(function() {
-const form = document.querySelector("form");
+// Selecting form and contact options
+const form = $("form");
+const contactByEmail = $("#kontaktweg-email");
+const contactByPhone = $("#kontaktweg-telefon");
 
-let isFormValid = false;
+// Selecting form inputs and error messages
+const inputs = {
+  name: $("#form-vorname"),
+  surname: $("#form-nachname"),
+  email: $("#form-emailadresse"),
+  phone: $("#form-telefon"),
+  address: $("#form-strasseundhausnummer"),
+  city: $("#form-stadt"),
+  zip: $("#form-plz"),
+  message: $("#form-nachricht"),
+};
 
-let contactEmail = false;
+const errors = {
+  surnameEmpty: $("#error-nachname-emtpy"),
+  surnameInvalid: $("#error-nachname-invalid"),
+  emailEmpty: $("#error-email-empty"),
+  emailInvalid: $("#error-email-invalid"),
+  phoneInvalid: $("#error-telefon-invalid"),
+  zip: $("#error-plz"),
+  kontaktweg: $("#error-kontaktweg"),
+  message: $("#error-nachricht"),
+};
 
-let contactPhone = false;
-
-let contactEmailString = "n";
-
-let contactPhoneString = "n";
-
-let anredeString = "none";
-
+// Function to validate email format
 const isValidEmail = (email) => {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
-//Define where to find the different Inputs
-
-const nameInput = $("#form-vorname");
-
-const surnameInput = $("#form-nachname");
-
-const emailInput = $("#form-emailadresse");
-
-const phoneInput = $("#form-telefon");
-
-const addressInput = $("#form-strasseundhausnummer");
-
-const cityInput = $("#form-stadt");
-
-const zipInput = $("#form-plz");
-
-const contactByPhone = $("#kontaktweg-telefon");
-const contactByEmail = $("#kontaktweg-email");
-
-const messageInput = $("#form-nachricht");
-
-//Define where to find the different Error-Message divs
-
-const nameError = $("#error-vorname");
-
-const surnameErrorEmpty = $("#error-nachname-emtpy");
-const nachnameErrorInvalid = $("#error-nachname-invalid");
-
-const emailErrorEmpty = $("#error-email-empty");
-const emailErrorInvalid = $("#error-email-invalid");
-
-const phoneErrorInvalid = $("#error-telefon-invalid");
-
-const zipError = $("#error-plz");
-
-const kontaktwegError = $("#error-kontaktweg");
-
-const messageError = $("#error-nachricht");
-
-//More defining... This time when the from data is valid and when not...
-
+// Function to reset error classes
 const resetInvalidClasses = () => {
-  $(surnameInput).removeClass("invalid");
-  $(surnameErrorEmpty).addClass("hidden");
-  $(messageInput).removeClass("invalid");
-  $(messageError).addClass("hidden");
-  $(emailInput).removeClass("invalid");
-  $(emailErrorEmpty).addClass("hidden");
-  $(emailErrorInvalid).addClass("hidden");
-  $(phoneInput).removeClass("invalid");
-  $(phoneErrorInvalid).addClass("hidden");
-  $(kontaktwegError).addClass("hidden");
+  // Hiding error messages and removing 'invalid' class from inputs
+  Object.values(errors).forEach((error) => error.addClass("hidden"));
+  Object.values(inputs).forEach((input) => input.removeClass("invalid"));
 };
 
 const clearFields = () => {
   form.reset();
 };
 
-const validateEmailInput = () => {
-  if ($(contactByEmail).is(":checked")) {
-    if (isValidEmail($(emailInput).val()) == false) {
-      $(emailInput).addClass("invalid");
-      $(emailErrorInvalid).removeClass("hidden");
-      isFormValid = false;
-    }
-  }
-};
-
-const validatePhoneInput = () => {
-  if ($(contactByPhone).is(":checked")) {
-    if ($(phoneInput).val() == "") {
-      $(phoneInput).addClass("invalid");
-      $(phoneErrorInvalid).removeClass("hidden");
-      isFormValid = false;
-    } else {
-      if (isNaN($(phoneInput).val())) {
-        $(phoneInput).addClass("invalid");
-        $(phoneErrorInvalid).removeClass("hidden");
-        isFormValid = false;
-      }
-    }
-  }
-};
-
-const validateSurnameInput = () => {
-  if (!$(surnameInput).val()) {
-    $(surnameInput).addClass("invalid");
-    $(surnameErrorEmpty).removeClass("hidden");
-    isFormValid = false;
-  }
-};
-
-const validateKontaktwegInput = () => {
-  if (!$(contactByEmail).is(":checked") & !$(contactByPhone).is(":checked")) {
-    $(kontaktwegError).removeClass("hidden");
-    isFormValid = false;
-  }
-};
-
-const checkKontaktwegInput = () => {
-  if ($(contactByEmail).is(":checked")) {
-    contactEmail = true;
-    contactEmailString = "y";
-  }
-  if ($(contactByPhone).is(":checked")) {
-    contactPhone = true;
-    contactPhoneString = "y";
-  }
-};
-
-const validateMessageInput = () => {
-  if (!$(messageInput).val()) {
-    messageInput.addClass("invalid");
-    messageError.removeClass("hidden");
-    isFormValid = false;
-  }
-};
-
+// Function to validate form inputs
 const validateInputs = () => {
   resetInvalidClasses();
-  isFormValid = true;
-  validateSurnameInput();
-  validateMessageInput();
-  validateKontaktwegInput();
-  validateEmailInput();
-  validatePhoneInput();
+  let isFormValid = true;
+
+  // Validate surname input
+  if (!inputs.surname.val().trim()) {
+    inputs.surname.addClass("invalid");
+    errors.surnameEmpty.removeClass("hidden");
+    isFormValid = false;
+  }
+
+  // Validate email input
+  if (contactByEmail.is(":checked") && !isValidEmail(inputs.email.val())) {
+    inputs.email.addClass("invalid");
+    errors.emailInvalid.removeClass("hidden");
+    isFormValid = false;
+  }
+
+  // Validate phone input
+  if (contactByPhone.is(":checked") && (inputs.phone.val().trim() === "" || isNaN(inputs.phone.val()))) {
+    inputs.phone.addClass("invalid");
+    errors.phoneInvalid.removeClass("hidden");
+    isFormValid = false;
+  }
+
+  // Validate contact options
+  if (!contactByEmail.is(":checked") && !contactByPhone.is(":checked")) {
+    errors.kontaktweg.removeClass("hidden");
+    isFormValid = false;
+  }
+
+  // Validate message input
+  if (!inputs.message.val().trim()) {
+    inputs.message.addClass("invalid");
+    errors.message.removeClass("hidden");
+    isFormValid = false;
+  }
+
+  return isFormValid;
 };
 
-//Finally we can do stuff with the data!
+// Function to collect form data
+const collectFormData = () => {
+  const formData = {
+    anrede: "none",
+    firstname: inputs.name.val().trim(),
+    lastname: inputs.surname.val().trim(),
+    emailAddress: inputs.email.val().trim(),
+    phone: inputs.phone.val().trim(),
+    address: inputs.address.val().trim(),
+    city: inputs.city.val().trim(),
+    zip: inputs.zip.val().trim(),
+    contactByEmail: contactByEmail.is(":checked") ? "y" : "n",
+    contactByPhone: contactByPhone.is(":checked") ? "y" : "n",
+    message: inputs.message.val().trim(),
+  };
 
-form.addEventListener("submit", (e) => {
+  return formData;
+};
+
+// Function to handle form submission
+const handleSubmit = (e) => {
   e.preventDefault();
-  validateInputs();
-  if (isFormValid) {
-    checkKontaktwegInput();
-    var formData = {};
-    if (anredeString != "") {
-      formData.anrede = anredeString;
-    }
-    if ($(nameInput).val() != "") {
-      formData.firstname = $(nameInput).val();
-    }
-    formData.lastname = $(surnameInput).val();
-    if ($(emailInput).val() != "") {
-      formData.emailAddress = $(emailInput).val();
-    }
-    if ($(phoneInput).val() != "") {
-      formData.phone = $(phoneInput).val();
-    }
-    if ($(addressInput).val() != "") {
-      formData.address = $(addressInput).val();
-    }
-    if ($(cityInput).val() != "") {
-      formData.city = $(cityInput).val();
-    }
-    if ($(zipInput).val() != "") {
-      formData.zip = $(zipInput).val();
-    }
-    formData.contactByEmail = contactEmailString;
-    formData.contactByPhone = contactPhoneString;
-    formData.message = $(messageInput).val();
+  const isFormValid = validateInputs();
 
-    var url = "backend/rest.php?apiFunc=sendContact";
-    jQuery.post(url, JSON.stringify(formData), function (res) {
-      response = res;
-      if (response.status == 200) {
-        form.reset();
+  if (isFormValid) {
+    const formData = collectFormData();
+    const url = "backend/rest.php?apiFunc=sendContact";
+
+    // Send form data via AJAX POST request
+    $.post(url, JSON.stringify(formData), function(res) {
+      if (res.status === 200) {
+        form[0].reset();
         form.remove();
         $("#thank-you").removeClass("hidden");
       } else {
-        // error response
         $("#error-message").removeClass("hidden");
-        console.log(response);
+        console.log(res);
       }
     });
   }
-});
+};
 
-//Making it so we don't have to press submit every time to see if the data is valid
+// Event listener for form submission
+form.on("submit", handleSubmit);
 
-$(nameInput).on("input", () => {
-  validateInputs();
-});
-
-$(surnameInput).on("input", () => {
-  validateInputs();
-});
-
-$(messageInput).on("input", () => {
-  validateInputs();
-});
-
-$(emailInput).on("input", () => {
-  validateInputs();
-});
-
-$(phoneInput).on("input", () => {
-  validateInputs();
+// Event listeners for input changes
+$.each(inputs, function(_, input) {
+  input.on("input", validateInputs);
 });
 
 // Event listeners for contact options
