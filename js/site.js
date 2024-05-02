@@ -1,3 +1,4 @@
+$(document).ready(function() {
 const form = document.querySelector("form");
 
 let isFormValid = false;
@@ -221,4 +222,6 @@ $(phoneInput).on("input", () => {
 // Event listeners for contact options
 $.each([contactByEmail, contactByPhone], function(_, input) {
   input.on("click", validateInputs);
+});
+
 });
