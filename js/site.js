@@ -40,10 +40,6 @@ $(document).ready(function () {
     Object.values(inputs).forEach((input) => input.removeClass("invalid"));
   };
 
-  const clearFields = () => {
-    form.reset();
-  };
-
   // Function to validate form inputs
   const validateInputs = () => {
     resetInvalidClasses();
