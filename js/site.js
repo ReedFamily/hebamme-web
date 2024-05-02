@@ -218,10 +218,7 @@ $(phoneInput).on("input", () => {
   validateInputs();
 });
 
-$(contactByEmail).on("click", () => {
-  validateInputs();
-});
-
-$(contactByPhone).on("click", () => {
-  validateInputs();
+// Event listeners for contact options
+$.each([contactByEmail, contactByPhone], function(_, input) {
+  input.on("click", validateInputs);
 });
