@@ -182,10 +182,8 @@ const displayLoginForm = function () {
 };
 
 const getCookieValue = function (name) {
-
-  let cookieValue = (
-    document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || ""
-  ); 
+  let cookieValue =
+    document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || "";
 
   return cookieValue;
 };
@@ -212,7 +210,7 @@ const validateLogin = function (user, password) {
           $("#login-error-message").removeClass("hidden");
         }
       });
-    }else{
+    } else {
       console.log(res);
     }
   });
@@ -309,3 +307,5 @@ const buildLoginForm = function () {
 const randomInt = function (max, min) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+function loadScript(script, callback) {}

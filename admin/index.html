@@ -151,6 +151,44 @@
             </div>
         </div>
     </div>
+    <!-- Gallery Dialog -->
+    <div id="edit-gallery-dialog" tabindex="-1" class="modal" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gallery-editor-title">Gallery bearbeitung</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-gallery-form" class="form">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="gallery-id" class="dialog-form-label">ID</label>
+                                <input id="gallery-id" name="id" type="text" readonly="true" class="form-control-sm" placeholder="new" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="gallery-name" class="dialog-form-label">Name</label>
+                                <input id="gallery-name" name="name" type="text" class="form-control-sm" placeholder="Gallery Name" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 flex-grow-1">
+                                <textarea class="form-control h-100" name="message" id="gallery-description"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="edit-gallery-save-button">Speicher</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="delete-faq-dialog" tabindex="-1" class="modal" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

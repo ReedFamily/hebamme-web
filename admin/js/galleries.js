@@ -38,7 +38,11 @@ const displayGalleries = function (res) {
   );
 
   $("#add-new-gallery-button").click(function (event) {
-    // load gallery editor
+    $("#gallery-editor-title").text("Neue Gallery");
+    $("body").off("click", "#edit-gallery-save-button", editGalleryEvent);
+    $("body").on("click", "#edit-gallery-save-button", newGalleryEvent);
+    $("#edit-gallery-form").trigger("reset");
+    $("#edit-gallery-dialog").modal("show");
   });
 
   $("#upload-photo-button").click(function (event) {
@@ -115,7 +119,7 @@ function createEditLink(gallery) {
     var id = $(this).attr("data-id");
     editGallery(id);
   });
-  $(link).attr("data-id", galId);
+  $(link).attr("data-id", gallery.id);
   $(link).append($("<i />", { class: "fi-xnsuxl-edit-solid linkchar" }));
   return link;
 }
@@ -193,7 +197,24 @@ function createDeleteLink(gallery) {
   return link;
 }
 
-function editGallery(galleryId) {}
+function editGallery(galleryId) {
+  var url = "../backend/rest.php?apiFunc=findGal&gallery_id=" + galleryId;
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      $("body").off("click", "#edit-gallery-save-button", newGalleryEvent);
+      $("body").on("click", "#edit-gallery-save-button", editGalleryEvent);
+      $("#edit-gallery-form").trigger("reset");
+      $("#gallery-id").val(res.gallery.gallery_id);
+      $("#gallery-name").val(res.gallery.gallery_name);
+      $("#gallery-description").val(res.gallery.description);
+      $("#edit-gallery-dialog").modal("show");
+    }
+  });
+}
+
+function newGalleryEvent(event) {}
+
+function editGalleryEvent(event) {}
 
 function loadAssignedGalleryImages(galleryId) {
   // get all assigned images
