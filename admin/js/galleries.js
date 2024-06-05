@@ -212,9 +212,32 @@ function editGallery(galleryId) {
   });
 }
 
-function newGalleryEvent(event) {}
+function newGalleryEvent(event) {
+  event.stopImmediatePropagation();
+  let newGalleryObj = new Object();
+  newGalleryObj.gallery_name = $("#gallery-name").val();
+  newGalleryObj.description = $("#gallery-description");
+  let url = "../backend/rest.php?apiFunc=newGal";
+  $.post(url, JSON.stringify(newGalleryObj), function (res) {
+    if (res.status == 200) {
+      displayGalleries(res);
+    }
+  });
+}
 
-function editGalleryEvent(event) {}
+function editGalleryEvent(event) {
+  event.stopImmediatePropagation();
+  let editGalleryObj = new Object();
+  editGalleryObj.gallery_id = $("#gallery-id").val();
+  editGalleryObj.gallery_name = $("#gallery-name").val();
+  editGalleryObj.description = $("#gallery-description");
+  let url = "../backend/rest.php?apiFunc=newGal";
+  $.post(url, JSON.stringify(editGalleryObj), function (res) {
+    if (res.status == 200) {
+      displayGalleries(res);
+    }
+  });
+}
 
 function loadAssignedGalleryImages(galleryId) {
   // get all assigned images
