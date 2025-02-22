@@ -43,7 +43,7 @@ const displayAlerts = function (response) {
   );
 
   $("#add-new-alert-button").click(function (event) {
-    //alertEditor.value("");
+    alertEditor.value("");
     $("#alert-editor-title").text("Neue Alert");
     let uname = getCookieByName("uname");
     $("#alert-edit-form").trigger("reset");

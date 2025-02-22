@@ -419,6 +419,51 @@ const getClassInfo = function () {
   });
 };
 
+const initializeGallery = function () {
+  let url = "backend/rest.php?apiFunc=getGal";
+  let listItemWrapper = $("#indicatorsList");
+  let itemContentWrapper = $("#carouselcontent");
+  $.get(url, function (res) {
+    if (res.status == 200) {
+      let iter = 0;
+      listItemWrapper.empty();
+      itemContentWrapper.empty();
+      $.each(res.gallery.images, function (index, img) {
+        let listItem = $("<li />", {})
+          .attr("data-target", "#carouselExampleIndicators")
+          .attr("data-slide-to", iter);
+        let imgTag = createImageTag(img);
+        let carItem = $("<div />", { class: "carousel-item" }).append(imgTag);
+
+        if (iter == 0) {
+          $(listItem).addClass("active");
+          $(carItem).addClass("active");
+        }
+        listItemWrapper.append(listItem);
+        itemContentWrapper.append(carItem);
+        iter++;
+      });
+    } else {
+      console.error(res);
+    }
+  });
+};
+
+function createImageTag(img) {
+  var tImg = $("<img />", {
+    src: img.image_url,
+    class: "d-block w-100",
+    alt: img.alt,
+  });
+  if (img.height > img.width) {
+    // portrait
+    $(tImg).addClass("portrait");
+  } else {
+    $(tImg).addClass("landscape");
+  }
+  return tImg;
+}
+
 const buildFaqList = function () {
   let url = "backend/rest.php?apiFunc=faqs";
   let wrapper = $("#faq-wrapper");
@@ -446,7 +491,7 @@ const buildFaqList = function () {
           .attr("data-faqId", faq.id)
           .attr("aria-expanded", false)
           .attr("aria-controls", "faq-body-" + faq.id)
-          .attr("aria-label", "open or close question")
+          .attr("aria-label", faq.question)
           .append(
             $("<span />", {
               class: "card-title",

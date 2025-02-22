@@ -150,6 +150,24 @@ const buildSidebarNav = function () {
             }
           });
         })
+    ),
+    $("<li />", { class: "nav-item" }).append(
+      $("<a />", { id: "link-gallery", class: "nav-link" })
+        .append(
+          $("<i />", { class: "fi-xnsuxl-image-solid" }),
+          $("<span />", { text: " Fotos" })
+        )
+        .click(function (event) {
+          event.preventDefault();
+          $.get("../backend/rest.php?apiFunc=listGal", function (res) {
+            if (res.status == 200) {
+              // display galleries
+              displayGalleries(res);
+            } else {
+              displayFailure("#failure-gallery-template");
+            }
+          });
+        })
     )
   );
   friconix_update();
@@ -164,9 +182,10 @@ const displayLoginForm = function () {
 };
 
 const getCookieValue = function (name) {
-  return (
-    document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || ""
-  );
+  let cookieValue =
+    document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || "";
+
+  return cookieValue;
 };
 
 const validateLogin = function (user, password) {
@@ -191,6 +210,8 @@ const validateLogin = function (user, password) {
           $("#login-error-message").removeClass("hidden");
         }
       });
+    } else {
+      console.log(res);
     }
   });
 };

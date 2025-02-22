@@ -12,126 +12,151 @@ $border-color_1: #ff0000;
 ////////////////// STYLES ///////////////////
 /////////////////////////////////////////////
 input {
-    &:invalid {
-        border-color: $border-color_1;
-    }
+  &:invalid {
+    border-color: $border-color_1;
+  }
+}
+
+a.isActive {
+  color: $color_4;
+  cursor: default;
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+a.notActive {
+  color: $color_2;
+  &:hover {
+    color: $color_4;
+  }
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .text-center {
-    text-align: center !important;
+  text-align: center !important;
 }
 
 #login-form-wrapper {
-    margin: auto;
+  margin: auto;
 }
 
 #logout-link {
-    cursor: default;
+  cursor: default;
 }
 
 #imagewrapper {
-    width: 190px;
-    height: auto;
-    border: 1px inset black;
-    padding: 2px;
-    margin: 1px;
+  width: 190px;
+  height: auto;
+  border: 1px inset black;
+  padding: 2px;
+  margin: 1px;
 }
 
 .sidebar {
-    position: fixed;
-    top: 25px;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 0;
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
-    .nav-link {
-        font-weight: 500;
-        color: $color_1;
-        cursor: default;
-        &:hover {
-            font-weight: 600;
-        }
+  position: fixed;
+  top: 25px;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  .nav-link {
+    font-weight: 500;
+    color: $color_1;
+    cursor: default;
+    &:hover {
+      font-weight: 600;
     }
+  }
 }
 
 .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 48px;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .dialog-form-label {
-    display: block;
+  display: block;
 }
 
 .subdued {
-    font-size: 0.75em;
-    color: $color_2;
+  font-size: 0.75em;
+  color: $color_2;
 }
 
 .see-me {
-    background-color: $background-color_1;
-    color: $color_3;
-    text-transform: uppercase;
-    display: block;
-    font-size: 0.75em;
+  background-color: $background-color_1;
+  color: $color_3;
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.75em;
 }
 
 .linkchar {
-    display: inline-block;
+  display: inline-block;
+  padding: 1px;
+  &:hover {
     padding: 1px;
-    &:hover {
-        padding: 1px;
-        border: 1px solid #888;
-    }
+    border: 1px solid #888;
+  }
 }
 
 .thumbnail-wrapper {
-    width: 50px;
-    height: auto;
+  width: 50px;
+  height: auto;
 }
 
 .checkmark {
-    color: $color_4;
+  color: $color_4;
 }
 
 .nocheck {
-    color: $color_5;
+  color: $color_5;
 }
 
 .levelcellentry {
-    padding: 2px;
-    display: block;
-    text-align: center;
+  padding: 2px;
+  display: block;
+  text-align: center;
 }
 
-.levelSelect{
-    min-width: 5rem;
-    padding: 4px;
-    display: inline-block;
-    text-align: center;
-    border-width: 2px;
+.levelSelect {
+  min-width: 5rem;
+  padding: 4px;
+  display: inline-block;
+  text-align: center;
+  border-width: 2px;
 }
 
-.erroredFormControl{
-    border: 2px solid red;
+.highlight {
+  color: #fff;
 }
 
-table
-{
-    width: 100%;
-    margin: 1rem;
+.erroredFormControl {
+  border: 2px solid red;
+}
+
+.mr3 {
+  margin-right: 3px;
+}
+
+.ml3 {
+  margin-left: 3px;
+}
+
+table {
+  width: 100%;
+  margin: 1rem;
 }
 
 button {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }

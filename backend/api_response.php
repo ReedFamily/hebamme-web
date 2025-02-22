@@ -1,6 +1,6 @@
 <?php
      /*
-        This this class is used to consume the Hebamio API and provide a result of all classes and information in a single JSON structure.
+        Response builder
         Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
         
         Licensed under MIT License
@@ -41,6 +41,10 @@
                     $response["status"] = 200;
                     $response["message"] = "Operation successful";
                     break;
+                case 302:
+                    $response["success"] = true;
+                    $resposne["status"] = 302;
+                    $response["message"] = "Already Exists";
                 case 400:
                     $response["success"] = false;
                     $response["status"] = 400;

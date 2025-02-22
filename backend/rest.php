@@ -1,6 +1,6 @@
 <?php
      /*
-        This this class is used to consume the Hebamio API and provide a result of all classes and information in a single JSON structure.
+        Rest entry point
         Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
         
         Licensed under MIT License
@@ -41,7 +41,9 @@
         $requestMethodArray = $_REQUEST;
         $token = "";
         $adminToken = false;
-        if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
+        // Check if token is found in the request
+        if(isset($requestMethodArray["t"])){$token = $requestMethodArray["t"];}
+        // Find the function
         if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
         //if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
         $functionParams = array();
@@ -72,6 +74,7 @@
         if($returnArray === null || trim($returnArray) === ''){
             $returnArray = '{"status":500, "Exception":"Empty Result"}';
         }
+        http_response_code($res["status"]);
         echo $returnArray;
        
 

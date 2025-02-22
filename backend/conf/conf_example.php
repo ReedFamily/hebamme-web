@@ -20,7 +20,8 @@
     define("CONST_LOG_DEBUG", false); // enables debug logging
     define("CONST_LOG_INFO", false); // enables info logging
     define("CONST_LOG_ERROR", false); // enables error logging
-    define("CONST_HEBAMIO_KEY", "");
-    define("CONST_HEBAMIO_URL", "");
+    define("CONST_HEBAMIO_KEY", ""); // Configures the HEBAMIO API Key (provided by Hebamio)
+    define("CONST_HEBAMIO_URL", ""); // Configures the base URL to HEBAMIO for the API without trailing /
+    define("CONST_GALLERY_PATH", ""); // Configures the base directory for the gallery without trailing /
 
 ?>

@@ -12,7 +12,7 @@ $background-color-baby-blanket-beige: #e7d6c6;
 $accent-color-moss-green: #869948;
 $accent-color-class-gbv: #869948;
 $accent-color-class-rubi: #5b4899;
-$accent-color-class-bt: #489984;
+$accent-color-class-bt: #92beb3;
 $accent-color-class-eh: #99485d;
 $accent-color-class-yoga: #ff00ff;
 $accent-color-class-bg: #485099;
@@ -139,6 +139,16 @@ body {
     background-color: $background-color-btn-light;
     color: $accent-color-french-bistre;
   }
+}
+
+.portrait {
+  max-height: 800px;
+  max-width: 533px;
+}
+
+.landscape {
+  max-height: 533px;
+  max-width: 800px;
 }
 
 .bg-accent-color-venetian-red {
@@ -519,6 +529,12 @@ div.inner {
       }
     }
   }
+}
+
+#babytreff-content {
+  background-color: $accent-color-class-bt;
+
+  padding: 1rem;
 }
 
 form {
