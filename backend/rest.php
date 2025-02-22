@@ -44,7 +44,7 @@
         // Check if token is found in the request
         if(isset($requestMethodArray["t"])){$token = $requestMethodArray["t"];}
         // Find the function
-        if(isset($requestMethodArray["f"])){ $functionName = $requestMethodArray["f"];}
+        if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
         //if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
         $functionParams = array();
         foreach($requestMethodArray as $key => $value){
