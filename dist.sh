@@ -16,9 +16,9 @@ echo "*** COPY FILES ***"
 cp ./index.html ./dist/upload/index.html
 cp ./sitemap.xml ./dist/upload/sitemap.xml
 cp ./LICENSE ./dist/upload/LICENSE
-cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
-cp ./favicon32.ico ./dist/upload/favicon32.ico
-cp ./favicon.svg ./dist/upload/favicon.svg
+# cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
+# cp ./favicon32.ico ./dist/upload/favicon32.ico
+# cp ./favicon.svg ./dist/upload/favicon.svg
 cp ./404.html ./dist/upload/404.html
 cp -R ./fonts ./dist/upload/fonts
 cp -R ./js ./dist/upload/js
