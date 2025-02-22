@@ -228,10 +228,10 @@ function newGalleryEvent(event) {
 function editGalleryEvent(event) {
   event.stopImmediatePropagation();
   let editGalleryObj = new Object();
-  editGalleryObj.gallery_id = $("#gallery-id").val();
-  editGalleryObj.gallery_name = $("#gallery-name").val();
-  editGalleryObj.description = $("#gallery-description");
-  let url = "../backend/rest.php?apiFunc=newGal";
+  editGalleryObj.id = $("#gallery-id").val();
+  editGalleryObj.name = $("#gallery-name").val();
+  editGalleryObj.description = $("#gallery-description").val();
+  let url = "../backend/rest.php?apiFunc=modGal";
   $.post(url, JSON.stringify(editGalleryObj), function (res) {
     if (res.status == 200) {
       displayGalleries(res);

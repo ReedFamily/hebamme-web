@@ -90,15 +90,19 @@
 
         public function modifyGallery($params){
             $result = api_response::getResponse(400);
-            if(!isset($params["id"]) || !is_numeric($params["id"])){
+            if(!isset($params["id"])){ //  || !is_numeric($params["id"])
                 $result["exception"] = "`id` parameter not provided.";
+                $result["params"] = $params;
                 return $result;
             }
             if(!isset($params["description"])){
                 $params["description"] = "";
             }
+            $localParams["id"] = $params["id"];
+            $localParams["name"] = $params["name"];
+            $localParams["description"] = $params["description"];
             $db = new db_gallery();
-            $result = $db->modifyGallery($params);
+            $result = $db->modifyGallery($localParams);
             if($result["status"] == 200){
                 $result = $this->listAllGalleries();
             }

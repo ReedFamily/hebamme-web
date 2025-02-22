@@ -41,8 +41,10 @@
         $requestMethodArray = $_REQUEST;
         $token = "";
         $adminToken = false;
-        if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
-        if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
+        // Check if token is found in the request
+        if(isset($requestMethodArray["t"])){$token = $requestMethodArray["t"];}
+        // Find the function
+        if(isset($requestMethodArray["f"])){ $functionName = $requestMethodArray["f"];}
         //if(isset($requestMethodArray["apiParams"])){ $functionParams = $requestMethodArray["apiParams"];}
         $functionParams = array();
         foreach($requestMethodArray as $key => $value){
@@ -72,6 +74,7 @@
         if($returnArray === null || trim($returnArray) === ''){
             $returnArray = '{"status":500, "Exception":"Empty Result"}';
         }
+        http_response_code($res["status"]);
         echo $returnArray;
        
 
