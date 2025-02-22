@@ -278,7 +278,7 @@ body {
 }
 
 .bt {
-  background-color: #489984 !important;
+  background-color: #92beb3 !important;
 }
 
 .yoga {
@@ -575,6 +575,11 @@ div.inner {
   #kontakt-sprechzeiten .row .right-text {
     text-align: right !important;
   }
+}
+
+#babytreff-content {
+  background-color: #92beb3;
+  padding: 1rem;
 }
 
 form {
