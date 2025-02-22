@@ -5,8 +5,8 @@ echo "*** BEGIN PACKAGE PROCESS ***"
 GIT_COMMIT=$1
 BUILD_NO=$2
 COMMIT=${GIT_COMMIT:0:7}
-VER=2.1.0
-COPYRIGHT_YEAR=2024
+VER=2.1.1
+COPYRIGHT_YEAR=2025
 LAST_MOD=$(date '+%Y-%m-%dT%H:%M:%S%z')
 DEPLOYNAME="../hebamme-web-deploy_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
 FLYWAYNAME="../hebamme-web-flyway_${VER}_${COMMIT}_${BUILD_NO}.tar.gz"
