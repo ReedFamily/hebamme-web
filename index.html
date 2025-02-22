@@ -13,6 +13,11 @@
     <meta name="title" content="Hebammenpraxis Moosburg">
     <meta name="description" content="Angebote für werdende Eltern und junge Familien: Geburtsvorbereitung, Schwangerschaftsyoga, Betreuung vor & nach der Geburt, Babypflegekurs, Rückbildung, Babytreff, Babymassage, PEKiP, Still- & Ernährungsberatung">
     <meta name="keywords" content="moosburg, hebamme, hebammensuche, hebammenpraxis, geburtshaus, geburtsvorbereitungskurse, rückbildungskurse, hebamme finden, midwife, babytreff">
+    <!-- 
+        NOTE: 
+        The following only allows links of this website on social media to 
+        appear with an image.
+    -->
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hebammenpraxis-moosburg.de/">
@@ -95,6 +100,9 @@
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#kurse" style="color: rgba(0, 0, 0, .75);" title="Kurse">Kurse</a>
                         </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#babytreff" style="color: rgba(0,0,0,.75);" title="Babytreff">Babytreff</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color: rgba(0, 0, 0, .75);" title="Kurse">
                                 Kurse
@@ -249,6 +257,44 @@
             </div>
         </div>
     </section>
+    <!--
+    <section class="standard" id="praxis">
+        <div class="container">
+            <h1>Unsere Praxis</h1>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol id="indicatorsList" class="carousel-indicators">
+                   
+                </ol>
+                <div class="carousel-inner" id="carouselcontent">
+                   
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    -->
+    <section class="standard" id="babytreff">
+        <div class="container">
+            <h1>Babytreff</h1>
+            <div id="babytreff-content">
+                <p>
+                    <strong>Offene Sprechstunde Mittwoch Vormittag von 10 - 12 Uhr</strong><br>
+                    für Mütter (Eltern) mit Kindern von 0-7 Monaten. Es besteht dabei die Möglichkeit aktuelle Entwicklungsschritte oder Schwierigkeiten mit der/den Hebammen zu besprechen und die Kinder zu wiegen und zu messen. Außerdem besteht die Möglichkeit zum Austausch mit anderen Müttern.
+                    Der Babytreff steht allen offen auch Familien, die nicht von uns betreut werden. Frauen Frauen die keine Hebamme zur Wochenbettbetreuung gefunden haben, können den Babytreff als Wochenbettsprechstunde nutzen.
+                    Sie müssen sich nicht anmelden. (bitte Versichertenkarte und Krabbeldecke oder Duschtuch mitbringen)
+                    Die offene Sprechstunde wird über die Krankenkasse abgerechnet.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <p class="browsehappy iebanner">
         Sie verwenden einen <strong>veralteten</strong> Webbrowser. Bitte<a href="https://bestvpn.org/outdatedbrowser/de"> aktualisieren Sie Ihren Browser</a> um diese Seite zu nutzen.
     </p>
@@ -641,7 +687,7 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <p>&copy; 2021-2023</p>
+                    <p>&copy; 2021-COPYRIGHT_YEAR</p>
                     <p>Hebammenpraxis Altenbeck u. Kollegin</p>
                     <p>Kopfbild von <a href="https://www.freepik.com/free-photo/feet-dreamy-child-enveloped-woolen-scarf_1234908.htm#query=newborn%20background%20baby%20feet&position=2&from_view=search&track=ais">v.ivash</a>
                         auf Freepik</p>
@@ -1183,6 +1229,7 @@
         getTeam();
         getClassInfo();
         buildFaqList();
+        initializeGallery();
     </script>
     <script defer>
         // SMOOTH SCROLLING PLUS OFFSET FOR FIXED NAV
@@ -1221,7 +1268,9 @@
             $(".navbar").css("background-color", "rgba(225, 208, 192," + rgba + ")");
         });
 
-
+        // Automatically scroll down a bit when clicking on the Datenschutz or Impressum link
+        document.getElementById("openDatenschutz").addEventListener("click", () => window.setTimeout(() => location.assign("#openImpressum"), 50));
+        document.getElementById("openImpressum").addEventListener("click", () => window.setTimeout(() => location.assign("#openDatenschutz"), 50));
 
     </script>
 </body>

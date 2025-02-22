@@ -1,6 +1,6 @@
 <?php
      /*
-        This this class is used to consume the Hebamio API and provide a result of all classes and information in a single JSON structure.
+        Autoloader
         Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
         
         Licensed under MIT License
@@ -42,6 +42,7 @@
         "upload_processor" => "upload_processor.php",
         "hebamio_proc" => "hebamio_proc.php",
         "api_faq" => "api_faq.php",
+        "gallery_processor" => "gallery_processor.php",
 //      DB classes        
         "data_access" => "db_classes/data_access.php",
         "db_token" => "db_classes/db_token.php",
@@ -49,6 +50,7 @@
         "db_user" => "db_classes/db_user.php",
         "db_instructors" => "db_classes/db_instructors.php",
         "db_faq" => "db_classes/db_faq.php",
+        "db_gallery" => "db_classes/db_gallery.php",
 //      Exception classes        
         "UserValidationException" => "exceptions/user_validation_exception.php",
         "InstructorException" => "exceptions/instructor_exception.php", 

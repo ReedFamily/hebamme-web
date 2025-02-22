@@ -10,6 +10,7 @@ en/index.html
 
 /backend/uploads/*.jpg
 /backend/uploads/*.png
+/backend/resources/praxis/*.*
 backend/conf/conf-live.php
 API/API-key altenbeckundkollegin.txt
 API/example.json
@@ -22,3 +23,10 @@ dist/
 *.tar.gz
 
 fiveserver.config.js
+img/hebammenpraxis-hallow.svg
+backend/gallery-images/*.webp
+backend/gallery-images/*.jpg
+img/hebammenpraxis_square_thick-green-watermark.svg
+img/hebammenpraxis_watermark_750px.png
+img/hebammenpraxis-document-logo.png
+img/hebammenpraxis-document-logo.svg

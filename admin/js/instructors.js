@@ -49,7 +49,7 @@ const displayInstructors = function (response) {
     var len = $(this).length;
     var filedat = $(this)[0].files[0];
     var ext = filedat.name.split(".").pop().toLowerCase();
-    if (jQuery.inArray(ext, ["png", "jpg", "jpeg"]) == -1) {
+    if (jQuery.inArray(ext, ["png", "jpg", "jpeg", "webp"]) == -1) {
       alert("Invalid Image File");
       return;
     }
