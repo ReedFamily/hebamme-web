@@ -15,6 +15,7 @@ echo "*** COPY FILES ***"
 
 cp ./index.html ./dist/upload/index.html
 cp ./sitemap.xml ./dist/upload/sitemap.xml
+cp ./robots.txt ./dist/upload/robots.txt
 cp ./LICENSE ./dist/upload/LICENSE
 # cp ./hebamme_favicon128.ico ./dist/upload/hebamme_favicon128.ico
 # cp ./favicon32.ico ./dist/upload/favicon32.ico
