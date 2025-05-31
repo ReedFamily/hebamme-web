@@ -56,9 +56,10 @@
             if(str_contains($title, "Rückbildung")){
                 return "rubi";
             }
-            if(str_contains($title, "Yoga")){
-                return "yoga";
-            }
+            // Yoga is not currently available
+            // if(str_contains($title, "Yoga")){
+            //     return "yoga";
+            // }
             if(str_contains($title, "Erste Hilfe")){
                 return "eh";
             }
@@ -67,6 +68,9 @@
             }
             if(str_contains($title, "Babypflege")){
                 return "bp";
+            }
+            if(str_contains($title, "Babymassage")){
+                return "bm";
             }
             return "other";
         }
