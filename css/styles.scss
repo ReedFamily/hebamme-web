@@ -687,3 +687,14 @@ footer {
 .version {
   font-size: 0.3em;
 }
+.nodeco {
+  list-style-type: none;
+
+  a {
+    i {
+      margin-left: 0.5em;
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+}

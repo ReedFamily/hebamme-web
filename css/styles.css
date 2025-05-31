@@ -732,4 +732,13 @@ footer a {
 
 .version {
   font-size: 0.3em;
+}
+
+.nodeco {
+  list-style-type: none;
+}
+.nodeco a i {
+  margin-left: 0.5em;
+  color: #111111;
+  text-decoration: none;
 }/*# sourceMappingURL=styles.css.map */
