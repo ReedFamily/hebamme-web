@@ -213,6 +213,7 @@ const getClassInfo = function () {
       var eh = 0;
       var bp = 0;
       var yoga = 0;
+      var bm = 0;
       var other = 0;
       $.each(classRes.classes, function (index, classDetail) {
         var classWrapper = $("#" + classDetail.type + "-wrapper");
@@ -365,6 +366,9 @@ const getClassInfo = function () {
           case "bp":
             bp++;
             break;
+          case "bm":
+            bm++;
+            break;
           case "yoga":
             yoga++;
             break;
@@ -401,12 +405,17 @@ const getClassInfo = function () {
           "<p>Aktuell sind leider keine Babypflegekurse geplant.</p>"
         );
       }
-      if (yoga == 0) {
-        //$("#yoga-classes").remove();
-        $("#yoga-wrapper").append(
-          "<p>Aktuell sind leider keine Yogakurse geplant.</p>"
+      if (bm == 0) {
+        $("#bm-wrapper").append(
+          "<p>Aktuell sind leider keine Babymassagekurse geplant.</p>"
         );
       }
+      // if (yoga == 0) {
+      //   //$("#yoga-classes").remove();
+      //   $("#yoga-wrapper").append(
+      //     "<p>Aktuell sind leider keine Yogakurse geplant.</p>"
+      //   );
+      // }
       if (other == 0) {
         //$("#other-classes").remove();
         $("#other-wrapper").append(
