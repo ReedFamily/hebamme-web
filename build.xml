@@ -87,7 +87,9 @@
         </copy>
         <copy file="robots.txt" todir="${dist.upload}" />
         <copy file="sitemap.xml" todir="${dist.upload}">
-
+            <filterset>
+                <filter token="LAST_MOD" value="${ant.tstamp.now.iso}">
+            </filterset>
         </copy>
     </target>
     <target name="dist" depends="copy-files,getgitdetails">
