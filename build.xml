@@ -8,7 +8,7 @@
     <property name="dist.upload" location="${dist}/upload" />
     <property name="version" value="2.1.2" />
     <property name="copyright" value="2025" />
-
+    
 
     <target name="init">
         <!-- Clean dist directory and prepare next version -->
@@ -16,23 +16,12 @@
         <delete dir="${dist.flyway}" />
     </target>
 
-    <available file=".git" type="dir" property="git.present"/>
-
-    <target name="git.revision" description="Store git revision in ${repository.version}" if="git.present">
-        <exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
-            <arg value="describe"/>
-            <arg value="--tags"/>
-            <arg value="--always"/>
+    <target name="getgitdetails" >
+        <exec executable="git" outputproperty="git.revision">
+            <arg value="rev-parse"/>
             <arg value="HEAD"/>
         </exec>
-        <condition property="repository.version" value="${git.revision}" else="unknown">
-            <and>
-                <isset property="git.revision"/>
-                <length string="${git.revision}" trim="yes" length="0" when="greater"/>
-            </and>
-        </condition>
-    </target>
-
+  </target>
     <target name="copy-flyway" depends="init">
         <mkdir dir="${dist.flyway}" />
         <copy todir="${dist.flyway}">
@@ -55,6 +44,7 @@
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
+                <filter token="GIT_HASH" value="${version}" />
             </filterset>
         </copy>
         <copy includeemptydirs="false" todir="${dist.upload}/css">
@@ -79,12 +69,14 @@
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
+                <filter token="GIT_HASH" value="${version}" />
             </filterset>
         </copy>
         <copy file="404.html" todir="${dist.upload}">
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
+                <filter token="GIT_HASH" value="${version}" />
             </filterset>
         </copy>
         <copy file="LICENSE" todir="${dist.upload}">
@@ -95,11 +87,11 @@
         </copy>
         <copy file="robots.txt" todir="${dist.upload}" />
         <copy file="sitemap.xml" todir="${dist.upload}">
-            
+
         </copy>
     </target>
-    <target name="dist" depends="copy-files,git.revision">
-        <tar destfile="${dist}/hebamme-web-deploy_${version}_${repository.version}.tar.gz" basedir="${dist.upload}" compression="gzip" />
-        <tar destfile="${dist}/hebamme-web-flyway_${version}_${repository.version}.tar.gz" basedir="${dist.flyway}" compression="gzip" />
+    <target name="dist" depends="copy-files,getgitdetails">
+        <tar destfile="${dist}/hebamme-web-deploy_${version}_${git.revision}.tar.gz" basedir="${dist.upload}" compression="gzip" />
+        <tar destfile="${dist}/hebamme-web-flyway_${version}_${git.revision}.tar.gz" basedir="${dist.flyway}" compression="gzip" />
     </target>
 </project>
