@@ -14,6 +14,9 @@
         <!-- Clean dist directory and prepare next version -->
         <delete dir="${dist.upload}" />
         <delete dir="${dist.flyway}" />
+        <delete>
+            <fileset dir="${dist}" includes="*.tar.gz" />
+        </delete>
     </target>
 
     <target name="getgitdetails" >
@@ -29,6 +32,12 @@
         </copy>
     </target>
     <target name="copy-files" depends="copy-flyway">
+    
+        <tstamp>
+            <format property="last_mod" pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ" />
+        </tstamp>
+    
+        <echo>${last_mod}</echo>
         <mkdir dir="${dist.upload}" />
         <copy todir="${dist.upload}/backend">
             <fileset dir="./backend">
@@ -88,7 +97,7 @@
         <copy file="robots.txt" todir="${dist.upload}" />
         <copy file="sitemap.xml" todir="${dist.upload}">
             <filterset>
-                <filter token="LAST_MOD" value="${ant.tstamp.now.iso}" />
+                <filter token="LAST_MOD" value="${last_mod}" />
             </filterset>
         </copy>
     </target>
