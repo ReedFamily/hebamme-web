@@ -1,7 +1,7 @@
 <?php
      /*
         Base database access class
-        Copyright (c) 2021 - COPYRIGHT_YEAR Jason Reed
+        Copyright (c) 2021 - @COPYRIGHT_YEAR@ Jason Reed
         
         Licensed under MIT License
 

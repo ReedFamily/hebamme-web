@@ -9,18 +9,18 @@
 
 <url>
   <loc>https://hebammenpraxis-moosburg.de/</loc>
-  <lastmod>LAST_MOD</lastmod>
+  <lastmod>@LAST_MOD@</lastmod>
 </url>
 <url>
   <loc>https://www.hebammenpraxis-moosburg.de/</loc>
-  <lastmod>LAST_MOD</lastmod>
+  <lastmod>@LAST_MOD@</lastmod>
 </url>
 <url>
   <loc>https://hebammenpraxis-moosburg.com/</loc>
-  <lastmod>LAST_MOD</lastmod>
+  <lastmod>@LAST_MOD@</lastmod>
 </url>
 <url>
   <loc>https://www.hebammenpraxis-moosburg.com/</loc>
-  <lastmod>LAST_MOD</lastmod>
+  <lastmod>@LAST_MOD@</lastmod>
 </url>
 </urlset>
