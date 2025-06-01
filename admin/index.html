@@ -16,14 +16,14 @@
     <script type="text/javascript" src="../js/jquery-3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/simplemde.min.js"></script>
-    <script type="text/javascript" src="js/dto.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/users.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/instructors.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/alerts.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/faqs.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/galleries.js?v=GIT_HASH"></script>
-    <script type="text/javascript" src="js/site.js?v=GIT_HASH"></script>
-    <script src="../js/friconix/friconix.js?v=GIT_HASH"></script>
+    <script type="text/javascript" src="js/dto.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/users.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/instructors.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/alerts.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/faqs.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/galleries.js?v=@GIT_HASH@"></script>
+    <script type="text/javascript" src="js/site.js?v=@GIT_HASH@"></script>
+    <script src="../js/friconix/friconix.js?v=@GIT_HASH@"></script>
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/simplemde.min.css" />
     <link rel="stylesheet" href="css/site.css" />
@@ -515,6 +515,7 @@
     <div id="welcome-template" class="hidden">
         <div class="col-6">
             <h1>Herzlich willkommen</h1>
+            <h2>Version: @REL_VER@</h2>
             <p>
                 Dies ist Ihr administratives Dashboard, mit dem Sie Änderungen an Ihrer Website vornehmen können. Auf der linken Seite der Seite sehen Sie Menüoptionen, die Sie zu den Kontrollseiten für verschiedene Bereiche der Site führen.
             </p>
@@ -607,7 +608,7 @@
 
   MIT License
 
-  Software Copyright (c) 2021-COPYRIGHT_YEAR ReedFamily
+  Software Copyright (c) 2021-@COPYRIGHT_YEAR@ ReedFamily
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
