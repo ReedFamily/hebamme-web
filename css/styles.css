@@ -343,7 +343,6 @@ body {
   background-color: #88ac35;
 }
 .addressblock p {
-  margin-left: 0.75em;
   margin-bottom: 0rem;
 }
 
@@ -580,6 +579,10 @@ div.inner {
     text-align: right !important;
   }
 }
+#kontakt-sprechzeiten div {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px);
+  padding-left: 0.75em;
+}
 
 #babytreff-content {
   background-color: #92beb3;
@@ -750,7 +753,6 @@ footer a {
   padding-bottom: 0.12em;
 }
 .nodeco a i {
-  margin-left: 0.5em;
   color: #111111;
   text-decoration: none;
 }/*# sourceMappingURL=styles.css.map */
