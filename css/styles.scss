@@ -288,7 +288,6 @@ body {
 .addressblock {
   background-color: $accent-color-apple-green;
   p {
-    margin-left: 0.75em;
     margin-bottom: 0rem;
   }
 }
@@ -531,6 +530,11 @@ div.inner {
       }
     }
   }
+  div {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px)
+      calc(0.25rem - 1px);
+    padding-left: 0.75em;
+  }
 }
 
 #babytreff-content {
@@ -692,6 +696,7 @@ footer {
 #social-media-links {
   background-color: $accent-color-apple-green;
 }
+
 .nodeco {
   li {
     padding-top: 0.12em;
@@ -700,7 +705,6 @@ footer {
   list-style-type: none;
   a {
     i {
-      margin-left: 0.5em;
       color: $text-color;
       text-decoration: none;
     }
