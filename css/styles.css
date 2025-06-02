@@ -339,7 +339,11 @@ body {
   color: rgb(0, 0, 0) !important;
 }
 
+.addressblock {
+  background-color: #88ac35;
+}
 .addressblock p {
+  margin-left: 0.75em;
   margin-bottom: 0rem;
 }
 
@@ -734,8 +738,16 @@ footer a {
   font-size: 0.3em;
 }
 
+#social-media-links {
+  background-color: #88ac35;
+}
+
 .nodeco {
   list-style-type: none;
+}
+.nodeco li {
+  padding-top: 0.12em;
+  padding-bottom: 0.12em;
 }
 .nodeco a i {
   margin-left: 0.5em;

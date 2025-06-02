@@ -40,7 +40,7 @@
 
             //  WHERE `viewable` = 1
             $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor` WHERE `viewable` = 1";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->prepareStatement($query);
             $result = api_response::getResponse(500);
             try{
                 $stmt->execute();
@@ -58,7 +58,7 @@
 
         public function listAllInstructors(){
             $query = "SELECT `id`, `last_name` as lastname, `first_name` as firstname, `email`, `phone`, `mobile`, `image_url` as imageurl, `description`, `position`, `registration_link` as hebamiolink, `team_member` as `team`, `viewable` as `visible` FROM `instructor`";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->prepareStatement($query);
             $result = api_response::getResponse(500);
             try{
                 $stmt->execute();

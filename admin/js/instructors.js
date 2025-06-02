@@ -109,7 +109,7 @@ const buildInstructorTableRow = function (instructor) {
 
 const showVisiblity = function (instructor) {
   var result;
-  if (instructor.visible === "1") {
+  if (instructor.visible == 1) {
     result = $("<i />", { class: "fi-xnluxl-eye linkchar" });
   } else {
     result = $("<i />", { class: "fi-xnpuxl-eye linkchar" });
@@ -157,8 +157,8 @@ const editInstructor = function (ele) {
       $("#inputHebamioUrl").val(response.instructor.hebamiolink);
       $("#editInstructorThumbnailUrl").val(response.instructor.imageurl);
 
-      $("#team").prop("checked", response.instructor.team === "1");
-      $("#visible").prop("checked", response.instructor.visible === "1");
+      $("#team").prop("checked", response.instructor.team == 1);
+      $("#visible").prop("checked", response.instructor.visible == 1);
 
       var thumb = buildThumbnail(response.instructor);
       $("#imagewrapper").empty();

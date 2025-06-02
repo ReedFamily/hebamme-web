@@ -36,12 +36,21 @@ const buildTeamCards = function (payload) {
       class: "card-title",
       text: instructor.firstname + " " + instructor.lastname,
     });
-    var img = jQuery("<img />", {
-      class: "card-img-top",
-      src: "./" + instructor.imageurl,
-      id: "team-member-img-" + instructor.id,
-      alt: instructor.firstname + " " + instructor.lastname,
-    });
+    if (instructor.imageurl != "") {
+      var img = jQuery("<img />", {
+        class: "card-img-top",
+        src: "./" + instructor.imageurl,
+        id: "team-member-img-" + instructor.id,
+        alt: instructor.firstname + " " + instructor.lastname,
+      });
+    } else {
+      var img = jQuery("<img />", {
+        class: "card-img-top",
+        src: "./img/avatar-5.svg",
+        id: "team-member-img-" + instructor.id,
+        alt: instructor.firstname + " " + instructor.lastname,
+      });
+    }
     var cardbody = jQuery("<div />", { class: "card-body" });
     var position = jQuery("<h5 />", {
       class: "card-subtitle",
@@ -306,6 +315,14 @@ const getClassInfo = function () {
           .append(classPartnerPrice);
         var classBodyPrice = $("<p />");
         $(classBodyPrice).append("Gebühr: €").append(classPrice);
+        if (classDetail.bs) {
+          var classZiel = $("<p />");
+          $(classZiel).append("Zielgruppe: ").append(classDetail.bs.zielgruppe);
+          var classDecript = $("<p />");
+          $(classDecript)
+            .append("Beschreibung: ")
+            .append(classDetail.bs.description);
+        }
         var classBodyTermine = $("<div />");
         var classBodyTermineTitle = $("<p />").append("Termine: ");
         var classBodyTermineList = $("<ul />");
@@ -342,6 +359,9 @@ const getClassInfo = function () {
         }
         if (classPartnerPrice) {
           $(classCardBody).append(classBodyPartner);
+        }
+        if (classZiel) {
+          $(classCardBody).append(classZiel).append(classDecript);
         }
         $(classCardBody).append(classBodyTermine);
         $(classCard)
