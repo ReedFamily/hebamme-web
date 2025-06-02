@@ -99,6 +99,18 @@
                 $cls["id"] = $course->id;
                 $cls["name"] = $course->title;
                 $cls["type"] = $this->getClassTypeFromTitle($course->title);
+                if(str_starts_with($cls["name"], "Babyschlaf")){
+                    if(str_ends_with($cls["name"], "(5-14 Monate)")){
+                        // add blurb 1
+                        $cls["bs"]["zielgruppe"]="Eltern mit Babys ab dem fünftem Lebensmonat <strong>(5-14 Monate)</strong>";
+                        include('messages/babyschlaf-5bis14.php');
+                        $cls["bs"]["description"]= $messageBody;
+                    }elseif(str_ends_with($cls["name"], "(0-4 Monate)")){
+                        $cls["bs"]["zielgruppe"]="Eltern mit Babys in den ersten Lebensmonaten <strong>(0-4 Monate)</strong>";
+                        include('messages/babyschlaf-0bis4.php');
+                        $cls["bs"]["description"]= $messageBody;
+                    }
+                }
                 $detail = $this->getClassDetail($cls["id"]);
 
                 if(isset($detail["status"])){

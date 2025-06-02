@@ -306,6 +306,14 @@ const getClassInfo = function () {
           .append(classPartnerPrice);
         var classBodyPrice = $("<p />");
         $(classBodyPrice).append("Gebühr: €").append(classPrice);
+        if (classDetail.bs) {
+          var classZiel = $("<p />");
+          $(classZiel).append("Zielgruppe: ").append(classDetail.bs.zielgruppe);
+          var classDecript = $("<p />");
+          $(classDecript)
+            .append("Beschreibung: ")
+            .append(classDetail.bs.description);
+        }
         var classBodyTermine = $("<div />");
         var classBodyTermineTitle = $("<p />").append("Termine: ");
         var classBodyTermineList = $("<ul />");
@@ -342,6 +350,9 @@ const getClassInfo = function () {
         }
         if (classPartnerPrice) {
           $(classCardBody).append(classBodyPartner);
+        }
+        if (classZiel) {
+          $(classCardBody).append(classZiel).append(classDecript);
         }
         $(classCardBody).append(classBodyTermine);
         $(classCard)
