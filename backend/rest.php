@@ -72,6 +72,7 @@
         }   
         $returnArray = json_encode($res,JSON_UNESCAPED_UNICODE);
         if($returnArray === null || trim($returnArray) === ''){
+            $res["status"] = 500;
             $returnArray = '{"status":500, "Exception":"Empty Result"}';
         }
         http_response_code($res["status"]);
