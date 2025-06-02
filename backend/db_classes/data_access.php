@@ -42,6 +42,7 @@
                 echo "ERROR!: " . $e->getMessage() . "<br>";
                 die();
             }
+            
         }
 
         protected function prepareStatement($query){

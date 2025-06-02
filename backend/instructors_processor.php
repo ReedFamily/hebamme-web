@@ -50,7 +50,7 @@
             }
             $result = $db->createInstructor($instructor);
             if($result["status"] == 200){
-                $result = $this->listInstructors();
+                $result = $this->listInstructors("");
             }
             return $result;
 
@@ -58,7 +58,7 @@
 
         public function updateInstructor($params){
             if(!isset($params["post_body"])){
-                return api_response::getResposne(400);
+                return api_response::getResponse(400);
             }
             $instructor = $params["post_body"];
             if(!isset($instructor["id"]) || empty(trim($instructor["id"]))){
@@ -67,14 +67,14 @@
             $db = new db_instructors();
             $result = $db->updateInstructor($instructor);
             if($result["status"] == 200){
-                $result = $this->listInstructors();
+                $result = $this->listInstructors("");
             }
             return $result;
         }
 
         public function listInstructors($params){
             $db = new db_instructors();
-            if(isset($params["visible"])){
+            if(isset($params) && isset($params["visible"]) && $params["visible"]=='true'){
                 $result = $db->listAllVisibleInstructors();
             }else{
                 $result = $db->listAllInstructors();
@@ -102,7 +102,7 @@
             $db = new db_instructors();
             $result = $db->deleteInstructorById($params["id"]);
             if($result["status"] == 200){
-                $result = $this->listInstructors();
+                $result = $this->listInstructors("");
             }
             return $result;
         }
