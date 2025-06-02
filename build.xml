@@ -6,10 +6,9 @@
     <property name="dist.flyway" location="${dist}/flyway" />
     <property name="flyway" location="./flyway" />
     <property name="dist.upload" location="${dist}/upload" />
-    <property name="version" value="2.1.2" />
+    <property name="version" value="2.1.2a" />
     <property name="copyright" value="2025" />
     
-
     <target name="init">
         <!-- Clean dist directory and prepare next version -->
         <delete dir="${dist.upload}" />
@@ -31,12 +30,13 @@
             <fileset dir="${flyway}" />
         </copy>
     </target>
+    
     <target name="copy-files" depends="copy-flyway">
     
         <tstamp>
             <format property="last_mod" pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ" />
+            <format property="cache" pattern="yyyyMMddHHmmss" />
         </tstamp>
-    
         <echo>${last_mod}</echo>
         <mkdir dir="${dist.upload}" />
         <copy todir="${dist.upload}/backend">
@@ -53,7 +53,7 @@
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
-                <filter token="GIT_HASH" value="${version}" />
+                <filter token="GIT_HASH" value="${cache}" />
             </filterset>
         </copy>
         <copy includeemptydirs="false" todir="${dist.upload}/css">
@@ -78,14 +78,14 @@
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
-                <filter token="GIT_HASH" value="${version}" />
+                <filter token="GIT_HASH" value="${cache}" />
             </filterset>
         </copy>
         <copy file="404.html" todir="${dist.upload}">
             <filterset>
                 <filter token="COPYRIGHT_YEAR" value="${copyright}" />
                 <filter token="REL_VER" value="${version}" />
-                <filter token="GIT_HASH" value="${version}" />
+                <filter token="GIT_HASH" value="${cache}" />
             </filterset>
         </copy>
         <copy file="LICENSE" todir="${dist.upload}">
