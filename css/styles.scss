@@ -286,7 +286,9 @@ body {
   }
 }
 .addressblock {
+  background-color: $accent-color-apple-green;
   p {
+    margin-left: 0.75em;
     margin-bottom: 0rem;
   }
 }
@@ -687,9 +689,15 @@ footer {
 .version {
   font-size: 0.3em;
 }
+#social-media-links {
+  background-color: $accent-color-apple-green;
+}
 .nodeco {
+  li {
+    padding-top: 0.12em;
+    padding-bottom: 0.12em;
+  }
   list-style-type: none;
-
   a {
     i {
       margin-left: 0.5em;
