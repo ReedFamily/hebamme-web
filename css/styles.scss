@@ -499,6 +499,11 @@ div.inner {
   color: $text-color-light !important;
 }
 
+#babytreff-content{
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px)
+  calc(0.25rem - 1px);
+}
+
 #error-404-home {
   overflow-x: hidden;
   background-color: $accent-color-venetian-red !important;

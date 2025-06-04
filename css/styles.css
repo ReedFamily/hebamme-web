@@ -549,6 +549,10 @@ div.inner {
   color: #f0f0f0 !important;
 }
 
+#babytreff-content {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px);
+}
+
 #error-404-home {
   overflow-x: hidden;
   background-color: #bf211e !important;
