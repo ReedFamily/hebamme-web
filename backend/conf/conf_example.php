@@ -23,5 +23,5 @@
     define("CONST_HEBAMIO_KEY", ""); // Configures the HEBAMIO API Key (provided by Hebamio)
     define("CONST_HEBAMIO_URL", ""); // Configures the base URL to HEBAMIO for the API without trailing /
     define("CONST_GALLERY_PATH", ""); // Configures the base directory for the gallery without trailing /
-
+    define("CONST_FAQ_DATE_PADDING", 60); // Configures the number of days that a new or updated faq will receive its new or updated flag.
 ?>
