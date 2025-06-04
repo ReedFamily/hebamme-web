@@ -500,6 +500,12 @@ const buildFaqList = function () {
   $.get(url, function (res) {
     if (res.status == 200) {
       $.each(res.faqs, function (index, faq) {
+        let faqState = "none";
+        if(faq.new){
+          faqState = "new";
+        }else if(faq.updated){
+          faqState = "updated";
+        }
         let faqCard = $("<div />", { id: "faq-id-" + faq.id, class: "card" });
         let faqCollapse = $("<div />", {
           class: "close",
@@ -515,6 +521,7 @@ const buildFaqList = function () {
           id: "faq-header-" + faq.id,
           role: "button",
         })
+          .attr("data-faqstate", faqState)
           .attr("data-toggle", "collapse")
           .attr("data-target", "#faq-body-" + faq.id)
           .attr("data-faqId", faq.id)
@@ -526,7 +533,7 @@ const buildFaqList = function () {
               class: "card-title",
               type: "button",
               role: "button",
-              id: "faq-title-" + faq.id,
+              id: "faq-title-" + faq.id,            
               text: faq.question + " ",
             }).append(faqCollapse)
           );
