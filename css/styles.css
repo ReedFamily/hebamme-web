@@ -1,3 +1,29 @@
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.badge-pill {
+  border-radius: 10rem;
+}
+
+.badge-primary {
+  color: white;
+  background-color: #0d6efd;
+}
+
+.badge-success {
+  color: white;
+  background-color: #28a745;
+}
+
 @font-face {
   font-family: "Open Sans";
   src: url("../fonts/opensans/OpenSans-SemiBold.eot");
@@ -647,6 +673,7 @@ footer a {
   .termine-card {
     margin-left: 0.5em !important;
     margin-right: 0.5em !important;
+    min-width: -webkit-min-content;
     min-width: -moz-min-content;
     min-width: min-content;
   }
@@ -727,6 +754,46 @@ footer a {
 .faq-card-header {
   background-color: #88ac35;
   font-size: 1.5em;
+  position: relative;
+}
+.faq-card-header:before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  margin: 0 0.5rem 0 0.5rem;
+  opacity: 0.8;
+}
+.faq-card-header:before:hover {
+  opacity: 1;
+}
+.faq-card-header[data-faqstate=new] {
+  padding-left: 3.3rem;
+}
+.faq-card-header[data-faqstate=new]:before {
+  content: "NEU";
+  color: white;
+  background-color: #0d6efd;
+}
+.faq-card-header[data-faqstate=updated] {
+  padding-left: 4.6rem;
+}
+.faq-card-header[data-faqstate=updated]:before {
+  content: "UPDATE";
+  color: black;
+  background-color: #ecb709;
+}
+.faq-card-header > div {
+  margin-left: 4rem;
 }
 .faq-card-header:hover {
   cursor: pointer;

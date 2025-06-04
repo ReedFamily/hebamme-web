@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "badge";
 ///////////////////////////////////////////////////////////////
 //////////////////////////// Fonts ////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -433,10 +434,7 @@ div.inner {
 
 .bg-baby-image {
   background-image: url(../img/feet-dreamy-child-enveloped-woolen-scarf.jpg);
-  @supports (
-    background-image:
-      url("../img/feet-dreamy-child-enveloped-woolen-scarf.webp")
-  ) {
+  @supports (background-image: url("../img/feet-dreamy-child-enveloped-woolen-scarf.webp")) {
     background-image: url("../img/feet-dreamy-child-enveloped-woolen-scarf.webp");
   }
   background-repeat: no-repeat;
@@ -499,9 +497,8 @@ div.inner {
   color: $text-color-light !important;
 }
 
-#babytreff-content{
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px)
-  calc(0.25rem - 1px);
+#babytreff-content {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px);
 }
 
 #error-404-home {
@@ -536,8 +533,7 @@ div.inner {
     }
   }
   div {
-    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px)
-      calc(0.25rem - 1px);
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px) calc(0.25rem - 1px);
     padding-left: 0.75em;
   }
 }
@@ -681,6 +677,60 @@ footer {
 .faq-card-header {
   background-color: $accent-color-apple-green;
   font-size: 1.5em;
+
+  //Adds FAQ-State Styles
+  position: relative;
+  // Add styles for the FAQ state badge
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    // Style the badge
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    margin: 0 0.5rem 0 0.5rem;
+    opacity: 0.8;
+
+    // Hover effect
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // Different colors for different states
+  &[data-faqstate="new"] {
+    &:before {
+      content: "NEU";
+      color: white;
+      background-color: #0d6efd; // Blue for NEW
+    }
+    padding-left: 3.3rem; // Adjust based on your pill size
+  }
+
+  &[data-faqstate="updated"] {
+    &:before {
+      content: "UPDATE";
+      color: black;
+      background-color: $accent-color-orange-yellow; // Green for UPDATED
+    }
+    padding-left: 4.6rem; // Adjust based on your pill size
+  }
+
+
+
+  >div {
+    margin-left: 4rem;
+  }
+
   &:hover {
     cursor: pointer;
   }

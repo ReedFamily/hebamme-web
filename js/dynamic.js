@@ -535,8 +535,8 @@ const buildFaqList = function () {
               role: "button",
               id: "faq-title-" + faq.id,            
               text: faq.question + " ",
-            }).append(faqCollapse)
-          );
+            })
+          ).append(faqCollapse);
         let faqBody = $("<div />", {
           class: "card-body collapse faq-card-body",
           id: "faq-body-" + faq.id,
