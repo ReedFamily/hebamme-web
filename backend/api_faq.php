@@ -45,6 +45,7 @@
             if($result["status"] == 200){
                 $len = sizeOf($result['faqs']);
                 for($i = 0; $i < $len; $i++){
+                    log_util::logEntry("INFO", "FAQ: " . $result['faqs'][$i]["id"]);
                     if($this->changedWithinRange($result['faqs'][$i]['changedAt'])){
                         if($this->isNew($result['faqs'][$i]['created'],$result['faqs'][$i]['changedAt'] )){
                             $result['faqs'][$i]['new'] = 1;
@@ -60,9 +61,11 @@
         private function changedWithinRange($changed){
             $currentDate = date_create();
             $localChanged = date_create($changed);
+            log_util::logEntry("INFO", "changed: " . date_format($localChanged, "Y-m-d H:i:s") . " current: " . date_format($currentDate, "Y-m-d H:i:s"));
             $interval = date_diff($localChanged, $currentDate);
             $result = false;
-            if($interval->d <= $this->_padding){
+            if($interval->format("%a") <= $this->_padding){
+                log_util::logEntry("INFO", "Interval is {$interval->d} The padding is {$this->_padding}");
                 $result = true;
             }
             return $result;
