@@ -30,9 +30,61 @@
     }
 
     class api_faq{
+
+        private $_padding = 60;
+
+        public function __construct(){
+            
+            if(defined("CONST_FAQ_DATE_PADDING")){
+                $this->_padding = CONST_FAQ_DATE_PADDING;
+            }
+        }
         public function listFaqs(){
             $db = new db_faq();
             $result = $db->listFaqs();
+            if($result["status"] == 200){
+                $len = sizeOf($result['faqs']);
+                for($i = 0; $i < $len; $i++){
+                    if($this->changedWithinRange($result['faqs'][$i]['changedAt'])){
+                        if($this->isNew($result['faqs'][$i]['created'],$result['faqs'][$i]['changedAt'] )){
+                            $result['faqs'][$i]['new'] = 1;
+                        }elseif($this->isUpdated($result['faqs'][$i]['created'],$result['faqs'][$i]['changedAt'] )){
+                            $result['faqs'][$i]['updated'] = 1;
+                        }
+                    }
+                }
+            }
+            return $result;
+        }
+
+        private function changedWithinRange($changed){
+            $currentDate = date_create();
+            $localChanged = date_create($changed);
+            $interval = date_diff($localChanged, $currentDate);
+            $result = false;
+            if($interval->format("%a") <= $this->_padding){
+                $result = true;
+            }
+            return $result;
+        }
+
+        private function isNew($created, $changed){
+            $result = false;
+            $localCreated = date_create($created);
+            $localChanged = date_create($changed);
+            if($localCreated == $localChanged){
+                $result = true;
+            }
+            return $result;
+        }
+
+        private function isUpdated($created, $changed){
+            $result = false;
+            $localCreated = date_create($created);
+            $localChanged = date_create($changed);
+            if($localCreated < $localChanged){
+                $result = true;
+            }
             return $result;
         }
 

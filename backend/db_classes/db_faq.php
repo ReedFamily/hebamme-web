@@ -36,7 +36,7 @@
         }
 
         public function listFaqs(){
-            $query = "SELECT `id`, `question`, `message` FROM faq";
+            $query = "SELECT `id`, `question`, `message`, `created`, `changed_at` as changedAt FROM faq";
             $stmt = $this->pdo->prepare($query);
             $result = api_response::getResponse(500);
             try{

@@ -6,7 +6,7 @@
     <property name="dist.flyway" location="${dist}/flyway" />
     <property name="flyway" location="./flyway" />
     <property name="dist.upload" location="${dist}/upload" />
-    <property name="version" value="2.1.2a" />
+    <property name="version" value="2.1.2.2" />
     <property name="copyright" value="2025" />
     
     <target name="init">
