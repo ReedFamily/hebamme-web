@@ -120,6 +120,7 @@
                 $cls["detail"] = $detail;
 
                 $jsonOut[] = $cls;
+                unset($cls);
             }
             return $jsonOut;
         }
